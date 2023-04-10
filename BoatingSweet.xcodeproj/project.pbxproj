@@ -1,0 +1,388 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		78A4151E29E4D3AB005CBEF1 /* BoatingSweetApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A4151D29E4D3AB005CBEF1 /* BoatingSweetApp.swift */; };
+		78A4152029E4D3AB005CBEF1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A4151F29E4D3AB005CBEF1 /* ContentView.swift */; };
+		78A4152229E4D3AC005CBEF1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 78A4152129E4D3AC005CBEF1 /* Assets.xcassets */; };
+		78A4152529E4D3AC005CBEF1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 78A4152429E4D3AC005CBEF1 /* Preview Assets.xcassets */; };
+		78A4152C29E4D584005CBEF1 /* LogBookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A4152B29E4D584005CBEF1 /* LogBookView.swift */; };
+		78A4152E29E4D7D5005CBEF1 /* FuelLogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A4152D29E4D7D5005CBEF1 /* FuelLogView.swift */; };
+		78A4153029E4DA59005CBEF1 /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A4152F29E4DA59005CBEF1 /* DataModel.swift */; };
+		78A4153229E4DCE2005CBEF1 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A4153129E4DCE2005CBEF1 /* ViewModel.swift */; };
+		78A4153429E778F8005CBEF1 /* AddLogBookEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A4153329E778F8005CBEF1 /* AddLogBookEntryView.swift */; };
+		78A4153729F02219005CBEF1 /* AddFuelLogEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A4153629F02219005CBEF1 /* AddFuelLogEntryView.swift */; };
+		78A4153929F08713005CBEF1 /* VesselLogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A4153829F08713005CBEF1 /* VesselLogView.swift */; };
+		78A4153B29F094EB005CBEF1 /* AddVesselLogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A4153A29F094EB005CBEF1 /* AddVesselLogView.swift */; };
+		78A4153D29F0BDC0005CBEF1 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A4153C29F0BDC0005CBEF1 /* Enums.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		78A4151A29E4D3AB005CBEF1 /* BoatingSweet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BoatingSweet.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		78A4151D29E4D3AB005CBEF1 /* BoatingSweetApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoatingSweetApp.swift; sourceTree = "<group>"; };
+		78A4151F29E4D3AB005CBEF1 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		78A4152129E4D3AC005CBEF1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		78A4152429E4D3AC005CBEF1 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		78A4152B29E4D584005CBEF1 /* LogBookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogBookView.swift; sourceTree = "<group>"; };
+		78A4152D29E4D7D5005CBEF1 /* FuelLogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FuelLogView.swift; sourceTree = "<group>"; };
+		78A4152F29E4DA59005CBEF1 /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
+		78A4153129E4DCE2005CBEF1 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		78A4153329E778F8005CBEF1 /* AddLogBookEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLogBookEntryView.swift; sourceTree = "<group>"; };
+		78A4153629F02219005CBEF1 /* AddFuelLogEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFuelLogEntryView.swift; sourceTree = "<group>"; };
+		78A4153829F08713005CBEF1 /* VesselLogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VesselLogView.swift; sourceTree = "<group>"; };
+		78A4153A29F094EB005CBEF1 /* AddVesselLogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddVesselLogView.swift; sourceTree = "<group>"; };
+		78A4153C29F0BDC0005CBEF1 /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		78A4151729E4D3AB005CBEF1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		78A4151129E4D3AB005CBEF1 = {
+			isa = PBXGroup;
+			children = (
+				78A4151C29E4D3AB005CBEF1 /* BoatingSweet */,
+				78A4151B29E4D3AB005CBEF1 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		78A4151B29E4D3AB005CBEF1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				78A4151A29E4D3AB005CBEF1 /* BoatingSweet.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		78A4151C29E4D3AB005CBEF1 /* BoatingSweet */ = {
+			isa = PBXGroup;
+			children = (
+				78A4153529F021D4005CBEF1 /* Views */,
+				78A4151D29E4D3AB005CBEF1 /* BoatingSweetApp.swift */,
+				78A4152F29E4DA59005CBEF1 /* DataModel.swift */,
+				78A4153C29F0BDC0005CBEF1 /* Enums.swift */,
+				78A4153129E4DCE2005CBEF1 /* ViewModel.swift */,
+				78A4152129E4D3AC005CBEF1 /* Assets.xcassets */,
+				78A4152329E4D3AC005CBEF1 /* Preview Content */,
+			);
+			path = BoatingSweet;
+			sourceTree = "<group>";
+		};
+		78A4152329E4D3AC005CBEF1 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				78A4152429E4D3AC005CBEF1 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		78A4153529F021D4005CBEF1 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				78A4151F29E4D3AB005CBEF1 /* ContentView.swift */,
+				78A4153829F08713005CBEF1 /* VesselLogView.swift */,
+				78A4153A29F094EB005CBEF1 /* AddVesselLogView.swift */,
+				78A4153629F02219005CBEF1 /* AddFuelLogEntryView.swift */,
+				78A4152B29E4D584005CBEF1 /* LogBookView.swift */,
+				78A4153329E778F8005CBEF1 /* AddLogBookEntryView.swift */,
+				78A4152D29E4D7D5005CBEF1 /* FuelLogView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		78A4151929E4D3AB005CBEF1 /* BoatingSweet */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 78A4152829E4D3AC005CBEF1 /* Build configuration list for PBXNativeTarget "BoatingSweet" */;
+			buildPhases = (
+				78A4151629E4D3AB005CBEF1 /* Sources */,
+				78A4151729E4D3AB005CBEF1 /* Frameworks */,
+				78A4151829E4D3AB005CBEF1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BoatingSweet;
+			productName = BoatingSweet;
+			productReference = 78A4151A29E4D3AB005CBEF1 /* BoatingSweet.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		78A4151229E4D3AB005CBEF1 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1420;
+				LastUpgradeCheck = 1420;
+				TargetAttributes = {
+					78A4151929E4D3AB005CBEF1 = {
+						CreatedOnToolsVersion = 14.2;
+					};
+				};
+			};
+			buildConfigurationList = 78A4151529E4D3AB005CBEF1 /* Build configuration list for PBXProject "BoatingSweet" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 78A4151129E4D3AB005CBEF1;
+			productRefGroup = 78A4151B29E4D3AB005CBEF1 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				78A4151929E4D3AB005CBEF1 /* BoatingSweet */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		78A4151829E4D3AB005CBEF1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				78A4152529E4D3AC005CBEF1 /* Preview Assets.xcassets in Resources */,
+				78A4152229E4D3AC005CBEF1 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		78A4151629E4D3AB005CBEF1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				78A4153729F02219005CBEF1 /* AddFuelLogEntryView.swift in Sources */,
+				78A4153929F08713005CBEF1 /* VesselLogView.swift in Sources */,
+				78A4153029E4DA59005CBEF1 /* DataModel.swift in Sources */,
+				78A4152C29E4D584005CBEF1 /* LogBookView.swift in Sources */,
+				78A4153429E778F8005CBEF1 /* AddLogBookEntryView.swift in Sources */,
+				78A4152E29E4D7D5005CBEF1 /* FuelLogView.swift in Sources */,
+				78A4153229E4DCE2005CBEF1 /* ViewModel.swift in Sources */,
+				78A4153B29F094EB005CBEF1 /* AddVesselLogView.swift in Sources */,
+				78A4152029E4D3AB005CBEF1 /* ContentView.swift in Sources */,
+				78A4151E29E4D3AB005CBEF1 /* BoatingSweetApp.swift in Sources */,
+				78A4153D29F0BDC0005CBEF1 /* Enums.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		78A4152629E4D3AC005CBEF1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		78A4152729E4D3AC005CBEF1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		78A4152929E4D3AC005CBEF1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"BoatingSweet/Preview Content\"";
+				DEVELOPMENT_TEAM = D4LH7YBWNU;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.BoatingSweet;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		78A4152A29E4D3AC005CBEF1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"BoatingSweet/Preview Content\"";
+				DEVELOPMENT_TEAM = D4LH7YBWNU;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.BoatingSweet;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		78A4151529E4D3AB005CBEF1 /* Build configuration list for PBXProject "BoatingSweet" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				78A4152629E4D3AC005CBEF1 /* Debug */,
+				78A4152729E4D3AC005CBEF1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		78A4152829E4D3AC005CBEF1 /* Build configuration list for PBXNativeTarget "BoatingSweet" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				78A4152929E4D3AC005CBEF1 /* Debug */,
+				78A4152A29E4D3AC005CBEF1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 78A4151229E4D3AB005CBEF1 /* Project object */;
+}
