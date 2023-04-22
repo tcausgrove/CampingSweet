@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct LogEntry: Identifiable {
+struct LogEntry: Identifiable, Codable {
     var id: UUID
     var boat: String = ""
     var title: String = ""
@@ -18,18 +18,9 @@ struct LogEntry: Identifiable {
     var duration: TimeInterval {
         return endDate - startDate
     }
-       
-//    static let example = LogEntry(id: UUID(), title: "CC Bay")
 }
 
-extension Date {
-
-    static func - (lhs: Date, rhs: Date) -> TimeInterval {
-        return lhs.timeIntervalSinceReferenceDate - rhs.timeIntervalSinceReferenceDate
-    }
-}
-
-struct FuelEntry: Identifiable {
+struct FuelEntry: Identifiable, Codable {
     var id: UUID
     var date: Date = Date()
     var boat: String = ""
@@ -40,15 +31,27 @@ struct FuelEntry: Identifiable {
 //    static let example = FuelEntry(id: UUID(), boat: "Our boat", engineHours: 189.0, cost: 45.0, volume: 12.345)
 }
 
-struct Boat: Identifiable, Hashable {
+struct Boat: Identifiable, Hashable, Codable {
     var id: UUID
     var name: String
     var registrationNumber: String
+    
+    static let example = Boat(id: UUID(), name: "nano", registrationNumber: "TX12345")
 }
 
 struct Settings {
     var defaultHomePort: String
     var defaultBoatID: UUID
     var chosenUnits: UnitOptions
-    var chosen
+    var chosenDistance: DistanceOptions
+    var chosenClockHours: ClockHours
+    
+    static let example = Settings(defaultHomePort: "None", defaultBoatID: UUID(), chosenUnits: .america, chosenDistance: .mi, chosenClockHours: .two)
+}
+
+extension Date {
+
+    static func - (lhs: Date, rhs: Date) -> TimeInterval {
+        return lhs.timeIntervalSinceReferenceDate - rhs.timeIntervalSinceReferenceDate
+    }
 }

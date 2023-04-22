@@ -45,7 +45,7 @@ struct AddFuelLogEntryView: View {
                 TextField("Gallons", text: $volume)
                     .keyboardType(.decimalPad)
                     .onSubmit {
-                        //change name    String    string to float and store it
+                        //change name string to float and store it
                     }
             }
             .toolbar() {

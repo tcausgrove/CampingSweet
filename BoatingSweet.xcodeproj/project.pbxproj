@@ -20,6 +20,8 @@
 		78A4153929F08713005CBEF1 /* VesselLogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A4153829F08713005CBEF1 /* VesselLogView.swift */; };
 		78A4153B29F094EB005CBEF1 /* AddVesselLogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A4153A29F094EB005CBEF1 /* AddVesselLogView.swift */; };
 		78A4153D29F0BDC0005CBEF1 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A4153C29F0BDC0005CBEF1 /* Enums.swift */; };
+		78A4153F29F1E414005CBEF1 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A4153E29F1E414005CBEF1 /* SettingsView.swift */; };
+		78A4154129F34E3B005CBEF1 /* FileManager-DocumentsDirectory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A4154029F34E3B005CBEF1 /* FileManager-DocumentsDirectory.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +39,8 @@
 		78A4153829F08713005CBEF1 /* VesselLogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VesselLogView.swift; sourceTree = "<group>"; };
 		78A4153A29F094EB005CBEF1 /* AddVesselLogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddVesselLogView.swift; sourceTree = "<group>"; };
 		78A4153C29F0BDC0005CBEF1 /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
+		78A4153E29F1E414005CBEF1 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		78A4154029F34E3B005CBEF1 /* FileManager-DocumentsDirectory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FileManager-DocumentsDirectory.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +77,7 @@
 				78A4151D29E4D3AB005CBEF1 /* BoatingSweetApp.swift */,
 				78A4152F29E4DA59005CBEF1 /* DataModel.swift */,
 				78A4153C29F0BDC0005CBEF1 /* Enums.swift */,
+				78A4154029F34E3B005CBEF1 /* FileManager-DocumentsDirectory.swift */,
 				78A4153129E4DCE2005CBEF1 /* ViewModel.swift */,
 				78A4152129E4D3AC005CBEF1 /* Assets.xcassets */,
 				78A4152329E4D3AC005CBEF1 /* Preview Content */,
@@ -98,6 +103,7 @@
 				78A4152B29E4D584005CBEF1 /* LogBookView.swift */,
 				78A4153329E778F8005CBEF1 /* AddLogBookEntryView.swift */,
 				78A4152D29E4D7D5005CBEF1 /* FuelLogView.swift */,
+				78A4153E29F1E414005CBEF1 /* SettingsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -179,8 +185,10 @@
 				78A4153429E778F8005CBEF1 /* AddLogBookEntryView.swift in Sources */,
 				78A4152E29E4D7D5005CBEF1 /* FuelLogView.swift in Sources */,
 				78A4153229E4DCE2005CBEF1 /* ViewModel.swift in Sources */,
+				78A4154129F34E3B005CBEF1 /* FileManager-DocumentsDirectory.swift in Sources */,
 				78A4153B29F094EB005CBEF1 /* AddVesselLogView.swift in Sources */,
 				78A4152029E4D3AB005CBEF1 /* ContentView.swift in Sources */,
+				78A4153F29F1E414005CBEF1 /* SettingsView.swift in Sources */,
 				78A4151E29E4D3AB005CBEF1 /* BoatingSweetApp.swift in Sources */,
 				78A4153D29F0BDC0005CBEF1 /* Enums.swift in Sources */,
 			);

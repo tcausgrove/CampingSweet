@@ -32,7 +32,7 @@ struct FuelLogView: View {
             }
             .sheet(isPresented: $addingFuelEntry, content: {
                 let currentBoat = viewModel.getCurrentBoat() ?? Boat(id: UUID(), name: "foo", registrationNumber: "Temp")
-                AddFuelLogEntryView(boat: currentBoat )
+                AddFuelLogEntryView(boat: currentBoat)
             })
             .navigationTitle("Fuel Log")
         }
