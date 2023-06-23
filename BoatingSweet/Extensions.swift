@@ -19,7 +19,7 @@ extension TimeInterval {
         let formatter = DateComponentsFormatter()
         formatter.allowedUnits = units
         formatter.unitsStyle = .abbreviated
-        formatter.zeroFormattingBehavior = .pad
+        formatter.zeroFormattingBehavior = .dropLeading
 
         return formatter.string(from: self)
     }
