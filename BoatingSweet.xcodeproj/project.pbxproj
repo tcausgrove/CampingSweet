@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		78413C022A44EAE2006DCF9E /* NumbersOnlyViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78413C012A44EAE2006DCF9E /* NumbersOnlyViewModifier.swift */; };
+		78413C042A44EB49006DCF9E /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78413C032A44EB49006DCF9E /* Extensions.swift */; };
 		78A4151E29E4D3AB005CBEF1 /* BoatingSweetApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A4151D29E4D3AB005CBEF1 /* BoatingSweetApp.swift */; };
 		78A4152029E4D3AB005CBEF1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A4151F29E4D3AB005CBEF1 /* ContentView.swift */; };
 		78A4152229E4D3AC005CBEF1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 78A4152129E4D3AC005CBEF1 /* Assets.xcassets */; };
@@ -25,6 +27,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		78413C012A44EAE2006DCF9E /* NumbersOnlyViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NumbersOnlyViewModifier.swift; path = BoatingSweet/NumbersOnlyViewModifier.swift; sourceTree = SOURCE_ROOT; };
+		78413C032A44EB49006DCF9E /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		78A4151A29E4D3AB005CBEF1 /* BoatingSweet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BoatingSweet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		78A4151D29E4D3AB005CBEF1 /* BoatingSweetApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoatingSweetApp.swift; sourceTree = "<group>"; };
 		78A4151F29E4D3AB005CBEF1 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -74,6 +78,8 @@
 			isa = PBXGroup;
 			children = (
 				78A4153529F021D4005CBEF1 /* Views */,
+				78413C012A44EAE2006DCF9E /* NumbersOnlyViewModifier.swift */,
+				78413C032A44EB49006DCF9E /* Extensions.swift */,
 				78A4151D29E4D3AB005CBEF1 /* BoatingSweetApp.swift */,
 				78A4152F29E4DA59005CBEF1 /* DataModel.swift */,
 				78A4153C29F0BDC0005CBEF1 /* Enums.swift */,
@@ -184,9 +190,11 @@
 				78A4152C29E4D584005CBEF1 /* LogBookView.swift in Sources */,
 				78A4153429E778F8005CBEF1 /* AddLogBookEntryView.swift in Sources */,
 				78A4152E29E4D7D5005CBEF1 /* FuelLogView.swift in Sources */,
+				78413C022A44EAE2006DCF9E /* NumbersOnlyViewModifier.swift in Sources */,
 				78A4153229E4DCE2005CBEF1 /* ViewModel.swift in Sources */,
 				78A4154129F34E3B005CBEF1 /* FileManager-DocumentsDirectory.swift in Sources */,
 				78A4153B29F094EB005CBEF1 /* AddVesselLogView.swift in Sources */,
+				78413C042A44EB49006DCF9E /* Extensions.swift in Sources */,
 				78A4152029E4D3AB005CBEF1 /* ContentView.swift in Sources */,
 				78A4153F29F1E414005CBEF1 /* SettingsView.swift in Sources */,
 				78A4151E29E4D3AB005CBEF1 /* BoatingSweetApp.swift in Sources */,

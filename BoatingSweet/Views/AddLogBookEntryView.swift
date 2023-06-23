@@ -14,13 +14,14 @@ struct AddLogBookEntryView: View {
     @State private var start: Date = Date()
     @State private var end: Date = Date()
     @State private var distance: String = ""
+    @FocusState private var distanceIsFocused: Bool
     
     @EnvironmentObject var viewModel: ViewModel
-
+    
     var body: some View {
         NavigationView {
             VStack {
-                Text("new log boook entry")
+                Text("New Log Book Entry")
                     .padding()
                     .font(.title)
                 TextField("Title", text: $title)
@@ -29,23 +30,25 @@ struct AddLogBookEntryView: View {
                 DatePicker("End", selection: $end)
                 TextField("Distance (miles)", text: $distance)
                     .keyboardType(.decimalPad)
+                    .numbersOnly($distance, includeDecimal: true)  // See NumbersOnlyViewModifier.swift
                     .onSubmit {
                         //change string to float and store it
                     }
+                
+                    .toolbar() {
+                        ToolbarItem(placement: .cancellationAction) {
+                            Button("Cancel", role: .cancel, action: { dismiss() })
+                        }
+                        ToolbarItem(placement: .confirmationAction) {
+                            Button("Add", role: .none, action: {
+                                let tripID = UUID()
+                                let newTrip = LogEntry(id: tripID, title: title, startDate: start, endDate: end, distance: Float(distance))
+                                viewModel.addTrip(newTrip: newTrip)
+                                dismiss()
+                            })
+                        }
+                    }
             }
-            .toolbar() {
-                ToolbarItem(placement: .cancellationAction) {
-                    Button("Cancel", role: .cancel, action: { dismiss() })
-                }
-                ToolbarItem(placement: .confirmationAction) {
-                    Button("Add", role: .none, action: {
-                        let tripID = UUID()
-                        let newTrip = LogEntry(id: tripID, title: title, startDate: start, endDate: end)
-                        viewModel.addTrip(newTrip: newTrip)
-                        dismiss()
-                    })
-                }
-        }
             .padding()
         }
     }
@@ -56,3 +59,4 @@ struct AddLogBookEntryView_Previews: PreviewProvider {
         AddLogBookEntryView()
     }
 }
+
