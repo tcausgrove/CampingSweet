@@ -9,7 +9,7 @@ import Foundation
 
 struct LogEntry: Identifiable, Codable {
     var id: UUID
-    var boat: String = ""
+    var camper: String = ""
     var title: String = ""
     var startDate: Date = Date()
     var endDate: Date = Date()
@@ -23,7 +23,7 @@ struct LogEntry: Identifiable, Codable {
 struct FuelEntry: Identifiable, Codable {
     var id: UUID
     var date: Date = Date()
-    var boat: String = ""
+    var camper: String = ""
     var engineHours: Float = 0.0
     var cost: Float = 0.0
     var volume: Float = 0.0
@@ -31,22 +31,22 @@ struct FuelEntry: Identifiable, Codable {
 //    static let example = FuelEntry(id: UUID(), boat: "Our boat", engineHours: 189.0, cost: 45.0, volume: 12.345)
 }
 
-struct Boat: Identifiable, Hashable, Codable {
+struct Camper: Identifiable, Hashable, Codable {
     var id: UUID
     var name: String
     var registrationNumber: String
     
-    static let example = Boat(id: UUID(), name: "nano", registrationNumber: "TX12345")
+    static let example = Camper(id: UUID(), name: "nano", registrationNumber: "TX12345")
 }
 
 struct Settings {
     var defaultHomePort: String
-    var defaultBoatID: UUID
+    var defaultCamperID: UUID
     var chosenUnits: UnitOptions
     var chosenDistance: DistanceOptions
     var chosenClockHours: ClockHours
     
-    static let example = Settings(defaultHomePort: "None", defaultBoatID: UUID(), chosenUnits: .america, chosenDistance: .mi, chosenClockHours: .two)
+    static let example = Settings(defaultHomePort: "None", defaultCamperID: UUID(), chosenUnits: .america, chosenDistance: .mi, chosenClockHours: .two)
 }
 
 extension Date {

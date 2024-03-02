@@ -10,7 +10,7 @@ import SwiftUI
 struct AddFuelLogEntryView: View {
     @Environment(\.dismiss) var dismiss
 
-    @State var boat: Boat
+    @State var boat: Camper
 
     @State private var date: Date = Date()
     @State private var engineHours: String = ""
@@ -28,7 +28,7 @@ struct AddFuelLogEntryView: View {
                 DatePicker("Date", selection: $date)
                     .padding()
                 Picker("Boat", selection: $boat) {
-                    ForEach(viewModel.boats, id: \.self) { boat in
+                    ForEach(viewModel.campers, id: \.self) { boat in
                         Text(boat.name)
                     }
                 }
@@ -71,8 +71,9 @@ struct AddFuelLogEntryView: View {
     }
 }
 
-//struct AddFuelLogEntryView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        AddFuelLogEntryView()
-//    }
-//}
+struct AddFuelLogEntryView_Previews: PreviewProvider {
+    static var previews: some View {
+        AddFuelLogEntryView(boat: Camper.example)
+            .environmentObject(ViewModel())
+    }
+}

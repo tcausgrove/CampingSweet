@@ -19,24 +19,30 @@ struct ContentView: View {
                 Section {
                     NavigationLink {
                         LogBookView().environmentObject(viewModel)
-                    } label: {
-                        Label("Log Book", systemImage: "list.bullet.rectangle.fill")
-                    }
-                    .buttonStyle(PrimaryButtonStyle(isActive: viewModel.currentBoatExists()))
-                    
-                    NavigationLink {
-                        FuelLogView().environmentObject(viewModel)
-                    } label: {
-                        Label("Fuel Log", systemImage: "fuelpump")
-                    }
-                    .buttonStyle(PrimaryButtonStyle(isActive: viewModel.currentBoatExists()))
+                      } label: {
+                          Label("Log Book", systemImage: "list.bullet.rectangle.fill")
+                      }
+                      .buttonStyle(PrimaryButtonStyle(isActive: viewModel.currentCamperExists()))
+                      
+                      NavigationLink {
+                          
+                      } label: {
+                          Label("Departure checklist", systemImage: "checklist")
+                      }
+                      .buttonStyle(PrimaryButtonStyle(isActive: viewModel.currentCamperExists()))
+//                    NavigationLink {
+//                        FuelLogView().environmentObject(viewModel)
+ //                   } label: {
+//                        Label("Fuel Log", systemImage: "fuelpump")
+//                    }
+//                    .buttonStyle(PrimaryButtonStyle(isActive: viewModel.currentCamperExists()))
                 }
-                .disabled(!viewModel.currentBoatExists())
+                .disabled(!viewModel.currentCamperExists())
                 
                 NavigationLink {
-                    VesselLogView().environmentObject(viewModel)
+                    CamperLogView().environmentObject(viewModel)
                 } label: {
-                    Label("My Vessels", systemImage: "sailboat")
+                    Label("My Campers", systemImage: "train.side.front.car")
                 }
                 .buttonStyle(PrimaryButtonStyle(isActive: true))
                 Spacer()

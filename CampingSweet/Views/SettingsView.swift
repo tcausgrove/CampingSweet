@@ -10,7 +10,7 @@ import SwiftUI
 struct SettingsView: View {
     @Environment(\.dismiss) var dismiss
 
-    @State var boat: Boat = Boat.example
+    @State var camper: Camper = Camper.example
 
     @State private var defaultPort: String = ""
     @State private var defaultBoat: String = ""
@@ -27,9 +27,9 @@ struct SettingsView: View {
                     .font(.title2)
                     .padding(.bottom, 30)
                 TextField("Default Home Port", text: $defaultPort)
-                Picker("Boat", selection: $boat) {
-                    ForEach(viewModel.boats, id: \.self) { boat in
-                        Text(boat.name)
+                Picker("Boat", selection: $camper) {
+                    ForEach(viewModel.campers, id: \.self) { camper in
+                        Text(camper.name)
                     }
                 }
                 HStack {
@@ -69,7 +69,7 @@ struct SettingsView: View {
                         Button(role: .cancel, action: {
                             viewModel.changeSettings(
                                 newHomePort: defaultPort,
-                                newSelectedBoatID: UUID(),
+                                newSelectedCamperID: UUID(),
                                 newChosenUnits: defaultUnits,
                                 newChosenDistance: defaultDistance,
                                 newClockHours: timeFormat)
@@ -83,8 +83,9 @@ struct SettingsView: View {
     }
 }
 
-//struct SettingsView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        SettingsView(boat: Boat.example)
-//    }
-//}
+struct SettingsView_Previews: PreviewProvider {
+    static var previews: some View {
+        SettingsView()
+            .environmentObject(ViewModel())
+    }
+}

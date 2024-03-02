@@ -35,6 +35,7 @@ struct LogBookView: View {
             }
             .sheet(isPresented: $addingLogEntry, content: {
                 AddLogBookEntryView()
+                    .environmentObject(viewModel)
             })
             .navigationTitle("Log Book")
         }
@@ -42,8 +43,9 @@ struct LogBookView: View {
     }
 }
 
-//struct LogBookView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        LogBookView()
-//    }
-//}
+struct LogBookView_Previews: PreviewProvider {
+    static var previews: some View {
+        LogBookView()
+            .environmentObject(ViewModel())
+    }
+}

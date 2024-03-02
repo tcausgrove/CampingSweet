@@ -7,9 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		78413C022A44EAE2006DCF9E /* NumbersOnlyViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78413C012A44EAE2006DCF9E /* NumbersOnlyViewModifier.swift */; };
 		78413C042A44EB49006DCF9E /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78413C032A44EB49006DCF9E /* Extensions.swift */; };
-		78A4151E29E4D3AB005CBEF1 /* BoatingSweetApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A4151D29E4D3AB005CBEF1 /* BoatingSweetApp.swift */; };
+		78413C0A2A6DEE84006DCF9E /* NumbersOnlyViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78413C092A6DEE84006DCF9E /* NumbersOnlyViewModifier.swift */; };
+		78413C0C2A7435D1006DCF9E /* ChecklistView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78413C0B2A7435D1006DCF9E /* ChecklistView.swift */; };
+		78A4151E29E4D3AB005CBEF1 /* CampingSweetApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A4151D29E4D3AB005CBEF1 /* CampingSweetApp.swift */; };
 		78A4152029E4D3AB005CBEF1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A4151F29E4D3AB005CBEF1 /* ContentView.swift */; };
 		78A4152229E4D3AC005CBEF1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 78A4152129E4D3AC005CBEF1 /* Assets.xcassets */; };
 		78A4152529E4D3AC005CBEF1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 78A4152429E4D3AC005CBEF1 /* Preview Assets.xcassets */; };
@@ -19,18 +20,19 @@
 		78A4153229E4DCE2005CBEF1 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A4153129E4DCE2005CBEF1 /* ViewModel.swift */; };
 		78A4153429E778F8005CBEF1 /* AddLogBookEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A4153329E778F8005CBEF1 /* AddLogBookEntryView.swift */; };
 		78A4153729F02219005CBEF1 /* AddFuelLogEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A4153629F02219005CBEF1 /* AddFuelLogEntryView.swift */; };
-		78A4153929F08713005CBEF1 /* VesselLogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A4153829F08713005CBEF1 /* VesselLogView.swift */; };
-		78A4153B29F094EB005CBEF1 /* AddVesselLogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A4153A29F094EB005CBEF1 /* AddVesselLogView.swift */; };
+		78A4153929F08713005CBEF1 /* CamperLogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A4153829F08713005CBEF1 /* CamperLogView.swift */; };
+		78A4153B29F094EB005CBEF1 /* AddCamperLogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A4153A29F094EB005CBEF1 /* AddCamperLogView.swift */; };
 		78A4153D29F0BDC0005CBEF1 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A4153C29F0BDC0005CBEF1 /* Enums.swift */; };
 		78A4153F29F1E414005CBEF1 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A4153E29F1E414005CBEF1 /* SettingsView.swift */; };
 		78A4154129F34E3B005CBEF1 /* FileManager-DocumentsDirectory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A4154029F34E3B005CBEF1 /* FileManager-DocumentsDirectory.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		78413C012A44EAE2006DCF9E /* NumbersOnlyViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NumbersOnlyViewModifier.swift; path = BoatingSweet/NumbersOnlyViewModifier.swift; sourceTree = SOURCE_ROOT; };
 		78413C032A44EB49006DCF9E /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
-		78A4151A29E4D3AB005CBEF1 /* BoatingSweet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BoatingSweet.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		78A4151D29E4D3AB005CBEF1 /* BoatingSweetApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoatingSweetApp.swift; sourceTree = "<group>"; };
+		78413C092A6DEE84006DCF9E /* NumbersOnlyViewModifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumbersOnlyViewModifier.swift; sourceTree = "<group>"; };
+		78413C0B2A7435D1006DCF9E /* ChecklistView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistView.swift; sourceTree = "<group>"; };
+		78A4151A29E4D3AB005CBEF1 /* CampingSweet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CampingSweet.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		78A4151D29E4D3AB005CBEF1 /* CampingSweetApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampingSweetApp.swift; sourceTree = "<group>"; };
 		78A4151F29E4D3AB005CBEF1 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		78A4152129E4D3AC005CBEF1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		78A4152429E4D3AC005CBEF1 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -40,8 +42,8 @@
 		78A4153129E4DCE2005CBEF1 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		78A4153329E778F8005CBEF1 /* AddLogBookEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLogBookEntryView.swift; sourceTree = "<group>"; };
 		78A4153629F02219005CBEF1 /* AddFuelLogEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFuelLogEntryView.swift; sourceTree = "<group>"; };
-		78A4153829F08713005CBEF1 /* VesselLogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VesselLogView.swift; sourceTree = "<group>"; };
-		78A4153A29F094EB005CBEF1 /* AddVesselLogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddVesselLogView.swift; sourceTree = "<group>"; };
+		78A4153829F08713005CBEF1 /* CamperLogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CamperLogView.swift; sourceTree = "<group>"; };
+		78A4153A29F094EB005CBEF1 /* AddCamperLogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCamperLogView.swift; sourceTree = "<group>"; };
 		78A4153C29F0BDC0005CBEF1 /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		78A4153E29F1E414005CBEF1 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		78A4154029F34E3B005CBEF1 /* FileManager-DocumentsDirectory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FileManager-DocumentsDirectory.swift"; sourceTree = "<group>"; };
@@ -61,7 +63,7 @@
 		78A4151129E4D3AB005CBEF1 = {
 			isa = PBXGroup;
 			children = (
-				78A4151C29E4D3AB005CBEF1 /* BoatingSweet */,
+				78A4151C29E4D3AB005CBEF1 /* CampingSweet */,
 				78A4151B29E4D3AB005CBEF1 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -69,18 +71,17 @@
 		78A4151B29E4D3AB005CBEF1 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				78A4151A29E4D3AB005CBEF1 /* BoatingSweet.app */,
+				78A4151A29E4D3AB005CBEF1 /* CampingSweet.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		78A4151C29E4D3AB005CBEF1 /* BoatingSweet */ = {
+		78A4151C29E4D3AB005CBEF1 /* CampingSweet */ = {
 			isa = PBXGroup;
 			children = (
 				78A4153529F021D4005CBEF1 /* Views */,
-				78413C012A44EAE2006DCF9E /* NumbersOnlyViewModifier.swift */,
 				78413C032A44EB49006DCF9E /* Extensions.swift */,
-				78A4151D29E4D3AB005CBEF1 /* BoatingSweetApp.swift */,
+				78A4151D29E4D3AB005CBEF1 /* CampingSweetApp.swift */,
 				78A4152F29E4DA59005CBEF1 /* DataModel.swift */,
 				78A4153C29F0BDC0005CBEF1 /* Enums.swift */,
 				78A4154029F34E3B005CBEF1 /* FileManager-DocumentsDirectory.swift */,
@@ -88,7 +89,7 @@
 				78A4152129E4D3AC005CBEF1 /* Assets.xcassets */,
 				78A4152329E4D3AC005CBEF1 /* Preview Content */,
 			);
-			path = BoatingSweet;
+			path = CampingSweet;
 			sourceTree = "<group>";
 		};
 		78A4152329E4D3AC005CBEF1 /* Preview Content */ = {
@@ -102,14 +103,16 @@
 		78A4153529F021D4005CBEF1 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				78413C092A6DEE84006DCF9E /* NumbersOnlyViewModifier.swift */,
 				78A4151F29E4D3AB005CBEF1 /* ContentView.swift */,
-				78A4153829F08713005CBEF1 /* VesselLogView.swift */,
-				78A4153A29F094EB005CBEF1 /* AddVesselLogView.swift */,
+				78A4153829F08713005CBEF1 /* CamperLogView.swift */,
+				78A4153A29F094EB005CBEF1 /* AddCamperLogView.swift */,
 				78A4153629F02219005CBEF1 /* AddFuelLogEntryView.swift */,
 				78A4152B29E4D584005CBEF1 /* LogBookView.swift */,
 				78A4153329E778F8005CBEF1 /* AddLogBookEntryView.swift */,
 				78A4152D29E4D7D5005CBEF1 /* FuelLogView.swift */,
 				78A4153E29F1E414005CBEF1 /* SettingsView.swift */,
+				78413C0B2A7435D1006DCF9E /* ChecklistView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -117,9 +120,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		78A4151929E4D3AB005CBEF1 /* BoatingSweet */ = {
+		78A4151929E4D3AB005CBEF1 /* CampingSweet */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 78A4152829E4D3AC005CBEF1 /* Build configuration list for PBXNativeTarget "BoatingSweet" */;
+			buildConfigurationList = 78A4152829E4D3AC005CBEF1 /* Build configuration list for PBXNativeTarget "CampingSweet" */;
 			buildPhases = (
 				78A4151629E4D3AB005CBEF1 /* Sources */,
 				78A4151729E4D3AB005CBEF1 /* Frameworks */,
@@ -129,9 +132,9 @@
 			);
 			dependencies = (
 			);
-			name = BoatingSweet;
+			name = CampingSweet;
 			productName = BoatingSweet;
-			productReference = 78A4151A29E4D3AB005CBEF1 /* BoatingSweet.app */;
+			productReference = 78A4151A29E4D3AB005CBEF1 /* CampingSweet.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -149,7 +152,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 78A4151529E4D3AB005CBEF1 /* Build configuration list for PBXProject "BoatingSweet" */;
+			buildConfigurationList = 78A4151529E4D3AB005CBEF1 /* Build configuration list for PBXProject "CampingSweet" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -162,7 +165,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				78A4151929E4D3AB005CBEF1 /* BoatingSweet */,
+				78A4151929E4D3AB005CBEF1 /* CampingSweet */,
 			);
 		};
 /* End PBXProject section */
@@ -185,19 +188,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				78A4153729F02219005CBEF1 /* AddFuelLogEntryView.swift in Sources */,
-				78A4153929F08713005CBEF1 /* VesselLogView.swift in Sources */,
+				78A4153929F08713005CBEF1 /* CamperLogView.swift in Sources */,
+				78413C0A2A6DEE84006DCF9E /* NumbersOnlyViewModifier.swift in Sources */,
+				78413C0C2A7435D1006DCF9E /* ChecklistView.swift in Sources */,
 				78A4153029E4DA59005CBEF1 /* DataModel.swift in Sources */,
 				78A4152C29E4D584005CBEF1 /* LogBookView.swift in Sources */,
 				78A4153429E778F8005CBEF1 /* AddLogBookEntryView.swift in Sources */,
 				78A4152E29E4D7D5005CBEF1 /* FuelLogView.swift in Sources */,
-				78413C022A44EAE2006DCF9E /* NumbersOnlyViewModifier.swift in Sources */,
 				78A4153229E4DCE2005CBEF1 /* ViewModel.swift in Sources */,
 				78A4154129F34E3B005CBEF1 /* FileManager-DocumentsDirectory.swift in Sources */,
-				78A4153B29F094EB005CBEF1 /* AddVesselLogView.swift in Sources */,
+				78A4153B29F094EB005CBEF1 /* AddCamperLogView.swift in Sources */,
 				78413C042A44EB49006DCF9E /* Extensions.swift in Sources */,
 				78A4152029E4D3AB005CBEF1 /* ContentView.swift in Sources */,
 				78A4153F29F1E414005CBEF1 /* SettingsView.swift in Sources */,
-				78A4151E29E4D3AB005CBEF1 /* BoatingSweetApp.swift in Sources */,
+				78A4151E29E4D3AB005CBEF1 /* CampingSweetApp.swift in Sources */,
 				78A4153D29F0BDC0005CBEF1 /* Enums.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -326,7 +330,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"BoatingSweet/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"CampingSweet/Preview Content\"";
 				DEVELOPMENT_TEAM = D4LH7YBWNU;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -340,7 +344,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.BoatingSweet;
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.CampingSweet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -355,7 +359,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"BoatingSweet/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"CampingSweet/Preview Content\"";
 				DEVELOPMENT_TEAM = D4LH7YBWNU;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -369,7 +373,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.BoatingSweet;
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.CampingSweet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -380,7 +384,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		78A4151529E4D3AB005CBEF1 /* Build configuration list for PBXProject "BoatingSweet" */ = {
+		78A4151529E4D3AB005CBEF1 /* Build configuration list for PBXProject "CampingSweet" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				78A4152629E4D3AC005CBEF1 /* Debug */,
@@ -389,7 +393,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		78A4152829E4D3AC005CBEF1 /* Build configuration list for PBXNativeTarget "BoatingSweet" */ = {
+		78A4152829E4D3AC005CBEF1 /* Build configuration list for PBXNativeTarget "CampingSweet" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				78A4152929E4D3AC005CBEF1 /* Debug */,

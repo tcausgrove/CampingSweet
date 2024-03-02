@@ -1,6 +1,6 @@
 //
 //  LogBookView-ViewModel.swift
-//  BoatingSweet
+//  CampingSweet
 //
 //  Created by Timothy Causgrove on 4/10/23.
 //
@@ -10,7 +10,7 @@ import Foundation
 @MainActor class ViewModel: ObservableObject {
     @Published private(set) var trips = [LogEntry]()
     @Published private(set) var fuelings = [FuelEntry]()
-    @Published private(set) var boats = [Boat]()
+    @Published private(set) var campers = [Camper]()
     @Published private(set) var settings = Settings.example
     
     
@@ -36,14 +36,14 @@ import Foundation
         // unable to get fuelings
         fuelings = []
 
-        if let data = UserDefaults.standard.data(forKey: "boats") {
-            if let decoded = try? JSONDecoder().decode([Boat].self, from: data) {
-                boats = decoded
+        if let data = UserDefaults.standard.data(forKey: "campers") {
+            if let decoded = try? JSONDecoder().decode([Camper].self, from: data) {
+                campers = decoded
                 return
             }
         }
-        // unable to get boats
-        boats = []
+        // unable to get campers
+        campers = []
     }
     
     func addTrip(newTrip: LogEntry) {
@@ -56,23 +56,23 @@ import Foundation
         save()
     }
     
-    func addNewVessel(newVessel: Boat) {
-        boats.append(newVessel)
+    func addNewCamper(newVessel: Camper) {
+        campers.append(newVessel)
         save()
     }
     
-    func getCurrentBoat() -> Boat? {
-        return boats.last
+    func getCurrentCamper() -> Camper? {
+        return campers.last
     }
     
-    func currentBoatExists() -> Bool {
-        self.getCurrentBoat() != nil
+    func currentCamperExists() -> Bool {
+        self.getCurrentCamper() != nil
 
     }
     
-    func changeSettings(newHomePort: String, newSelectedBoatID: UUID, newChosenUnits: UnitOptions, newChosenDistance: DistanceOptions, newClockHours: ClockHours) {
+    func changeSettings(newHomePort: String, newSelectedCamperID: UUID, newChosenUnits: UnitOptions, newChosenDistance: DistanceOptions, newClockHours: ClockHours) {
         self.settings.defaultHomePort = newHomePort
-        self.settings.defaultBoatID = newSelectedBoatID
+        self.settings.defaultCamperID = newSelectedCamperID
         self.settings.chosenUnits = newChosenUnits
         self.settings.chosenDistance = newChosenDistance
         self.settings.chosenClockHours = newClockHours
@@ -87,8 +87,8 @@ import Foundation
             UserDefaults.standard.set(encoded, forKey: "fuelings")
         }
         
-        if let encoded = try? JSONEncoder().encode(boats) {
-            UserDefaults.standard.set(encoded, forKey: "boats")
+        if let encoded = try? JSONEncoder().encode(campers) {
+            UserDefaults.standard.set(encoded, forKey: "campers")
         }
     }
 }

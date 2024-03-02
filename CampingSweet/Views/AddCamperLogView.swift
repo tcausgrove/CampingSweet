@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct AddVesselLogView: View {
+struct AddCamperLogView: View {
     @Environment(\.dismiss) var dismiss
     
     @State private var name: String = ""
@@ -18,7 +18,7 @@ struct AddVesselLogView: View {
     var body: some View {
         NavigationView {
             VStack {
-                Text("Add a Boat")
+                Text("Add a camper")
                     .padding()
                     .font(.title)
                 TextField("Name", text: $name)
@@ -31,8 +31,8 @@ struct AddVesselLogView: View {
                 }
                 ToolbarItem(placement: .confirmationAction) {
                     Button("Add", role: .none, action: {
-                        let newBoat = Boat(id: UUID(), name: name, registrationNumber: registration)
-                        viewModel.addNewVessel(newVessel: newBoat)
+                        let newCamper = Camper(id: UUID(), name: name, registrationNumber: registration)
+                        viewModel.addNewCamper(newVessel: newCamper)
                         dismiss()
                     })
                 }
@@ -43,6 +43,6 @@ struct AddVesselLogView: View {
 
 struct AddVesselLogView_Previews: PreviewProvider {
     static var previews: some View {
-        AddVesselLogView()
+        AddCamperLogView()
     }
 }

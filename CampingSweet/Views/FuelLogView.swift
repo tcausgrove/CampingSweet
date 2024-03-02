@@ -31,16 +31,18 @@ struct FuelLogView: View {
                 }
             }
             .sheet(isPresented: $addingFuelEntry, content: {
-                let currentBoat = viewModel.getCurrentBoat() ?? Boat(id: UUID(), name: "foo", registrationNumber: "Temp")
+                let currentBoat = viewModel.getCurrentCamper() ?? Camper(id: UUID(), name: "foo", registrationNumber: "Temp")
                 AddFuelLogEntryView(boat: currentBoat)
+                    .environmentObject(viewModel)
             })
             .navigationTitle("Fuel Log")
         }
     }
 }
 
-//struct FuelLogView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        FuelLogView()
-//    }
-//}
+struct FuelLogView_Previews: PreviewProvider {
+    static var previews: some View {
+        FuelLogView()
+            .environmentObject(ViewModel())
+    }
+}

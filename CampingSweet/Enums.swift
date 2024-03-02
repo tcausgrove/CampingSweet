@@ -28,3 +28,16 @@ enum ClockHours: String, CaseIterable, Identifiable {
     
     var id: Self { self }
 }
+
+enum CamperType: String, CaseIterable, Identifiable {
+    case traveltrailer = "Travel Trailer"
+    case smallcamper = "Small Camper"
+    case toyhauler = "Toy Hauler"
+    case fifthwheel = "Fifth Wheel"
+    case popup = "Pop Up"
+    case classa = "Class A"
+    case classb = "Class B"
+    case classc = "Class C"
+    
+    var id: Self { self }
+}
