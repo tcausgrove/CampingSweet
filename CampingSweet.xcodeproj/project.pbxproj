@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7826F2C02B93B53B0075B0A3 /* ChecklistViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7826F2BF2B93B53B0075B0A3 /* ChecklistViewModel.swift */; };
 		78413C042A44EB49006DCF9E /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78413C032A44EB49006DCF9E /* Extensions.swift */; };
 		78413C0A2A6DEE84006DCF9E /* NumbersOnlyViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78413C092A6DEE84006DCF9E /* NumbersOnlyViewModifier.swift */; };
 		78413C0C2A7435D1006DCF9E /* ChecklistView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78413C0B2A7435D1006DCF9E /* ChecklistView.swift */; };
@@ -28,6 +29,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7826F2BF2B93B53B0075B0A3 /* ChecklistViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistViewModel.swift; sourceTree = "<group>"; };
 		78413C032A44EB49006DCF9E /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		78413C092A6DEE84006DCF9E /* NumbersOnlyViewModifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumbersOnlyViewModifier.swift; sourceTree = "<group>"; };
 		78413C0B2A7435D1006DCF9E /* ChecklistView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistView.swift; sourceTree = "<group>"; };
@@ -86,6 +88,7 @@
 				78A4153C29F0BDC0005CBEF1 /* Enums.swift */,
 				78A4154029F34E3B005CBEF1 /* FileManager-DocumentsDirectory.swift */,
 				78A4153129E4DCE2005CBEF1 /* ViewModel.swift */,
+				7826F2BF2B93B53B0075B0A3 /* ChecklistViewModel.swift */,
 				78A4152129E4D3AC005CBEF1 /* Assets.xcassets */,
 				78A4152329E4D3AC005CBEF1 /* Preview Content */,
 			);
@@ -145,7 +148,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1420;
-				LastUpgradeCheck = 1420;
+				LastUpgradeCheck = 1510;
 				TargetAttributes = {
 					78A4151929E4D3AB005CBEF1 = {
 						CreatedOnToolsVersion = 14.2;
@@ -188,6 +191,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				78A4153729F02219005CBEF1 /* AddFuelLogEntryView.swift in Sources */,
+				7826F2C02B93B53B0075B0A3 /* ChecklistViewModel.swift in Sources */,
 				78A4153929F08713005CBEF1 /* CamperLogView.swift in Sources */,
 				78413C0A2A6DEE84006DCF9E /* NumbersOnlyViewModifier.swift in Sources */,
 				78413C0C2A7435D1006DCF9E /* ChecklistView.swift in Sources */,
@@ -245,6 +249,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -305,6 +310,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;

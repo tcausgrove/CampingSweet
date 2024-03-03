@@ -15,27 +15,21 @@ struct ContentView: View {
         NavigationView {
             VStack {
                 Spacer()
-//                if(true) {
+                //                if(true) {
                 Section {
                     NavigationLink {
                         LogBookView().environmentObject(viewModel)
-                      } label: {
-                          Label("Log Book", systemImage: "list.bullet.rectangle.fill")
-                      }
-                      .buttonStyle(PrimaryButtonStyle(isActive: viewModel.currentCamperExists()))
-                      
-                      NavigationLink {
-                          
-                      } label: {
-                          Label("Departure checklist", systemImage: "checklist")
-                      }
-                      .buttonStyle(PrimaryButtonStyle(isActive: viewModel.currentCamperExists()))
-//                    NavigationLink {
-//                        FuelLogView().environmentObject(viewModel)
- //                   } label: {
-//                        Label("Fuel Log", systemImage: "fuelpump")
-//                    }
-//                    .buttonStyle(PrimaryButtonStyle(isActive: viewModel.currentCamperExists()))
+                    } label: {
+                        Label("Log Book", systemImage: "list.bullet.rectangle.fill")
+                    }
+                    .buttonStyle(PrimaryButtonStyle(isActive: viewModel.currentCamperExists()))
+                    
+                    NavigationLink {
+                        FuelLogView().environmentObject(viewModel)
+                    } label: {
+                        Label("Fuel Log", systemImage: "fuelpump")
+                    }
+                    .buttonStyle(PrimaryButtonStyle(isActive: viewModel.currentCamperExists()))
                 }
                 .disabled(!viewModel.currentCamperExists())
                 
@@ -45,6 +39,14 @@ struct ContentView: View {
                     Label("My Campers", systemImage: "train.side.front.car")
                 }
                 .buttonStyle(PrimaryButtonStyle(isActive: true))
+                
+                NavigationLink {
+                    ChecklistView()
+                } label: {
+                    Label("Departure checklist", systemImage: "checklist")
+                }
+                .buttonStyle(PrimaryButtonStyle(isActive: true))
+                
                 Spacer()
             }
             .padding()
