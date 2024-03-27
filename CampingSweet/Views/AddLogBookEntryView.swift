@@ -13,6 +13,7 @@ struct AddLogBookEntryView: View {
     @State private var title: String = ""
     @State private var start: Date = Date()
     @State private var end: Date = Date()
+    @State private var numberOfNightsText: String = " "
     @State private var distance: String = ""
     @FocusState private var distanceIsFocused: Bool
     
@@ -26,14 +27,16 @@ struct AddLogBookEntryView: View {
                     .font(.title)
                 TextField("Title", text: $title)
                     .padding()
-                DatePicker("Start", selection: $start)
-                DatePicker("End", selection: $end)
+                DatePicker("Arrival date", selection: $start, displayedComponents: [.date])
+                    .onChange(of: start, perform: { _ in
+                        numberOfNightsText = setDisplayedNightsText() })
+                DatePicker("Departure date", selection: $end, in: start..., displayedComponents: [.date])
+                    .onChange(of: end, perform: { _ in
+                        numberOfNightsText = setDisplayedNightsText() })
+                Text(numberOfNightsText)
                 TextField("Distance (miles)", text: $distance)
                     .keyboardType(.decimalPad)
                     .numbersOnly($distance, includeDecimal: true)  // See NumbersOnlyViewModifier.swift
-                    .onSubmit {
-                        //change string to float and store it
-                    }
                 
                     .toolbar() {
                         ToolbarItem(placement: .cancellationAction) {
@@ -51,6 +54,14 @@ struct AddLogBookEntryView: View {
             }
             .padding()
         }
+    }
+    
+    func setDisplayedNightsText() -> String {
+        if (end < start) {
+            end = start
+        }
+        let numberOfNigts = ((end - start) / 24 / 3600).formatted()
+        return ("Number of nights: " + numberOfNigts)
     }
 }
 

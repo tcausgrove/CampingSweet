@@ -24,12 +24,12 @@ struct ContentView: View {
                     }
                     .buttonStyle(PrimaryButtonStyle(isActive: viewModel.currentCamperExists()))
                     
-                    NavigationLink {
-                        FuelLogView().environmentObject(viewModel)
-                    } label: {
-                        Label("Fuel Log", systemImage: "fuelpump")
-                    }
-                    .buttonStyle(PrimaryButtonStyle(isActive: viewModel.currentCamperExists()))
+//                    NavigationLink {
+//                        FuelLogView().environmentObject(viewModel)
+//                    } label: {
+//                        Label("Fuel Log", systemImage: "fuelpump")
+//                    }
+//                    .buttonStyle(PrimaryButtonStyle(isActive: viewModel.currentCamperExists()))
                 }
                 .disabled(!viewModel.currentCamperExists())
                 

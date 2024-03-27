@@ -20,6 +20,8 @@ struct LogBookView: View {
                         Text("When: \(trip.startDate.formatted())")
                         let tripDurationText = "Duration: " + (trip.duration.customTimeFormat(using: [. day, .hour, .minute]) ?? "not available")
                         Text(tripDurationText)
+                        let numberOfNightsText = "Number of nights: " + String(trip.numberOfNights)
+                        Text(numberOfNightsText)
                         let tripDistance = String(trip.distance ?? 0.0)
                         Text("Distance: \(tripDistance)")
                     }

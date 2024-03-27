@@ -16,11 +16,9 @@
 		78A4152229E4D3AC005CBEF1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 78A4152129E4D3AC005CBEF1 /* Assets.xcassets */; };
 		78A4152529E4D3AC005CBEF1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 78A4152429E4D3AC005CBEF1 /* Preview Assets.xcassets */; };
 		78A4152C29E4D584005CBEF1 /* LogBookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A4152B29E4D584005CBEF1 /* LogBookView.swift */; };
-		78A4152E29E4D7D5005CBEF1 /* FuelLogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A4152D29E4D7D5005CBEF1 /* FuelLogView.swift */; };
 		78A4153029E4DA59005CBEF1 /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A4152F29E4DA59005CBEF1 /* DataModel.swift */; };
 		78A4153229E4DCE2005CBEF1 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A4153129E4DCE2005CBEF1 /* ViewModel.swift */; };
 		78A4153429E778F8005CBEF1 /* AddLogBookEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A4153329E778F8005CBEF1 /* AddLogBookEntryView.swift */; };
-		78A4153729F02219005CBEF1 /* AddFuelLogEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A4153629F02219005CBEF1 /* AddFuelLogEntryView.swift */; };
 		78A4153929F08713005CBEF1 /* CamperLogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A4153829F08713005CBEF1 /* CamperLogView.swift */; };
 		78A4153B29F094EB005CBEF1 /* AddCamperLogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A4153A29F094EB005CBEF1 /* AddCamperLogView.swift */; };
 		78A4153D29F0BDC0005CBEF1 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A4153C29F0BDC0005CBEF1 /* Enums.swift */; };
@@ -39,11 +37,9 @@
 		78A4152129E4D3AC005CBEF1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		78A4152429E4D3AC005CBEF1 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		78A4152B29E4D584005CBEF1 /* LogBookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogBookView.swift; sourceTree = "<group>"; };
-		78A4152D29E4D7D5005CBEF1 /* FuelLogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FuelLogView.swift; sourceTree = "<group>"; };
 		78A4152F29E4DA59005CBEF1 /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
 		78A4153129E4DCE2005CBEF1 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		78A4153329E778F8005CBEF1 /* AddLogBookEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLogBookEntryView.swift; sourceTree = "<group>"; };
-		78A4153629F02219005CBEF1 /* AddFuelLogEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFuelLogEntryView.swift; sourceTree = "<group>"; };
 		78A4153829F08713005CBEF1 /* CamperLogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CamperLogView.swift; sourceTree = "<group>"; };
 		78A4153A29F094EB005CBEF1 /* AddCamperLogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCamperLogView.swift; sourceTree = "<group>"; };
 		78A4153C29F0BDC0005CBEF1 /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
@@ -110,10 +106,8 @@
 				78A4151F29E4D3AB005CBEF1 /* ContentView.swift */,
 				78A4153829F08713005CBEF1 /* CamperLogView.swift */,
 				78A4153A29F094EB005CBEF1 /* AddCamperLogView.swift */,
-				78A4153629F02219005CBEF1 /* AddFuelLogEntryView.swift */,
 				78A4152B29E4D584005CBEF1 /* LogBookView.swift */,
 				78A4153329E778F8005CBEF1 /* AddLogBookEntryView.swift */,
-				78A4152D29E4D7D5005CBEF1 /* FuelLogView.swift */,
 				78A4153E29F1E414005CBEF1 /* SettingsView.swift */,
 				78413C0B2A7435D1006DCF9E /* ChecklistView.swift */,
 			);
@@ -190,7 +184,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				78A4153729F02219005CBEF1 /* AddFuelLogEntryView.swift in Sources */,
 				7826F2C02B93B53B0075B0A3 /* ChecklistViewModel.swift in Sources */,
 				78A4153929F08713005CBEF1 /* CamperLogView.swift in Sources */,
 				78413C0A2A6DEE84006DCF9E /* NumbersOnlyViewModifier.swift in Sources */,
@@ -198,7 +191,6 @@
 				78A4153029E4DA59005CBEF1 /* DataModel.swift in Sources */,
 				78A4152C29E4D584005CBEF1 /* LogBookView.swift in Sources */,
 				78A4153429E778F8005CBEF1 /* AddLogBookEntryView.swift in Sources */,
-				78A4152E29E4D7D5005CBEF1 /* FuelLogView.swift in Sources */,
 				78A4153229E4DCE2005CBEF1 /* ViewModel.swift in Sources */,
 				78A4154129F34E3B005CBEF1 /* FileManager-DocumentsDirectory.swift in Sources */,
 				78A4153B29F094EB005CBEF1 /* AddCamperLogView.swift in Sources */,

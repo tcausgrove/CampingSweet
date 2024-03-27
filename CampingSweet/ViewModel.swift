@@ -8,8 +8,10 @@
 import Foundation
 
 @MainActor class ViewModel: ObservableObject {
+    // FIXME: This only saves one set of trips, not a separate one for each camper.  Need to
+    //   completely rework the save and read routines
     @Published private(set) var trips = [LogEntry]()
-    @Published private(set) var fuelings = [FuelEntry]()
+//    @Published private(set) var fuelings = [FuelEntry]()
     @Published private(set) var campers = [Camper]()
     @Published private(set) var settings = Settings.example
     
@@ -27,14 +29,14 @@ import Foundation
         // unable to get trips
         trips = []
 
-        if let data = UserDefaults.standard.data(forKey: "fuelings") {
-            if let decoded = try? JSONDecoder().decode([FuelEntry].self, from: data) {
-                fuelings = decoded
-                return
-            }
-        }
+//        if let data = UserDefaults.standard.data(forKey: "fuelings") {
+//            if let decoded = try? JSONDecoder().decode([FuelEntry].self, from: data) {
+//                fuelings = decoded
+//                return
+//            }
+//        }
         // unable to get fuelings
-        fuelings = []
+//        fuelings = []
 
         if let data = UserDefaults.standard.data(forKey: "campers") {
             if let decoded = try? JSONDecoder().decode([Camper].self, from: data) {
@@ -51,10 +53,10 @@ import Foundation
         save()
     }
     
-    func addFuelEntry(newFuelEntry: FuelEntry) {
-        fuelings.append(newFuelEntry)
-        save()
-    }
+//    func addFuelEntry(newFuelEntry: FuelEntry) {
+//        fuelings.append(newFuelEntry)
+//        save()
+//    }
     
     func addNewCamper(newVessel: Camper) {
         campers.append(newVessel)
@@ -70,6 +72,10 @@ import Foundation
 
     }
     
+    func getDefaultNumberOfNights(trip: LogEntry) -> Int {
+        return Int(trip.endDate - trip.startDate)
+    }
+    
     func changeSettings(newHomePort: String, newSelectedCamperID: UUID, newChosenUnits: UnitOptions, newChosenDistance: DistanceOptions, newClockHours: ClockHours) {
         self.settings.defaultHomePort = newHomePort
         self.settings.defaultCamperID = newSelectedCamperID
@@ -83,9 +89,9 @@ import Foundation
             UserDefaults.standard.set(encoded, forKey: "trips")
         }
         
-        if let encoded = try? JSONEncoder().encode(fuelings) {
-            UserDefaults.standard.set(encoded, forKey: "fuelings")
-        }
+//        if let encoded = try? JSONEncoder().encode(fuelings) {
+//            UserDefaults.standard.set(encoded, forKey: "fuelings")
+//        }
         
         if let encoded = try? JSONEncoder().encode(campers) {
             UserDefaults.standard.set(encoded, forKey: "campers")

@@ -13,6 +13,7 @@ struct LogEntry: Identifiable, Codable {
     var title: String = ""
     var startDate: Date = Date()
     var endDate: Date = Date()
+    var numberOfNights: Int = 0
     var distance: Float?
     
     var duration: TimeInterval {
@@ -20,16 +21,16 @@ struct LogEntry: Identifiable, Codable {
     }
 }
 
-struct FuelEntry: Identifiable, Codable {
-    var id: UUID
-    var date: Date = Date()
-    var camper: String = ""
-    var engineHours: Float = 0.0
-    var cost: Float = 0.0
-    var volume: Float = 0.0
+//struct FuelEntry: Identifiable, Codable {
+//    var id: UUID
+//    var date: Date = Date()
+//    var camper: String = ""
+//    var engineHours: Float = 0.0
+//    var cost: Float = 0.0
+//    var volume: Float = 0.0
     
 //    static let example = FuelEntry(id: UUID(), boat: "Our boat", engineHours: 189.0, cost: 45.0, volume: 12.345)
-}
+//}
 
 struct Camper: Identifiable, Hashable, Codable {
     var id: UUID
