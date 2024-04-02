@@ -45,8 +45,11 @@ struct AddLogBookEntryView: View {
                         ToolbarItem(placement: .confirmationAction) {
                             Button("Add", role: .none, action: {
                                 let tripID = UUID()
-                                let newTrip = LogEntry(id: tripID, title: title, startDate: start, endDate: end, distance: Float(distance))
-                                viewModel.addTrip(newTrip: newTrip)
+                                if let camperID = viewModel.getCurrentCamperID() {
+                                    let newTrip = LogEntry(id: tripID, camperID: camperID, title: title, startDate: start, endDate: end, distance: Float(distance))
+                                    viewModel.addTrip(newTrip: newTrip)
+
+                                }
                                 dismiss()
                             })
                         }
@@ -56,6 +59,7 @@ struct AddLogBookEntryView: View {
         }
     }
     
+    // FIXME:  This should go in the viewmodel, there is already something there
     func setDisplayedNightsText() -> String {
         if (end < start) {
             end = start

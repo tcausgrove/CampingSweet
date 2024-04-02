@@ -8,17 +8,15 @@
 import SwiftUI
 
 struct SettingsView: View {
+    @EnvironmentObject var viewModel: ViewModel
+    
     @Environment(\.dismiss) var dismiss
 
-    @State var camper: Camper = Camper.example
+//    @State var camper: Camper = Camper.example
 
-    @State private var defaultPort: String = ""
-    @State private var defaultBoat: String = ""
     @State var defaultUnits: UnitOptions = .america
     @State var defaultDistance: DistanceOptions = .mi
     @State var timeFormat: ClockHours = .two
-    
-    @EnvironmentObject var viewModel: ViewModel
 
     var body: some View {
         NavigationView {
@@ -26,12 +24,6 @@ struct SettingsView: View {
                 Text("User settings")
                     .font(.title2)
                     .padding(.bottom, 30)
-                TextField("Default Home Port", text: $defaultPort)
-                Picker("Boat", selection: $camper) {
-                    ForEach(viewModel.campers, id: \.self) { camper in
-                        Text(camper.name)
-                    }
-                }
                 HStack {
                     Text("Units")
                     Picker("Default Units", selection: $defaultUnits) {
@@ -39,6 +31,9 @@ struct SettingsView: View {
                             Text(option.rawValue)
                         }
                     }
+                    .onAppear(perform: {
+                        defaultUnits = viewModel.settings.chosenUnits
+                    })
                     .pickerStyle(.segmented)
                     .padding()
                 }
@@ -49,6 +44,9 @@ struct SettingsView: View {
                             Text(option.rawValue)
                         }
                     }
+                    .onAppear(perform: {
+                        defaultDistance = viewModel.settings.chosenDistance
+                    })
                     .pickerStyle(.segmented)
                     .padding()
                 }
@@ -59,6 +57,9 @@ struct SettingsView: View {
                             Text(option.rawValue)
                         }
                     }
+                    .onAppear(perform: {
+                        timeFormat = viewModel.settings.chosenClockHours
+                    })
                     .pickerStyle(.segmented)
                     .padding()
                 }
@@ -67,9 +68,8 @@ struct SettingsView: View {
                 .toolbar(){
                     ToolbarItemGroup(placement: .navigation) {
                         Button(role: .cancel, action: {
+                            print("Changing settings")
                             viewModel.changeSettings(
-                                newHomePort: defaultPort,
-                                newSelectedCamperID: UUID(),
                                 newChosenUnits: defaultUnits,
                                 newChosenDistance: defaultDistance,
                                 newClockHours: timeFormat)

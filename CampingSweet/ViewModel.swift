@@ -8,7 +8,7 @@
 import Foundation
 
 @MainActor class ViewModel: ObservableObject {
-    // FIXME: This only saves one set of trips, not a separate one for each camper.  Need to
+    // FIXME: This only saves one set of trips, not a separate set for each camper.  Need to
     //   completely rework the save and read routines
     @Published private(set) var trips = [LogEntry]()
 //    @Published private(set) var fuelings = [FuelEntry]()
@@ -23,11 +23,12 @@ import Foundation
         if let data = UserDefaults.standard.data(forKey: "trips") {
             if let decoded = try? JSONDecoder().decode([LogEntry].self, from: data) {
                 trips = decoded
-                return
+            } else {
+                // unable to get trips
+                print("Unable to get trips")
+                trips = []
             }
         }
-        // unable to get trips
-        trips = []
 
 //        if let data = UserDefaults.standard.data(forKey: "fuelings") {
 //            if let decoded = try? JSONDecoder().decode([FuelEntry].self, from: data) {
@@ -41,11 +42,21 @@ import Foundation
         if let data = UserDefaults.standard.data(forKey: "campers") {
             if let decoded = try? JSONDecoder().decode([Camper].self, from: data) {
                 campers = decoded
-                return
+            } else {
+                // unable to get campers
+                print("Unable to get campers")
+                campers = []
             }
         }
-        // unable to get campers
-        campers = []
+        
+        if let data = UserDefaults.standard.data(forKey: "settings") {
+            if let decoded = try? JSONDecoder().decode(Settings.self, from: data) {
+                settings = decoded
+            } else {
+                print("Unable to get settings")
+                settings = Settings.example
+            }
+        }
     }
     
     func addTrip(newTrip: LogEntry) {
@@ -58,17 +69,39 @@ import Foundation
 //        save()
 //    }
     
-    func addNewCamper(newVessel: Camper) {
-        campers.append(newVessel)
+    func addNewCamper(newCamper: Camper) {
+        campers.append(newCamper)
+        setCurrentCamper(selectedCamperName: newCamper.name)
         save()
     }
     
-    func getCurrentCamper() -> Camper? {
-        return campers.last
+    func getCurrentCamperID() -> UUID? {
+        let theCamper = campers.first(where: { $0.isDefaultCamper == true }) ?? campers.first
+        return theCamper?.id
+    }
+    
+    func setCurrentCamper(selectedCamperName: String) {
+        //  First, set every camper to NOT be default
+        for camper in campers {
+            let replacementCamperIndex = campers.firstIndex(of: camper) ?? 0
+            var replacementCamper = campers[replacementCamperIndex]
+            replacementCamper.isDefaultCamper = false
+            campers[replacementCamperIndex] = replacementCamper
+        }
+
+        // Then, set selected camper to be default
+        if let theCamper = campers.first(where: { $0.name == selectedCamperName }) {
+            if let index = campers.firstIndex(of: theCamper) {
+                var replacementCamper = campers[index]
+                replacementCamper.isDefaultCamper = true
+                campers[index] = replacementCamper
+            }
+        }
+        save()
     }
     
     func currentCamperExists() -> Bool {
-        self.getCurrentCamper() != nil
+        self.getCurrentCamperID() != nil
 
     }
     
@@ -76,12 +109,12 @@ import Foundation
         return Int(trip.endDate - trip.startDate)
     }
     
-    func changeSettings(newHomePort: String, newSelectedCamperID: UUID, newChosenUnits: UnitOptions, newChosenDistance: DistanceOptions, newClockHours: ClockHours) {
-        self.settings.defaultHomePort = newHomePort
-        self.settings.defaultCamperID = newSelectedCamperID
+    func changeSettings(newChosenUnits: UnitOptions, newChosenDistance: DistanceOptions, newClockHours: ClockHours) {
         self.settings.chosenUnits = newChosenUnits
         self.settings.chosenDistance = newChosenDistance
         self.settings.chosenClockHours = newClockHours
+        
+        save()
     }
     
     func save() {
@@ -95,6 +128,11 @@ import Foundation
         
         if let encoded = try? JSONEncoder().encode(campers) {
             UserDefaults.standard.set(encoded, forKey: "campers")
+        }
+        
+        if let encoded = try? JSONEncoder().encode(settings) {
+            print("Saving settings")
+            UserDefaults.standard.set(encoded, forKey: "settings")
         }
     }
 }

@@ -9,7 +9,7 @@ import Foundation
 
 struct LogEntry: Identifiable, Codable {
     var id: UUID
-    var camper: String = ""
+    var camperID: UUID
     var title: String = ""
     var startDate: Date = Date()
     var endDate: Date = Date()
@@ -35,19 +35,18 @@ struct LogEntry: Identifiable, Codable {
 struct Camper: Identifiable, Hashable, Codable {
     var id: UUID
     var name: String
+    var isDefaultCamper: Bool
     var registrationNumber: String
     
-    static let example = Camper(id: UUID(), name: "nano", registrationNumber: "TX12345")
+    static let example = Camper(id: UUID(), name: "nano", isDefaultCamper: false, registrationNumber: "TX12345")
 }
 
-struct Settings {
-    var defaultHomePort: String
-    var defaultCamperID: UUID
+struct Settings: Codable {
     var chosenUnits: UnitOptions
     var chosenDistance: DistanceOptions
     var chosenClockHours: ClockHours
     
-    static let example = Settings(defaultHomePort: "None", defaultCamperID: UUID(), chosenUnits: .america, chosenDistance: .mi, chosenClockHours: .two)
+    static let example = Settings(chosenUnits: .america, chosenDistance: .mi, chosenClockHours: .two)
 }
 
 extension Date {

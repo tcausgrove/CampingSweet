@@ -21,8 +21,22 @@ struct ChecklistView: View {
         NavigationView {
             List {
                 ForEach(checklistViewModel.checklist, id: \..id) { item in
-                    Text(item.name)
+                    HStack {
+                        if item.hasCheck {
+                            Image(systemName: "checkmark")
+                                .foregroundColor(.green)
+                                .padding(.trailing, 8)
+                        }
+                        Text(item.name)
+                        Spacer()
+                    }
+                    .onTapGesture {
+                        checklistViewModel.toggleCheck(item: item)
+                    }
                 }
+                .onDelete(perform: { indexSet in
+                    checklistViewModel.deleteItemsByIndexSet(indexSet: indexSet)
+                })
                 
                 if addingItem {
                     TextField("", text: $newItemName)

@@ -7,14 +7,14 @@
 
 import Foundation
 
-enum UnitOptions: String, CaseIterable, Identifiable {
+enum UnitOptions: String, CaseIterable, Identifiable, Codable {
     case europe = "Imperial"
     case america = "English"
     
     var id: Self { self }
 }
 
-enum DistanceOptions: String, CaseIterable, Identifiable {
+enum DistanceOptions: String, CaseIterable, Identifiable, Codable {
     case mi = "Miles"
     case km = "Kilometers"
     case nm = "Nautical miles"
@@ -22,7 +22,7 @@ enum DistanceOptions: String, CaseIterable, Identifiable {
     var id: Self { self }
 }
 
-enum ClockHours: String, CaseIterable, Identifiable {
+enum ClockHours: String, CaseIterable, Identifiable, Codable {
     case two = "12 Hour"
     case one = "24 Hour"
     

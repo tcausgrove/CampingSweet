@@ -67,7 +67,10 @@ struct ContentView: View {
                 }
             }
         }
-        .sheet(isPresented: $changingSettings, content: { SettingsView() })
+        .sheet(isPresented: $changingSettings, content: { 
+            SettingsView()
+                .environmentObject(viewModel)
+        })
     }
 }
 

@@ -26,6 +26,21 @@ import Foundation
         checklist.append(newItem)
         save()
     }
+    
+    func deleteItemsByIndexSet(indexSet: IndexSet) {
+        for index in indexSet {
+            checklist.remove(at: index)
+        }
+        save()
+    }
+    
+    func toggleCheck(item: ChecklistItem) {
+        if let index = checklist.firstIndex(of: item) {
+            var newItem = checklist[index]
+            newItem.hasCheck.toggle()
+            checklist[index] = newItem
+        }
+    }
 
     func save() {
         if let encoded = try? JSONEncoder().encode(checklist) {

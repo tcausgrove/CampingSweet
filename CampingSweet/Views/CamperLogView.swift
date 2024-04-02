@@ -16,11 +16,10 @@ struct CamperLogView: View {
         NavigationView {
             List {
                 ForEach(viewModel.campers) { camper in
-                    VStack(alignment: .leading) {
-                        Text("Name: \(camper.name)")
-                        Text("Registration: \(camper.registrationNumber)")
-                    }
-                    .padding()
+                    CamperCardView(camper: camper)
+                        .onTapGesture {
+                            viewModel.setCurrentCamper(selectedCamperName: camper.name)
+                        }
                 }
             }
             .toolbar() {
@@ -34,7 +33,7 @@ struct CamperLogView: View {
                 AddCamperLogView()
                     .environmentObject(viewModel)
             }
-            .navigationTitle("Camper Log")
+            .navigationTitle("Campers")
         }
     }
 }

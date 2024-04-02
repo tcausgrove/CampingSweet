@@ -31,8 +31,8 @@ struct AddCamperLogView: View {
                 }
                 ToolbarItem(placement: .confirmationAction) {
                     Button("Add", role: .none, action: {
-                        let newCamper = Camper(id: UUID(), name: name, registrationNumber: registration)
-                        viewModel.addNewCamper(newVessel: newCamper)
+                        let newCamper = Camper(id: UUID(), name: name, isDefaultCamper: true, registrationNumber: registration)
+                        viewModel.addNewCamper(newCamper: newCamper)
                         dismiss()
                     })
                 }
