@@ -17,6 +17,7 @@ struct CamperLogView: View {
             List {
                 ForEach(viewModel.campers) { camper in
                     CamperCardView(camper: camper)
+                        .environmentObject(viewModel)
                         .onTapGesture {
                             viewModel.setCurrentCamper(selectedCamperName: camper.name)
                         }

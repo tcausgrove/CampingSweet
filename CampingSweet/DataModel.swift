@@ -7,18 +7,20 @@
 
 import Foundation
 
-struct LogEntry: Identifiable, Codable {
+struct LogEntry: Identifiable, Hashable, Codable {
     var id: UUID
     var camperID: UUID
     var title: String = ""
     var startDate: Date = Date()
     var endDate: Date = Date()
-    var numberOfNights: Int = 0
     var distance: Float?
     
-    var duration: TimeInterval {
-        return endDate - startDate
+    var numberOfNights: Int {
+        let number = ((endDate - startDate) / 24 / 3600).rounded()
+        return Int(number)
     }
+    
+    static let example = LogEntry(id: UUID(), camperID: UUID(), title: "Cimarron trip", startDate: Date.now, endDate: Date.now, distance: 123.4)
 }
 
 //struct FuelEntry: Identifiable, Codable {
@@ -37,8 +39,27 @@ struct Camper: Identifiable, Hashable, Codable {
     var name: String
     var isDefaultCamper: Bool
     var registrationNumber: String
+    var trips: [LogEntry]
     
-    static let example = Camper(id: UUID(), name: "nano", isDefaultCamper: false, registrationNumber: "TX12345")
+    var totalCamperDistance: String {
+        var tempDistance: Float = 0.0
+        for trip in trips {
+            tempDistance += trip.distance ?? 0.0
+        }
+        // Format to string
+        let formatted = String(format: "%.1f miles", tempDistance)
+        return formatted
+    }
+    
+    var totalCamperNights: Int {
+        var tempNights: Int = 0
+        for trip in trips {
+            tempNights += trip.numberOfNights
+        }
+        return tempNights
+    }
+    
+    static let example = Camper(id: UUID(), name: "nano", isDefaultCamper: false, registrationNumber: "TX12345", trips: [LogEntry.example])
 }
 
 struct Settings: Codable {
@@ -50,7 +71,6 @@ struct Settings: Codable {
 }
 
 extension Date {
-
     static func - (lhs: Date, rhs: Date) -> TimeInterval {
         return lhs.timeIntervalSinceReferenceDate - rhs.timeIntervalSinceReferenceDate
     }

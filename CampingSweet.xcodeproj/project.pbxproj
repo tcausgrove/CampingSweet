@@ -31,7 +31,7 @@
 		7826F2BF2B93B53B0075B0A3 /* ChecklistViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistViewModel.swift; sourceTree = "<group>"; };
 		7826F2C12BBB4D4B0075B0A3 /* CamperCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CamperCardView.swift; sourceTree = "<group>"; };
 		78413C032A44EB49006DCF9E /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
-		78413C092A6DEE84006DCF9E /* NumbersOnlyViewModifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumbersOnlyViewModifier.swift; sourceTree = "<group>"; };
+		78413C092A6DEE84006DCF9E /* NumbersOnlyViewModifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NumbersOnlyViewModifier.swift; path = Views/NumbersOnlyViewModifier.swift; sourceTree = "<group>"; };
 		78413C0B2A7435D1006DCF9E /* ChecklistView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistView.swift; sourceTree = "<group>"; };
 		78A4151A29E4D3AB005CBEF1 /* CampingSweet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CampingSweet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		78A4151D29E4D3AB005CBEF1 /* CampingSweetApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampingSweetApp.swift; sourceTree = "<group>"; };
@@ -85,6 +85,7 @@
 				78A4152F29E4DA59005CBEF1 /* DataModel.swift */,
 				78A4153C29F0BDC0005CBEF1 /* Enums.swift */,
 				78A4154029F34E3B005CBEF1 /* FileManager-DocumentsDirectory.swift */,
+				78413C092A6DEE84006DCF9E /* NumbersOnlyViewModifier.swift */,
 				78A4153129E4DCE2005CBEF1 /* ViewModel.swift */,
 				7826F2BF2B93B53B0075B0A3 /* ChecklistViewModel.swift */,
 				78A4152129E4D3AC005CBEF1 /* Assets.xcassets */,
@@ -104,7 +105,6 @@
 		78A4153529F021D4005CBEF1 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				78413C092A6DEE84006DCF9E /* NumbersOnlyViewModifier.swift */,
 				78A4151F29E4D3AB005CBEF1 /* ContentView.swift */,
 				78A4153829F08713005CBEF1 /* CamperLogView.swift */,
 				7826F2C12BBB4D4B0075B0A3 /* CamperCardView.swift */,

@@ -11,11 +11,12 @@ import SwiftUI
 struct CamperCardView: View {
     var camper: Camper
     
+    @EnvironmentObject var viewModel: ViewModel
+    
     var body: some View {
         VStack(alignment: .leading) {
             HStack {
                 Text("Name: \(camper.name)")
-                    .padding()
                 if camper.isDefaultCamper {
                     Text("Selected")
                         .italic()
@@ -23,8 +24,9 @@ struct CamperCardView: View {
                 }
             }
             Text("Registration: \(camper.registrationNumber)")
+            Text("Distance traveled: \(camper.totalCamperDistance)")
+            Text("Number of nights used: \(camper.totalCamperNights)")
         }
-        .padding()
     }
 }
 

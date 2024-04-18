@@ -15,6 +15,7 @@ struct AddLogBookEntryView: View {
     @State private var end: Date = Date()
     @State private var numberOfNightsText: String = " "
     @State private var distance: String = ""
+//    @State private var camperName: String = ""
     @FocusState private var distanceIsFocused: Bool
     
     @EnvironmentObject var viewModel: ViewModel
@@ -23,20 +24,33 @@ struct AddLogBookEntryView: View {
         NavigationView {
             VStack {
                 Text("New Log Book Entry")
-                    .padding()
+                    .padding(.bottom, 30)
                     .font(.title)
-                TextField("Title", text: $title)
-                    .padding()
+
+//                Text("Camper: ")
+//                    .padding([.leading, .trailing], 16)
+//                    .padding(.bottom, 30)
+
+                TextField("Destination", text: $title)
+                    .padding([.leading, .trailing], 16)
+                    .padding(.bottom, 30)
+                
                 DatePicker("Arrival date", selection: $start, displayedComponents: [.date])
                     .onChange(of: start, perform: { _ in
                         numberOfNightsText = setDisplayedNightsText() })
+                    .padding([.leading, .trailing], 16)
+                
                 DatePicker("Departure date", selection: $end, in: start..., displayedComponents: [.date])
                     .onChange(of: end, perform: { _ in
                         numberOfNightsText = setDisplayedNightsText() })
+                    .padding([.leading, .trailing], 16)
+                
                 Text(numberOfNightsText)
+                
                 TextField("Distance (miles)", text: $distance)
                     .keyboardType(.decimalPad)
                     .numbersOnly($distance, includeDecimal: true)  // See NumbersOnlyViewModifier.swift
+                    .padding([.leading, .trailing], 16)
                 
                     .toolbar() {
                         ToolbarItem(placement: .cancellationAction) {
@@ -64,8 +78,8 @@ struct AddLogBookEntryView: View {
         if (end < start) {
             end = start
         }
-        let numberOfNigts = ((end - start) / 24 / 3600).formatted()
-        return ("Number of nights: " + numberOfNigts)
+        let numberOfNigts = Int( ((end - start) / 24 / 3600).rounded() )
+        return ("Number of nights: \(numberOfNigts)")
     }
 }
 

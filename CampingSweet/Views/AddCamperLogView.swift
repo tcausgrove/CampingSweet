@@ -26,23 +26,25 @@ struct AddCamperLogView: View {
                 TextField("Registration", text: $registration)
             }
             .toolbar() {
-                ToolbarItem(placement: .cancellationAction) {
-                    Button("Cancel", role: .cancel, action: { dismiss() })
-                }
                 ToolbarItem(placement: .confirmationAction) {
                     Button("Add", role: .none, action: {
-                        let newCamper = Camper(id: UUID(), name: name, isDefaultCamper: true, registrationNumber: registration)
+                        let newCamper = Camper(id: UUID(), name: name, isDefaultCamper: true, registrationNumber: registration, trips: [])
                         viewModel.addNewCamper(newCamper: newCamper)
                         dismiss()
                     })
                 }
+                ToolbarItem(placement: .cancellationAction) {
+                    Button("Cancel", role: .cancel, action: { dismiss() })
+                }
         }
             .padding()
-        }    }
+        }
+    }
 }
 
 struct AddVesselLogView_Previews: PreviewProvider {
     static var previews: some View {
         AddCamperLogView()
+            .environmentObject(ViewModel())
     }
 }

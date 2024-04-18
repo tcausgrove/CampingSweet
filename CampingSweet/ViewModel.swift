@@ -8,9 +8,7 @@
 import Foundation
 
 @MainActor class ViewModel: ObservableObject {
-    // FIXME: This only saves one set of trips, not a separate set for each camper.  Need to
-    //   completely rework the save and read routines
-    @Published private(set) var trips = [LogEntry]()
+//    @Published private(set) var trips = [LogEntry]()
 //    @Published private(set) var fuelings = [FuelEntry]()
     @Published private(set) var campers = [Camper]()
     @Published private(set) var settings = Settings.example
@@ -20,15 +18,15 @@ import Foundation
     
 
     init() {
-        if let data = UserDefaults.standard.data(forKey: "trips") {
-            if let decoded = try? JSONDecoder().decode([LogEntry].self, from: data) {
-                trips = decoded
-            } else {
+//        if let data = UserDefaults.standard.data(forKey: "trips") {
+//            if let decoded = try? JSONDecoder().decode([LogEntry].self, from: data) {
+//                trips = decoded
+//            } else {
                 // unable to get trips
-                print("Unable to get trips")
-                trips = []
-            }
-        }
+//                print("Unable to get trips")
+//                trips = []
+//            }
+//        }
 
 //        if let data = UserDefaults.standard.data(forKey: "fuelings") {
 //            if let decoded = try? JSONDecoder().decode([FuelEntry].self, from: data) {
@@ -60,10 +58,16 @@ import Foundation
     }
     
     func addTrip(newTrip: LogEntry) {
-        trips.append(newTrip)
+        if let theCamper = campers.first(where: { $0 == self.getCurrentCamper() }) {
+            if let index = campers.firstIndex(of: theCamper) {
+                var replacementCamper = campers[index]
+                replacementCamper.trips.append(newTrip)
+                campers[index] = replacementCamper
+            }
+        }
         save()
     }
-    
+
 //    func addFuelEntry(newFuelEntry: FuelEntry) {
 //        fuelings.append(newFuelEntry)
 //        save()
@@ -78,6 +82,16 @@ import Foundation
     func getCurrentCamperID() -> UUID? {
         let theCamper = campers.first(where: { $0.isDefaultCamper == true }) ?? campers.first
         return theCamper?.id
+    }
+    
+    func getCurrentCamper() -> Camper? {
+        let theCamper = campers.first(where: { $0.isDefaultCamper == true })
+        return theCamper
+    }
+    
+    func getCurrentCamperName() -> String {
+        let theCamper = campers.first(where: { $0.isDefaultCamper == true }) ?? campers.first
+        return ( theCamper?.name ?? "" )
     }
     
     func setCurrentCamper(selectedCamperName: String) {
@@ -99,15 +113,50 @@ import Foundation
         }
         save()
     }
+
+//    func getTripsForCamperByID(camperID: UUID) -> [LogEntry] {
+//        var camperTrips: [LogEntry] = []
+//        for trip in trips {
+//            if trip.camperID == camperID { camperTrips.append(trip) }
+//        }
+//        return camperTrips
+//    }
     
     func currentCamperExists() -> Bool {
-        self.getCurrentCamperID() != nil
+        self.getCurrentCamper() != nil
 
     }
     
     func getDefaultNumberOfNights(trip: LogEntry) -> Int {
         return Int(trip.endDate - trip.startDate)
     }
+    
+    func deleteTrips(indexSet: IndexSet) {
+        if let theCamper = campers.first(where: { $0 == self.getCurrentCamper() }) {
+            if let index = campers.firstIndex(of: theCamper) {
+                var replacementCamper = campers[index]
+                for index in indexSet {
+                    replacementCamper.trips.remove(at: index)
+                    campers[index] = replacementCamper
+                }
+            }
+            save()
+        }
+    }
+    
+//    func getTotalCurrentCamperMiles() -> String {
+//        if self.currentCamperExists() {
+//            let camperTrips = getTripsForCamperByID(camperID: self.getCurrentCamperID()!)
+//            var totalMiles: Float = 0.0
+//            for trip in camperTrips {
+//                totalMiles += trip.distance ?? 0.0
+//            }
+//            let value = String(totalMiles.formatted(.number))
+//            return value
+//        } else {
+//            return "0.0"
+//        }
+//    }
     
     func changeSettings(newChosenUnits: UnitOptions, newChosenDistance: DistanceOptions, newClockHours: ClockHours) {
         self.settings.chosenUnits = newChosenUnits
@@ -118,9 +167,9 @@ import Foundation
     }
     
     func save() {
-        if let encoded = try? JSONEncoder().encode(trips) {
-            UserDefaults.standard.set(encoded, forKey: "trips")
-        }
+//        if let encoded = try? JSONEncoder().encode(trips) {
+//            UserDefaults.standard.set(encoded, forKey: "trips")
+//        }
         
 //        if let encoded = try? JSONEncoder().encode(fuelings) {
 //            UserDefaults.standard.set(encoded, forKey: "fuelings")
@@ -131,7 +180,6 @@ import Foundation
         }
         
         if let encoded = try? JSONEncoder().encode(settings) {
-            print("Saving settings")
             UserDefaults.standard.set(encoded, forKey: "settings")
         }
     }
