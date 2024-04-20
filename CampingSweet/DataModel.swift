@@ -9,18 +9,19 @@ import Foundation
 
 struct LogEntry: Identifiable, Hashable, Codable {
     var id: UUID
-    var camperID: UUID
+//    var camperID: UUID
     var title: String = ""
     var startDate: Date = Date()
     var endDate: Date = Date()
-    var distance: Float?
+    // The stored distance will be in miles, using conversions to and from for display
+    var distance: Double?
     
     var numberOfNights: Int {
         let number = ((endDate - startDate) / 24 / 3600).rounded()
         return Int(number)
     }
     
-    static let example = LogEntry(id: UUID(), camperID: UUID(), title: "Cimarron trip", startDate: Date.now, endDate: Date.now, distance: 123.4)
+    static let example = LogEntry(id: UUID(), title: "Cimarron trip", startDate: Date.now, endDate: Date.now, distance: 123.4)
 }
 
 //struct FuelEntry: Identifiable, Codable {
@@ -41,14 +42,14 @@ struct Camper: Identifiable, Hashable, Codable {
     var registrationNumber: String
     var trips: [LogEntry]
     
-    var totalCamperDistance: String {
-        var tempDistance: Float = 0.0
+    var totalCamperDistance: Double {    //  This will be in miles
+//        let zeroDistance = Measurement(value: 0.0, unit: UnitLength.meters)
+        var tempDistance = 0.0
         for trip in trips {
-            tempDistance += trip.distance ?? 0.0
+            let tripDistance = trip.distance ?? 0.0
+            tempDistance = tempDistance + tripDistance
         }
-        // Format to string
-        let formatted = String(format: "%.1f miles", tempDistance)
-        return formatted
+        return tempDistance
     }
     
     var totalCamperNights: Int {

@@ -15,7 +15,7 @@ struct AddLogBookEntryView: View {
     @State private var end: Date = Date()
     @State private var numberOfNightsText: String = " "
     @State private var distance: String = ""
-//    @State private var camperName: String = ""
+    //    @State private var camperName: String = ""
     @FocusState private var distanceIsFocused: Bool
     
     @EnvironmentObject var viewModel: ViewModel
@@ -26,11 +26,11 @@ struct AddLogBookEntryView: View {
                 Text("New Log Book Entry")
                     .padding(.bottom, 30)
                     .font(.title)
-
-//                Text("Camper: ")
-//                    .padding([.leading, .trailing], 16)
-//                    .padding(.bottom, 30)
-
+                
+                //                Text("Camper: ")
+                //                    .padding([.leading, .trailing], 16)
+                //                    .padding(.bottom, 30)
+                
                 TextField("Destination", text: $title)
                     .padding([.leading, .trailing], 16)
                     .padding(.bottom, 30)
@@ -47,6 +47,7 @@ struct AddLogBookEntryView: View {
                 
                 Text(numberOfNightsText)
                 
+                //FIXME: Need to get local units, not default to miles (text) here
                 TextField("Distance (miles)", text: $distance)
                     .keyboardType(.decimalPad)
                     .numbersOnly($distance, includeDecimal: true)  // See NumbersOnlyViewModifier.swift
@@ -58,12 +59,7 @@ struct AddLogBookEntryView: View {
                         }
                         ToolbarItem(placement: .confirmationAction) {
                             Button("Add", role: .none, action: {
-                                let tripID = UUID()
-                                if let camperID = viewModel.getCurrentCamperID() {
-                                    let newTrip = LogEntry(id: tripID, camperID: camperID, title: title, startDate: start, endDate: end, distance: Float(distance))
-                                    viewModel.addTrip(newTrip: newTrip)
-
-                                }
+                                viewModel.addTrip(title: title, startDate: start, endDate: end, distance: distance)
                                 dismiss()
                             })
                         }

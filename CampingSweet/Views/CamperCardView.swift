@@ -24,7 +24,10 @@ struct CamperCardView: View {
                 }
             }
             Text("Registration: \(camper.registrationNumber)")
-            Text("Distance traveled: \(camper.totalCamperDistance)")
+            
+            if camper.totalCamperDistance > 0.1 {
+                Text("Distance traveled: \(viewModel.getCamperFormattedDistance(theCamper: camper))")
+            }
             Text("Number of nights used: \(camper.totalCamperNights)")
         }
     }
@@ -32,4 +35,5 @@ struct CamperCardView: View {
 
 #Preview {
     CamperCardView(camper: Camper.example)
+        .environmentObject(ViewModel())
 }

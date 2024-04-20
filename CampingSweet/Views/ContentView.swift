@@ -52,6 +52,7 @@ struct ContentView: View {
             .padding()
             .toolbar {
                 ToolbarItemGroup(placement: .bottomBar) {
+                    //FIXME: The "plus" button doesn't do anything - what should it do?
                     Button(action: { }) {
                         Image(systemName: "plus")
                             .font(.title)
@@ -59,11 +60,13 @@ struct ContentView: View {
                             .padding([.bottom, .leading])
                     }
                     Spacer()
-                    Button(action: { changingSettings = true }) {
-                        Image(systemName: "gearshape.fill")
-                            .font(.title)
-                            .padding([.bottom, .trailing])
-                    }
+                    
+                    // Currently no need for settings
+//                    Button(action: { changingSettings = true }) {
+//                        Image(systemName: "gearshape.fill")
+//                            .font(.title)
+//                            .padding([.bottom, .trailing])
+//                    }
                 }
             }
         }

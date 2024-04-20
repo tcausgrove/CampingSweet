@@ -8,8 +8,6 @@
 import Foundation
 
 @MainActor class ViewModel: ObservableObject {
-//    @Published private(set) var trips = [LogEntry]()
-//    @Published private(set) var fuelings = [FuelEntry]()
     @Published private(set) var campers = [Camper]()
     @Published private(set) var settings = Settings.example
     
@@ -18,24 +16,6 @@ import Foundation
     
 
     init() {
-//        if let data = UserDefaults.standard.data(forKey: "trips") {
-//            if let decoded = try? JSONDecoder().decode([LogEntry].self, from: data) {
-//                trips = decoded
-//            } else {
-                // unable to get trips
-//                print("Unable to get trips")
-//                trips = []
-//            }
-//        }
-
-//        if let data = UserDefaults.standard.data(forKey: "fuelings") {
-//            if let decoded = try? JSONDecoder().decode([FuelEntry].self, from: data) {
-//                fuelings = decoded
-//                return
-//            }
-//        }
-        // unable to get fuelings
-//        fuelings = []
 
         if let data = UserDefaults.standard.data(forKey: "campers") {
             if let decoded = try? JSONDecoder().decode([Camper].self, from: data) {
@@ -57,7 +37,21 @@ import Foundation
         }
     }
     
-    func addTrip(newTrip: LogEntry) {
+    func addTrip(title: String, startDate: Date, endDate: Date, distance: String) {
+        let tripID = UUID()
+        let distanceDouble = Double(distance) ?? 0.0
+        var tripInMiles: Measurement<UnitLength> = Measurement(value: 0.0, unit: UnitLength.meters)
+        
+        switch settings.chosenDistance {
+        case .mi:
+            tripInMiles = Measurement(value: distanceDouble, unit: UnitLength.miles)
+        case .km:
+            tripInMiles = Measurement(value: distanceDouble, unit: UnitLength.kilometers).converted(to: UnitLength.miles)
+        case .nm:
+            tripInMiles = Measurement(value: distanceDouble, unit: UnitLength.nauticalMiles).converted(to: UnitLength.miles)
+        }
+        let newTrip = LogEntry(id: tripID, title: title, startDate: startDate, endDate: endDate, distance: tripInMiles.value)
+
         if let theCamper = campers.first(where: { $0 == self.getCurrentCamper() }) {
             if let index = campers.firstIndex(of: theCamper) {
                 var replacementCamper = campers[index]
@@ -94,6 +88,17 @@ import Foundation
         return ( theCamper?.name ?? "" )
     }
     
+    func getCamperFormattedDistance(theCamper: Camper) -> String {
+        var distance: String = ""
+        
+        if let theCamper = campers.first(where: { $0 == theCamper }) {
+            
+            let distanceInMiles = theCamper.totalCamperDistance
+            distance = formatDistanceBySetting(distance: distanceInMiles)
+        }
+        return distance
+    }
+    
     func setCurrentCamper(selectedCamperName: String) {
         //  First, set every camper to NOT be default
         for camper in campers {
@@ -113,14 +118,6 @@ import Foundation
         }
         save()
     }
-
-//    func getTripsForCamperByID(camperID: UUID) -> [LogEntry] {
-//        var camperTrips: [LogEntry] = []
-//        for trip in trips {
-//            if trip.camperID == camperID { camperTrips.append(trip) }
-//        }
-//        return camperTrips
-//    }
     
     func currentCamperExists() -> Bool {
         self.getCurrentCamper() != nil
@@ -144,20 +141,6 @@ import Foundation
         }
     }
     
-//    func getTotalCurrentCamperMiles() -> String {
-//        if self.currentCamperExists() {
-//            let camperTrips = getTripsForCamperByID(camperID: self.getCurrentCamperID()!)
-//            var totalMiles: Float = 0.0
-//            for trip in camperTrips {
-//                totalMiles += trip.distance ?? 0.0
-//            }
-//            let value = String(totalMiles.formatted(.number))
-//            return value
-//        } else {
-//            return "0.0"
-//        }
-//    }
-    
     func changeSettings(newChosenUnits: UnitOptions, newChosenDistance: DistanceOptions, newClockHours: ClockHours) {
         self.settings.chosenUnits = newChosenUnits
         self.settings.chosenDistance = newChosenDistance
@@ -167,13 +150,6 @@ import Foundation
     }
     
     func save() {
-//        if let encoded = try? JSONEncoder().encode(trips) {
-//            UserDefaults.standard.set(encoded, forKey: "trips")
-//        }
-        
-//        if let encoded = try? JSONEncoder().encode(fuelings) {
-//            UserDefaults.standard.set(encoded, forKey: "fuelings")
-//        }
         
         if let encoded = try? JSONEncoder().encode(campers) {
             UserDefaults.standard.set(encoded, forKey: "campers")
@@ -182,6 +158,21 @@ import Foundation
         if let encoded = try? JSONEncoder().encode(settings) {
             UserDefaults.standard.set(encoded, forKey: "settings")
         }
+    }
+    
+    func formatDistanceBySetting(distance: Double) -> String {
+        
+        var formattedDistance: Measurement<UnitLength> = Measurement(value: 0.0, unit: UnitLength.meters)
+        
+        switch settings.chosenDistance {
+        case .mi:
+            formattedDistance = Measurement(value: distance, unit: UnitLength.miles)
+        case .km:
+            formattedDistance = Measurement(value: distance, unit: UnitLength.miles).converted(to: UnitLength.kilometers)
+        case .nm:
+            formattedDistance = Measurement(value: distance, unit: UnitLength.miles).converted(to: UnitLength.nauticalMiles)
+        }
+        return formattedDistance.formatted()
     }
 }
 
