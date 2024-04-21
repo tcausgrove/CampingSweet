@@ -61,12 +61,11 @@ struct ContentView: View {
                     }
                     Spacer()
                     
-                    // Currently no need for settings
-//                    Button(action: { changingSettings = true }) {
-//                        Image(systemName: "gearshape.fill")
-//                            .font(.title)
-//                            .padding([.bottom, .trailing])
-//                    }
+                    Button(action: { changingSettings = true }) {
+                        Image(systemName: "gearshape.fill")
+                            .font(.title)
+                            .padding([.bottom, .trailing])
+                    }
                 }
             }
         }

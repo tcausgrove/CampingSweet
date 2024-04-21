@@ -14,7 +14,7 @@ struct SettingsView: View {
 
 //    @State var camper: Camper = Camper.example
 
-    @State var defaultUnits: UnitOptions = .america
+    @State var defaultUnits: VolumeOptions = .america
     @State var defaultDistance: DistanceOptions = .mi
     @State var timeFormat: ClockHours = .two
 
@@ -25,9 +25,9 @@ struct SettingsView: View {
                     .font(.title2)
                     .padding(.bottom, 30)
                 HStack {
-                    Text("Units")
+                    Text("Volume")
                     Picker("Default Units", selection: $defaultUnits) {
-                        ForEach(UnitOptions.allCases) { option in
+                        ForEach(VolumeOptions.allCases) { option in
                             Text(option.rawValue)
                         }
                     }
@@ -68,7 +68,6 @@ struct SettingsView: View {
                 .toolbar(){
                     ToolbarItemGroup(placement: .navigation) {
                         Button(role: .cancel, action: {
-                            print("Changing settings")
                             viewModel.changeSettings(
                                 newChosenUnits: defaultUnits,
                                 newChosenDistance: defaultDistance,

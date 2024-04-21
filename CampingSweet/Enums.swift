@@ -7,10 +7,10 @@
 
 import Foundation
 
-enum UnitOptions: String, CaseIterable, Identifiable, Codable {
-    case europe = "Imperial"
-    case america = "English"
-    
+enum VolumeOptions: String, CaseIterable, Identifiable, Codable {
+    case america = "Gallons"
+    case europe = "Liters"
+
     var id: Self { self }
 }
 

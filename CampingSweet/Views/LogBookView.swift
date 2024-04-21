@@ -60,16 +60,14 @@ struct TripCardView: View {
     @EnvironmentObject var viewModel: ViewModel
     
     var body: some View {
-//        if trip.camperID == viewModel.getCurrentCamperID() {
-            VStack(alignment: .leading) {
-                Text("Title:  \(trip.title)")
-                Text("When:  \(trip.startDate.formatted())")
-                let numberOfNightsText = "Number of nights:  " + String(trip.numberOfNights)
-                Text(numberOfNightsText)
-                let tripDistance = viewModel.formatDistanceBySetting(distance: trip.distance ?? 0.0)
-                Text("Distance:  " + tripDistance )
-//            }
+        VStack(alignment: .leading) {
+            Text("Title:  \(trip.title)")
+            Text("When:  \(trip.startDate.formatted())")
+            let numberOfNightsText = "Number of nights:  " + String(trip.numberOfNights)
+            Text(numberOfNightsText)
+            let tripDistance = viewModel.formatDistanceBySetting(distance: trip.distance ?? 0.0)
+            Text("Distance:  " + tripDistance )
         }
-            .padding()
+        .padding()
     }
 }

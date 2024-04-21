@@ -15,7 +15,6 @@ struct AddLogBookEntryView: View {
     @State private var end: Date = Date()
     @State private var numberOfNightsText: String = " "
     @State private var distance: String = ""
-    //    @State private var camperName: String = ""
     @FocusState private var distanceIsFocused: Bool
     
     @EnvironmentObject var viewModel: ViewModel
@@ -26,10 +25,6 @@ struct AddLogBookEntryView: View {
                 Text("New Log Book Entry")
                     .padding(.bottom, 30)
                     .font(.title)
-                
-                //                Text("Camper: ")
-                //                    .padding([.leading, .trailing], 16)
-                //                    .padding(.bottom, 30)
                 
                 TextField("Destination", text: $title)
                     .padding([.leading, .trailing], 16)
@@ -47,8 +42,12 @@ struct AddLogBookEntryView: View {
                 
                 Text(numberOfNightsText)
                 
-                //FIXME: Need to get local units, not default to miles (text) here
-                TextField("Distance (miles)", text: $distance)
+                //FIXME: Can move this to a function elsewhere, use localized distance, and maybe get long name
+                let formatter = MeasurementFormatter()
+                let localLength = Measurement<UnitLength>(value: 100.0, unit: UnitLength.kilometers)
+                let unit = "Distance (" + viewModel.getDistanceUnitFromSetting() + ")"
+                
+                TextField(unit, text: $distance)
                     .keyboardType(.decimalPad)
                     .numbersOnly($distance, includeDecimal: true)  // See NumbersOnlyViewModifier.swift
                     .padding([.leading, .trailing], 16)
@@ -82,6 +81,7 @@ struct AddLogBookEntryView: View {
 struct AddLogBookEntryView_Previews: PreviewProvider {
     static var previews: some View {
         AddLogBookEntryView()
+            .environmentObject(ViewModel())
     }
 }
 

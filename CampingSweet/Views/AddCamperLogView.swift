@@ -42,7 +42,7 @@ struct AddCamperLogView: View {
     }
 }
 
-struct AddVesselLogView_Previews: PreviewProvider {
+struct AddCamperLogView_Previews: PreviewProvider {
     static var previews: some View {
         AddCamperLogView()
             .environmentObject(ViewModel())

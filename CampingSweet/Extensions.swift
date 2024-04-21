@@ -24,3 +24,14 @@ extension TimeInterval {
         return formatter.string(from: self)
     }
 }
+
+struct UnitFormatter {
+    let formatter = MeasurementFormatter()
+    
+    init() {
+        formatter.unitOptions = .providedUnit
+        formatter.unitStyle = .long
+        formatter.numberFormatter.generatesDecimalNumbers = true
+        formatter.numberFormatter.maximumFractionDigits = 1
+    }
+}

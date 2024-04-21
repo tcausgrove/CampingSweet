@@ -64,7 +64,7 @@ struct Camper: Identifiable, Hashable, Codable {
 }
 
 struct Settings: Codable {
-    var chosenUnits: UnitOptions
+    var chosenUnits: VolumeOptions
     var chosenDistance: DistanceOptions
     var chosenClockHours: ClockHours
     
@@ -84,3 +84,5 @@ struct ChecklistItem: Codable, Equatable, Identifiable {
     
     static let example = ChecklistItem(id: UUID(), name: "More food", hasCheck: false)
 }
+
+

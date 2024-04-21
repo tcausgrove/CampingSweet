@@ -141,7 +141,7 @@ import Foundation
         }
     }
     
-    func changeSettings(newChosenUnits: UnitOptions, newChosenDistance: DistanceOptions, newClockHours: ClockHours) {
+    func changeSettings(newChosenUnits: VolumeOptions, newChosenDistance: DistanceOptions, newClockHours: ClockHours) {
         self.settings.chosenUnits = newChosenUnits
         self.settings.chosenDistance = newChosenDistance
         self.settings.chosenClockHours = newClockHours
@@ -160,10 +160,9 @@ import Foundation
         }
     }
     
-    func formatDistanceBySetting(distance: Double) -> String {
-        
+    func convertDoubleBySetting(distance: Double) -> Measurement<UnitLength> {
         var formattedDistance: Measurement<UnitLength> = Measurement(value: 0.0, unit: UnitLength.meters)
-        
+
         switch settings.chosenDistance {
         case .mi:
             formattedDistance = Measurement(value: distance, unit: UnitLength.miles)
@@ -172,7 +171,24 @@ import Foundation
         case .nm:
             formattedDistance = Measurement(value: distance, unit: UnitLength.miles).converted(to: UnitLength.nauticalMiles)
         }
-        return formattedDistance.formatted()
+        return formattedDistance
+    }
+    
+    func formatDistanceBySetting(distance: Double) -> String {
+        var formattedDistance = convertDoubleBySetting(distance: distance)
+        let unitFormatter = UnitFormatter()
+        
+        return unitFormatter.formatter.string(from: formattedDistance)
+    }
+    
+    func getDistanceUnitFromSetting() -> String {
+        let arbitraryNumber = 12.3
+        var formattedDistance = convertDoubleBySetting(distance: arbitraryNumber)
+        let unitFormatter = UnitFormatter()
+        
+        let unit = unitFormatter.formatter.string(from: formattedDistance.unit)
+        
+        return unit
     }
 }
 
