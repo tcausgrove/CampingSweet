@@ -18,6 +18,13 @@ struct ContentView: View {
                 //                if(true) {
                 Section {
                     NavigationLink {
+                        CamperLogView().environmentObject(viewModel)
+                    } label: {
+                        Label("My Campers", systemImage: "train.side.front.car")
+                    }
+                    .buttonStyle(PrimaryButtonStyle(isActive: true))
+                    
+                    NavigationLink {
                         LogBookView().environmentObject(viewModel)
                     } label: {
                         Label("Log Book", systemImage: "list.bullet.rectangle.fill")
@@ -32,13 +39,6 @@ struct ContentView: View {
 //                    .buttonStyle(PrimaryButtonStyle(isActive: viewModel.currentCamperExists()))
                 }
                 .disabled(!viewModel.currentCamperExists())
-                
-                NavigationLink {
-                    CamperLogView().environmentObject(viewModel)
-                } label: {
-                    Label("My Campers", systemImage: "train.side.front.car")
-                }
-                .buttonStyle(PrimaryButtonStyle(isActive: true))
                 
                 NavigationLink {
                     ChecklistView()
@@ -88,7 +88,7 @@ struct PrimaryButtonStyle: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
             .frame(width: 300, height: 50, alignment: .leading)
-            .font(.title)
+            .font(.title2)
             .fontWeight(.bold)
             .background(isActive ? (configuration.isPressed ? Color.teal.opacity(0.5) : Color.teal) : Color.gray)
             .foregroundColor(.white)

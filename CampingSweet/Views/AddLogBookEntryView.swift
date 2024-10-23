@@ -42,9 +42,6 @@ struct AddLogBookEntryView: View {
                 
                 Text(numberOfNightsText)
                 
-                //FIXME: Can move this to a function elsewhere, use localized distance, and maybe get long name
-                let formatter = MeasurementFormatter()
-                let localLength = Measurement<UnitLength>(value: 100.0, unit: UnitLength.kilometers)
                 let unit = "Distance (" + viewModel.getDistanceUnitFromSetting() + ")"
                 
                 TextField(unit, text: $distance)

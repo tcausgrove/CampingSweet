@@ -132,8 +132,8 @@ import Foundation
         if let theCamper = campers.first(where: { $0 == self.getCurrentCamper() }) {
             if let index = campers.firstIndex(of: theCamper) {
                 var replacementCamper = campers[index]
-                for index in indexSet {
-                    replacementCamper.trips.remove(at: index)
+                for tripIndex in indexSet {
+                    replacementCamper.trips.remove(at: tripIndex)
                     campers[index] = replacementCamper
                 }
             }
@@ -175,7 +175,7 @@ import Foundation
     }
     
     func formatDistanceBySetting(distance: Double) -> String {
-        var formattedDistance = convertDoubleBySetting(distance: distance)
+        let formattedDistance = convertDoubleBySetting(distance: distance)
         let unitFormatter = UnitFormatter()
         
         return unitFormatter.formatter.string(from: formattedDistance)
@@ -183,7 +183,7 @@ import Foundation
     
     func getDistanceUnitFromSetting() -> String {
         let arbitraryNumber = 12.3
-        var formattedDistance = convertDoubleBySetting(distance: arbitraryNumber)
+        let formattedDistance = convertDoubleBySetting(distance: arbitraryNumber)
         let unitFormatter = UnitFormatter()
         
         let unit = unitFormatter.formatter.string(from: formattedDistance.unit)

@@ -24,19 +24,19 @@ struct SettingsView: View {
                 Text("User settings")
                     .font(.title2)
                     .padding(.bottom, 30)
-                HStack {
-                    Text("Volume")
-                    Picker("Default Units", selection: $defaultUnits) {
-                        ForEach(VolumeOptions.allCases) { option in
-                            Text(option.rawValue)
-                        }
-                    }
-                    .onAppear(perform: {
-                        defaultUnits = viewModel.settings.chosenUnits
-                    })
-                    .pickerStyle(.segmented)
-                    .padding()
-                }
+//                HStack {
+//                    Text("Volume")
+//                    Picker("Default Units", selection: $defaultUnits) {
+//                        ForEach(VolumeOptions.allCases) { option in
+//                            Text(option.rawValue)
+//                        }
+//                    }
+//                    .onAppear(perform: {
+//                        defaultUnits = viewModel.settings.chosenUnits
+//                    })
+//                    .pickerStyle(.segmented)
+//                    .padding()
+//                }
                 HStack {
                     Text("Distance")
                     Picker("Distance in", selection: $defaultDistance) {

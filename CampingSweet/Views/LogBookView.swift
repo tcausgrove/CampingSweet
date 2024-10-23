@@ -21,8 +21,16 @@ struct LogBookView: View {
                     let camper = viewModel.getCurrentCamper()
                     if camper != nil {
                         ForEach(camper!.trips) { trip in
-                            TripCardView(trip: trip)
-                                .environmentObject(viewModel)
+                            VStack(alignment: .leading) {
+                                Text("Title:  \(trip.title)")
+                                Text("When:  \(trip.startDate.formatted())")
+                                let numberOfNightsText = "Number of nights:  " + String(trip.numberOfNights)
+                                Text(numberOfNightsText)
+                                let tripDistance = viewModel.formatDistanceBySetting(distance: trip.distance ?? 0.0)
+                                Text("Distance:  " + tripDistance )
+                            }
+//                            TripCardView(trip: trip)
+//                                .environmentObject(viewModel)
                         }
                         .onDelete { indexSet in
                             viewModel.deleteTrips(indexSet: indexSet)
@@ -54,20 +62,12 @@ struct LogBookView_Previews: PreviewProvider {
     }
 }
 
-struct TripCardView: View {
-    var trip: LogEntry
+//struct TripCardView: View {
+//    var trip: LogEntry
     
-    @EnvironmentObject var viewModel: ViewModel
+//    @EnvironmentObject var viewModel: ViewModel
     
-    var body: some View {
-        VStack(alignment: .leading) {
-            Text("Title:  \(trip.title)")
-            Text("When:  \(trip.startDate.formatted())")
-            let numberOfNightsText = "Number of nights:  " + String(trip.numberOfNights)
-            Text(numberOfNightsText)
-            let tripDistance = viewModel.formatDistanceBySetting(distance: trip.distance ?? 0.0)
-            Text("Distance:  " + tripDistance )
-        }
-        .padding()
-    }
-}
+//    var body: some View {
+//        .padding()
+//    }
+//}

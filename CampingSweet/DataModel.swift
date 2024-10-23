@@ -24,17 +24,6 @@ struct LogEntry: Identifiable, Hashable, Codable {
     static let example = LogEntry(id: UUID(), title: "Cimarron trip", startDate: Date.now, endDate: Date.now, distance: 123.4)
 }
 
-//struct FuelEntry: Identifiable, Codable {
-//    var id: UUID
-//    var date: Date = Date()
-//    var camper: String = ""
-//    var engineHours: Float = 0.0
-//    var cost: Float = 0.0
-//    var volume: Float = 0.0
-    
-//    static let example = FuelEntry(id: UUID(), boat: "Our boat", engineHours: 189.0, cost: 45.0, volume: 12.345)
-//}
-
 struct Camper: Identifiable, Hashable, Codable {
     var id: UUID
     var name: String
