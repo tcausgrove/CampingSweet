@@ -35,3 +35,22 @@ struct UnitFormatter {
         formatter.numberFormatter.maximumFractionDigits = 1
     }
 }
+
+// Not currently used
+struct SheetButtonStyle: ButtonStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .frame(minWidth: 100, maxWidth: .infinity, minHeight: 44)
+//            .background(Color.secondary) // change to light gray
+            .clipShape(RoundedRectangle(cornerRadius: 12))
+    }
+}
+
+extension Button {
+    func sheetButtonStyle() -> some View {
+        self
+            .frame(minWidth: 100, maxWidth: .infinity, minHeight: 44)
+            .background(Color.sheetButtonBackground) // change to light gray
+            .clipShape(RoundedRectangle(cornerRadius: 12))
+    }
+}

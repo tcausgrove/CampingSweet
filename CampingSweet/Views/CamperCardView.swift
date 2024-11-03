@@ -11,25 +11,69 @@ import SwiftUI
 struct CamperCardView: View {
     var camper: Camper
     
+    @State private var showModMenu = false
+    
     @EnvironmentObject var viewModel: ViewModel
     
     var body: some View {
-        VStack(alignment: .leading) {
+        CardView(backgroundColor: Color.sheetButtonBackground) {
+            VStack(alignment: .leading, spacing: 2) {
             HStack {
-                Text("Name: \(camper.name)")
-                if camper.isDefaultCamper {
-                    Text("Selected")
-                        .italic()
-                        .font(.callout)
+                Spacer()
+                Image(systemName: "ellipsis")
+                    .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
+                    .onTapGesture(perform: { showModMenu = true })
+                Text("  ")
+            }
+            .sheet(isPresented: $showModMenu, content: { sheetContents })
+                HStack {
+                    Text("Name: \(camper.name)")
+                    if camper.isDefaultCamper {
+                        Text("Selected")
+                            .italic()
+                            .font(.callout)
+                    }
                 }
+                
+                Text("Registration: \(camper.registrationNumber)")
+                
+                if camper.totalCamperDistance > 0.1 {
+                    Text("Distance traveled: \(viewModel.getCamperFormattedDistance(theCamper: camper))")
+                }
+                Text("Number of nights used: \(camper.totalCamperNights)")
+            }        }
+        
+
+    }
+    
+    @ViewBuilder var sheetContents: some View {
+        let menuHeaderText = "Options for camper " + viewModel.getCurrentCamperName()
+        Text(menuHeaderText)
+            .font(.title3)
+        VStack(alignment: .center, spacing: 16) {
+            Button(role: .destructive, action: {
+                // Delete camper here
+                viewModel.deleteCamper(camperToDelete: camper)
+                showModMenu = false
+            }) {
+                Text("Delete camper")
             }
-            Text("Registration: \(camper.registrationNumber)")
-            
-            if camper.totalCamperDistance > 0.1 {
-                Text("Distance traveled: \(viewModel.getCamperFormattedDistance(theCamper: camper))")
+            .sheetButtonStyle()
+
+            Button(action: { showModMenu = false }) {
+                Text("Archive camper")
             }
-            Text("Number of nights used: \(camper.totalCamperNights)")
+            .sheetButtonStyle()
+//            .padding(.vertical)
+
+            Button(action: { showModMenu = false }) {
+                Text("Cancel")
+            }
+            .sheetButtonStyle()
         }
+        .frame(width: 320)
+        .presentationDetents([.fraction(0.35)])
+        .presentationDragIndicator(.hidden)
     }
 }
 

@@ -61,12 +61,7 @@ import Foundation
         }
         save()
     }
-
-//    func addFuelEntry(newFuelEntry: FuelEntry) {
-//        fuelings.append(newFuelEntry)
-//        save()
-//    }
-    
+  
     func addNewCamper(newCamper: Camper) {
         campers.append(newCamper)
         setCurrentCamper(selectedCamperName: newCamper.name)
@@ -124,6 +119,15 @@ import Foundation
 
     }
     
+    func deleteCamper(camperToDelete: Camper) {
+        if let theCamper = campers.first(where: { $0 == camperToDelete }) {
+            if let index = campers.firstIndex(of: theCamper) {
+                self.campers.remove(at: index)
+            }
+            save()
+        }
+    }
+
     func getDefaultNumberOfNights(trip: LogEntry) -> Int {
         return Int(trip.endDate - trip.startDate)
     }

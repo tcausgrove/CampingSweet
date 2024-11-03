@@ -15,29 +15,20 @@ struct ContentView: View {
         NavigationView {
             VStack {
                 Spacer()
-                //                if(true) {
-                Section {
-                    NavigationLink {
-                        CamperLogView().environmentObject(viewModel)
-                    } label: {
-                        Label("My Campers", systemImage: "train.side.front.car")
-                    }
-                    .buttonStyle(PrimaryButtonStyle(isActive: true))
-                    
-                    NavigationLink {
-                        LogBookView().environmentObject(viewModel)
-                    } label: {
-                        Label("Log Book", systemImage: "list.bullet.rectangle.fill")
-                    }
-                    .buttonStyle(PrimaryButtonStyle(isActive: viewModel.currentCamperExists()))
-                    
-//                    NavigationLink {
-//                        FuelLogView().environmentObject(viewModel)
-//                    } label: {
-//                        Label("Fuel Log", systemImage: "fuelpump")
-//                    }
-//                    .buttonStyle(PrimaryButtonStyle(isActive: viewModel.currentCamperExists()))
+                
+                NavigationLink {
+                    CamperLogView().environmentObject(viewModel)
+                } label: {
+                    Label("My Campers", systemImage: "train.side.front.car")
                 }
+                .buttonStyle(PrimaryButtonStyle(isActive: true))
+                
+                NavigationLink {
+                    LogBookView().environmentObject(viewModel)
+                } label: {
+                    Label("Log Book", systemImage: "list.bullet.rectangle.fill")
+                }
+                .buttonStyle(PrimaryButtonStyle(isActive: viewModel.currentCamperExists()))
                 .disabled(!viewModel.currentCamperExists())
                 
                 NavigationLink {
@@ -69,7 +60,7 @@ struct ContentView: View {
                 }
             }
         }
-        .sheet(isPresented: $changingSettings, content: { 
+        .sheet(isPresented: $changingSettings, content: {
             SettingsView()
                 .environmentObject(viewModel)
         })

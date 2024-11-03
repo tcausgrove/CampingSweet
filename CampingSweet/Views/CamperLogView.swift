@@ -11,11 +11,11 @@ struct CamperLogView: View {
     @EnvironmentObject var viewModel: ViewModel
     
     @State private var addingCamper: Bool = false
-
+    
     var body: some View {
-        NavigationView {
-            List {
-                ForEach(viewModel.campers) { camper in
+        VStack {
+            ForEach(viewModel.campers) { camper in
+                Section {
                     CamperCardView(camper: camper)
                         .environmentObject(viewModel)
                         .onTapGesture {
@@ -23,19 +23,20 @@ struct CamperLogView: View {
                         }
                 }
             }
-            .toolbar() {
-                ToolbarItem {
-                    Button(action: { addingCamper.toggle() }) {
-                        Image(systemName: "plus")
-                    }
+            Spacer()
+        }
+        .toolbar() {
+            ToolbarItem {
+                Button(action: { addingCamper.toggle() }) {
+                    Image(systemName: "plus")
                 }
             }
-            .sheet(isPresented: $addingCamper) {
-                AddCamperLogView()
-                    .environmentObject(viewModel)
-            }
-            .navigationTitle("Campers")
         }
+        .sheet(isPresented: $addingCamper) {
+            AddCamperLogView()
+                .environmentObject(viewModel)
+        }
+        .navigationTitle("Campers")
     }
 }
 

@@ -71,7 +71,7 @@ struct ChecklistItem: Codable, Equatable, Identifiable {
     var name: String
     var hasCheck: Bool
     
-    static let example = ChecklistItem(id: UUID(), name: "More food", hasCheck: false)
+    static let example = ChecklistItem(id: UUID(), name: "Hitch up", hasCheck: false)
 }
 
 

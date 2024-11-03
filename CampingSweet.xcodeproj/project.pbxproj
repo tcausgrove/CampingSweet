@@ -12,6 +12,8 @@
 		78413C042A44EB49006DCF9E /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78413C032A44EB49006DCF9E /* Extensions.swift */; };
 		78413C0A2A6DEE84006DCF9E /* NumbersOnlyViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78413C092A6DEE84006DCF9E /* NumbersOnlyViewModifier.swift */; };
 		78413C0C2A7435D1006DCF9E /* ChecklistView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78413C0B2A7435D1006DCF9E /* ChecklistView.swift */; };
+		785C13752CD6F8D80071783C /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785C13742CD6F8D80071783C /* Colors.swift */; };
+		7899CB8B2CD527F500395082 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7899CB8A2CD527F500395082 /* CardView.swift */; };
 		78A4151E29E4D3AB005CBEF1 /* CampingSweetApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A4151D29E4D3AB005CBEF1 /* CampingSweetApp.swift */; };
 		78A4152029E4D3AB005CBEF1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A4151F29E4D3AB005CBEF1 /* ContentView.swift */; };
 		78A4152229E4D3AC005CBEF1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 78A4152129E4D3AC005CBEF1 /* Assets.xcassets */; };
@@ -33,6 +35,8 @@
 		78413C032A44EB49006DCF9E /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		78413C092A6DEE84006DCF9E /* NumbersOnlyViewModifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NumbersOnlyViewModifier.swift; path = Views/NumbersOnlyViewModifier.swift; sourceTree = "<group>"; };
 		78413C0B2A7435D1006DCF9E /* ChecklistView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistView.swift; sourceTree = "<group>"; };
+		785C13742CD6F8D80071783C /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		7899CB8A2CD527F500395082 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		78A4151A29E4D3AB005CBEF1 /* CampingSweet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CampingSweet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		78A4151D29E4D3AB005CBEF1 /* CampingSweetApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampingSweetApp.swift; sourceTree = "<group>"; };
 		78A4151F29E4D3AB005CBEF1 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -80,6 +84,7 @@
 			isa = PBXGroup;
 			children = (
 				78A4153529F021D4005CBEF1 /* Views */,
+				785C13742CD6F8D80071783C /* Colors.swift */,
 				78413C032A44EB49006DCF9E /* Extensions.swift */,
 				78A4151D29E4D3AB005CBEF1 /* CampingSweetApp.swift */,
 				78A4152F29E4DA59005CBEF1 /* DataModel.swift */,
@@ -113,6 +118,7 @@
 				78A4153329E778F8005CBEF1 /* AddLogBookEntryView.swift */,
 				78A4153E29F1E414005CBEF1 /* SettingsView.swift */,
 				78413C0B2A7435D1006DCF9E /* ChecklistView.swift */,
+				7899CB8A2CD527F500395082 /* CardView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -188,6 +194,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7826F2C02B93B53B0075B0A3 /* ChecklistViewModel.swift in Sources */,
+				785C13752CD6F8D80071783C /* Colors.swift in Sources */,
 				78A4153929F08713005CBEF1 /* CamperLogView.swift in Sources */,
 				78413C0A2A6DEE84006DCF9E /* NumbersOnlyViewModifier.swift in Sources */,
 				78413C0C2A7435D1006DCF9E /* ChecklistView.swift in Sources */,
@@ -202,6 +209,7 @@
 				7826F2C22BBB4D4B0075B0A3 /* CamperCardView.swift in Sources */,
 				78A4153F29F1E414005CBEF1 /* SettingsView.swift in Sources */,
 				78A4151E29E4D3AB005CBEF1 /* CampingSweetApp.swift in Sources */,
+				7899CB8B2CD527F500395082 /* CardView.swift in Sources */,
 				78A4153D29F0BDC0005CBEF1 /* Enums.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

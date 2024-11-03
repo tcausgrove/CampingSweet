@@ -30,8 +30,10 @@ struct ChecklistView: View {
                         Text(item.name)
                         Spacer()
                     }
+                    .contentShape(Rectangle())
                     .onTapGesture {
                         checklistViewModel.toggleCheck(item: item)
+                        checklistViewModel.save()
                     }
                 }
                 .onDelete(perform: { indexSet in
