@@ -139,6 +139,8 @@
 			dependencies = (
 			);
 			name = CampingSweet;
+			packageProductDependencies = (
+			);
 			productName = BoatingSweet;
 			productReference = 78A4151A29E4D3AB005CBEF1 /* CampingSweet.app */;
 			productType = "com.apple.product-type.application";
@@ -167,6 +169,8 @@
 				Base,
 			);
 			mainGroup = 78A4151129E4D3AB005CBEF1;
+			packageReferences = (
+			);
 			productRefGroup = 78A4151B29E4D3AB005CBEF1 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";

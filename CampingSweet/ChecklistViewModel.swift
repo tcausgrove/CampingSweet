@@ -40,6 +40,20 @@ import Foundation
             newItem.hasCheck.toggle()
             checklist[index] = newItem
         }
+        save()
+    }
+    
+    func removeAllChecks() {
+        for item in checklist {
+            if item.hasCheck {
+                var newItem = item
+                newItem.hasCheck.toggle()
+                if let index = checklist.firstIndex(of: item) {
+                    checklist[index] = newItem
+                }
+            }
+        }
+        save()
     }
 
     func save() {

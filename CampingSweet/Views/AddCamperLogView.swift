@@ -24,13 +24,12 @@ struct AddCamperLogView: View {
                 TextField("Name", text: $name)
                     .padding()
                 TextField("Registration", text: $registration)
+                    .padding(/*@START_MENU_TOKEN@*/[.leading, .bottom]/*@END_MENU_TOKEN@*/)
             }
             .toolbar() {
                 ToolbarItem(placement: .confirmationAction) {
                     Button("Add", role: .none, action: {
-                        let newCamper = Camper(id: UUID(), name: name, isDefaultCamper: true, registrationNumber: registration, trips: [])
-                        viewModel.addNewCamper(newCamper: newCamper)
-                        dismiss()
+                        addNewCamper()
                     })
                 }
                 ToolbarItem(placement: .cancellationAction) {
@@ -39,6 +38,12 @@ struct AddCamperLogView: View {
         }
             .padding()
         }
+    }
+    
+    func addNewCamper() {
+        let newCamper = Camper(id: UUID(), name: name, isDefaultCamper: true, registrationNumber: registration, trips: [])
+        viewModel.addNewCamper(newCamper: newCamper)
+        dismiss()
     }
 }
 

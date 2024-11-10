@@ -16,17 +16,13 @@ struct ChecklistView: View {
     @State private var addingItem: Bool = false
     @State private var newItemName = ""
     @FocusState var editingFocused: Bool
-
+    
     var body: some View {
         NavigationView {
             List {
                 ForEach(checklistViewModel.checklist, id: \..id) { item in
                     HStack {
-                        if item.hasCheck {
-                            Image(systemName: "checkmark")
-                                .foregroundColor(.green)
-                                .padding(.trailing, 8)
-                        }
+                        if item.hasCheck { showCheckMark() }
                         Text(item.name)
                         Spacer()
                     }
@@ -44,12 +40,7 @@ struct ChecklistView: View {
                     TextField("", text: $newItemName)
                         .onAppear(perform: { editingFocused = true })
                         .focused($editingFocused)
-                        .onSubmit {
-                            addingItem = false
-                            if newItemName.isEmpty { return }
-                            checklistViewModel.addItem(newItemName: newItemName)
-                            newItemName = ""
-                        }
+                        .onSubmit { submitNewItem() }
                 } else {
                     HStack {
                         Text("+")
@@ -59,14 +50,36 @@ struct ChecklistView: View {
                     .onTapGesture { addingItem = true }
                 }
             }
+            .toolbar() {
+                ToolbarItem {
+                    Button(action: {
+                        checklistViewModel.removeAllChecks()
+                    } ) { Image(systemName: "trash") }
+                }
+            }
+            .navigationTitle("Departure checklist")
         }
+    }
+    
+    struct showCheckMark: View {
+        var body: some View {
+            Image(systemName: "checkmark")
+                .foregroundColor(.green)
+                .padding(.trailing, 8)
+        }
+    }
+    
+    func submitNewItem() {
+        addingItem = false
+        if newItemName.isEmpty { return }
+        checklistViewModel.addItem(newItemName: newItemName)
+        newItemName = ""
     }
 }
 
 struct ChecklistView_Previews: PreviewProvider {
-    @EnvironmentObject var checklistViewModel: ChecklistViewModel
-    
     static var previews: some View {
         ChecklistView()
+            .environmentObject(ViewModel())
     }
 }
