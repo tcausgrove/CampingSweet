@@ -11,6 +11,9 @@ struct LogBookView: View {
     @EnvironmentObject var viewModel: ViewModel
     @State private var addingLogEntry = false
     @State private var checkForDelete = false
+    @State private var isImporting: Bool = false
+
+    @State private var document: MessageDocument = MessageDocument(message: "Hello, World!")
 
     var body: some View {
         NavigationView {
@@ -36,6 +39,11 @@ struct LogBookView: View {
                             Image(systemName: "plus")
                         }
                     }
+                    ToolbarItem(placement: .topBarLeading) {
+                        Button(action: { isImporting = true }) {
+                            Text("Import CSV")
+                        }
+                    }
                 }
                 .sheet(isPresented: $addingLogEntry, content: {
                     AddLogBookEntryView()
@@ -43,8 +51,23 @@ struct LogBookView: View {
                 })
             .navigationTitle("Log Book")
             }
-        }
+            .fileImporter(
+                isPresented: $isImporting,
+                allowedContentTypes: [.plainText],
+                allowsMultipleSelection: false
+            ) { result in
+                do {
+                    guard let selectedFile: URL = try result.get().first else { return }
+                    guard let message = String(data: try Data(contentsOf: selectedFile), encoding: .utf8) else { return }
 
+                    document.message = message
+                    let newTripData: [LogEntry] = getCSV(inputString: document.message)
+                    viewModel.addImportedTrips(newTrips: newTripData)
+                } catch {
+                    // Handle failure.
+                }
+            }
+        }
     }
 }
 

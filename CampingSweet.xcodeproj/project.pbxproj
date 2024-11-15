@@ -12,6 +12,9 @@
 		78413C042A44EB49006DCF9E /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78413C032A44EB49006DCF9E /* Extensions.swift */; };
 		78413C0A2A6DEE84006DCF9E /* NumbersOnlyViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78413C092A6DEE84006DCF9E /* NumbersOnlyViewModifier.swift */; };
 		78413C0C2A7435D1006DCF9E /* ChecklistView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78413C0B2A7435D1006DCF9E /* ChecklistView.swift */; };
+		785949522CE6CAA200D8060A /* Funcs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785949512CE6CAA200D8060A /* Funcs.swift */; };
+		785949542CE6CADD00D8060A /* MessageDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785949532CE6CADD00D8060A /* MessageDocument.swift */; };
+		785949572CE6CAF600D8060A /* SwiftCSV in Frameworks */ = {isa = PBXBuildFile; productRef = 785949562CE6CAF600D8060A /* SwiftCSV */; };
 		785C13752CD6F8D80071783C /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785C13742CD6F8D80071783C /* Colors.swift */; };
 		7899CB8B2CD527F500395082 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7899CB8A2CD527F500395082 /* CardView.swift */; };
 		78A4151E29E4D3AB005CBEF1 /* CampingSweetApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A4151D29E4D3AB005CBEF1 /* CampingSweetApp.swift */; };
@@ -35,6 +38,8 @@
 		78413C032A44EB49006DCF9E /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		78413C092A6DEE84006DCF9E /* NumbersOnlyViewModifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NumbersOnlyViewModifier.swift; path = Views/NumbersOnlyViewModifier.swift; sourceTree = "<group>"; };
 		78413C0B2A7435D1006DCF9E /* ChecklistView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistView.swift; sourceTree = "<group>"; };
+		785949512CE6CAA200D8060A /* Funcs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Funcs.swift; sourceTree = "<group>"; };
+		785949532CE6CADD00D8060A /* MessageDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageDocument.swift; sourceTree = "<group>"; };
 		785C13742CD6F8D80071783C /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		7899CB8A2CD527F500395082 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		78A4151A29E4D3AB005CBEF1 /* CampingSweet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CampingSweet.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -58,6 +63,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				785949572CE6CAF600D8060A /* SwiftCSV in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -90,6 +96,8 @@
 				78A4152F29E4DA59005CBEF1 /* DataModel.swift */,
 				78A4153C29F0BDC0005CBEF1 /* Enums.swift */,
 				78A4154029F34E3B005CBEF1 /* FileManager-DocumentsDirectory.swift */,
+				785949512CE6CAA200D8060A /* Funcs.swift */,
+				785949532CE6CADD00D8060A /* MessageDocument.swift */,
 				78413C092A6DEE84006DCF9E /* NumbersOnlyViewModifier.swift */,
 				78A4153129E4DCE2005CBEF1 /* ViewModel.swift */,
 				7826F2BF2B93B53B0075B0A3 /* ChecklistViewModel.swift */,
@@ -140,6 +148,7 @@
 			);
 			name = CampingSweet;
 			packageProductDependencies = (
+				785949562CE6CAF600D8060A /* SwiftCSV */,
 			);
 			productName = BoatingSweet;
 			productReference = 78A4151A29E4D3AB005CBEF1 /* CampingSweet.app */;
@@ -170,6 +179,7 @@
 			);
 			mainGroup = 78A4151129E4D3AB005CBEF1;
 			packageReferences = (
+				785949552CE6CAF600D8060A /* XCRemoteSwiftPackageReference "SwiftCSV" */,
 			);
 			productRefGroup = 78A4151B29E4D3AB005CBEF1 /* Products */;
 			projectDirPath = "";
@@ -198,6 +208,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7826F2C02B93B53B0075B0A3 /* ChecklistViewModel.swift in Sources */,
+				785949522CE6CAA200D8060A /* Funcs.swift in Sources */,
 				785C13752CD6F8D80071783C /* Colors.swift in Sources */,
 				78A4153929F08713005CBEF1 /* CamperLogView.swift in Sources */,
 				78413C0A2A6DEE84006DCF9E /* NumbersOnlyViewModifier.swift in Sources */,
@@ -208,6 +219,7 @@
 				78A4153229E4DCE2005CBEF1 /* ViewModel.swift in Sources */,
 				78A4154129F34E3B005CBEF1 /* FileManager-DocumentsDirectory.swift in Sources */,
 				78A4153B29F094EB005CBEF1 /* AddCamperLogView.swift in Sources */,
+				785949542CE6CADD00D8060A /* MessageDocument.swift in Sources */,
 				78413C042A44EB49006DCF9E /* Extensions.swift in Sources */,
 				78A4152029E4D3AB005CBEF1 /* ContentView.swift in Sources */,
 				7826F2C22BBB4D4B0075B0A3 /* CamperCardView.swift in Sources */,
@@ -419,6 +431,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		785949552CE6CAF600D8060A /* XCRemoteSwiftPackageReference "SwiftCSV" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/swiftcsv/SwiftCSV";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.10.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		785949562CE6CAF600D8060A /* SwiftCSV */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 785949552CE6CAF600D8060A /* XCRemoteSwiftPackageReference "SwiftCSV" */;
+			productName = SwiftCSV;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 78A4151229E4D3AB005CBEF1 /* Project object */;
 }

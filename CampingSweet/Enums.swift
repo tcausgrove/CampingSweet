@@ -41,3 +41,10 @@ enum CamperType: String, CaseIterable, Identifiable {
     
     var id: Self { self }
 }
+
+enum DateFormatType: String, CaseIterable, Identifiable, Codable {
+    case monthFirst = "MM/dd/yy"
+    case dayFirst = "dd/MM/yy"
+    
+    var id: Self { self }
+}

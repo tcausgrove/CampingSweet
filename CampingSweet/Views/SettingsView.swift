@@ -17,6 +17,7 @@ struct SettingsView: View {
     @State var defaultUnits: VolumeOptions = .america
     @State var defaultDistance: DistanceOptions = .mi
     @State var timeFormat: ClockHours = .two
+    @State var dateFormat: DateFormatType = .monthFirst
 
     var body: some View {
         NavigationView {
@@ -24,19 +25,7 @@ struct SettingsView: View {
                 Text("User settings")
                     .font(.title2)
                     .padding(.bottom, 30)
-//                HStack {
-//                    Text("Volume")
-//                    Picker("Default Units", selection: $defaultUnits) {
-//                        ForEach(VolumeOptions.allCases) { option in
-//                            Text(option.rawValue)
-//                        }
-//                    }
-//                    .onAppear(perform: {
-//                        defaultUnits = viewModel.settings.chosenUnits
-//                    })
-//                    .pickerStyle(.segmented)
-//                    .padding()
-//                }
+
                 HStack {
                     Text("Distance")
                     Picker("Distance in", selection: $defaultDistance) {
@@ -50,10 +39,25 @@ struct SettingsView: View {
                     .pickerStyle(.segmented)
                     .padding()
                 }
+                
                 HStack {
                     Text("Time")
                     Picker("Time format", selection: $timeFormat) {
                         ForEach(ClockHours.allCases) { option in
+                            Text(option.rawValue)
+                        }
+                    }
+                    .onAppear(perform: {
+                        timeFormat = viewModel.settings.chosenClockHours
+                    })
+                    .pickerStyle(.segmented)
+                    .padding()
+                }
+                
+                HStack {
+                    Text("Date")
+                    Picker("Date format", selection: $dateFormat) {
+                        ForEach(DateFormatType.allCases) { option in
                             Text(option.rawValue)
                         }
                     }

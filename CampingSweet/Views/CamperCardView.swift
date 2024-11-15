@@ -11,21 +11,21 @@ import SwiftUI
 struct CamperCardView: View {
     var camper: Camper
     
-    @State private var showModMenu = false
-    
     @EnvironmentObject var viewModel: ViewModel
     
+    @State private var showModMenu = false
+
     var body: some View {
         CardView(backgroundColor: Color.sheetButtonBackground) {
             VStack(alignment: .leading, spacing: 2) {
-            HStack {
-                Spacer()
-                Image(systemName: "ellipsis")
-                    .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
-                    .onTapGesture(perform: { showModMenu = true })
-                Text("  ")
-            }
-            .sheet(isPresented: $showModMenu, content: { sheetContents })
+                HStack {
+                    Spacer()
+                    Image(systemName: "ellipsis")
+                        .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
+                        .onTapGesture(perform: { showModMenu = true })
+                    Text("  ")
+                }
+                .sheet(isPresented: $showModMenu, content: { sheetContents })
                 HStack {
                     Text("Name: \(camper.name)")
                     if camper.isDefaultCamper {
@@ -41,9 +41,8 @@ struct CamperCardView: View {
                     Text("Distance traveled: \(viewModel.getCamperFormattedDistance(theCamper: camper))")
                 }
                 Text("Number of nights used: \(camper.totalCamperNights)")
-            }        }
-        
-
+            }
+        }
     }
     
     @ViewBuilder var sheetContents: some View {
@@ -60,11 +59,12 @@ struct CamperCardView: View {
             }
             .sheetButtonStyle()
 
-            Button(action: { showModMenu = false }) {
+            Button(action: {
+                showModMenu = false
+            }) {
                 Text("Archive camper")
             }
             .sheetButtonStyle()
-//            .padding(.vertical)
 
             Button(action: { showModMenu = false }) {
                 Text("Cancel")

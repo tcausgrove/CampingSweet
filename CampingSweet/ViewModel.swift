@@ -61,6 +61,20 @@ import Foundation
         }
         save()
     }
+    
+    func addImportedTrips(newTrips: [LogEntry]) {
+        if let theCamper = campers.first(where: { $0 == self.getCurrentCamper() }) {
+            if let index = campers.firstIndex(of: theCamper) {
+                var replacementCamper = campers[index]
+                for trip in newTrips {
+                    replacementCamper.trips.append(trip)
+                }
+                campers[index] = replacementCamper
+            }
+        }
+        save()
+
+    }
   
     func addNewCamper(newCamper: Camper) {
         campers.append(newCamper)

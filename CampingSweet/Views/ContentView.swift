@@ -45,7 +45,7 @@ struct ContentView: View {
                 ToolbarItemGroup(placement: .bottomBar) {
                     //FIXME: The "plus" button doesn't do anything - what should it do?
                     Button(action: { }) {
-                        Image(systemName: "plus")
+                        Image(systemName: "questionmark")
                             .font(.title)
                             .fontWeight(.bold)
                             .padding([.bottom, .leading])
