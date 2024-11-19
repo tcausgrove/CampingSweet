@@ -54,3 +54,20 @@ extension Button {
             .clipShape(RoundedRectangle(cornerRadius: 12))
     }
 }
+
+extension Date {
+    
+    var yesterday: Date {
+       return Calendar.current.date(byAdding: .day, value: -1, to: Date.now)!
+    }
+    
+    var tomorrow: Date {
+       return Calendar.current.date(byAdding: .day, value: 1, to: Date.now)!
+    }
+    
+    func toString(format: String) -> String {   // sample usage: someDate.toString(format: "MMM d, yyyy") yields "Oct 7, 2023"
+        let formatter = DateFormatter()
+        formatter.dateFormat = format
+        return formatter.string(from: self)
+    }
+}

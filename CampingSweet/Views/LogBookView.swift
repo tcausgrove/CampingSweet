@@ -9,11 +9,15 @@ import SwiftUI
 
 struct LogBookView: View {
     @EnvironmentObject var viewModel: ViewModel
+    
     @State private var addingLogEntry = false
+    @State private var editingLogEntry: Bool = false
     @State private var checkForDelete = false
     @State private var isImporting: Bool = false
 
     @State private var document: MessageDocument = MessageDocument(message: "Hello, World!")
+    
+    @State var tripToEdit: LogEntry? = nil
 
     var body: some View {
         NavigationView {
@@ -26,6 +30,10 @@ struct LogBookView: View {
                         ForEach(camper!.trips) { trip in
                             TripCardView(trip: trip)
                                 .environmentObject(viewModel)
+                                .onLongPressGesture(perform: {
+                                    tripToEdit = trip       
+                                    editingLogEntry.toggle()
+                                    })
                         }
                         .onDelete { indexSet in
                             checkForDelete = true
@@ -35,7 +43,9 @@ struct LogBookView: View {
                 }
                 .toolbar() {
                     ToolbarItem {
-                        Button(action: { addingLogEntry.toggle()}) {
+                        Button(action: {
+                            addingLogEntry.toggle()
+                        }) {
                             Image(systemName: "plus")
                         }
                     }
@@ -46,7 +56,12 @@ struct LogBookView: View {
                     }
                 }
                 .sheet(isPresented: $addingLogEntry, content: {
+                    // change "false" to a variable and use the actual trip ID
                     AddLogBookEntryView()
+                        .environmentObject(viewModel)
+                })
+                .sheet(isPresented: $editingLogEntry, content: {
+                    EditLogEntryView(previousLogEntry: $tripToEdit)
                         .environmentObject(viewModel)
                 })
             .navigationTitle("Log Book")
@@ -61,7 +76,8 @@ struct LogBookView: View {
                     guard let message = String(data: try Data(contentsOf: selectedFile), encoding: .utf8) else { return }
 
                     document.message = message
-                    let newTripData: [LogEntry] = getCSV(inputString: document.message)
+                    let newTripData: [LogEntry] = getCSV(inputString: document.message,
+                                                         dateFormat: viewModel.settings.chosenDateFormat)
                     viewModel.addImportedTrips(newTrips: newTripData)
                 } catch {
                     // Handle failure.
@@ -73,7 +89,7 @@ struct LogBookView: View {
 
 struct LogBookView_Previews: PreviewProvider {
     static var previews: some View {
-        LogBookView()
+        LogBookView(tripToEdit: LogEntry.example)
             .environmentObject(ViewModel())
     }
 }

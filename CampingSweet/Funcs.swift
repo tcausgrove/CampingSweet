@@ -8,7 +8,7 @@
 import Foundation
 import SwiftCSV
 
-func convertStringToDates(inputString: String) -> (Date, Date) {
+func convertStringToDates(inputString: String, dateFormat: DateFormatType) -> (Date, Date) {
     var dateOne = Date.now
     var dateTwo = Date.now
     
@@ -17,16 +17,18 @@ func convertStringToDates(inputString: String) -> (Date, Date) {
     var firstDateString = ""
     var secondDateString = ""
     
-    // FIXME: change below to use the app settings
-    var dateSetting: DateFormatType = .monthFirst
+    // Date format depends on app settings
+    let dateSetting: DateFormatType = dateFormat
     
     if newString.contains("-") {
+        // Data includes a date range
         let index = newString.firstIndex(of: "-") ?? newString.endIndex
         firstDateString = String(newString[..<index])
         // The .index(after: index) part increments the index by one to skip the dash
         secondDateString = String(newString[newString.index(after: index)..<newString.endIndex])
     } else {
         firstDateString = newString
+        //FIXME: need to find a way to make secondDateString increment by one day
         secondDateString = firstDateString
     }
     
@@ -37,14 +39,16 @@ func convertStringToDates(inputString: String) -> (Date, Date) {
     dateFormatter.dateFormat = dateSetting.rawValue
     
     // Convert String to Date
-    dateOne = dateFormatter.date(from: firstDateString) ?? Date.distantPast // possibly nil
-    dateTwo = dateFormatter.date(from: secondDateString) ?? Date.distantFuture // possibly nil
+    let today = Date.now
+    let yesterday = today.yesterday
+    dateOne = dateFormatter.date(from: firstDateString) ?? yesterday // possibly nil
+    dateTwo = dateFormatter.date(from: secondDateString) ?? today // possibly nil
     
     
     return (dateOne, dateTwo)
 }
 
-func getCSV(inputString: String) -> [LogEntry] {
+func getCSV(inputString: String, dateFormat: DateFormatType) -> [LogEntry] {
     
     var tripDataArray: [LogEntry] = []
     
@@ -55,14 +59,12 @@ func getCSV(inputString: String) -> [LogEntry] {
         //            let csv2: CSV = try EnumeratedCSV(string: theString)
         
         try csv.enumerateAsDict({ dict in
-            let theDates = convertStringToDates(inputString: dict["Date"] ?? "")
+            let theDates = convertStringToDates(inputString: dict["Date"] ?? "", dateFormat: dateFormat)
             let theRowDistance: Double = Double(dict["Miles driven"] ?? "") ?? 0.0
             let rowData = LogEntry(id: UUID(),
                                    title: dict["Location"] ?? "Unknown",
                                    startDate: theDates.0, endDate: theDates.1,
                                    distance: theRowDistance)
-//            let rowData = tripData(arrivalDate: theRowArriveDate, departDate: theRowDepartDate, locate: dict["Location"] ?? "Unknown", distance: theRowDistance)
-//                userData.append(rowData)
             tripDataArray.append(rowData)
         })
         return tripDataArray

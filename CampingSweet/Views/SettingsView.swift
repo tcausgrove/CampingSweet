@@ -73,9 +73,9 @@ struct SettingsView: View {
                     ToolbarItemGroup(placement: .navigation) {
                         Button(role: .cancel, action: {
                             viewModel.changeSettings(
-                                newChosenUnits: defaultUnits,
                                 newChosenDistance: defaultDistance,
-                                newClockHours: timeFormat)
+                                newClockHours: timeFormat,
+                                newDateFormat: dateFormat)
                             dismiss() }) {
                             Text("Done")
                         }

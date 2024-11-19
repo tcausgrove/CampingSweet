@@ -62,6 +62,23 @@ import Foundation
         save()
     }
     
+    func editTrip(tripID: UUID, title: String, startDate: Date, endDate: Date, distance: String) {
+        let distanceDouble = Double(distance) ?? 0.0
+        let tripInMiles: Measurement<UnitLength> = Measurement(value: distanceDouble, unit: UnitLength.meters)
+        
+        if let theCamper = campers.first(where: { $0 == self.getCurrentCamper() }) {
+            let theCamperIndex = campers.firstIndex(of: theCamper)
+            if let tripIndex = theCamper.trips.firstIndex(where: { $0.id == tripID }) {
+                campers[theCamperIndex!].trips[tripIndex].title = title
+                campers[theCamperIndex!].trips[tripIndex].startDate = startDate
+                campers[theCamperIndex!].trips[tripIndex].endDate = endDate
+                campers[theCamperIndex!].trips[tripIndex].distance = tripInMiles.value
+            } else {
+                // UUID didn't match a trip - do something about it
+            }
+        }
+    }
+    
     func addImportedTrips(newTrips: [LogEntry]) {
         if let theCamper = campers.first(where: { $0 == self.getCurrentCamper() }) {
             if let index = campers.firstIndex(of: theCamper) {
@@ -159,10 +176,10 @@ import Foundation
         }
     }
     
-    func changeSettings(newChosenUnits: VolumeOptions, newChosenDistance: DistanceOptions, newClockHours: ClockHours) {
-        self.settings.chosenUnits = newChosenUnits
+    func changeSettings(newChosenDistance: DistanceOptions, newClockHours: ClockHours, newDateFormat: DateFormatType) {
         self.settings.chosenDistance = newChosenDistance
         self.settings.chosenClockHours = newClockHours
+        self.settings.chosenDateFormat = newDateFormat
         
         save()
     }

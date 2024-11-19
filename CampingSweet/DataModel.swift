@@ -9,7 +9,6 @@ import Foundation
 
 struct LogEntry: Identifiable, Hashable, Codable {
     var id: UUID
-//    var camperID: UUID
     var title: String = ""
     var startDate: Date = Date()
     var endDate: Date = Date()
@@ -53,11 +52,11 @@ struct Camper: Identifiable, Hashable, Codable {
 }
 
 struct Settings: Codable {
-    var chosenUnits: VolumeOptions
     var chosenDistance: DistanceOptions
     var chosenClockHours: ClockHours
+    var chosenDateFormat: DateFormatType
     
-    static let example = Settings(chosenUnits: .america, chosenDistance: .mi, chosenClockHours: .two)
+    static let example = Settings(chosenDistance: .mi, chosenClockHours: .two, chosenDateFormat: .monthFirst)
 }
 
 extension Date {
