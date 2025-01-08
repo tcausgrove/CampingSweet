@@ -60,6 +60,7 @@ struct CamperCardView: View {
             .sheetButtonStyle()
 
             Button(action: {
+                viewModel.archiveCamper(camperToArchive: camper)
                 showModMenu = false
             }) {
                 Text("Archive camper")

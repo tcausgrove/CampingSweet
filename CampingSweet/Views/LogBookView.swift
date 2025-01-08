@@ -108,6 +108,6 @@ struct TripCardView: View {
         let tripDistance = viewModel.formatDistanceBySetting(distance: trip.distance ?? 0.0)
         Text("Distance:  " + tripDistance )
         }
-        .padding()
+        .padding(.top, 12)
     }
 }

@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct AddCamperLogView: View {
+struct AddCamperView: View {
     @Environment(\.dismiss) var dismiss
     
     @State private var name: String = ""
@@ -41,7 +41,7 @@ struct AddCamperLogView: View {
     }
     
     func addNewCamper() {
-        let newCamper = Camper(id: UUID(), name: name, isDefaultCamper: true, registrationNumber: registration, trips: [])
+        let newCamper = Camper(id: UUID(), name: name, isDefaultCamper: true, isArchived: false, registrationNumber: registration, trips: [])
         viewModel.addNewCamper(newCamper: newCamper)
         dismiss()
     }
@@ -49,7 +49,7 @@ struct AddCamperLogView: View {
 
 struct AddCamperLogView_Previews: PreviewProvider {
     static var previews: some View {
-        AddCamperLogView()
+        AddCamperView()
             .environmentObject(ViewModel())
     }
 }

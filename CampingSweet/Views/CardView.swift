@@ -11,8 +11,6 @@ import SwiftUI
 struct CardView<Content: View>: View {
     let content: Content
     let cornerRadius: CGFloat
-    let backgroundColor: Color
-    let shadowRadius: CGFloat
     let padding: CGFloat
     
     init(cornerRadius: CGFloat = 20,
@@ -21,21 +19,21 @@ struct CardView<Content: View>: View {
          padding: CGFloat = 20,
          @ViewBuilder content: () -> Content) {
         self.cornerRadius = cornerRadius
-        self.backgroundColor = backgroundColor
-        self.shadowRadius = shadowRadius
         self.padding = padding
         self.content = content()
     }
-
+    
     var body: some View {
-            ZStack {
-                RoundedRectangle(cornerRadius: cornerRadius)
-                    .fill(backgroundColor)
-                    .shadow(radius: shadowRadius)
-                
-                content
-                    .padding(padding)
-            }
-            .frame(width: 300, height: 160)
+        ViewThatFits(in: .vertical) {
+            content
+                .padding(padding)
+            ScrollView { content }
         }
+        .frame(minHeight: 180)
+        .background {
+            RoundedRectangle(cornerRadius: cornerRadius)
+                .fill(.opacity(0.18))
+        }
+        .padding(.horizontal, 12)
+    }
 }

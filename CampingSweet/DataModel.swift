@@ -27,6 +27,7 @@ struct Camper: Identifiable, Hashable, Codable {
     var id: UUID
     var name: String
     var isDefaultCamper: Bool
+    var isArchived: Bool
     var registrationNumber: String
     var trips: [LogEntry]
     
@@ -48,7 +49,7 @@ struct Camper: Identifiable, Hashable, Codable {
         return tempNights
     }
     
-    static let example = Camper(id: UUID(), name: "nano", isDefaultCamper: false, registrationNumber: "TX12345", trips: [LogEntry.example])
+    static let example = Camper(id: UUID(), name: "nano", isDefaultCamper: false, isArchived: false, registrationNumber: "TX12345", trips: [LogEntry.example])
 }
 
 struct Settings: Codable {

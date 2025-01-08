@@ -155,9 +155,26 @@ import Foundation
             if let index = campers.firstIndex(of: theCamper) {
                 self.campers.remove(at: index)
             }
+            if !currentCamperExists() {
+                setCurrentCamperToFirst()
+            }
             save()
         }
     }
+    
+    func archiveCamper(camperToArchive: Camper) {
+        if let replacementCamperIndex = campers.firstIndex(of: camperToArchive) {
+            var replacementCamper = campers[replacementCamperIndex]
+            replacementCamper.isArchived = true
+            replacementCamper.isDefaultCamper = false
+            campers[replacementCamperIndex] = replacementCamper
+            print("Camper archived")
+        }
+        if !currentCamperExists() {
+            setCurrentCamperToFirst()
+        }
+        save()
+   }
 
     func getDefaultNumberOfNights(trip: LogEntry) -> Int {
         return Int(trip.endDate - trip.startDate)
@@ -224,6 +241,35 @@ import Foundation
         let unit = unitFormatter.formatter.string(from: formattedDistance.unit)
         
         return unit
+    }
+    
+    func hasArchivedCampers() -> Bool {
+        var returnValue = false
+        for camper in campers {
+            if camper.isArchived { returnValue = true }
+        }
+        return returnValue
+    }
+    
+    func setCurrentCamperToFirst() {
+        // Set all campers to not the current one
+        for camper in campers {
+            if let index = campers.firstIndex(of: camper) {
+                var replacementCamper = camper
+                replacementCamper.isDefaultCamper = false
+                campers[index] = replacementCamper
+            }
+            // Set camper with index = 0 to the current one
+            if campers.count != 0 {
+                var replacementCamper = campers[0]
+                replacementCamper.isDefaultCamper = true
+                campers[0] = replacementCamper
+                print("Setting default camper")
+            } else {
+                print("Why am I here?")
+                // There are no campers; the camper log page won't be available
+            }
+        }
     }
 }
 

@@ -28,7 +28,7 @@
 		78A4153229E4DCE2005CBEF1 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A4153129E4DCE2005CBEF1 /* ViewModel.swift */; };
 		78A4153429E778F8005CBEF1 /* AddLogBookEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A4153329E778F8005CBEF1 /* AddLogBookEntryView.swift */; };
 		78A4153929F08713005CBEF1 /* CamperLogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A4153829F08713005CBEF1 /* CamperLogView.swift */; };
-		78A4153B29F094EB005CBEF1 /* AddCamperLogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A4153A29F094EB005CBEF1 /* AddCamperLogView.swift */; };
+		78A4153B29F094EB005CBEF1 /* AddCamperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A4153A29F094EB005CBEF1 /* AddCamperView.swift */; };
 		78A4153D29F0BDC0005CBEF1 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A4153C29F0BDC0005CBEF1 /* Enums.swift */; };
 		78A4153F29F1E414005CBEF1 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A4153E29F1E414005CBEF1 /* SettingsView.swift */; };
 		78A4154129F34E3B005CBEF1 /* FileManager-DocumentsDirectory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A4154029F34E3B005CBEF1 /* FileManager-DocumentsDirectory.swift */; };
@@ -56,7 +56,7 @@
 		78A4153129E4DCE2005CBEF1 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		78A4153329E778F8005CBEF1 /* AddLogBookEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLogBookEntryView.swift; sourceTree = "<group>"; };
 		78A4153829F08713005CBEF1 /* CamperLogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CamperLogView.swift; sourceTree = "<group>"; };
-		78A4153A29F094EB005CBEF1 /* AddCamperLogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCamperLogView.swift; sourceTree = "<group>"; };
+		78A4153A29F094EB005CBEF1 /* AddCamperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCamperView.swift; sourceTree = "<group>"; };
 		78A4153C29F0BDC0005CBEF1 /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		78A4153E29F1E414005CBEF1 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		78A4154029F34E3B005CBEF1 /* FileManager-DocumentsDirectory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FileManager-DocumentsDirectory.swift"; sourceTree = "<group>"; };
@@ -122,7 +122,7 @@
 		78A4153529F021D4005CBEF1 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				78A4153A29F094EB005CBEF1 /* AddCamperLogView.swift */,
+				78A4153A29F094EB005CBEF1 /* AddCamperView.swift */,
 				78A4153329E778F8005CBEF1 /* AddLogBookEntryView.swift */,
 				785949822CEC13C300D8060A /* EditLogEntryView.swift */,
 				785949802CEC0E5800D8060A /* TripDataEntryView.swift */,
@@ -226,7 +226,7 @@
 				78A4153229E4DCE2005CBEF1 /* ViewModel.swift in Sources */,
 				78A4154129F34E3B005CBEF1 /* FileManager-DocumentsDirectory.swift in Sources */,
 				785949832CEC13C300D8060A /* EditLogEntryView.swift in Sources */,
-				78A4153B29F094EB005CBEF1 /* AddCamperLogView.swift in Sources */,
+				78A4153B29F094EB005CBEF1 /* AddCamperView.swift in Sources */,
 				785949542CE6CADD00D8060A /* MessageDocument.swift in Sources */,
 				78413C042A44EB49006DCF9E /* Extensions.swift in Sources */,
 				78A4152029E4D3AB005CBEF1 /* ContentView.swift in Sources */,
@@ -365,7 +365,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"CampingSweet/Preview Content\"";
 				DEVELOPMENT_TEAM = D4LH7YBWNU;
 				ENABLE_PREVIEWS = YES;
@@ -379,7 +379,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.example.CampingSweet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -394,7 +394,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"CampingSweet/Preview Content\"";
 				DEVELOPMENT_TEAM = D4LH7YBWNU;
 				ENABLE_PREVIEWS = YES;
@@ -408,7 +408,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.example.CampingSweet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
