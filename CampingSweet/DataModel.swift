@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import MapKit
 
 struct LogEntry: Identifiable, Hashable, Codable {
     var id: UUID
@@ -14,13 +15,28 @@ struct LogEntry: Identifiable, Hashable, Codable {
     var endDate: Date = Date()
     // The stored distance will be in miles, using conversions to and from for display
     var distance: Double?
+    var latitude: Double?
+    var longitude: Double?
     
     var numberOfNights: Int {
         let number = ((endDate - startDate) / 24 / 3600).rounded()
         return Int(number)
     }
     
-    static let example = LogEntry(id: UUID(), title: "Cimarron trip", startDate: Date.now, endDate: Date.now, distance: 123.4)
+    static let example = LogEntry(id: UUID(),
+                                  title: "Cimarron trip",
+                                  startDate: Date.now,
+                                  endDate: Date.now,
+                                  distance: 123.4,
+                                  latitude: 36.5460278,
+                                  longitude: -105.133778)
+    
+    var coordinate: CLLocationCoordinate2D? {
+        if (latitude != nil) && (longitude != nil) {
+            return CLLocationCoordinate2D(latitude: latitude!, longitude: longitude!)
+        }
+        else { return nil }
+    }
 }
 
 struct Camper: Identifiable, Hashable, Codable {

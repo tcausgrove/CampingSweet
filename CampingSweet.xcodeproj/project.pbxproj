@@ -18,6 +18,7 @@
 		785949812CEC0E5800D8060A /* TripDataEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785949802CEC0E5800D8060A /* TripDataEntryView.swift */; };
 		785949832CEC13C300D8060A /* EditLogEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785949822CEC13C300D8060A /* EditLogEntryView.swift */; };
 		785C13752CD6F8D80071783C /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785C13742CD6F8D80071783C /* Colors.swift */; };
+		78820E582D2F506000AA6807 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 78820E572D2F506000AA6807 /* Localizable.xcstrings */; };
 		7899CB8B2CD527F500395082 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7899CB8A2CD527F500395082 /* CardView.swift */; };
 		78A4151E29E4D3AB005CBEF1 /* CampingSweetApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A4151D29E4D3AB005CBEF1 /* CampingSweetApp.swift */; };
 		78A4152029E4D3AB005CBEF1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A4151F29E4D3AB005CBEF1 /* ContentView.swift */; };
@@ -45,6 +46,7 @@
 		785949802CEC0E5800D8060A /* TripDataEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripDataEntryView.swift; sourceTree = "<group>"; };
 		785949822CEC13C300D8060A /* EditLogEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditLogEntryView.swift; sourceTree = "<group>"; };
 		785C13742CD6F8D80071783C /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		78820E572D2F506000AA6807 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		7899CB8A2CD527F500395082 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		78A4151A29E4D3AB005CBEF1 /* CampingSweet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CampingSweet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		78A4151D29E4D3AB005CBEF1 /* CampingSweetApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampingSweetApp.swift; sourceTree = "<group>"; };
@@ -106,6 +108,7 @@
 				78A4153129E4DCE2005CBEF1 /* ViewModel.swift */,
 				7826F2BF2B93B53B0075B0A3 /* ChecklistViewModel.swift */,
 				78A4152129E4D3AC005CBEF1 /* Assets.xcassets */,
+				78820E572D2F506000AA6807 /* Localizable.xcstrings */,
 				78A4152329E4D3AC005CBEF1 /* Preview Content */,
 			);
 			path = CampingSweet;
@@ -182,6 +185,8 @@
 			knownRegions = (
 				en,
 				Base,
+				de,
+				"es-419",
 			);
 			mainGroup = 78A4151129E4D3AB005CBEF1;
 			packageReferences = (
@@ -203,6 +208,7 @@
 			files = (
 				78A4152529E4D3AC005CBEF1 /* Preview Assets.xcassets in Resources */,
 				78A4152229E4D3AC005CBEF1 /* Assets.xcassets in Resources */,
+				78820E582D2F506000AA6807 /* Localizable.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -299,6 +305,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -354,6 +361,7 @@
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -364,8 +372,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_ASSET_PATHS = "\"CampingSweet/Preview Content\"";
 				DEVELOPMENT_TEAM = D4LH7YBWNU;
 				ENABLE_PREVIEWS = YES;
@@ -382,6 +391,7 @@
 				MARKETING_VERSION = 0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.example.CampingSweet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -393,8 +403,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_ASSET_PATHS = "\"CampingSweet/Preview Content\"";
 				DEVELOPMENT_TEAM = D4LH7YBWNU;
 				ENABLE_PREVIEWS = YES;
@@ -411,6 +422,7 @@
 				MARKETING_VERSION = 0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.example.CampingSweet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

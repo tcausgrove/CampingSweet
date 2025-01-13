@@ -18,7 +18,9 @@ struct EditLogEntryView: View {
     @State private var start: Date = Date()
     @State private var end: Date = Date()
     @State private var distance: String = ""
-    
+    @State private var latitude: String = ""
+    @State private var longitude: String = ""
+
     var body: some View {
         NavigationView {
              VStack {
@@ -26,7 +28,12 @@ struct EditLogEntryView: View {
                      .padding(.bottom, 30)
                      .font(.title)
                  
-                TripDataEntryView(title: $title, start: $start, end: $end, distance: $distance)
+                TripDataEntryView(title: $title,
+                                  start: $start,
+                                  end: $end,
+                                  distance: $distance,
+                                  latitude: $latitude,
+                                  longitude: $longitude)
             }
             .padding()
             .toolbar() {
@@ -36,7 +43,7 @@ struct EditLogEntryView: View {
                 ToolbarItem(placement: .confirmationAction) {
                     Button("Save Changes", role: .none, action: {
                         let theTripID = previousLogEntry?.id ?? UUID()
-                        viewModel.editTrip(tripID: theTripID, title: title, startDate: start, endDate: end, distance: distance)
+                        viewModel.editTrip(tripID: theTripID, title: title, startDate: start, endDate: end, distance: distance, latitude: latitude, longitude: longitude)
                         dismiss()
                     })
                 }
@@ -52,8 +59,12 @@ struct EditLogEntryView: View {
             title = previousLogEntry!.title
             start = previousLogEntry!.startDate
             end = previousLogEntry!.endDate
-            let newDistance: Double =  previousLogEntry!.distance!
+            let newDistance: Double = previousLogEntry!.distance!
             distance = String(newDistance)
+            let newLatitude: Double? = previousLogEntry!.latitude
+            let newLongitude: Double? = previousLogEntry!.longitude
+            if newLatitude != nil { latitude = String(newLatitude!) }
+            if newLongitude != nil { longitude = String(newLongitude!) }
         }
     }
 }

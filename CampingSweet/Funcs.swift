@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftCSV
+import CoreLocation
 
 func convertStringToDates(inputString: String, dateFormat: DateFormatType) -> (Date, Date) {
     var dateOne = Date.now
@@ -15,7 +16,7 @@ func convertStringToDates(inputString: String, dateFormat: DateFormatType) -> (D
     // There may or may not be spaces before and after a dash between dates; just delete them
     let newString = inputString.replacingOccurrences(of: " ", with: "")
     var firstDateString = ""
-    var secondDateString = ""
+    var secondDateString: String? = nil
     
     // Date format depends on app settings
     let dateSetting: DateFormatType = dateFormat
@@ -28,8 +29,7 @@ func convertStringToDates(inputString: String, dateFormat: DateFormatType) -> (D
         secondDateString = String(newString[newString.index(after: index)..<newString.endIndex])
     } else {
         firstDateString = newString
-        //FIXME: need to find a way to make secondDateString increment by one day
-        secondDateString = firstDateString
+        //Keep second date string at nil
     }
     
     // Create Date Formatter
@@ -42,8 +42,12 @@ func convertStringToDates(inputString: String, dateFormat: DateFormatType) -> (D
     let today = Date.now
     let yesterday = today.yesterday
     dateOne = dateFormatter.date(from: firstDateString) ?? yesterday // possibly nil
-    dateTwo = dateFormatter.date(from: secondDateString) ?? today // possibly nil
     
+    if secondDateString != nil {
+        dateTwo = dateFormatter.date(from: secondDateString!) ?? today // possibly nil
+    } else {
+        dateTwo = dateOne.advanced(by: 86400)  // Number of seconds in one day
+    }
     
     return (dateOne, dateTwo)
 }
@@ -58,13 +62,24 @@ func getCSV(inputString: String, dateFormat: DateFormatType) -> [LogEntry] {
         //             let csv: CSV = try CSV<Named>(url: URL(fileURLWithPath: "CamperLog.csv"))
         //            let csv2: CSV = try EnumeratedCSV(string: theString)
         
+        var theLocation: CLLocationCoordinate2D? = nil
+        
         try csv.enumerateAsDict({ dict in
             let theDates = convertStringToDates(inputString: dict["Date"] ?? "", dateFormat: dateFormat)
+            let theLocationString: String = dict["Coordinates"] ?? ""
+            if theLocationString != "" {
+                // FIXME: will need to take into account varying formats here
+                theLocation = CLLocationCoordinate2D(dmsString: theLocationString)
+                
+            }
             let theRowDistance: Double = Double(dict["Miles driven"] ?? "") ?? 0.0
             let rowData = LogEntry(id: UUID(),
                                    title: dict["Location"] ?? "Unknown",
-                                   startDate: theDates.0, endDate: theDates.1,
-                                   distance: theRowDistance)
+                                   startDate: theDates.0,
+                                   endDate: theDates.1,
+                                   distance: theRowDistance,
+                                   latitude: theLocation?.latitude,
+                                   longitude: theLocation?.longitude)
             tripDataArray.append(rowData)
         })
         return tripDataArray

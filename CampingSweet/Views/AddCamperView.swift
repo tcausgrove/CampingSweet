@@ -17,11 +17,11 @@ struct AddCamperView: View {
     
     var body: some View {
         NavigationView {
-            VStack {
-                Text("Add a camper")
+            Form {
+                Text("Add a camper", tableName: "Localizable")
                     .padding()
-                    .font(.title)
-                TextField("Name", text: $name)
+                    .font(.title2)
+                TextField(text: $name, prompt: Text("Name", tableName: "Localizable")) { }
                     .padding()
                 TextField("Registration", text: $registration)
                     .padding(/*@START_MENU_TOKEN@*/[.leading, .bottom]/*@END_MENU_TOKEN@*/)

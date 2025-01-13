@@ -43,6 +43,7 @@ struct ChecklistView: View {
                         .onSubmit { submitNewItem() }
                 } else {
                     HStack {
+                        // FIXME: Change to button
                         Text("+")
                         Spacer()
                     }

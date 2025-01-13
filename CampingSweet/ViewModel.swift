@@ -50,7 +50,13 @@ import Foundation
         case .nm:
             tripInMiles = Measurement(value: distanceDouble, unit: UnitLength.nauticalMiles).converted(to: UnitLength.miles)
         }
-        let newTrip = LogEntry(id: tripID, title: title, startDate: startDate, endDate: endDate, distance: tripInMiles.value)
+        let newTrip = LogEntry(id: tripID,
+                               title: title,
+                               startDate: startDate,
+                               endDate: endDate,
+                               distance: tripInMiles.value,
+                               latitude: nil,
+                               longitude: nil )
 
         if let theCamper = campers.first(where: { $0 == self.getCurrentCamper() }) {
             if let index = campers.firstIndex(of: theCamper) {
@@ -62,19 +68,22 @@ import Foundation
         save()
     }
     
-    func editTrip(tripID: UUID, title: String, startDate: Date, endDate: Date, distance: String) {
+    func editTrip(tripID: UUID, title: String, startDate: Date, endDate: Date, distance: String, latitude: String?, longitude: String?) {
         let distanceDouble = Double(distance) ?? 0.0
         let tripInMiles: Measurement<UnitLength> = Measurement(value: distanceDouble, unit: UnitLength.meters)
         
         if let theCamper = campers.first(where: { $0 == self.getCurrentCamper() }) {
             let theCamperIndex = campers.firstIndex(of: theCamper)
+            //FIXME: There must be a better way to do the stuff below
             if let tripIndex = theCamper.trips.firstIndex(where: { $0.id == tripID }) {
                 campers[theCamperIndex!].trips[tripIndex].title = title
                 campers[theCamperIndex!].trips[tripIndex].startDate = startDate
                 campers[theCamperIndex!].trips[tripIndex].endDate = endDate
                 campers[theCamperIndex!].trips[tripIndex].distance = tripInMiles.value
+                if latitude != nil { campers[theCamperIndex!].trips[tripIndex].latitude = Double(latitude!) }
+                if longitude != nil { campers[theCamperIndex!].trips[tripIndex].longitude = Double(longitude!) }
             } else {
-                // UUID didn't match a trip - do something about it
+                //FIXME: UUID didn't match a trip - do something about it
             }
         }
     }
@@ -175,11 +184,12 @@ import Foundation
         }
         save()
    }
-
-    func getDefaultNumberOfNights(trip: LogEntry) -> Int {
-        return Int(trip.endDate - trip.startDate)
-    }
     
+    func setDisplayedNightsText(start: Date, end: Date) -> String {
+        let numberOfNigts = Int( ((end - start) / 24 / 3600).rounded() )
+        return ("Number of nights: \(numberOfNigts)")
+    }
+
     func deleteTrips(indexSet: IndexSet) {
         if let theCamper = campers.first(where: { $0 == self.getCurrentCamper() }) {
             if let index = campers.firstIndex(of: theCamper) {

@@ -16,15 +16,22 @@ struct AddLogBookEntryView: View {
     @State private var start: Date = Date()
     @State private var end: Date = Date()
     @State private var distance: String = ""
+    @State private var latitude: String = ""
+    @State private var longitude: String = ""
 
     var body: some View {
         NavigationView {
             VStack {
                 Text( "New Log Book Entry" )
-                    .padding(.bottom, 30)
-                    .font(.title)
+                    .padding(.bottom, 12)
+                    .font(.title2)
                 
-                TripDataEntryView(title: $title, start: $start, end: $end, distance: $distance)
+                TripDataEntryView(title: $title,
+                                  start: $start,
+                                  end: $end,
+                                  distance: $distance,
+                                  latitude: $latitude,
+                                  longitude: $longitude)
             }
             .padding()
             .toolbar() {

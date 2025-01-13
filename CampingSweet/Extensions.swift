@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftUI
+import MapKit
 
 extension View {
     func numbersOnly(_ text: Binding<String>, includeDecimal: Bool = false) -> some View {
@@ -69,5 +70,51 @@ extension Date {
         let formatter = DateFormatter()
         formatter.dateFormat = format
         return formatter.string(from: self)
+    }
+}
+
+
+extension Double {
+    func decimalPlaces(toPlaces places: Int) -> Double {
+        let divisor = pow(10.0, Double(places))
+        return ( self * divisor).rounded() / divisor
+    }
+}
+
+
+extension CLLocationCoordinate2D {
+    init(dmsString: String) {
+        let scanner = Scanner(string: dmsString)
+        scanner.charactersToBeSkipped = CharacterSet(charactersIn: "°'\" ")
+        var decimalLatitude: Double = 0.0
+        var decimalLongitude: Double = 0.0
+        
+        
+        while
+            let latDegrees = scanner.scanUpToString("°"),
+            let latMinutes = scanner.scanUpToString("'"),
+            let latSeconds = scanner.scanUpToString("\""),
+            let latDirection = scanner.scanUpToString(" "),
+            let lonDegrees = scanner.scanUpToString("°"),
+            let lonMinutes = scanner.scanUpToString("'"),
+            let lonSeconds = scanner.scanUpToString("\""),
+            let lonDirection = scanner.scanUpToString("\n")
+        {
+            decimalLatitude = Double(latDegrees) ?? 0.0
+            decimalLatitude += (Double(latMinutes) ?? 0.0) / 60.0
+            decimalLatitude += (Double(latSeconds) ?? 0.0) / 3600.0
+            
+            decimalLongitude = Double(lonDegrees) ?? 0.0
+            decimalLongitude += (Double(lonMinutes) ?? 0.0) / 60.0
+            decimalLongitude += (Double(lonSeconds) ?? 0.0) / 3600.0
+            
+            if latDirection == "S" { decimalLatitude = decimalLatitude * -1.0}
+            if lonDirection == "W" { decimalLongitude = decimalLongitude * -1.0}
+            
+            decimalLatitude = decimalLatitude.decimalPlaces(toPlaces: 6)
+            decimalLongitude = decimalLongitude.decimalPlaces(toPlaces: 6)
+        }
+        
+        self.init(latitude: decimalLatitude, longitude: decimalLongitude)
     }
 }

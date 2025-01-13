@@ -101,12 +101,12 @@ struct TripCardView: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-        Text("Title:  \(trip.title)")
-        Text("When:  \(trip.startDate.formatted())")
-        let numberOfNightsText = "Number of nights:  " + String(trip.numberOfNights)
-        Text(numberOfNightsText)
-        let tripDistance = viewModel.formatDistanceBySetting(distance: trip.distance ?? 0.0)
-        Text("Distance:  " + tripDistance )
+            Text("Title:  \(trip.title)")
+            Text("When:  \(trip.startDate.formatted(date: .long, time: .omitted))")
+            let numberOfNightsText = "Number of nights:  " + String(trip.numberOfNights)
+            Text(numberOfNightsText)
+            let tripDistance = viewModel.formatDistanceBySetting(distance: trip.distance ?? 0.0)
+            Text("Distance:  " + tripDistance )
         }
         .padding(.top, 12)
     }

@@ -1,0 +1,387 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "" : {
+      "shouldTranslate" : false
+    },
+    "  " : {
+
+    },
+    "+" : {
+
+    },
+    "Add" : {
+      "comment" : "Top right button to add new camper; top right button to add trip"
+    },
+    "Add a camper" : {
+      "comment" : "Main title above data entry form",
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Añadir una autocaravana"
+          }
+        }
+      }
+    },
+    "Archive camper" : {
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Archivar la autocaravana"
+          }
+        }
+      }
+    },
+    "Archived campers" : {
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Autocaravanas archivadas"
+          }
+        }
+      }
+    },
+    "Arrival date" : {
+      "comment" : "Part of new trip entry form",
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fecha de llegada"
+          }
+        }
+      }
+    },
+    "Campers" : {
+      "comment" : "Option on the main page",
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Autocaravanas"
+          }
+        }
+      }
+    },
+    "Cancel" : {
+      "comment" : "Multi-purpose cancel option",
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cancelar"
+          }
+        }
+      }
+    },
+    "Date" : {
+      "comment" : "Label for segmented control in settings",
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fecha"
+          }
+        }
+      }
+    },
+    "Date format" : {
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Formato de fecha"
+          }
+        }
+      }
+    },
+    "Dates" : {
+
+    },
+    "Delete camper" : {
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eliminar la autocaravana"
+          }
+        }
+      }
+    },
+    "Departure checklist" : {
+      "comment" : "Option on the main page; title of checklist page",
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lista para salida"
+          }
+        }
+      }
+    },
+    "Departure date" : {
+      "comment" : "Part of new trip entry form",
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fecha de salida"
+          }
+        }
+      }
+    },
+    "Destination" : {
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Destino"
+          }
+        }
+      }
+    },
+    "Distance" : {
+      "comment" : "Label for segmented control in settings",
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Distancia"
+          }
+        }
+      }
+    },
+    "Distance in" : {
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Distancia en"
+          }
+        }
+      }
+    },
+    "Distance traveled: %@" : {
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Distancia recorrida: %@"
+          }
+        }
+      }
+    },
+    "Done" : {
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hecho"
+          }
+        }
+      }
+    },
+    "Edit Log Book Entry" : {
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Editar entrada del libro de registro"
+          }
+        }
+      }
+    },
+    "For camper %@" : {
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Para autocaravana %@"
+          }
+        }
+      }
+    },
+    "Geolocation" : {
+
+    },
+    "Import CSV" : {
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Importar CSV"
+          }
+        }
+      }
+    },
+    "Latitude" : {
+
+    },
+    "Log Book" : {
+      "comment" : "Option on the main page",
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Libro de registro"
+          }
+        }
+      }
+    },
+    "Longitude" : {
+
+    },
+    "My Campers" : {
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mis Autocaravanas"
+          }
+        }
+      }
+    },
+    "Name" : {
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nombre"
+          }
+        }
+      }
+    },
+    "Name: %@" : {
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nombre: %@"
+          }
+        }
+      }
+    },
+    "New Log Book Entry" : {
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nueva entrada en el libro de registro"
+          }
+        }
+      }
+    },
+    "Number of nights used: %lld" : {
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Número de noches utilizadas: %lld"
+          }
+        }
+      }
+    },
+    "Place" : {
+
+    },
+    "Registration" : {
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Registro"
+          }
+        }
+      }
+    },
+    "Registration: %@" : {
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Registro: %@"
+          }
+        }
+      }
+    },
+    "Save Changes" : {
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Guardar cambios"
+          }
+        }
+      }
+    },
+    "Selected" : {
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Seleccionada"
+          }
+        }
+      }
+    },
+    "Set to current location" : {
+
+    },
+    "Time" : {
+      "comment" : "Label for segmented control in settings",
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tiempo"
+          }
+        }
+      }
+    },
+    "Time format" : {
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fermato de hora"
+          }
+        }
+      }
+    },
+    "Title:  %@" : {
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Titulo: %@"
+          }
+        }
+      }
+    },
+    "User settings" : {
+      "comment" : "Main title of settings view",
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Configuración de usuario"
+          }
+        }
+      }
+    },
+    "When:  %@" : {
+      "localizations" : {
+        "es-419" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cuando: %@"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}
