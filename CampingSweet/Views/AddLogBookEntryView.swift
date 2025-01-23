@@ -40,7 +40,7 @@ struct AddLogBookEntryView: View {
                 }
                 ToolbarItem(placement: .confirmationAction) {
                     Button("Add", role: .none, action: {
-                        viewModel.addTrip(title: title, startDate: start, endDate: end, distance: distance)
+                        viewModel.addTrip(title: title, startDate: start, endDate: end, distance: distance, latitude: latitude, longitude: longitude)
                         dismiss()
                     })
                 }

@@ -19,6 +19,8 @@
 		785949832CEC13C300D8060A /* EditLogEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785949822CEC13C300D8060A /* EditLogEntryView.swift */; };
 		785C13752CD6F8D80071783C /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785C13742CD6F8D80071783C /* Colors.swift */; };
 		78820E582D2F506000AA6807 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 78820E572D2F506000AA6807 /* Localizable.xcstrings */; };
+		78820E742D35D39200AA6807 /* GetLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78820E732D35D39200AA6807 /* GetLocation.swift */; };
+		78820E892D3EBB7700AA6807 /* HelpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78820E882D3EBB7700AA6807 /* HelpView.swift */; };
 		7899CB8B2CD527F500395082 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7899CB8A2CD527F500395082 /* CardView.swift */; };
 		78A4151E29E4D3AB005CBEF1 /* CampingSweetApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A4151D29E4D3AB005CBEF1 /* CampingSweetApp.swift */; };
 		78A4152029E4D3AB005CBEF1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A4151F29E4D3AB005CBEF1 /* ContentView.swift */; };
@@ -47,6 +49,8 @@
 		785949822CEC13C300D8060A /* EditLogEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditLogEntryView.swift; sourceTree = "<group>"; };
 		785C13742CD6F8D80071783C /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		78820E572D2F506000AA6807 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		78820E732D35D39200AA6807 /* GetLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetLocation.swift; sourceTree = "<group>"; };
+		78820E882D3EBB7700AA6807 /* HelpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpView.swift; sourceTree = "<group>"; };
 		7899CB8A2CD527F500395082 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		78A4151A29E4D3AB005CBEF1 /* CampingSweet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CampingSweet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		78A4151D29E4D3AB005CBEF1 /* CampingSweetApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampingSweetApp.swift; sourceTree = "<group>"; };
@@ -98,6 +102,7 @@
 				78A4153529F021D4005CBEF1 /* Views */,
 				785C13742CD6F8D80071783C /* Colors.swift */,
 				78413C032A44EB49006DCF9E /* Extensions.swift */,
+				78820E732D35D39200AA6807 /* GetLocation.swift */,
 				78A4151D29E4D3AB005CBEF1 /* CampingSweetApp.swift */,
 				78A4152F29E4DA59005CBEF1 /* DataModel.swift */,
 				78A4153C29F0BDC0005CBEF1 /* Enums.swift */,
@@ -134,6 +139,7 @@
 				7899CB8A2CD527F500395082 /* CardView.swift */,
 				78413C0B2A7435D1006DCF9E /* ChecklistView.swift */,
 				78A4151F29E4D3AB005CBEF1 /* ContentView.swift */,
+				78820E882D3EBB7700AA6807 /* HelpView.swift */,
 				78A4152B29E4D584005CBEF1 /* LogBookView.swift */,
 				78A4153E29F1E414005CBEF1 /* SettingsView.swift */,
 			);
@@ -225,12 +231,14 @@
 				78A4153929F08713005CBEF1 /* CamperLogView.swift in Sources */,
 				78413C0A2A6DEE84006DCF9E /* NumbersOnlyViewModifier.swift in Sources */,
 				78413C0C2A7435D1006DCF9E /* ChecklistView.swift in Sources */,
+				78820E742D35D39200AA6807 /* GetLocation.swift in Sources */,
 				78A4153029E4DA59005CBEF1 /* DataModel.swift in Sources */,
 				78A4152C29E4D584005CBEF1 /* LogBookView.swift in Sources */,
 				785949812CEC0E5800D8060A /* TripDataEntryView.swift in Sources */,
 				78A4153429E778F8005CBEF1 /* AddLogBookEntryView.swift in Sources */,
 				78A4153229E4DCE2005CBEF1 /* ViewModel.swift in Sources */,
 				78A4154129F34E3B005CBEF1 /* FileManager-DocumentsDirectory.swift in Sources */,
+				78820E892D3EBB7700AA6807 /* HelpView.swift in Sources */,
 				785949832CEC13C300D8060A /* EditLogEntryView.swift in Sources */,
 				78A4153B29F094EB005CBEF1 /* AddCamperView.swift in Sources */,
 				785949542CE6CADD00D8060A /* MessageDocument.swift in Sources */,
@@ -374,11 +382,12 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_ASSET_PATHS = "\"CampingSweet/Preview Content\"";
 				DEVELOPMENT_TEAM = D4LH7YBWNU;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -405,11 +414,12 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_ASSET_PATHS = "\"CampingSweet/Preview Content\"";
 				DEVELOPMENT_TEAM = D4LH7YBWNU;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

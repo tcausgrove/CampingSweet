@@ -10,8 +10,8 @@ import SwiftUI
 import MapKit
 
 extension View {
-    func numbersOnly(_ text: Binding<String>, includeDecimal: Bool = false) -> some View {
-        self.modifier(NumbersOnlyViewModifier(text: text, includeDecimal: includeDecimal))
+    func numbersOnly(_ text: Binding<String>, includeDecimal: Bool = false, includeNegative: Bool = false) -> some View {
+        self.modifier(NumbersOnlyViewModifier(text: text, includeDecimal: includeDecimal, includeNegative: includeNegative))
     }
 }
 
@@ -116,5 +116,32 @@ extension CLLocationCoordinate2D {
         }
         
         self.init(latitude: decimalLatitude, longitude: decimalLongitude)
+    }
+}
+
+struct BackgroundView: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background(Image("Background")
+                .resizable()
+                .ignoresSafeArea()
+                .opacity(0.3)
+                .blur(radius: 6))
+    }
+}
+
+// This does the same thing as the ViewModifier above; it is currently unused
+// but has the possibility of passing a variable to it
+// Usage would be, e.g. Text("Some text").makeBackground(aVariable: aVariable)
+extension View {
+    func makeBackground() -> some View {
+        self
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background(Image("Background")
+                .resizable()
+                .ignoresSafeArea()
+                .opacity(0.3)
+                .blur(radius: 6))
     }
 }

@@ -83,6 +83,7 @@ struct LogBookView: View {
                     // Handle failure.
                 }
             }
+            .modifier(BackgroundView())
         }
     }
 }

@@ -9,6 +9,8 @@ import SwiftUI
 
 struct ContentView: View {
     @StateObject var viewModel = ViewModel()
+    
+    @State private var showHelpMenu = false
     @State private var changingSettings = false
     
     var body: some View {
@@ -29,7 +31,7 @@ struct ContentView: View {
                     Label("Log Book", systemImage: "list.bullet.rectangle.fill")
                 }
                 .buttonStyle(PrimaryButtonStyle(isActive: viewModel.currentCamperExists()))
-                .disabled(!viewModel.currentCamperExists())
+//                .disabled(!viewModel.currentCamperExists())  doesn't seem necessary
                 
                 NavigationLink {
                     ChecklistView()
@@ -40,11 +42,12 @@ struct ContentView: View {
                 
                 Spacer()
             }
+
             .padding()
             .toolbar {
                 ToolbarItemGroup(placement: .bottomBar) {
                     //FIXME: The "plus" button doesn't do anything - what should it do?
-                    Button(action: { }) {
+                    Button(action: { showHelpMenu = true }) {
                         Image(systemName: "questionmark")
                             .font(.title)
                             .fontWeight(.bold)
@@ -59,11 +62,15 @@ struct ContentView: View {
                     }
                 }
             }
+            .modifier(BackgroundView())
         }
-        .sheet(isPresented: $changingSettings, content: {
+        .sheet(isPresented: $changingSettings) {
             SettingsView()
                 .environmentObject(viewModel)
-        })
+        }
+        .sheet(isPresented: $showHelpMenu) {
+            HelpView()
+        }
     }
 }
 

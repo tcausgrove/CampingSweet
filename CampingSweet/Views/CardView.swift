@@ -32,7 +32,7 @@ struct CardView<Content: View>: View {
         .frame(minHeight: 180)
         .background {
             RoundedRectangle(cornerRadius: cornerRadius)
-                .fill(.opacity(0.18))
+                .fill(Color.blue.opacity(0.3))
         }
         .padding(.horizontal, 12)
     }

@@ -12,8 +12,6 @@ struct SettingsView: View {
     
     @Environment(\.dismiss) var dismiss
 
-//    @State var camper: Camper = Camper.example
-
     @State var defaultUnits: VolumeOptions = .america
     @State var defaultDistance: DistanceOptions = .mi
     @State var timeFormat: ClockHours = .two

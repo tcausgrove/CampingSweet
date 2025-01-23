@@ -327,9 +327,6 @@
         }
       }
     },
-    "Set to current location" : {
-
-    },
     "Time" : {
       "comment" : "Label for segmented control in settings",
       "localizations" : {

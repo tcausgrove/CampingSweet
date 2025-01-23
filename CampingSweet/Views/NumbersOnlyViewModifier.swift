@@ -12,6 +12,7 @@ struct NumbersOnlyViewModifier: ViewModifier {
     
     @Binding var text: String
     var includeDecimal: Bool
+    var includeNegative: Bool
     var digitAllowedAfterDecimal: Int = 3
     
     func body(content: Content) -> some View {
@@ -22,6 +23,9 @@ struct NumbersOnlyViewModifier: ViewModifier {
                 let decimalSeparator: String = Locale.current.decimalSeparator ?? "."
                 if includeDecimal {
                     numbers += decimalSeparator
+                }
+                if includeNegative {
+                    numbers+="-"
                 }
                 if newValue.components(separatedBy: decimalSeparator).count-1 > 1 {
                     let filtered = newValue

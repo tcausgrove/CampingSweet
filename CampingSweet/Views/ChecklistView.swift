@@ -35,22 +35,17 @@ struct ChecklistView: View {
                 .onDelete(perform: { indexSet in
                     checklistViewModel.deleteItemsByIndexSet(indexSet: indexSet)
                 })
-                
+
                 if addingItem {
-                    TextField("", text: $newItemName)
-                        .onAppear(perform: { editingFocused = true })
-                        .focused($editingFocused)
-                        .onSubmit { submitNewItem() }
+                    addingItemView
                 } else {
-                    HStack {
-                        // FIXME: Change to button
-                        Text("+")
-                        Spacer()
-                    }
-                    .contentShape(Rectangle())
-                    .onTapGesture { addingItem = true }
+                    Button(
+                        action: { addingItem = true },
+                        label: { Image(systemName: "plus") }
+                    )
                 }
             }
+            .padding()
             .toolbar() {
                 ToolbarItem {
                     Button(action: {
@@ -58,6 +53,7 @@ struct ChecklistView: View {
                     } ) { Image(systemName: "trash") }
                 }
             }
+            .modifier(BackgroundView())
             .navigationTitle("Departure checklist")
         }
     }
@@ -68,6 +64,13 @@ struct ChecklistView: View {
                 .foregroundColor(.green)
                 .padding(.trailing, 8)
         }
+    }
+    
+    var addingItemView: some View {
+        TextField("", text: $newItemName)
+            .onAppear(perform: { editingFocused = true })
+            .focused($editingFocused)
+            .onSubmit { submitNewItem() }
     }
     
     func submitNewItem() {

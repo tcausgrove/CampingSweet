@@ -48,3 +48,26 @@ enum DateFormatType: String, CaseIterable, Identifiable, Codable {
     
     var id: Self { self }
 }
+
+enum HelpFAQ: String, CaseIterable, Identifiable {
+    case introQuestion = "Frequently Asked Questions"
+    case logBookUnavailable = "Why is the log book unavailble?"
+    case archiveCamper = "What is archiving a camper?"
+    
+    var id: Self { self }
+}
+
+//enum FAQAnswers: String, CaseIterable, Identifiable {
+//    case introQuestion, logBookUnavailable, archiveCamper
+//    var id: self { self }
+//}
+
+extension HelpFAQ {
+    var faqAnswer: String {
+        switch self {
+        case .introQuestion: return ""
+        case .logBookUnavailable: return "Probably no camper"
+        case .archiveCamper: return "Gets it out of the way"
+        }
+    }
+}

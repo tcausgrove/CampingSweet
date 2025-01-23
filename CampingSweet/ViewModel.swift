@@ -37,7 +37,7 @@ import Foundation
         }
     }
     
-    func addTrip(title: String, startDate: Date, endDate: Date, distance: String) {
+    func addTrip(title: String, startDate: Date, endDate: Date, distance: String, latitude: String, longitude: String) {
         let tripID = UUID()
         let distanceDouble = Double(distance) ?? 0.0
         var tripInMiles: Measurement<UnitLength> = Measurement(value: 0.0, unit: UnitLength.meters)
@@ -55,8 +55,8 @@ import Foundation
                                startDate: startDate,
                                endDate: endDate,
                                distance: tripInMiles.value,
-                               latitude: nil,
-                               longitude: nil )
+                               latitude: Double(latitude),
+                               longitude: Double(longitude) )
 
         if let theCamper = campers.first(where: { $0 == self.getCurrentCamper() }) {
             if let index = campers.firstIndex(of: theCamper) {

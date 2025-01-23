@@ -35,6 +35,7 @@ struct CamperLogView: View {
                 }
             }
         }
+        .modifier(BackgroundView())
         .sheet(isPresented: $addingCamper) {
             AddCamperView()
                 .environmentObject(viewModel)
