@@ -21,6 +21,7 @@
 		78820E582D2F506000AA6807 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 78820E572D2F506000AA6807 /* Localizable.xcstrings */; };
 		78820E742D35D39200AA6807 /* GetLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78820E732D35D39200AA6807 /* GetLocation.swift */; };
 		78820E892D3EBB7700AA6807 /* HelpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78820E882D3EBB7700AA6807 /* HelpView.swift */; };
+		78820E8B2D431B7900AA6807 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 78820E8A2D431B7900AA6807 /* README.md */; };
 		7899CB8B2CD527F500395082 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7899CB8A2CD527F500395082 /* CardView.swift */; };
 		78A4151E29E4D3AB005CBEF1 /* CampingSweetApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A4151D29E4D3AB005CBEF1 /* CampingSweetApp.swift */; };
 		78A4152029E4D3AB005CBEF1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A4151F29E4D3AB005CBEF1 /* ContentView.swift */; };
@@ -51,6 +52,7 @@
 		78820E572D2F506000AA6807 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		78820E732D35D39200AA6807 /* GetLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetLocation.swift; sourceTree = "<group>"; };
 		78820E882D3EBB7700AA6807 /* HelpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpView.swift; sourceTree = "<group>"; };
+		78820E8A2D431B7900AA6807 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		7899CB8A2CD527F500395082 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		78A4151A29E4D3AB005CBEF1 /* CampingSweet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CampingSweet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		78A4151D29E4D3AB005CBEF1 /* CampingSweetApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampingSweetApp.swift; sourceTree = "<group>"; };
@@ -105,6 +107,7 @@
 				78820E732D35D39200AA6807 /* GetLocation.swift */,
 				78A4151D29E4D3AB005CBEF1 /* CampingSweetApp.swift */,
 				78A4152F29E4DA59005CBEF1 /* DataModel.swift */,
+				78820E8A2D431B7900AA6807 /* README.md */,
 				78A4153C29F0BDC0005CBEF1 /* Enums.swift */,
 				78A4154029F34E3B005CBEF1 /* FileManager-DocumentsDirectory.swift */,
 				785949512CE6CAA200D8060A /* Funcs.swift */,
@@ -177,7 +180,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1420;
-				LastUpgradeCheck = 1530;
+				LastUpgradeCheck = 1610;
 				TargetAttributes = {
 					78A4151929E4D3AB005CBEF1 = {
 						CreatedOnToolsVersion = 14.2;
@@ -214,6 +217,7 @@
 			files = (
 				78A4152529E4D3AC005CBEF1 /* Preview Assets.xcassets in Resources */,
 				78A4152229E4D3AC005CBEF1 /* Assets.xcassets in Resources */,
+				78820E8B2D431B7900AA6807 /* README.md in Resources */,
 				78820E582D2F506000AA6807 /* Localizable.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -260,6 +264,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -323,6 +328,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
