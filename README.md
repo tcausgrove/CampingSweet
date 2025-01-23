@@ -1,4 +1,16 @@
 # CampingSweet
-Copying original
 
-This is essentially making my own copy of the app "Boating Suite" for iPhone.  I am using SwiftUI.  This is just for my learning, it will not be made into an actual product.
+## An app to keep track of camper usage
+
+**Main items**
+
+- Allows multiple campers
+- Logs destination, location, dates, and mileage for each camping stop
+- Gives total number of nights used
+- Gives total mileage
+- Includes checklist to keep track of items required on departure of a site
+
+Future plan:  Campsites displayed on a map
+
+
+
