@@ -65,15 +65,24 @@ struct Camper: Identifiable, Hashable, Codable {
         return tempNights
     }
     
-    static let example = Camper(id: UUID(), name: "nano", isDefaultCamper: false, isArchived: false, registrationNumber: "TX12345", trips: [LogEntry.example])
+    static let example = Camper(id: UUID(),
+                                name: "nano",
+                                isDefaultCamper: false,
+                                isArchived: false,
+                                registrationNumber: "TX12345",
+                                trips: [LogEntry.example])
 }
 
 struct Settings: Codable {
     var chosenDistance: DistanceOptions
     var chosenClockHours: ClockHours
     var chosenDateFormat: DateFormatType
+    var locationImportFormat: LocationImportFormat
     
-    static let example = Settings(chosenDistance: .mi, chosenClockHours: .two, chosenDateFormat: .monthFirst)
+    static let example = Settings(chosenDistance: .mi,
+                                  chosenClockHours: .two,
+                                  chosenDateFormat: .monthFirst,
+                                  locationImportFormat: .dd)
 }
 
 extension Date {

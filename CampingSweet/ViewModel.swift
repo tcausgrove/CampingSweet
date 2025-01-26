@@ -10,20 +10,18 @@ import Foundation
 @MainActor class ViewModel: ObservableObject {
     @Published private(set) var campers = [Camper]()
     @Published private(set) var settings = Settings.example
+    @Published var userError: UserError? = nil
     
-    
-    let savePath = FileManager.documentsDirectory.appendingPathComponent("SavedShoppingList")
-    
-
     init() {
 
         if let data = UserDefaults.standard.data(forKey: "campers") {
             if let decoded = try? JSONDecoder().decode([Camper].self, from: data) {
                 campers = decoded
+                userError = nil
             } else {
                 // unable to get campers
-                print("Unable to get campers")
                 campers = []
+                userError = UserError.failedLoading
             }
         }
         
@@ -31,8 +29,8 @@ import Foundation
             if let decoded = try? JSONDecoder().decode(Settings.self, from: data) {
                 settings = decoded
             } else {
-                print("Unable to get settings")
                 settings = Settings.example
+                userError = UserError.settingsNotFound
             }
         }
     }
@@ -83,7 +81,7 @@ import Foundation
                 if latitude != nil { campers[theCamperIndex!].trips[tripIndex].latitude = Double(latitude!) }
                 if longitude != nil { campers[theCamperIndex!].trips[tripIndex].longitude = Double(longitude!) }
             } else {
-                //FIXME: UUID didn't match a trip - do something about it
+                // FIXME: An error needs to go here!!!
             }
         }
     }
@@ -203,24 +201,33 @@ import Foundation
         }
     }
     
-    func changeSettings(newChosenDistance: DistanceOptions, newClockHours: ClockHours, newDateFormat: DateFormatType) {
+    func changeSettings(newChosenDistance: DistanceOptions, newClockHours: ClockHours, newDateFormat: DateFormatType, newLocationFormat: LocationImportFormat) {
         self.settings.chosenDistance = newChosenDistance
         self.settings.chosenClockHours = newClockHours
         self.settings.chosenDateFormat = newDateFormat
+        self.settings.locationImportFormat = newLocationFormat
         
         save()
     }
     
     func save() {
         
-        if let encoded = try? JSONEncoder().encode(campers) {
-            UserDefaults.standard.set(encoded, forKey: "campers")
+        do {
+            let encodedCampers = try JSONEncoder().encode(campers)
+            UserDefaults.standard.set(encodedCampers, forKey: "campers")
+            userError = nil
+        } catch {
+            userError = UserError.failedSaving
         }
         
-        if let encoded = try? JSONEncoder().encode(settings) {
-            UserDefaults.standard.set(encoded, forKey: "settings")
+        do {
+            let encodedSettings = try JSONEncoder().encode(settings)
+            UserDefaults.standard.set(encodedSettings, forKey: "settings")
+            userError = nil
+        } catch {
+            userError = UserError.settingsNotFound
         }
-    }
+}
     
     func convertDoubleBySetting(distance: Double) -> Measurement<UnitLength> {
         var formattedDistance: Measurement<UnitLength> = Measurement(value: 0.0, unit: UnitLength.meters)

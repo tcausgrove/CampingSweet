@@ -7,9 +7,6 @@
     "  " : {
 
     },
-    "+" : {
-
-    },
     "Add" : {
       "comment" : "Top right button to add new camper; top right button to add trip"
     },
@@ -77,16 +74,8 @@
         }
       }
     },
-    "Date" : {
-      "comment" : "Label for segmented control in settings",
-      "localizations" : {
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Fecha"
-          }
-        }
-      }
+    "CSV Import" : {
+
     },
     "Date format" : {
       "localizations" : {
@@ -143,16 +132,8 @@
         }
       }
     },
-    "Distance" : {
-      "comment" : "Label for segmented control in settings",
-      "localizations" : {
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Distancia"
-          }
-        }
-      }
+    "Display" : {
+
     },
     "Distance in" : {
       "localizations" : {
@@ -194,6 +175,9 @@
         }
       }
     },
+    "FAQ" : {
+
+    },
     "For camper %@" : {
       "localizations" : {
         "es-419" : {
@@ -218,6 +202,9 @@
       }
     },
     "Latitude" : {
+
+    },
+    "Location" : {
 
     },
     "Log Book" : {
@@ -284,6 +271,9 @@
         }
       }
     },
+    "OK" : {
+
+    },
     "Place" : {
 
     },
@@ -323,17 +313,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Seleccionada"
-          }
-        }
-      }
-    },
-    "Time" : {
-      "comment" : "Label for segmented control in settings",
-      "localizations" : {
-        "es-419" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tiempo"
           }
         }
       }

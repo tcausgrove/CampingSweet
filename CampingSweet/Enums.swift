@@ -29,6 +29,20 @@ enum ClockHours: String, CaseIterable, Identifiable, Codable {
     var id: Self { self }
 }
 
+enum DateFormatType: String, CaseIterable, Identifiable, Codable {
+    case monthFirst = "MM/dd/yy"
+    case dayFirst = "dd/MM/yy"
+    
+    var id: Self { self }
+}
+
+enum LocationImportFormat: String, CaseIterable, Identifiable, Codable {
+    case dd = "Decimal degrees"
+    case dms = "Degrees minutes seconds"
+    
+    var id: Self { self }
+}
+
 enum CamperType: String, CaseIterable, Identifiable {
     case traveltrailer = "Travel Trailer"
     case smallcamper = "Small Camper"
@@ -42,13 +56,6 @@ enum CamperType: String, CaseIterable, Identifiable {
     var id: Self { self }
 }
 
-enum DateFormatType: String, CaseIterable, Identifiable, Codable {
-    case monthFirst = "MM/dd/yy"
-    case dayFirst = "dd/MM/yy"
-    
-    var id: Self { self }
-}
-
 enum HelpFAQ: String, CaseIterable, Identifiable {
     case introQuestion = "Frequently Asked Questions"
     case logBookUnavailable = "Why is the log book unavailble?"
@@ -56,11 +63,6 @@ enum HelpFAQ: String, CaseIterable, Identifiable {
     
     var id: Self { self }
 }
-
-//enum FAQAnswers: String, CaseIterable, Identifiable {
-//    case introQuestion, logBookUnavailable, archiveCamper
-//    var id: self { self }
-//}
 
 extension HelpFAQ {
     var faqAnswer: String {
@@ -71,3 +73,20 @@ extension HelpFAQ {
         }
     }
 }
+
+enum UserError: LocalizedError {
+    case failedLoading
+    case failedSaving
+    case tripDoesNotExist
+    case settingsNotFound
+    
+    var errorMessage: String? {
+        switch self {
+        case .failedLoading: return "Unable to load the data"
+        case .failedSaving: return "Unable to save the data"
+        case .tripDoesNotExist: return "Unable to save changes; can't find this trip"
+        case .settingsNotFound: return "Unable to find saved settings"
+        }
+    }
+}
+

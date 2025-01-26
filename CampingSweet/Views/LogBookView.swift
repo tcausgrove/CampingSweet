@@ -77,7 +77,8 @@ struct LogBookView: View {
 
                     document.message = message
                     let newTripData: [LogEntry] = getCSV(inputString: document.message,
-                                                         dateFormat: viewModel.settings.chosenDateFormat)
+                                                         dateFormat: viewModel.settings.chosenDateFormat,
+                                                         locationType: viewModel.settings.locationImportFormat)
                     viewModel.addImportedTrips(newTrips: newTripData)
                 } catch {
                     // Handle failure.

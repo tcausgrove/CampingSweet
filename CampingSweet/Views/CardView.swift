@@ -12,6 +12,7 @@ struct CardView<Content: View>: View {
     let content: Content
     let cornerRadius: CGFloat
     let padding: CGFloat
+    let backgroundColor: Color
     
     init(cornerRadius: CGFloat = 20,
          backgroundColor: Color = Color.white,
@@ -21,6 +22,7 @@ struct CardView<Content: View>: View {
         self.cornerRadius = cornerRadius
         self.padding = padding
         self.content = content()
+        self.backgroundColor = backgroundColor
     }
     
     var body: some View {
@@ -32,7 +34,7 @@ struct CardView<Content: View>: View {
         .frame(minHeight: 180)
         .background {
             RoundedRectangle(cornerRadius: cornerRadius)
-                .fill(Color.blue.opacity(0.3))
+                .fill(backgroundColor.opacity(0.6))
         }
         .padding(.horizontal, 12)
     }

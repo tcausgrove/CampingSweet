@@ -52,7 +52,7 @@ func convertStringToDates(inputString: String, dateFormat: DateFormatType) -> (D
     return (dateOne, dateTwo)
 }
 
-func getCSV(inputString: String, dateFormat: DateFormatType) -> [LogEntry] {
+func getCSV(inputString: String, dateFormat: DateFormatType, locationType: LocationImportFormat) -> [LogEntry] {
     
     var tripDataArray: [LogEntry] = []
     
@@ -69,7 +69,11 @@ func getCSV(inputString: String, dateFormat: DateFormatType) -> [LogEntry] {
             let theLocationString: String = dict["Coordinates"] ?? ""
             if theLocationString != "" {
                 // FIXME: will need to take into account varying formats here
-                theLocation = CLLocationCoordinate2D(dmsString: theLocationString)
+                if locationType == .dms {
+                    theLocation = CLLocationCoordinate2D(dmsString: theLocationString) // Custom written extension to CLLocationCoordinate2D; see Extensions file
+                } else {
+                    theLocation = CLLocationCoordinate2D(ddString: theLocationString) // Custom written extension to CLLocationCoordinate2D; see Extensions file
+                }
                 
             }
             let theRowDistance: Double = Double(dict["Miles driven"] ?? "") ?? 0.0

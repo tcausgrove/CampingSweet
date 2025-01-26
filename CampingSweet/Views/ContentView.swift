@@ -31,7 +31,6 @@ struct ContentView: View {
                     Label("Log Book", systemImage: "list.bullet.rectangle.fill")
                 }
                 .buttonStyle(PrimaryButtonStyle(isActive: viewModel.currentCamperExists()))
-//                .disabled(!viewModel.currentCamperExists())  doesn't seem necessary
                 
                 NavigationLink {
                     ChecklistView()
@@ -46,7 +45,6 @@ struct ContentView: View {
             .padding()
             .toolbar {
                 ToolbarItemGroup(placement: .bottomBar) {
-                    //FIXME: The "plus" button doesn't do anything - what should it do?
                     Button(action: { showHelpMenu = true }) {
                         Image(systemName: "questionmark")
                             .font(.title)
@@ -63,6 +61,7 @@ struct ContentView: View {
                 }
             }
             .modifier(BackgroundView())
+
         }
         .sheet(isPresented: $changingSettings) {
             SettingsView()
@@ -88,7 +87,7 @@ struct PrimaryButtonStyle: ButtonStyle {
             .frame(width: 300, height: 50, alignment: .leading)
             .font(.title2)
             .fontWeight(.bold)
-            .background(isActive ? (configuration.isPressed ? Color.teal.opacity(0.5) : Color.teal) : Color.gray)
+            .background(isActive ? (configuration.isPressed ? Color.accentColor.opacity(0.5) : Color.accentColor) : Color.gray)
             .foregroundColor(.white)
     }
 }

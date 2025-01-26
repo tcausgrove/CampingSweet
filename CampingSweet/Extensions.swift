@@ -119,6 +119,16 @@ extension CLLocationCoordinate2D {
     }
 }
 
+extension CLLocationCoordinate2D {
+    init(ddString: String) {
+        let stringArray = ddString.components(separatedBy: " ")
+        let latitudeDouble = Double(stringArray[0])?.decimalPlaces(toPlaces: 6) ?? 0.0
+        let longitudeDouble = Double(stringArray[1])?.decimalPlaces(toPlaces: 6) ?? 0.0
+        
+        self.init(latitude: latitudeDouble, longitude: longitudeDouble)
+    }
+}
+
 struct BackgroundView: ViewModifier {
     func body(content: Content) -> some View {
         content
@@ -145,3 +155,32 @@ extension View {
                 .blur(radius: 6))
     }
 }
+
+struct ErrorAlert: ViewModifier {
+    
+    @Binding var error: UserError?
+    var isShowingError: Binding<Bool> {
+        Binding {
+            error != nil
+        } set: { _ in
+            error = nil
+        }
+    }
+    
+    func body(content: Content) -> some View {
+        content
+            .alert(isPresented: isShowingError, error: error) { _ in
+            } message: { error in
+                if let message = error.errorMessage {
+                    Text(message)
+                }
+            }
+    }
+}
+
+extension View {
+    func errorAlert(_ error: Binding<UserError?>) -> some View {
+        self.modifier(ErrorAlert(error: error))
+    }
+}
+

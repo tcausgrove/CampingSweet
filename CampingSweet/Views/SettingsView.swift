@@ -11,75 +11,77 @@ struct SettingsView: View {
     @EnvironmentObject var viewModel: ViewModel
     
     @Environment(\.dismiss) var dismiss
-
+    
     @State var defaultUnits: VolumeOptions = .america
     @State var defaultDistance: DistanceOptions = .mi
     @State var timeFormat: ClockHours = .two
     @State var dateFormat: DateFormatType = .monthFirst
-
+    @State var locationFormat: LocationImportFormat = .dd
+    
     var body: some View {
         NavigationView {
-            VStack {
-                Text("User settings")
-                    .font(.title2)
-                    .padding(.bottom, 30)
+            Form {
+                Section(header: Text("Display")) {
+                    
+                    HStack {
+                        Picker("Distance in", selection: $defaultDistance) {
+                            ForEach(DistanceOptions.allCases) { option in
+                                Text(option.rawValue)
+                            }
+                        }
+                        .onAppear(perform: {
+                            defaultDistance = viewModel.settings.chosenDistance
+                        })
+                    }
+                    
+                    HStack {
+                        Picker("Time format", selection: $timeFormat) {
+                            ForEach(ClockHours.allCases) { option in
+                                Text(option.rawValue)
+                            }
+                        }
+                        .onAppear(perform: {
+                            timeFormat = viewModel.settings.chosenClockHours
+                        })
+                    }
+                    
+                    HStack {
+                        Picker("Date format", selection: $dateFormat) {
+                            ForEach(DateFormatType.allCases) { option in
+                                Text(option.rawValue)
+                            }
+                        }
+                        .onAppear(perform: {
+                            timeFormat = viewModel.settings.chosenClockHours
+                        })
+                    }
+                }
+                Section(header: Text("CSV Import")) {
+                    Picker("Location", selection: $locationFormat) {
+                        ForEach(LocationImportFormat.allCases) { option in
+                            Text(option.rawValue)
+                        }
+                    }
+                    .onAppear(perform: {
+                        locationFormat = viewModel.settings.locationImportFormat
+                    })
 
-                HStack {
-                    Text("Distance")
-                    Picker("Distance in", selection: $defaultDistance) {
-                        ForEach(DistanceOptions.allCases) { option in
-                            Text(option.rawValue)
-                        }
-                    }
-                    .onAppear(perform: {
-                        defaultDistance = viewModel.settings.chosenDistance
-                    })
-                    .pickerStyle(.segmented)
-                    .padding()
                 }
-                
-                HStack {
-                    Text("Time")
-                    Picker("Time format", selection: $timeFormat) {
-                        ForEach(ClockHours.allCases) { option in
-                            Text(option.rawValue)
-                        }
-                    }
-                    .onAppear(perform: {
-                        timeFormat = viewModel.settings.chosenClockHours
-                    })
-                    .pickerStyle(.segmented)
-                    .padding()
-                }
-                
-                HStack {
-                    Text("Date")
-                    Picker("Date format", selection: $dateFormat) {
-                        ForEach(DateFormatType.allCases) { option in
-                            Text(option.rawValue)
-                        }
-                    }
-                    .onAppear(perform: {
-                        timeFormat = viewModel.settings.chosenClockHours
-                    })
-                    .pickerStyle(.segmented)
-                    .padding()
-                }
-                Spacer()
             }
-                .toolbar(){
-                    ToolbarItemGroup(placement: .navigation) {
-                        Button(role: .cancel, action: {
-                            viewModel.changeSettings(
-                                newChosenDistance: defaultDistance,
-                                newClockHours: timeFormat,
-                                newDateFormat: dateFormat)
-                            dismiss() }) {
+            .toolbar(){
+                ToolbarItemGroup(placement: .navigation) {
+                    Button(role: .cancel, action: {
+                        viewModel.changeSettings(newChosenDistance: defaultDistance,
+                                                 newClockHours: timeFormat,
+                                                 newDateFormat: dateFormat,
+                                                 newLocationFormat: locationFormat)
+                        dismiss() }) {
                             Text("Done")
                         }
-                    }
                 }
-                .padding()
+            }
+            .navigationTitle("User settings")
+            .padding()
         }
     }
 }
