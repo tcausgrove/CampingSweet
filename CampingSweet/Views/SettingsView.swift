@@ -17,7 +17,8 @@ struct SettingsView: View {
     @State var timeFormat: ClockHours = .two
     @State var dateFormat: DateFormatType = .monthFirst
     @State var locationFormat: LocationImportFormat = .dd
-    
+    @State var dateImportFormat: DateImportOption = .startEnd
+
     var body: some View {
         NavigationView {
             Form {
@@ -66,6 +67,10 @@ struct SettingsView: View {
                         locationFormat = viewModel.settings.locationImportFormat
                     })
 
+                    Picker("Date entries", selection: $dateImportFormat) {
+                        ForEach(DateImportOption.allCases) { option in
+                            Text(option.rawValue)}
+                    }
                 }
             }
             .toolbar(){

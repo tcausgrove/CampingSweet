@@ -43,6 +43,13 @@ enum LocationImportFormat: String, CaseIterable, Identifiable, Codable {
     var id: Self { self }
 }
 
+enum DateImportOption: String, CaseIterable, Identifiable, Codable {
+    case startEnd = "Start and end dates"
+    case startOnly = "Start date/#nights"
+
+    var id: Self { self }
+}
+
 enum CamperType: String, CaseIterable, Identifiable {
     case traveltrailer = "Travel Trailer"
     case smallcamper = "Small Camper"
@@ -65,6 +72,7 @@ enum HelpFAQ: String, CaseIterable, Identifiable {
 }
 
 extension HelpFAQ {
+    // FIXME: These are just placeholder answers, I need to write the full answer.
     var faqAnswer: String {
         switch self {
         case .introQuestion: return ""
@@ -80,7 +88,13 @@ enum UserError: LocalizedError {
     case tripDoesNotExist
     case settingsNotFound
     
-    var errorMessage: String? {
+    var errorDescription: String? {    // This shows up as the first thing in bold in the error alert
+        switch self {
+        default: return "Data error"
+        }
+    }
+    
+    var errorMessage: String? {    // This shows up as the second thing in smaller text in the error alert
         switch self {
         case .failedLoading: return "Unable to load the data"
         case .failedSaving: return "Unable to save the data"

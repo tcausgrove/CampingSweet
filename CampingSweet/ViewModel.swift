@@ -28,6 +28,7 @@ import Foundation
         if let data = UserDefaults.standard.data(forKey: "settings") {
             if let decoded = try? JSONDecoder().decode(Settings.self, from: data) {
                 settings = decoded
+                userError = nil
             } else {
                 settings = Settings.example
                 userError = UserError.settingsNotFound
@@ -81,7 +82,7 @@ import Foundation
                 if latitude != nil { campers[theCamperIndex!].trips[tripIndex].latitude = Double(latitude!) }
                 if longitude != nil { campers[theCamperIndex!].trips[tripIndex].longitude = Double(longitude!) }
             } else {
-                // FIXME: An error needs to go here!!!
+                userError = .tripDoesNotExist
             }
         }
     }
@@ -95,6 +96,9 @@ import Foundation
                 }
                 campers[index] = replacementCamper
             }
+        } else {
+            // FIXME:  Need an error option for bad CSV file import
+            userError = .failedSaving
         }
         save()
 

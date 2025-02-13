@@ -59,8 +59,6 @@ func getCSV(inputString: String, dateFormat: DateFormatType, locationType: Locat
     do {
         
         let csv: CSV = try CSV<Named>(string: inputString, delimiter: .comma)
-        //             let csv: CSV = try CSV<Named>(url: URL(fileURLWithPath: "CamperLog.csv"))
-        //            let csv2: CSV = try EnumeratedCSV(string: theString)
         
         var theLocation: CLLocationCoordinate2D? = nil
         

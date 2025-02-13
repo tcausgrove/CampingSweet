@@ -21,7 +21,7 @@ struct ContentView: View {
                 NavigationLink {
                     CamperLogView().environmentObject(viewModel)
                 } label: {
-                    Label("My Campers", systemImage: "train.side.front.car")
+                    Label("My Campers", image: "Camper")
                 }
                 .buttonStyle(PrimaryButtonStyle(isActive: true))
                 
@@ -42,7 +42,7 @@ struct ContentView: View {
                 Spacer()
             }
 
-            .padding()
+            .padding(2)
             .toolbar {
                 ToolbarItemGroup(placement: .bottomBar) {
                     Button(action: { showHelpMenu = true }) {
@@ -70,6 +70,7 @@ struct ContentView: View {
         .sheet(isPresented: $showHelpMenu) {
             HelpView()
         }
+        .errorAlert($viewModel.userError)
     }
 }
 
@@ -87,7 +88,7 @@ struct PrimaryButtonStyle: ButtonStyle {
             .frame(width: 300, height: 50, alignment: .leading)
             .font(.title2)
             .fontWeight(.bold)
-            .background(isActive ? (configuration.isPressed ? Color.accentColor.opacity(0.5) : Color.accentColor) : Color.gray)
+            .background(isActive ? (configuration.isPressed ? Color.mainButtonBackground.opacity(0.5) : Color.mainButtonBackground) : Color.gray)
             .foregroundColor(.white)
     }
 }

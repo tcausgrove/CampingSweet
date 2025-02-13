@@ -45,17 +45,20 @@ struct ChecklistView: View {
                     )
                 }
             }
+            .listStyle(PlainListStyle())
             .padding()
+            .modifier(BackgroundView())
             .toolbar() {
                 ToolbarItem {
                     Button(action: {
                         checklistViewModel.removeAllChecks()
-                    } ) { Image(systemName: "trash") }
+                    } ) { Image(systemName: "trash")
+                    }
                 }
             }
-            .modifier(BackgroundView())
             .navigationTitle("Departure checklist")
         }
+        .errorAlert($checklistViewModel.checklistError)
     }
     
     struct showCheckMark: View {

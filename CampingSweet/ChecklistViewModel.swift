@@ -8,7 +8,9 @@
 import Foundation
 
 @MainActor class ChecklistViewModel: ObservableObject {
+    
     @Published private(set) var checklist: [ChecklistItem]
+    @Published var checklistError: UserError? = nil
     
     init() {
         if let data = UserDefaults.standard.data(forKey: "checklist") {
@@ -17,7 +19,8 @@ import Foundation
                 return
             }
         }
-        // unable to get checklist
+        // FIXME:  unable to get checklist - need an error option here
+        checklistError = .failedLoading
         checklist = []
     }
     
@@ -59,6 +62,9 @@ import Foundation
     func save() {
         if let encoded = try? JSONEncoder().encode(checklist) {
             UserDefaults.standard.set(encoded, forKey: "checklist")
+        } else {
+            //FIXME:  need an error option here
+            checklistError = .failedSaving
         }
     }
 }
