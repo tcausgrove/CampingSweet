@@ -7,12 +7,12 @@
 
 import Foundation
 
-enum VolumeOptions: String, CaseIterable, Identifiable, Codable {
-    case america = "Gallons"
-    case europe = "Liters"
-
-    var id: Self { self }
-}
+//enum VolumeOptions: String, CaseIterable, Identifiable, Codable {
+//    case america = "Gallons"
+//    case europe = "Liters"
+//
+//    var id: Self { self }
+//}
 
 enum DistanceOptions: String, CaseIterable, Identifiable, Codable {
     case mi = "Miles"
@@ -43,7 +43,7 @@ enum LocationImportFormat: String, CaseIterable, Identifiable, Codable {
     var id: Self { self }
 }
 
-enum DateImportOption: String, CaseIterable, Identifiable, Codable {
+enum DateImportFormat: String, CaseIterable, Identifiable, Codable {
     case startEnd = "Start and end dates"
     case startOnly = "Start date/#nights"
 

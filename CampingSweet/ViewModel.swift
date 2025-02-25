@@ -1,5 +1,5 @@
 //
-//  LogBookView-ViewModel.swift
+//  ViewModel.swift
 //  CampingSweet
 //
 //  Created by Timothy Causgrove on 4/10/23.
@@ -205,11 +205,17 @@ import Foundation
         }
     }
     
-    func changeSettings(newChosenDistance: DistanceOptions, newClockHours: ClockHours, newDateFormat: DateFormatType, newLocationFormat: LocationImportFormat) {
+    func changeSettings(newChosenDistance: DistanceOptions,
+                        newClockHours: ClockHours,
+                        newDateFormat: DateFormatType,
+                        newLocationFormat: LocationImportFormat,
+                        newDateImportFormat: DateImportFormat) {
+        
         self.settings.chosenDistance = newChosenDistance
         self.settings.chosenClockHours = newClockHours
         self.settings.chosenDateFormat = newDateFormat
         self.settings.locationImportFormat = newLocationFormat
+        self.settings.dateImportFormat = newDateImportFormat
         
         save()
     }
@@ -273,14 +279,14 @@ import Foundation
     }
     
     func setCurrentCamperToFirst() {
-        // Set all campers to not the current one
+        // Set all campers so they are not the selected one
         for camper in campers {
             if let index = campers.firstIndex(of: camper) {
                 var replacementCamper = camper
                 replacementCamper.isDefaultCamper = false
                 campers[index] = replacementCamper
             }
-            // Set camper with index = 0 to the current one
+            // Set camper with index = 0 to the selected one
             if campers.count != 0 {
                 var replacementCamper = campers[0]
                 replacementCamper.isDefaultCamper = true

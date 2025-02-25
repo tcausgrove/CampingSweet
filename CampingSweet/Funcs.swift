@@ -10,8 +10,8 @@ import SwiftCSV
 import CoreLocation
 
 func convertStringToDates(inputString: String, dateFormat: DateFormatType) -> (Date, Date) {
-    var dateOne = Date.now
-    var dateTwo = Date.now
+    var arrivalDate = Date.now
+    var departureDate = Date.now
     
     // There may or may not be spaces before and after a dash between dates; just delete them
     let newString = inputString.replacingOccurrences(of: " ", with: "")
@@ -41,18 +41,21 @@ func convertStringToDates(inputString: String, dateFormat: DateFormatType) -> (D
     // Convert String to Date
     let today = Date.now
     let yesterday = today.yesterday
-    dateOne = dateFormatter.date(from: firstDateString) ?? yesterday // possibly nil
+    arrivalDate = dateFormatter.date(from: firstDateString) ?? yesterday // possibly nil
     
     if secondDateString != nil {
-        dateTwo = dateFormatter.date(from: secondDateString!) ?? today // possibly nil
+        departureDate = dateFormatter.date(from: secondDateString!) ?? today // possibly nil
     } else {
-        dateTwo = dateOne.advanced(by: 86400)  // Number of seconds in one day
+        departureDate = arrivalDate.advanced(by: 86400)  // Number of seconds in one day
     }
     
-    return (dateOne, dateTwo)
+    return (arrivalDate, departureDate)
 }
 
-func getCSV(inputString: String, dateFormat: DateFormatType, locationType: LocationImportFormat) -> [LogEntry] {
+func getCSV(inputString: String,
+            dateFormat: DateFormatType,
+            locationType: LocationImportFormat,
+            dateImportFormat: DateImportFormat) -> [LogEntry] {
     
     var tripDataArray: [LogEntry] = []
     
@@ -63,14 +66,18 @@ func getCSV(inputString: String, dateFormat: DateFormatType, locationType: Locat
         var theLocation: CLLocationCoordinate2D? = nil
         
         try csv.enumerateAsDict({ dict in
-            let theDates = convertStringToDates(inputString: dict["Date"] ?? "", dateFormat: dateFormat)
+            var theDates = convertStringToDates(inputString: dict["Date"] ?? "", dateFormat: dateFormat)
+            if dateImportFormat == .startOnly {
+                // read number of nights
+                let numberOfNights: Int = Int(dict["Nights"] ?? "") ?? 0
+                theDates.1 = theDates.0.addingTimeInterval(86400 * Double(numberOfNights))
+            }
             let theLocationString: String = dict["Coordinates"] ?? ""
             if theLocationString != "" {
-                // FIXME: will need to take into account varying formats here
                 if locationType == .dms {
                     theLocation = CLLocationCoordinate2D(dmsString: theLocationString) // Custom written extension to CLLocationCoordinate2D; see Extensions file
                 } else {
-                    theLocation = CLLocationCoordinate2D(ddString: theLocationString) // Custom written extension to CLLocationCoordinate2D; see Extensions file
+                    theLocation = CLLocationCoordinate2D(ddString: theLocationString)  // Custom written extension to CLLocationCoordinate2D; see Extensions file
                 }
                 
             }

@@ -43,7 +43,11 @@ struct EditLogEntryView: View {
                 ToolbarItem(placement: .confirmationAction) {
                     Button("Save Changes", role: .none, action: {
                         let theTripID = previousLogEntry?.id ?? UUID()
-                        viewModel.editTrip(tripID: theTripID, title: title, startDate: start, endDate: end, distance: distance, latitude: latitude, longitude: longitude)
+                        viewModel.editTrip(tripID: theTripID,
+                                           title: title, startDate: start,
+                                           endDate: end, distance: distance,
+                                           latitude: latitude,
+                                           longitude: longitude)
                         dismiss()
                     })
                 }

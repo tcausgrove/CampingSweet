@@ -12,19 +12,16 @@ struct SettingsView: View {
     
     @Environment(\.dismiss) var dismiss
     
-    @State var defaultUnits: VolumeOptions = .america
     @State var defaultDistance: DistanceOptions = .mi
     @State var timeFormat: ClockHours = .two
     @State var dateFormat: DateFormatType = .monthFirst
     @State var locationFormat: LocationImportFormat = .dd
-    @State var dateImportFormat: DateImportOption = .startEnd
+    @State var dateImportFormat: DateImportFormat = .startEnd
 
     var body: some View {
         NavigationView {
             Form {
-                Section(header: Text("Display")) {
-                    
-                    HStack {
+                Section(header: Text("Display").font(.headline)) {
                         Picker("Distance in", selection: $defaultDistance) {
                             ForEach(DistanceOptions.allCases) { option in
                                 Text(option.rawValue)
@@ -33,9 +30,7 @@ struct SettingsView: View {
                         .onAppear(perform: {
                             defaultDistance = viewModel.settings.chosenDistance
                         })
-                    }
                     
-                    HStack {
                         Picker("Time format", selection: $timeFormat) {
                             ForEach(ClockHours.allCases) { option in
                                 Text(option.rawValue)
@@ -44,20 +39,18 @@ struct SettingsView: View {
                         .onAppear(perform: {
                             timeFormat = viewModel.settings.chosenClockHours
                         })
-                    }
                     
-                    HStack {
                         Picker("Date format", selection: $dateFormat) {
                             ForEach(DateFormatType.allCases) { option in
                                 Text(option.rawValue)
                             }
                         }
                         .onAppear(perform: {
-                            timeFormat = viewModel.settings.chosenClockHours
+                            dateFormat = viewModel.settings.chosenDateFormat
                         })
                     }
-                }
-                Section(header: Text("CSV Import")) {
+
+                Section(header: Text("CSV Import").font(.headline)) {
                     Picker("Location", selection: $locationFormat) {
                         ForEach(LocationImportFormat.allCases) { option in
                             Text(option.rawValue)
@@ -68,9 +61,12 @@ struct SettingsView: View {
                     })
 
                     Picker("Date entries", selection: $dateImportFormat) {
-                        ForEach(DateImportOption.allCases) { option in
+                        ForEach(DateImportFormat.allCases) { option in
                             Text(option.rawValue)}
                     }
+                    .onAppear(perform: {
+                        dateImportFormat = viewModel.settings.dateImportFormat
+                    })
                 }
             }
             .toolbar(){
@@ -79,14 +75,14 @@ struct SettingsView: View {
                         viewModel.changeSettings(newChosenDistance: defaultDistance,
                                                  newClockHours: timeFormat,
                                                  newDateFormat: dateFormat,
-                                                 newLocationFormat: locationFormat)
+                                                 newLocationFormat: locationFormat,
+                                                 newDateImportFormat: dateImportFormat)
                         dismiss() }) {
                             Text("Done")
                         }
                 }
             }
             .navigationTitle("User settings")
-            .padding()
         }
     }
 }

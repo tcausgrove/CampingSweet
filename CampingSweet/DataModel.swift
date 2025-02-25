@@ -78,11 +78,13 @@ struct Settings: Codable {
     var chosenClockHours: ClockHours
     var chosenDateFormat: DateFormatType
     var locationImportFormat: LocationImportFormat
+    var dateImportFormat: DateImportFormat
     
     static let example = Settings(chosenDistance: .mi,
                                   chosenClockHours: .two,
                                   chosenDateFormat: .monthFirst,
-                                  locationImportFormat: .dd)
+                                  locationImportFormat: .dd,
+                                  dateImportFormat: .startEnd)
 }
 
 extension Date {
