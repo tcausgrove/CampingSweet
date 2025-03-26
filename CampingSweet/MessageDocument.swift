@@ -1,6 +1,6 @@
 //
 //  MessageDocument.swift
-//  MyCSVTrial
+//  CampingSweet
 //
 //  Created by Timothy Causgrove on 11/14/24.
 //

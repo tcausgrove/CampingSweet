@@ -1,6 +1,6 @@
 //
 //  CamperLogView.swift
-//  BoatingSweet
+//  CampingSweet
 //
 //  Created by Timothy Causgrove on 4/19/23.
 //

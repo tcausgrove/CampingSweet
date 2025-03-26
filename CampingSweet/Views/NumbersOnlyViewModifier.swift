@@ -1,6 +1,6 @@
 //
 //  NumbersOnlyViewModifier.swift
-//  BoatingSweet
+//  CampingSweet
 //
 //  Created by Timothy Causgrove on 6/22/23.
 //
@@ -8,6 +8,8 @@
 import Foundation
 import SwiftUI
 import Combine
+
+
 struct NumbersOnlyViewModifier: ViewModifier {
     
     @Binding var text: String

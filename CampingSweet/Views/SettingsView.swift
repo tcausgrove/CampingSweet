@@ -1,6 +1,6 @@
 //
 //  SettingsView.swift
-//  BoatingSweet
+//  CampingSweet
 //
 //  Created by Timothy Causgrove on 4/20/23.
 //

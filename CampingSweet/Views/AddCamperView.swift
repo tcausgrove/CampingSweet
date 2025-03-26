@@ -1,6 +1,6 @@
 //
-//  AddVesselLogView.swift
-//  BoatingSweet
+//  AddCamperView.swift
+//  CampingSweet
 //
 //  Created by Timothy Causgrove on 4/19/23.
 //

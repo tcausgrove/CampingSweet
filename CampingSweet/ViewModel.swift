@@ -179,7 +179,6 @@ import Foundation
             replacementCamper.isArchived = true
             replacementCamper.isDefaultCamper = false
             campers[replacementCamperIndex] = replacementCamper
-            print("Camper archived")
         }
         if !currentCamperExists() {
             setCurrentCamperToFirst()
@@ -291,7 +290,6 @@ import Foundation
                 var replacementCamper = campers[0]
                 replacementCamper.isDefaultCamper = true
                 campers[0] = replacementCamper
-                print("Setting default camper")
             } else {
                 print("Why am I here?")
                 // There are no campers; the camper log page won't be available
