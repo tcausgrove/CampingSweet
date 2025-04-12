@@ -23,7 +23,7 @@ struct CamperCardView: View {
                     Image(systemName: "ellipsis")
                         .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
                         .onTapGesture(perform: { showModMenu = true })
-                    Text("  ")
+                        .padding(.trailing, 12)
                 }
                 .sheet(isPresented: $showModMenu, content: { sheetContents })
                 HStack {

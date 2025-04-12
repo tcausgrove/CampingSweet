@@ -20,11 +20,13 @@ struct LogBookView: View {
     @State var tripToEdit: LogEntry? = nil
 
     var body: some View {
-        NavigationView {
             VStack {
                 Text("For camper \(viewModel.getCurrentCamperName())")
                     .font(.title2)
-                List {
+                Button(action: { isImporting = true }) {
+                    Text("Import CSV")
+                }
+//                Group {
                     let camper = viewModel.getCurrentCamper()
                     if camper != nil {
                         ForEach(camper!.trips) { trip in
@@ -40,31 +42,18 @@ struct LogBookView: View {
                             viewModel.deleteTrips(indexSet: indexSet)
                         }
                     }
-                }
-                .toolbar() {
-                    ToolbarItem {
-                        Button(action: {
-                            addingLogEntry.toggle()
-                        }) {
-                            Image(systemName: "plus")
-                        }
-                    }
-                    ToolbarItem(placement: .topBarLeading) {
-                        Button(action: { isImporting = true }) {
-                            Text("Import CSV")
-                        }
+//                }
+                Spacer()
+            }
+            .padding([.top, .bottom])
+            .toolbar() {
+                ToolbarItem {
+                    Button(action: {
+                        addingLogEntry.toggle()
+                    }) {
+                        Image(systemName: "plus")
                     }
                 }
-                .sheet(isPresented: $addingLogEntry, content: {
-                    // change "false" to a variable and use the actual trip ID
-                    AddLogBookEntryView()
-                        .environmentObject(viewModel)
-                })
-                .sheet(isPresented: $editingLogEntry, content: {
-                    EditLogEntryView(previousLogEntry: $tripToEdit)
-                        .environmentObject(viewModel)
-                })
-            .navigationTitle("Log Book")
             }
             .fileImporter(
                 isPresented: $isImporting,
@@ -82,11 +71,21 @@ struct LogBookView: View {
                                                          dateImportFormat: viewModel.settings.dateImportFormat)
                     viewModel.addImportedTrips(newTrips: newTripData)
                 } catch {
-                    // Handle failure.
+                    // FIXME:  Need to handle failure here
                 }
             }
             .modifier(BackgroundView())
-        }
+        //FIXME:  These two sheets should be combined
+            .sheet(isPresented: $addingLogEntry, content: {
+                // change "false" to a variable and use the actual trip ID
+                AddLogBookEntryView()
+                    .environmentObject(viewModel)
+            })
+            .sheet(isPresented: $editingLogEntry, content: {
+                EditLogEntryView(previousLogEntry: $tripToEdit)
+                    .environmentObject(viewModel)
+            })
+            .navigationTitle("Log Book")
     }
 }
 
@@ -94,23 +93,5 @@ struct LogBookView_Previews: PreviewProvider {
     static var previews: some View {
         LogBookView(tripToEdit: LogEntry.example)
             .environmentObject(ViewModel())
-    }
-}
-
-struct TripCardView: View {
-    var trip: LogEntry
-    
-    @EnvironmentObject var viewModel: ViewModel
-    
-    var body: some View {
-        VStack(alignment: .leading) {
-            Text("Title:  \(trip.title)")
-            Text("When:  \(trip.startDate.formatted(date: .long, time: .omitted))")
-            let numberOfNightsText = "Number of nights:  " + String(trip.numberOfNights)
-            Text(numberOfNightsText)
-            let tripDistance = viewModel.formatDistanceBySetting(distance: trip.distance ?? 0.0)
-            Text("Distance:  " + tripDistance )
-        }
-        .padding(.top, 12)
     }
 }

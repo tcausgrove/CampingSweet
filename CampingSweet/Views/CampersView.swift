@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct CamperLogView: View {
+struct CampersView: View {
     @EnvironmentObject var viewModel: ViewModel
     
     @State private var addingCamper: Bool = false
@@ -44,9 +44,9 @@ struct CamperLogView: View {
     }
 }
 
-struct CamperLogView_Previews: PreviewProvider {
+struct CampersView_Previews: PreviewProvider {
     static var previews: some View {
-        CamperLogView()
+        CampersView()
             .environmentObject(ViewModel())
     }
 }

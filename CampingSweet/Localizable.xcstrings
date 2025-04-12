@@ -4,9 +4,6 @@
     "" : {
       "shouldTranslate" : false
     },
-    "  " : {
-
-    },
     "Add" : {
       "comment" : "Top right button to add new camper; top right button to add trip"
     },
@@ -62,6 +59,9 @@
           }
         }
       }
+    },
+    "CampingSweet" : {
+
     },
     "Cancel" : {
       "comment" : "Multi-purpose cancel option",

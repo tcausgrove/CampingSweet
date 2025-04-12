@@ -16,7 +16,6 @@ struct AddCamperView: View {
     @EnvironmentObject var viewModel: ViewModel
     
     var body: some View {
-        NavigationView {
             Form {
                 Text("Add a camper", tableName: "Localizable")
                     .padding()
@@ -37,7 +36,6 @@ struct AddCamperView: View {
                 }
         }
             .padding()
-        }
     }
     
     func addNewCamper() {

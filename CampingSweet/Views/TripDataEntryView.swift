@@ -48,12 +48,14 @@ struct TripDataEntryView: View {
 
             Section(header: Text("Dates")) {
                 DatePicker("Arrival date", selection: $start, displayedComponents: [.date])
-                    .onChange(of: start, perform: { _ in
-                        numberOfNightsText = viewModel.setDisplayedNightsText(start: start, end: end) })
+                    .onChange(of: start) { newStart in
+                        numberOfNightsText = viewModel.setDisplayedNightsText(start: newStart, end: end)
+                    }
                 
                 DatePicker("Departure date", selection: $end, in: start..., displayedComponents: [.date])
-                    .onChange(of: end, perform: { _ in
-                        numberOfNightsText = viewModel.setDisplayedNightsText(start: start, end: end) })
+                    .onChange(of: end) { newEnd in
+                        numberOfNightsText = viewModel.setDisplayedNightsText(start: start, end: newEnd)
+                    }
                 
                 Text(numberOfNightsText)
             }

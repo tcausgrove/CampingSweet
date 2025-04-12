@@ -19,7 +19,6 @@ struct SettingsView: View {
     @State var dateImportFormat: DateImportFormat = .startEnd
 
     var body: some View {
-        NavigationView {
             Form {
                 Section(header: Text("Display").font(.headline)) {
                         Picker("Distance in", selection: $defaultDistance) {
@@ -69,7 +68,7 @@ struct SettingsView: View {
                     })
                 }
             }
-            .toolbar(){
+            .toolbar(){  // Needs to change
                 ToolbarItemGroup(placement: .navigation) {
                     Button(role: .cancel, action: {
                         viewModel.changeSettings(newChosenDistance: defaultDistance,
@@ -83,7 +82,6 @@ struct SettingsView: View {
                 }
             }
             .navigationTitle("User settings")
-        }
     }
 }
 

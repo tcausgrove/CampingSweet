@@ -14,7 +14,6 @@ struct HelpView: View {
     @State var theQuestion: HelpFAQ = .introQuestion
 
     var body: some View {
-        NavigationView {
             VStack {
                 Picker("FAQ", selection: $theQuestion) {
                     ForEach(HelpFAQ.allCases) { option in
@@ -29,15 +28,6 @@ struct HelpView: View {
                 
             }
             .padding()
-            .toolbar() {
-                ToolbarItemGroup(placement: .navigation) {
-                    Button(role: .cancel,
-                           action: { dismiss() } ) {
-                        Text("Done")
-                    }
-                }
-            }
-        }
     }
 }
 

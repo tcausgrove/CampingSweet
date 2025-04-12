@@ -14,12 +14,12 @@ struct ContentView: View {
     @State private var changingSettings = false
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             VStack {
                 Spacer()
                 
                 NavigationLink {
-                    CamperLogView().environmentObject(viewModel)
+                    CampersView().environmentObject(viewModel)
                 } label: {
                     Label("My Campers", image: "Camper")
                 }
@@ -51,6 +51,9 @@ struct ContentView: View {
                             .fontWeight(.bold)
                             .padding([.bottom, .leading])
                     }
+                    .navigationDestination(isPresented: $showHelpMenu) {
+                        HelpView()
+                    }
                     Spacer()
                     
                     Button(action: { changingSettings = true }) {
@@ -58,17 +61,15 @@ struct ContentView: View {
                             .font(.title)
                             .padding([.bottom, .trailing])
                     }
+                    .navigationDestination(isPresented: $changingSettings) {
+                        SettingsView()
+                            .environmentObject(viewModel)
+                    }
                 }
             }
+            .navigationTitle("CampingSweet")
             .modifier(BackgroundView())
 
-        }
-        .sheet(isPresented: $changingSettings) {
-            SettingsView()
-                .environmentObject(viewModel)
-        }
-        .sheet(isPresented: $showHelpMenu) {
-            HelpView()
         }
         .errorAlert($viewModel.userError)
     }

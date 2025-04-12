@@ -18,7 +18,6 @@ struct ChecklistView: View {
     @FocusState var editingFocused: Bool
     
     var body: some View {
-        NavigationView {
             List {
                 ForEach(checklistViewModel.checklist, id: \..id) { item in
                     HStack {
@@ -57,7 +56,6 @@ struct ChecklistView: View {
                 }
             }
             .navigationTitle("Departure checklist")
-        }
         .errorAlert($checklistViewModel.checklistError)
     }
     
