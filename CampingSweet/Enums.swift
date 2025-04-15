@@ -63,25 +63,6 @@ enum CamperType: String, CaseIterable, Identifiable {
     var id: Self { self }
 }
 
-enum HelpFAQ: String, CaseIterable, Identifiable {
-    case introQuestion = "Frequently Asked Questions"
-    case logBookUnavailable = "Why is the log book unavailble?"
-    case archiveCamper = "What is archiving a camper?"
-    
-    var id: Self { self }
-}
-
-extension HelpFAQ {
-    // FIXME: These are just placeholder answers, I need to write the full answer.
-    var faqAnswer: String {
-        switch self {
-        case .introQuestion: return ""
-        case .logBookUnavailable: return "Probably no camper"
-        case .archiveCamper: return "Gets it out of the way"
-        }
-    }
-}
-
 enum UserError: LocalizedError {
     case failedLoading
     case failedSaving
@@ -104,3 +85,10 @@ enum UserError: LocalizedError {
     }
 }
 
+// This is currently unused
+enum ArchivalAction: String, CaseIterable, Identifiable {
+    case archive = "Archive"
+    case unarchive = "Unarchive"
+    
+    var id: Self { self }
+}

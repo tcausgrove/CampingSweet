@@ -22,41 +22,44 @@ struct EditLogEntryView: View {
     @State private var longitude: String = ""
     
     var body: some View {
-        VStack {
-            Text( "Edit Log Book Entry" )
-                .padding(.bottom, 30)
-                .font(.title)
-            
-            TripDataEntryView(title: $title,
-                              start: $start,
-                              end: $end,
-                              distance: $distance,
-                              latitude: $latitude,
-                              longitude: $longitude)
-        }
-        .padding()
-        .toolbar() {
-            ToolbarItem(placement: .cancellationAction) {
-                Button("Cancel", role: .cancel, action: { dismiss() })
+        NavigationStack {
+            VStack {
+                if previousLogEntry == nil {
+                    Text( "Add Log Book Entry" )
+                        .padding(.bottom, 30)
+                        .font(.title)
+                } else {
+                    Text( "Edit Log Book Entry" )
+                        .padding(.bottom, 30)
+                        .font(.title)
+                }
+                
+                TripDataEntryView(title: $title,
+                                  start: $start,
+                                  end: $end,
+                                  distance: $distance,
+                                  latitude: $latitude,
+                                  longitude: $longitude)
             }
-            ToolbarItem(placement: .confirmationAction) {
-                Button("Save Changes", role: .none, action: {
-                    let theTripID = previousLogEntry?.id ?? UUID()
-                    viewModel.editTrip(tripID: theTripID,
-                                       title: title, startDate: start,
-                                       endDate: end, distance: distance,
-                                       latitude: latitude,
-                                       longitude: longitude)
-                    dismiss()
-                })
+            .padding()
+            .toolbar() {
+                ToolbarItem(placement: .cancellationAction) {
+                    Button("Cancel", role: .cancel, action: { dismiss() })
+                }
+                ToolbarItem(placement: .confirmationAction) {
+                    Button("Save", role: .none, action: {
+                        saveLogBookEntry()
+                        dismiss()
+                    })
+                }
             }
+            .onAppear(perform: { populateVariables() })
         }
-        .onAppear(perform: { populateVariables() })
     }
     
     func populateVariables() {
-        if previousLogEntry == nil { // This really shouldn't happen
-            previousLogEntry = LogEntry.example
+        if previousLogEntry == nil { // We are adding a new entry
+            
         } else {
             title = previousLogEntry!.title
             start = previousLogEntry!.startDate
@@ -68,6 +71,19 @@ struct EditLogEntryView: View {
             if newLatitude != nil { latitude = String(newLatitude!) }
             if newLongitude != nil { longitude = String(newLongitude!) }
         }
+    }
+    
+    func saveLogBookEntry() {
+        if previousLogEntry == nil {
+            viewModel.addTrip(title: title, startDate: start, endDate: end, distance: distance, latitude: latitude, longitude: longitude)
+            return
+        }
+        let theTripID = previousLogEntry?.id ?? UUID()
+        viewModel.editTrip(tripID: theTripID,
+                           title: title, startDate: start,
+                           endDate: end, distance: distance,
+                           latitude: latitude,
+                           longitude: longitude)
     }
 }
 

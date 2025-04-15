@@ -173,10 +173,10 @@ import Foundation
         }
     }
     
-    func archiveCamper(camperToArchive: Camper) {
+    func toggleCamperArchival(camperToArchive: Camper) {
         if let replacementCamperIndex = campers.firstIndex(of: camperToArchive) {
             var replacementCamper = campers[replacementCamperIndex]
-            replacementCamper.isArchived = true
+            replacementCamper.isArchived.toggle()
             replacementCamper.isDefaultCamper = false
             campers[replacementCamperIndex] = replacementCamper
         }

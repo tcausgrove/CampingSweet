@@ -4,6 +4,12 @@
     "" : {
       "shouldTranslate" : false
     },
+    "- Click the plus to add a camper" : {
+
+    },
+    "- Long press on a camper to edit its information" : {
+
+    },
     "Add" : {
       "comment" : "Top right button to add new camper; top right button to add trip"
     },
@@ -17,6 +23,9 @@
           }
         }
       }
+    },
+    "Add Log Book Entry" : {
+
     },
     "Archive camper" : {
       "localizations" : {
@@ -49,6 +58,9 @@
         }
       }
     },
+    "Buy me: %@" : {
+
+    },
     "Campers" : {
       "comment" : "Option on the main page",
       "localizations" : {
@@ -61,6 +73,9 @@
       }
     },
     "CampingSweet" : {
+
+    },
+    "CampingSweet Help" : {
 
     },
     "Cancel" : {
@@ -91,6 +106,9 @@
       }
     },
     "Dates" : {
+
+    },
+    "Delete" : {
 
     },
     "Delete camper" : {
@@ -177,9 +195,6 @@
           }
         }
       }
-    },
-    "FAQ" : {
-
     },
     "For camper %@" : {
       "localizations" : {
@@ -300,7 +315,11 @@
         }
       }
     },
+    "Save" : {
+
+    },
     "Save Changes" : {
+      "extractionState" : "stale",
       "localizations" : {
         "es-419" : {
           "stringUnit" : {
@@ -319,6 +338,9 @@
           }
         }
       }
+    },
+    "Settings" : {
+
     },
     "Time format" : {
       "localizations" : {
@@ -340,6 +362,9 @@
         }
       }
     },
+    "Unarchive" : {
+
+    },
     "User settings" : {
       "comment" : "Main title of settings view",
       "localizations" : {
@@ -360,6 +385,9 @@
           }
         }
       }
+    },
+    "You picked %@" : {
+
     }
   },
   "version" : "1.0"

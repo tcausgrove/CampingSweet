@@ -31,7 +31,7 @@ struct CardView<Content: View>: View {
                 .padding(padding)
             ScrollView { content }
         }
-        .frame(minHeight: 180)
+//        .frame(minHeight: 160)
         .background {
             RoundedRectangle(cornerRadius: cornerRadius)
                 .fill(backgroundColor.opacity(0.6))

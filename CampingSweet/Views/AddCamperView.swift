@@ -16,6 +16,7 @@ struct AddCamperView: View {
     @EnvironmentObject var viewModel: ViewModel
     
     var body: some View {
+        NavigationStack {
             Form {
                 Text("Add a camper", tableName: "Localizable")
                     .padding()
@@ -34,8 +35,9 @@ struct AddCamperView: View {
                 ToolbarItem(placement: .cancellationAction) {
                     Button("Cancel", role: .cancel, action: { dismiss() })
                 }
-        }
+            }
             .padding()
+        }
     }
     
     func addNewCamper() {

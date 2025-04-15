@@ -46,12 +46,11 @@ struct CamperCardView: View {
     }
     
     @ViewBuilder var sheetContents: some View {
-        let menuHeaderText = "Options for camper " + viewModel.getCurrentCamperName()
+        let menuHeaderText = "Options for camper " + camper.name  //viewModel.getCurrentCamperName()
         Text(menuHeaderText)
             .font(.title3)
         VStack(alignment: .center, spacing: 16) {
             Button(role: .destructive, action: {
-                // Delete camper here
                 viewModel.deleteCamper(camperToDelete: camper)
                 showModMenu = false
             }) {
@@ -60,7 +59,7 @@ struct CamperCardView: View {
             .sheetButtonStyle()
 
             Button(action: {
-                viewModel.archiveCamper(camperToArchive: camper)
+                viewModel.toggleCamperArchival(camperToArchive: camper)
                 showModMenu = false
             }) {
                 Text("Archive camper")
@@ -72,7 +71,7 @@ struct CamperCardView: View {
             }
             .sheetButtonStyle()
         }
-        .frame(width: 320)
+        .frame(width: 320)  // FIXME:  Hard-coded dimensions like this are bad
         .presentationDetents([.fraction(0.35)])
         .presentationDragIndicator(.hidden)
     }

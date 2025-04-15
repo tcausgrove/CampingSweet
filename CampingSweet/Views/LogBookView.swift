@@ -10,7 +10,7 @@ import SwiftUI
 struct LogBookView: View {
     @EnvironmentObject var viewModel: ViewModel
     
-    @State private var addingLogEntry = false
+//    @State private var addingLogEntry = false
     @State private var editingLogEntry: Bool = false
     @State private var checkForDelete = false
     @State private var isImporting: Bool = false
@@ -26,7 +26,6 @@ struct LogBookView: View {
                 Button(action: { isImporting = true }) {
                     Text("Import CSV")
                 }
-//                Group {
                     let camper = viewModel.getCurrentCamper()
                     if camper != nil {
                         ForEach(camper!.trips) { trip in
@@ -42,14 +41,14 @@ struct LogBookView: View {
                             viewModel.deleteTrips(indexSet: indexSet)
                         }
                     }
-//                }
                 Spacer()
             }
             .padding([.top, .bottom])
             .toolbar() {
                 ToolbarItem {
                     Button(action: {
-                        addingLogEntry.toggle()
+                        tripToEdit = nil
+                        editingLogEntry.toggle()
                     }) {
                         Image(systemName: "plus")
                     }
@@ -76,11 +75,11 @@ struct LogBookView: View {
             }
             .modifier(BackgroundView())
         //FIXME:  These two sheets should be combined
-            .sheet(isPresented: $addingLogEntry, content: {
+//            .sheet(isPresented: $addingLogEntry, content: {
                 // change "false" to a variable and use the actual trip ID
-                AddLogBookEntryView()
-                    .environmentObject(viewModel)
-            })
+//                EditLogEntryView(previousLogEntry: $tripToEdit)
+//                    .environmentObject(viewModel)
+//            })
             .sheet(isPresented: $editingLogEntry, content: {
                 EditLogEntryView(previousLogEntry: $tripToEdit)
                     .environmentObject(viewModel)

@@ -11,23 +11,34 @@ struct HelpView: View {
     
     @Environment(\.dismiss) var dismiss
     
-    @State var theQuestion: HelpFAQ = .introQuestion
 
     var body: some View {
-            VStack {
-                Picker("FAQ", selection: $theQuestion) {
-                    ForEach(HelpFAQ.allCases) { option in
-                        Text(option.rawValue)
-                    }
+        VStack(alignment: .leading) {
+                Text("CampingSweet Help")
+                    .font(.title)
+                    .padding(12)
+
+                Group {
+                    Text("Campers")
+                        .font(.title2)
+                    Text("- Click the plus to add a camper")
+                    Text("- Long press on a camper to edit its information")
                 }
-                    
-                Text(theQuestion.faqAnswer)
-                    .fixedSize(horizontal: false, vertical: true)
+                
+                Group {
+                    Text("Log Book")
+                        .font(.title2)
+
+                }
+
+                Group {
+                    Text("Settings")
+                        .font(.title2)
+                }
                 
                 Spacer()
                 
             }
-            .padding()
     }
 }
 

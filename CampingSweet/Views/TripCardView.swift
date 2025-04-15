@@ -27,7 +27,6 @@ struct TripCardView: View {
                     Spacer()
                 }
             }
-            .padding(.top, 12)
         }
     }
 }
