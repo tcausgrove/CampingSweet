@@ -17,6 +17,7 @@
 		785949572CE6CAF600D8060A /* SwiftCSV in Frameworks */ = {isa = PBXBuildFile; productRef = 785949562CE6CAF600D8060A /* SwiftCSV */; };
 		785949812CEC0E5800D8060A /* TripDataEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785949802CEC0E5800D8060A /* TripDataEntryView.swift */; };
 		785949832CEC13C300D8060A /* EditLogEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785949822CEC13C300D8060A /* EditLogEntryView.swift */; };
+		787A4EAD2DCC2C930064B2A8 /* CodableCSV in Frameworks */ = {isa = PBXBuildFile; productRef = 787A4EAC2DCC2C930064B2A8 /* CodableCSV */; };
 		78820E582D2F506000AA6807 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 78820E572D2F506000AA6807 /* Localizable.xcstrings */; };
 		78820E742D35D39200AA6807 /* GetLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78820E732D35D39200AA6807 /* GetLocation.swift */; };
 		78820E892D3EBB7700AA6807 /* HelpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78820E882D3EBB7700AA6807 /* HelpView.swift */; };
@@ -83,6 +84,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				787A4EAD2DCC2C930064B2A8 /* CodableCSV in Frameworks */,
 				785949572CE6CAF600D8060A /* SwiftCSV in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -179,6 +181,7 @@
 			name = CampingSweet;
 			packageProductDependencies = (
 				785949562CE6CAF600D8060A /* SwiftCSV */,
+				787A4EAC2DCC2C930064B2A8 /* CodableCSV */,
 			);
 			productName = BoatingSweet;
 			productReference = 78A4151A29E4D3AB005CBEF1 /* CampingSweet.app */;
@@ -212,6 +215,7 @@
 			mainGroup = 78A4151129E4D3AB005CBEF1;
 			packageReferences = (
 				785949552CE6CAF600D8060A /* XCRemoteSwiftPackageReference "SwiftCSV" */,
+				787A4EAB2DCC2C930064B2A8 /* XCRemoteSwiftPackageReference "CodableCSV" */,
 			);
 			productRefGroup = 78A4151B29E4D3AB005CBEF1 /* Products */;
 			projectDirPath = "";
@@ -406,7 +410,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"CampingSweet/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -443,7 +447,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"CampingSweet/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -505,6 +509,14 @@
 				minimumVersion = 0.10.0;
 			};
 		};
+		787A4EAB2DCC2C930064B2A8 /* XCRemoteSwiftPackageReference "CodableCSV" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/dehesa/CodableCSV";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.6.7;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -512,6 +524,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 785949552CE6CAF600D8060A /* XCRemoteSwiftPackageReference "SwiftCSV" */;
 			productName = SwiftCSV;
+		};
+		787A4EAC2DCC2C930064B2A8 /* CodableCSV */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 787A4EAB2DCC2C930064B2A8 /* XCRemoteSwiftPackageReference "CodableCSV" */;
+			productName = CodableCSV;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

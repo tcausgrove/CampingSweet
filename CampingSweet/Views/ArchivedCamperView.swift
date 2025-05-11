@@ -20,20 +20,18 @@ struct ArchivedCamperView: View {
                 Text(camper.name)
                     .font(.title3)
                 Spacer()
-                // Left below in for future "Unarchive camper" option
                 Image(systemName: "ellipsis")
                     .font(.title)
                     .onTapGesture { showModMenu = true }
             }
             .popover(isPresented: $showModMenu,
                      attachmentAnchor: .point(.trailing),
-//                     .arrowEdge: .bottom,
-                     content: { sheetContents })
+                     content: { popoverContents })
             .padding([.leading, .trailing], 12)
         }
     }
     
-    @ViewBuilder var sheetContents: some View {
+    @ViewBuilder var popoverContents: some View {
         VStack {
             Button(role: .none) {
                 viewModel.toggleCamperArchival(camperToArchive: camper)

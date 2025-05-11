@@ -8,6 +8,7 @@
 import Foundation
 import SwiftCSV
 import CoreLocation
+import CodableCSV
 
 func convertStringToDates(inputString: String, dateFormat: DateFormatType) -> (Date, Date) {
     var arrivalDate = Date.now
@@ -52,6 +53,22 @@ func convertStringToDates(inputString: String, dateFormat: DateFormatType) -> (D
     return (arrivalDate, departureDate)
 }
 
+func convertDatesToString(arrival: Date, departure: Date?) -> String {
+    let formatter = DateFormatter()
+    formatter.dateStyle = .short
+    
+    let arrivalString = formatter.string(from: arrival)
+    var departureString : String? = nil
+    if departure != nil {
+        departureString = formatter.string(from: departure!)
+    }
+    var returnString = "\(String(describing: arrivalString))"
+    if departureString != nil {
+        returnString += " - \(String(describing: departureString!))"
+    }
+    return returnString
+}
+
 func getCSV(inputString: String,
             dateFormat: DateFormatType,
             locationType: LocationImportFormat,
@@ -60,7 +77,6 @@ func getCSV(inputString: String,
     var tripDataArray: [LogEntry] = []
     
     do {
-        
         let csv: CSV = try CSV<Named>(string: inputString, delimiter: .comma)
         
         var theLocation: CLLocationCoordinate2D? = nil
@@ -95,5 +111,39 @@ func getCSV(inputString: String,
         
     } catch {
         return []
+    }
+}
+
+func saveCSVImperatively(camper: Camper) {
+    var writer: CSVWriter!
+    
+    do {
+        let path = try FileManager.default.url(for: .documentDirectory,
+                                               in: .allDomainsMask,
+                                               appropriateFor: nil,
+                                               create: false)
+        
+        let fileURL = path.appendingPathComponent("\(camper.name)_trips.csv")
+        print("\(fileURL)")
+        writer = try CSVWriter(fileURL: fileURL)
+    } catch {
+        // Handle errors
+    }
+    do {
+        let heading = ["Start Date", "Nights", "Location", "Coordinates", "Miles driven"]
+        try writer.write(row: heading)
+        
+        for trip in camper.trips {
+            let titleString = trip.title
+            let datesString = convertDatesToString(arrival: trip.startDate, departure: trip.endDate)
+            let nightsString = "\(trip.numberOfNights)"
+            let milesString = "\(trip.distance ?? 0.0)"
+            let locationString = "\(trip.latitude ?? 0.0) \(trip.longitude ?? 0.0)"
+            let row = [datesString, nightsString, titleString, locationString, milesString]
+            try writer.write(row: row)
+        }
+        try writer.endEncoding()
+    } catch {
+        print("Error is \(error)")
     }
 }
