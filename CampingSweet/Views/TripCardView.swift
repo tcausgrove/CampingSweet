@@ -17,7 +17,17 @@ struct TripCardView: View {
     var body: some View {
         CardView(backgroundColor: Color.sheetButtonBackground) {
             VStack(alignment: .leading, spacing: 2) {
-                Text("Title:  \(trip.title)")
+                HStack {
+                    Text("Title:  \(trip.title)")
+                    Spacer()
+                    Image(systemName: "ellipsis")
+                        .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
+                        .onTapGesture(perform: { showModMenu = true })
+                        .padding(.trailing, 12)
+                }
+                .popover(isPresented: $showModMenu,
+                         attachmentAnchor: .point(.trailing),
+                         content: { popoverContents })
                 Text("When:  \(trip.startDate.formatted(date: .long, time: .omitted))")
                 let numberOfNightsText = "Number of nights:  " + String(trip.numberOfNights)
                 Text(numberOfNightsText)
@@ -28,6 +38,18 @@ struct TripCardView: View {
                 }
             }
         }
+    }
+    
+    @ViewBuilder var popoverContents: some View {
+        VStack {
+            Button(role: .destructive) {
+                viewModel.deleteTrip(tripID: trip.id)
+            } label: {
+                Text("Delete trip")
+            }
+        }
+        .padding(12)
+        .presentationCompactAdaptation(.popover)
     }
 }
 

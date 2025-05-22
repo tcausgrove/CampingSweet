@@ -68,9 +68,12 @@ enum UserError: LocalizedError {
     case failedSaving
     case tripDoesNotExist
     case settingsNotFound
+    case couldNotSaveCSV
+    case exportCSVSucceeded // Not really an error, but I want the dialog
     
     var errorDescription: String? {    // This shows up as the first thing in bold in the error alert
         switch self {
+            case .exportCSVSucceeded: return "File saved"
         default: return "Data error"
         }
     }
@@ -81,6 +84,8 @@ enum UserError: LocalizedError {
         case .failedSaving: return "Unable to save the data"
         case .tripDoesNotExist: return "Unable to save changes; can't find this trip"
         case .settingsNotFound: return "Unable to find saved settings"
+        case .couldNotSaveCSV: return "Unable to save CSV file"
+        case .exportCSVSucceeded: return "CSV file saved successfully"
         }
     }
 }
@@ -89,6 +94,14 @@ enum UserError: LocalizedError {
 enum ArchivalAction: String, CaseIterable, Identifiable {
     case archive = "Archive"
     case unarchive = "Unarchive"
+    
+    var id: Self { self }
+}
+
+enum HelpSection: String, CaseIterable, Identifiable {
+    case camperScreen = "Campers"
+    case logBookScreen = "Log Book"
+    case settingsScreen = "Settings"
     
     var id: Self { self }
 }

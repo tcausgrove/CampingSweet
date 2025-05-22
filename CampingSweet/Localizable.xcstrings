@@ -4,11 +4,60 @@
     "" : {
       "shouldTranslate" : false
     },
-    "- Click the plus to add a camper" : {
+    "- Archived campers are kept at the bottom; tap the ellipsis to unarchive them or delete them" : {
+
+    },
+    "- For more information about the CSV format, see the README" : {
+
+    },
+    "- Latitude and longitude should NOT be separated by commas" : {
 
     },
     "- Long press on a camper to edit its information" : {
 
+    },
+    "- Long press on a log entry to edit its information" : {
+
+    },
+    "- Scroll up or down for more trips" : {
+
+    },
+    "- Tap on a camper to select it for the log book" : {
+
+    },
+    "- Tap on the ellipsis (three dots) to delete or archive a camper" : {
+
+    },
+    "- Tap on the plus to add a camper" : {
+
+    },
+    "- Tap on the plus to add a log entry" : {
+
+    },
+    "- The DISPLAY section settings only affects data presentation" : {
+
+    },
+    "- The option to export CSV files should help in determining the format for importing data" : {
+
+    },
+    "- Trips can be imported or exported from/to a CSV file" : {
+
+    },
+    "- Use Decimal degrees setting if your coordinates look like 36.16664 -105.96667" : {
+
+    },
+    "- Use Degrees minutes seconds setting if your coordinates look like 36°10'40.5\"N 105°58'17.3\"W" : {
+
+    },
+    "%@ %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ %2$@"
+          }
+        }
+      }
     },
     "Add" : {
       "comment" : "Top right button to add new camper; top right button to add trip"
@@ -57,9 +106,6 @@
           }
         }
       }
-    },
-    "Buy me: %@" : {
-
     },
     "Campers" : {
       "comment" : "Option on the main page",
@@ -120,6 +166,9 @@
           }
         }
       }
+    },
+    "Delete trip" : {
+
     },
     "Departure checklist" : {
       "comment" : "Option on the main page; title of checklist page",
@@ -295,6 +344,9 @@
     "OK" : {
 
     },
+    "Options on Campers Screen" : {
+
+    },
     "Place" : {
 
     },
@@ -388,9 +440,6 @@
           }
         }
       }
-    },
-    "You picked %@" : {
-
     }
   },
   "version" : "1.0"

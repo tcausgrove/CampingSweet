@@ -87,6 +87,16 @@ import Foundation
         }
     }
     
+    func deleteTrip(tripID: UUID) {
+        if let theCamper = campers.first(where: { $0 == self.getCurrentCamper() }) {
+            if let theTrip = theCamper.trips.first(where: { $0.id == tripID }) {
+                if let index = theCamper.trips.firstIndex(of: theTrip) {
+                    self.campers[campers.firstIndex(of: theCamper)!].trips.remove(at: index)
+                }
+            }
+        }
+    }
+    
     func addImportedTrips(newTrips: [LogEntry]) {
         if let theCamper = campers.first(where: { $0 == self.getCurrentCamper() }) {
             if let index = campers.firstIndex(of: theCamper) {

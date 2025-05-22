@@ -10,35 +10,28 @@ import SwiftUI
 struct HelpView: View {
     
     @Environment(\.dismiss) var dismiss
+    @State private var helpSection: HelpSection = .camperScreen
     
-
+    
     var body: some View {
-        VStack(alignment: .leading) {
-                Text("CampingSweet Help")
-                    .font(.title)
-                    .padding(12)
-
-                Group {
-                    Text("Campers")
-                        .font(.title2)
-                    Text("- Click the plus to add a camper")
-                    Text("- Long press on a camper to edit its information")
-                }
-                
-                Group {
-                    Text("Log Book")
-                        .font(.title2)
-
-                }
-
-                Group {
-                    Text("Settings")
-                        .font(.title2)
-                }
-                
-                Spacer()
-                
+        VStack {
+            Text("CampingSweet Help")
+                .font(.title)
+                .padding(12)
+            
+            Menu {
+                Picker(selection: $helpSection) {
+                    ForEach(HelpSection.allCases) { theSection in
+                        Text(theSection.rawValue.capitalized)
+                    }
+                } label: { }
+            } label: {
+                Text("\(helpSection.rawValue.capitalized) \(Image(systemName: "chevron.up.chevron.down"))")
+                    .font(.title3)
             }
+            HelpTextView(helpSection: helpSection)
+            Spacer()
+        }
     }
 }
 

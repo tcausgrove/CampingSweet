@@ -71,7 +71,8 @@ struct CamperCardView: View {
             }
             .sheetButtonStyle()
         }
-        .frame(width: 320)  // FIXME:  Hard-coded dimensions like this are bad
+        .padding([.leading, .trailing], 20)
+        .frame(minWidth: 320)
         .presentationDetents([.fraction(0.35)])
         .presentationDragIndicator(.hidden)
     }

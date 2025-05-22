@@ -19,7 +19,6 @@ import Foundation
                 return
             }
         }
-        // FIXME:  unable to get checklist - need an error option here
         checklistError = .failedLoading
         checklist = []
     }

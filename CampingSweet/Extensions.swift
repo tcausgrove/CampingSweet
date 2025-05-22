@@ -141,8 +141,8 @@ struct BackgroundView: ViewModifier {
     }
 }
 
-// This does the same thing as the ViewModifier above; it is currently unused
-// but has the possibility of passing a variable to it
+// This does the same thing as the ViewModifier above; it is currently
+// unused but has the possibility of passing a variable to it
 // Usage would be, e.g. Text("Some text").makeBackground(aVariable: aVariable)
 extension View {
     func makeBackground() -> some View {

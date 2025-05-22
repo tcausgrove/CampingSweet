@@ -37,28 +37,14 @@ struct LogBookView: View {
                             editingLogEntry.toggle()
                         })
                 }
-                //FIXME:  Deleting a trip doesn't work; swipe left does nothing
+                //FIXME:  Deleting a trip doesn't work; swipe left does nothing; plan is add a Delete button in EditLogBookView
                 .onDelete { indexSet in
                     checkForDelete = true
                     viewModel.deleteTrips(indexSet: indexSet)
                 }
             }
-//            .padding([.top, .bottom])
             Spacer()
-            HStack {
-                Button("Import CSV") {
-                    isImporting = true
-                }
-                Spacer()
-                Button("Export CSV") {
-                    saveCSVImperatively(camper: camper)
-                }
-//                ShareLink(item:generateCSV(camper: camper)) {
-//                    Label("Export CSV", systemImage: "list.bullet.rectangle.portrait")
-//                }
-            }
-            .padding([.leading, .trailing], 30)
-            .background(.sheetButtonBackground)
+            LogBookBottomBarView(isImporting: $isImporting, camper: camper)
         }
         .toolbar() {
             ToolbarItem {
