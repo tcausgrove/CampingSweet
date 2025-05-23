@@ -1,7 +1,7 @@
 {
   "images" : [
     {
-      "filename" : "CamperLight.png",
+      "filename" : "CamperLight_noalpha.png",
       "idiom" : "universal",
       "platform" : "ios",
       "size" : "1024x1024"

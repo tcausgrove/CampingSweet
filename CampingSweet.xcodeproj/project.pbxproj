@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7826F2C02B93B53B0075B0A3 /* ChecklistViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7826F2BF2B93B53B0075B0A3 /* ChecklistViewModel.swift */; };
 		7826F2C22BBB4D4B0075B0A3 /* CamperCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7826F2C12BBB4D4B0075B0A3 /* CamperCardView.swift */; };
 		78413C042A44EB49006DCF9E /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78413C032A44EB49006DCF9E /* Extensions.swift */; };
 		78413C0A2A6DEE84006DCF9E /* NumbersOnlyViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78413C092A6DEE84006DCF9E /* NumbersOnlyViewModifier.swift */; };
@@ -18,6 +17,7 @@
 		785949812CEC0E5800D8060A /* TripDataEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785949802CEC0E5800D8060A /* TripDataEntryView.swift */; };
 		785949832CEC13C300D8060A /* EditLogEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785949822CEC13C300D8060A /* EditLogEntryView.swift */; };
 		787A4EAD2DCC2C930064B2A8 /* CodableCSV in Frameworks */ = {isa = PBXBuildFile; productRef = 787A4EAC2DCC2C930064B2A8 /* CodableCSV */; };
+		787D37E52DDFEE5600B32DA4 /* CheckListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787D37E42DDFEE4000B32DA4 /* CheckListItem.swift */; };
 		78820E582D2F506000AA6807 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 78820E572D2F506000AA6807 /* Localizable.xcstrings */; };
 		78820E742D35D39200AA6807 /* GetLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78820E732D35D39200AA6807 /* GetLocation.swift */; };
 		78820E892D3EBB7700AA6807 /* HelpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78820E882D3EBB7700AA6807 /* HelpView.swift */; };
@@ -45,7 +45,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		7826F2BF2B93B53B0075B0A3 /* ChecklistViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistViewModel.swift; sourceTree = "<group>"; };
 		7826F2C12BBB4D4B0075B0A3 /* CamperCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CamperCardView.swift; sourceTree = "<group>"; };
 		78413C032A44EB49006DCF9E /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		78413C092A6DEE84006DCF9E /* NumbersOnlyViewModifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NumbersOnlyViewModifier.swift; path = Views/NumbersOnlyViewModifier.swift; sourceTree = "<group>"; };
@@ -54,6 +53,7 @@
 		785949532CE6CADD00D8060A /* MessageDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageDocument.swift; sourceTree = "<group>"; };
 		785949802CEC0E5800D8060A /* TripDataEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripDataEntryView.swift; sourceTree = "<group>"; };
 		785949822CEC13C300D8060A /* EditLogEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditLogEntryView.swift; sourceTree = "<group>"; };
+		787D37E42DDFEE4000B32DA4 /* CheckListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckListItem.swift; sourceTree = "<group>"; };
 		78820E572D2F506000AA6807 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		78820E732D35D39200AA6807 /* GetLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetLocation.swift; sourceTree = "<group>"; };
 		78820E882D3EBB7700AA6807 /* HelpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpView.swift; sourceTree = "<group>"; };
@@ -126,7 +126,7 @@
 				785949532CE6CADD00D8060A /* MessageDocument.swift */,
 				78413C092A6DEE84006DCF9E /* NumbersOnlyViewModifier.swift */,
 				78A4153129E4DCE2005CBEF1 /* ViewModel.swift */,
-				7826F2BF2B93B53B0075B0A3 /* ChecklistViewModel.swift */,
+				787D37E42DDFEE4000B32DA4 /* CheckListItem.swift */,
 				78A4152129E4D3AC005CBEF1 /* Assets.xcassets */,
 				78820E572D2F506000AA6807 /* Localizable.xcstrings */,
 				78A4152329E4D3AC005CBEF1 /* Preview Content */,
@@ -250,7 +250,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				78820E8F2D43E9FA00AA6807 /* ErrorView.swift in Sources */,
-				7826F2C02B93B53B0075B0A3 /* ChecklistViewModel.swift in Sources */,
 				785949522CE6CAA200D8060A /* Funcs.swift in Sources */,
 				78A4153929F08713005CBEF1 /* CampersView.swift in Sources */,
 				78413C0A2A6DEE84006DCF9E /* NumbersOnlyViewModifier.swift in Sources */,
@@ -267,6 +266,7 @@
 				78820E892D3EBB7700AA6807 /* HelpView.swift in Sources */,
 				78F8ACE02DAAF0CC0094718D /* ArchivedCamperView.swift in Sources */,
 				785949832CEC13C300D8060A /* EditLogEntryView.swift in Sources */,
+				787D37E52DDFEE5600B32DA4 /* CheckListItem.swift in Sources */,
 				78A4153B29F094EB005CBEF1 /* AddCamperView.swift in Sources */,
 				785949542CE6CADD00D8060A /* MessageDocument.swift in Sources */,
 				78413C042A44EB49006DCF9E /* Extensions.swift in Sources */,
@@ -414,23 +414,23 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 0;
 				DEVELOPMENT_ASSET_PATHS = "\"CampingSweet/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Your location is necessary to record campground coordinates";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.3;
+				MARKETING_VERSION = 0.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tcaus.CampingSweet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -451,23 +451,23 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 0;
 				DEVELOPMENT_ASSET_PATHS = "\"CampingSweet/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Your location is necessary to record campground coordinates";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.3;
+				MARKETING_VERSION = 0.4;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tcaus.CampingSweet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

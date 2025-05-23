@@ -6,10 +6,12 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct ChecklistView: View {
     
-    @StateObject var checklistViewModel = ChecklistViewModel()
+    @Query var checklist: [CheckListItem]
+    @Environment(\.modelContext) var checklistModelContext
     
     @Environment(\.dismiss) var dismiss
     
@@ -19,7 +21,7 @@ struct ChecklistView: View {
     
     var body: some View {
             List {
-                ForEach(checklistViewModel.checklist, id: \..id) { item in
+                ForEach(checklist) { item in
                     HStack {
                         if item.hasCheck { showCheckMark() }
                         Text(item.name)
@@ -27,13 +29,10 @@ struct ChecklistView: View {
                     }
                     .contentShape(Rectangle())
                     .onTapGesture {
-                        checklistViewModel.toggleCheck(item: item)
-                        checklistViewModel.save()
+                        item.hasCheck.toggle()
                     }
                 }
-                .onDelete(perform: { indexSet in
-                    checklistViewModel.deleteItemsByIndexSet(indexSet: indexSet)
-                })
+                .onDelete(perform: deleteItems)
 
                 if addingItem {
                     addingItemView
@@ -50,13 +49,15 @@ struct ChecklistView: View {
             .toolbar() {
                 ToolbarItem {
                     Button(action: {
-                        checklistViewModel.removeAllChecks()
+                        for anItem in checklist {
+                            anItem.hasCheck = false
+                        }
                     } ) { Image(systemName: "trash")
                     }
                 }
             }
             .navigationTitle("Departure checklist")
-        .errorAlert($checklistViewModel.checklistError)
+//        .errorAlert($checklistViewModel.checklistError)
     }
     
     struct showCheckMark: View {
@@ -77,14 +78,21 @@ struct ChecklistView: View {
     func submitNewItem() {
         addingItem = false
         if newItemName.isEmpty { return }
-        checklistViewModel.addItem(newItemName: newItemName)
+        let newItem = CheckListItem(name: newItemName, hasCheck: false)
+        checklistModelContext.insert(newItem)
         newItemName = ""
+    }
+    
+    func deleteItems(_ indexSet: IndexSet) {
+        for index in indexSet {
+            let itemToDelete = checklist[index]
+            checklistModelContext.delete(itemToDelete)
+        }
     }
 }
 
 struct ChecklistView_Previews: PreviewProvider {
     static var previews: some View {
         ChecklistView()
-            .environmentObject(ViewModel())
     }
 }

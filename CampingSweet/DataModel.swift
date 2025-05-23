@@ -93,12 +93,12 @@ extension Date {
     }
 }
 
-struct ChecklistItem: Codable, Equatable, Identifiable {
-    var id: UUID
-    var name: String
-    var hasCheck: Bool
+//struct ChecklistItem: Codable, Equatable, Identifiable {
+//    var id: UUID
+//    var name: String
+//    var hasCheck: Bool
     
-    static let example = ChecklistItem(id: UUID(), name: "Hitch up", hasCheck: false)
-}
+//    static let example = ChecklistItem(id: UUID(), name: "Hitch up", hasCheck: false)
+//}
 
 

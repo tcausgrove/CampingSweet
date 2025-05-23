@@ -14,5 +14,6 @@ struct CampingSweetApp: App {
         WindowGroup {
             ContentView()
         }
+        .modelContainer(for: CheckListItem.self)
     }
 }
