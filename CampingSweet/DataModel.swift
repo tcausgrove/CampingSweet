@@ -92,13 +92,3 @@ extension Date {
         return lhs.timeIntervalSinceReferenceDate - rhs.timeIntervalSinceReferenceDate
     }
 }
-
-//struct ChecklistItem: Codable, Equatable, Identifiable {
-//    var id: UUID
-//    var name: String
-//    var hasCheck: Bool
-    
-//    static let example = ChecklistItem(id: UUID(), name: "Hitch up", hasCheck: false)
-//}
-
-

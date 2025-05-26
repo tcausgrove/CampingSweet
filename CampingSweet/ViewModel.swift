@@ -214,21 +214,6 @@ import Foundation
         }
     }
     
-    func changeSettings(newChosenDistance: DistanceOptions,
-                        newClockHours: ClockHours,
-                        newDateFormat: DateFormatType,
-                        newLocationFormat: LocationImportFormat,
-                        newDateImportFormat: DateImportFormat) {
-        
-        self.settings.chosenDistance = newChosenDistance
-        self.settings.chosenClockHours = newClockHours
-        self.settings.chosenDateFormat = newDateFormat
-        self.settings.locationImportFormat = newLocationFormat
-        self.settings.dateImportFormat = newDateImportFormat
-        
-        save()
-    }
-    
     func save() {
         
         do {
