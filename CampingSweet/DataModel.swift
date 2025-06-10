@@ -48,7 +48,6 @@ struct Camper: Identifiable, Hashable, Codable {
     var trips: [LogEntry]
     
     var totalCamperDistance: Double {    //  This will be in miles
-//        let zeroDistance = Measurement(value: 0.0, unit: UnitLength.meters)
         var tempDistance = 0.0
         for trip in trips {
             let tripDistance = trip.distance ?? 0.0
