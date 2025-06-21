@@ -9,10 +9,11 @@ import SwiftUI
 
 struct EditLogEntryView: View {
     
-    @Binding var previousLogEntry: LogEntry?
+    var previousLogEntry: SwiftDataLogEntry?
     
-    @EnvironmentObject var viewModel: ViewModel
+//    @EnvironmentObject var viewModel: ViewModel
     @Environment(\.dismiss) var dismiss
+    @Environment(\.modelContext) var modelContext
     
     @State private var title: String = ""
     @State private var start: Date = Date()
@@ -75,19 +76,27 @@ struct EditLogEntryView: View {
     
     func saveLogBookEntry() {
         if previousLogEntry == nil {
-            viewModel.addTrip(title: title, startDate: start, endDate: end, distance: distance, latitude: latitude, longitude: longitude)
+            let camper = SwiftDataCamper.selectedCamper(with: modelContext)
+            let newLogEntry = SwiftDataLogEntry(title: title,
+                                                distance: Double(distance),
+                                                startDate: start,
+                                                endDate: end,
+                                                latitude: Double(latitude) ?? 0.0,
+                                                longitude: Double(longitude) ?? 0.0)
+            camper.trips.append(newLogEntry)
+//            viewModel.addTrip(title: title, startDate: start, endDate: end, distance: distance, latitude: latitude, longitude: longitude)
             return
         }
-        let theTripID = previousLogEntry?.id ?? UUID()
-        viewModel.editTrip(tripID: theTripID,
-                           title: title, startDate: start,
-                           endDate: end, distance: distance,
-                           latitude: latitude,
-                           longitude: longitude)
+//        let theTripID = previousLogEntry?.id ?? UUID()
+//        viewModel.editTrip(tripID: theTripID,
+//                           title: title, startDate: start,
+//                           endDate: end, distance: distance,
+//                           latitude: latitude,
+//                           longitude: longitude)
     }
 }
 
 #Preview {
-    EditLogEntryView(previousLogEntry: .constant(LogEntry.example))
-        .environmentObject(ViewModel())
+    EditLogEntryView(previousLogEntry: SwiftDataLogEntry(title: "Preview", distance: 12.3))
+//        .environmentObject(ViewModel())
 }

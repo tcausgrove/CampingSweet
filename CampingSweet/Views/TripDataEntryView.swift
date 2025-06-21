@@ -11,7 +11,7 @@ import CoreLocationUI
 
 struct TripDataEntryView: View {
     
-    @EnvironmentObject var viewModel: ViewModel
+//    @EnvironmentObject var viewModel: ViewModel
     let getLocation = GetLocation()
 
     @Binding var title: String
@@ -27,9 +27,9 @@ struct TripDataEntryView: View {
         Form {
             Section(header: Text("Place")) {
                 TextField("Destination", text: $title)
-                let unit = "Distance (" + viewModel.getDistanceUnitFromSetting() + ")"
+                let unit = "Distance (" //+ viewModel.getDistanceUnitFromSetting() + ")"
                 TextField(unit, text: $distance)
-//                    .keyboardType(.decimalPad)
+                    .keyboardType(.decimalPad)
                     .numbersOnly($distance, includeDecimal: true, includeNegative: false)  // See NumbersOnlyViewModifier.swift
             }
             
@@ -49,12 +49,12 @@ struct TripDataEntryView: View {
             Section(header: Text("Dates")) {
                 DatePicker("Arrival date", selection: $start, in: ...end, displayedComponents: [.date])
                     .onChange(of: start) {
-                        numberOfNightsText = viewModel.setDisplayedNightsText(start: start, end: end)
+                        numberOfNightsText = "3"
                     }
                 
                 DatePicker("Departure date", selection: $end, in: start..., displayedComponents: [.date])
                     .onChange(of: end) {
-                        numberOfNightsText = viewModel.setDisplayedNightsText(start: start, end: end)
+                        numberOfNightsText = "4"
                     }
                 
                 Text(numberOfNightsText)
@@ -74,3 +74,11 @@ struct TripDataEntryView: View {
     }
 }
 
+#Preview {
+    TripDataEntryView(title: .constant("Preview trip"),
+                      start: .constant(Date.now),
+                      end: .constant(Date.now),
+                      distance: .constant("666"),
+                      latitude: .constant("-12"),
+                      longitude: .constant("34"))
+}

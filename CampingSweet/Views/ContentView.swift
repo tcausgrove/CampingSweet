@@ -6,9 +6,11 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct ContentView: View {
-    @StateObject var viewModel = ViewModel()
+    @Query var campers: [SwiftDataCamper]
+    @Environment(\.modelContext) var modelContext
     
     @State private var showHelpMenu = false
     @State private var changingSettings = false
@@ -19,18 +21,22 @@ struct ContentView: View {
                 Spacer()
                 
                 NavigationLink {
-                    CampersView().environmentObject(viewModel)
+                    CampersView()//.environmentObject(viewModel)
                 } label: {
                     Label("My Campers", image: "Camper")
                 }
                 .buttonStyle(PrimaryButtonStyle(isActive: true))
+                .navigationDestination(for: SwiftDataCamper.self) {_ in 
+                    CampersView()
+                }
                 
                 NavigationLink {
-                    LogBookView().environmentObject(viewModel)
+                    let selectedCamper = SwiftDataCamper.selectedCamper(with: modelContext)
+                    LogBookView(camper: selectedCamper)
                 } label: {
                     Label("Log Book", systemImage: "list.bullet.rectangle.fill")
                 }
-                .buttonStyle(PrimaryButtonStyle(isActive: viewModel.currentCamperExists()))
+                .buttonStyle(PrimaryButtonStyle(isActive: campers.count > 0))
                 
                 NavigationLink {
                     ChecklistView()
@@ -41,43 +47,49 @@ struct ContentView: View {
                 
                 Spacer()
             }
-
+            
             .padding(2)
-            .toolbar {
-                ToolbarItemGroup(placement: .bottomBar) {
-                    Button(action: { showHelpMenu = true }) {
-                        Image(systemName: "questionmark")
-                            .font(.title)
-                            .fontWeight(.bold)
-                            .padding([.bottom, .leading])
-                    }
-                    .navigationDestination(isPresented: $showHelpMenu) {
-                        HelpView()
-                    }
-                    Spacer()
-                    
-                    Button(action: { changingSettings = true }) {
-                        Image(systemName: "gearshape.fill")
-                            .font(.title)
-                            .padding([.bottom, .trailing])
-                    }
-                    .navigationDestination(isPresented: $changingSettings) {
-                        SettingsView()
-                            .environmentObject(viewModel)
-                    }
-                }
-            }
+            //            .toolbar {
+            //                ToolbarItemGroup(placement: .bottomBar) {
+            //                    Button(action: { showHelpMenu = true }) {
+            //                        Image(systemName: "questionmark")
+            //                            .font(.title)
+            //                            .fontWeight(.bold)
+            //                            .padding([.bottom, .leading])
+            //                   }
+            //                    .navigationDestination(isPresented: $showHelpMenu) {
+            //                        HelpView()
+            //                    }
+            //                    Spacer()
+            
+            //                    Button(action: { changingSettings = true }) {
+            //                        Image(systemName: "gearshape.fill")
+            //                            .font(.title)
+            //                            .padding([.bottom, .trailing])
+            ///                    }
+            //                    .navigationDestination(isPresented: $changingSettings) {
+            //                        SettingsView()
+            //                            .environmentObject(viewModel)
+            //                    }
+            //                }
+            //            }
             .navigationTitle("CampingSweet")
-            .modifier(BackgroundView())
-
+            //            .modifier(BackgroundView())
+            
         }
-        .errorAlert($viewModel.userError)
     }
+    //        .errorAlert($viewModel.userError)
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
+#Preview {
+    do {
+        let config = ModelConfiguration(isStoredInMemoryOnly: true)
+        let container = try ModelContainer(for: SwiftDataCamper.self, configurations: config)
+        
+        return ContentView()
+            .modelContainer(container)
+    } catch {
+        return Text("Can't do it")
     }
 }
 

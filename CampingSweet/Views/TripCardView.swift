@@ -9,7 +9,7 @@ import SwiftUI
 
 
 struct TripCardView: View {
-    var trip: LogEntry
+    var trip: SwiftDataLogEntry
     
     @EnvironmentObject var viewModel: ViewModel
     @State private var showModMenu = false
@@ -31,7 +31,7 @@ struct TripCardView: View {
                 Text("When:  \(trip.startDate.formatted(date: .long, time: .omitted))")
                 let numberOfNightsText = "Number of nights:  " + String(trip.numberOfNights)
                 Text(numberOfNightsText)
-                let tripDistance = viewModel.formatDistanceBySetting(distance: trip.distance ?? 0.0)
+                let tripDistance = trip.distance?.formatted() ?? "0.0 mi"
                 HStack {
                     Text("Distance:  " + tripDistance )
                     Spacer()
@@ -43,7 +43,7 @@ struct TripCardView: View {
     @ViewBuilder var popoverContents: some View {
         VStack {
             Button(role: .destructive) {
-                viewModel.deleteTrip(tripID: trip.id)
+//                viewModel.deleteTrip(tripID: trip.id)
             } label: {
                 Text("Delete trip")
             }
@@ -54,6 +54,6 @@ struct TripCardView: View {
 }
 
 #Preview {
-    TripCardView(trip: LogEntry.example)
-        .environmentObject(ViewModel())
+    TripCardView(trip: SwiftDataLogEntry(title: "Preview trip", distance: 666.0))
+//        .environmentObject(ViewModel())
 }

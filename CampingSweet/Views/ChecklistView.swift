@@ -11,7 +11,7 @@ import SwiftData
 struct ChecklistView: View {
     
     @Query var checklist: [CheckListItem]
-    @Environment(\.modelContext) var checklistModelContext
+    @Environment(\.modelContext) var modelContext
     
     @Environment(\.dismiss) var dismiss
     
@@ -39,20 +39,21 @@ struct ChecklistView: View {
                 } else {
                     Button(
                         action: { addingItem = true },
-                        label: { Image(systemName: "plus") }
+                        label: { Image(systemName: "plus")
+                            .foregroundColor(Color.blue)}
                     )
                 }
             }
             .listStyle(PlainListStyle())
             .padding()
-            .modifier(BackgroundView())
+//            .modifier(BackgroundView())
             .toolbar() {
                 ToolbarItem {
                     Button(action: {
                         for anItem in checklist {
                             anItem.hasCheck = false
                         }
-                    } ) { Image(systemName: "trash")
+                    } ) { Text("Clear ✓")
                     }
                 }
             }
@@ -69,24 +70,25 @@ struct ChecklistView: View {
     }
     
     var addingItemView: some View {
-        TextField("", text: $newItemName)
+        TextField("New item", text: $newItemName)
             .onAppear(perform: { editingFocused = true })
             .focused($editingFocused)
-            .onSubmit { submitNewItem() }
+            .onSubmit {
+                submitNewItem() }
     }
     
     func submitNewItem() {
-        addingItem = false
         if newItemName.isEmpty { return }
         let newItem = CheckListItem(name: newItemName, hasCheck: false)
-        checklistModelContext.insert(newItem)
+        modelContext.insert(newItem)
         newItemName = ""
+        addingItem = false
     }
     
     func deleteItems(_ indexSet: IndexSet) {
         for index in indexSet {
             let itemToDelete = checklist[index]
-            checklistModelContext.delete(itemToDelete)
+            modelContext.delete(itemToDelete)
         }
     }
 }

@@ -85,9 +85,3 @@ struct Settings: Codable {
                                   locationImportFormat: .dd,
                                   dateImportFormat: .startEnd)
 }
-
-extension Date {
-    static func - (lhs: Date, rhs: Date) -> TimeInterval {
-        return lhs.timeIntervalSinceReferenceDate - rhs.timeIntervalSinceReferenceDate
-    }
-}

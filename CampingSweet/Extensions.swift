@@ -129,17 +129,17 @@ extension CLLocationCoordinate2D {
     }
 }
 
-struct BackgroundView: ViewModifier {
-    func body(content: Content) -> some View {
-        content
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .background(Image("Background")
-                .resizable()
-                .ignoresSafeArea()
-                .opacity(0.3)
-                .blur(radius: 6))
-    }
-}
+//struct BackgroundView: ViewModifier {
+//    func body(content: Content) -> some View {
+//        content
+//            .frame(maxWidth: .infinity, maxHeight: .infinity)
+//            .background(Image("Background")
+//                .resizable()
+//                .ignoresSafeArea()
+//                .opacity(0.3)
+//                .blur(radius: 6))
+//    }
+//}
 
 // This does the same thing as the ViewModifier above; it is currently
 // unused but has the possibility of passing a variable to it
@@ -184,3 +184,8 @@ extension View {
     }
 }
 
+extension Date {
+    static func - (lhs: Date, rhs: Date) -> TimeInterval {
+        return lhs.timeIntervalSinceReferenceDate - rhs.timeIntervalSinceReferenceDate
+    }
+}

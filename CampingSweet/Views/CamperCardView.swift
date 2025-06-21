@@ -6,12 +6,12 @@
 //
 
 import SwiftUI
-
+import SwiftData
 
 struct CamperCardView: View {
-    var camper: Camper
+    @Bindable var camper: SwiftDataCamper
     
-    @EnvironmentObject var viewModel: ViewModel
+//    @EnvironmentObject var viewModel: ViewModel
     
     @State private var showModMenu = false
 
@@ -38,7 +38,7 @@ struct CamperCardView: View {
                 Text("Registration: \(camper.registrationNumber)")
                 
                 if camper.totalCamperDistance > 0.1 {
-                    Text("Distance traveled: \(viewModel.getCamperFormattedDistance(theCamper: camper))")
+                    Text("Distance traveled: \(camper.totalCamperDistance.formatted())")
                 }
                 Text("Number of nights used: \(camper.totalCamperNights)")
             }
@@ -51,7 +51,7 @@ struct CamperCardView: View {
             .font(.title3)
         VStack(alignment: .center, spacing: 16) {
             Button(role: .destructive, action: {
-                viewModel.deleteCamper(camperToDelete: camper)
+//                viewModel.deleteCamper(camperToDelete: camper)
                 showModMenu = false
             }) {
                 Text("Delete camper")
@@ -59,7 +59,7 @@ struct CamperCardView: View {
             .sheetButtonStyle()
 
             Button(action: {
-                viewModel.toggleCamperArchival(camperToArchive: camper)
+//                viewModel.toggleCamperArchival(camperToArchive: camper)
                 showModMenu = false
             }) {
                 Text("Archive camper")
@@ -79,6 +79,6 @@ struct CamperCardView: View {
 }
 
 #Preview {
-    CamperCardView(camper: Camper.example)
-        .environmentObject(ViewModel())
+    CamperCardView(camper: SwiftDataCamper(name: "Preview camper", isDefaultCamper: false, isArchived: false, registrationNumber: "Anything"))
+//        .environmentObject(ViewModel())
 }
