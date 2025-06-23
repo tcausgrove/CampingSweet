@@ -72,9 +72,9 @@ func convertDatesToString(arrival: Date, departure: Date?) -> String {
 func getCSV(inputString: String,
             dateFormat: DateFormatType,
             locationType: LocationImportFormat,
-            dateImportFormat: DateImportFormat) -> [LogEntry] {
+            dateImportFormat: DateImportFormat) -> [SwiftDataLogEntry] {
     
-    var tripDataArray: [LogEntry] = []
+    var tripDataArray: [SwiftDataLogEntry] = []
     
     do {
         let csv: CSV = try CSV<Named>(string: inputString, delimiter: .comma)
@@ -98,11 +98,10 @@ func getCSV(inputString: String,
                 
             }
             let theRowDistance: Double = Double(dict["Miles driven"] ?? "") ?? 0.0
-            let rowData = LogEntry(id: UUID(),
-                                   title: dict["Location"] ?? "Unknown",
+            let rowData = SwiftDataLogEntry(title: dict["Location"] ?? "Unknown",
+                                    distance: theRowDistance,
                                    startDate: theDates.0,
                                    endDate: theDates.1,
-                                   distance: theRowDistance,
                                    latitude: theLocation?.latitude,
                                    longitude: theLocation?.longitude)
             tripDataArray.append(rowData)
@@ -114,7 +113,7 @@ func getCSV(inputString: String,
     }
 }
 
-func saveCSVImperatively(camper: Camper) {
+func saveCSVImperatively(camper: SwiftDataCamper) {
     var writer: CSVWriter!
     
     do {

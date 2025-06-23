@@ -93,8 +93,21 @@ struct ChecklistView: View {
     }
 }
 
-struct ChecklistView_Previews: PreviewProvider {
-    static var previews: some View {
-        ChecklistView()
+//struct ChecklistView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ChecklistView()
+//    }
+//}
+
+
+#Preview {
+    do {
+        let config = ModelConfiguration(isStoredInMemoryOnly: true)
+        let container = try ModelContainer(for: CheckListItem.self, configurations: config)
+        
+        return ChecklistView()
+            .modelContainer(container)
+    } catch {
+        return Text("Can't do it")
     }
 }

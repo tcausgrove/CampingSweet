@@ -6,12 +6,12 @@
 //
 
 import SwiftUI
-
+import SwiftData
 
 struct ArchivedCamperView: View {
-    var camper: Camper
-    
-    @EnvironmentObject var viewModel: ViewModel
+    @Bindable var camper: SwiftDataCamper
+
+//    @EnvironmentObject var viewModel: ViewModel
     @State private var showModMenu = false
     
     var body: some View {        
@@ -34,13 +34,14 @@ struct ArchivedCamperView: View {
     @ViewBuilder var popoverContents: some View {
         VStack {
             Button(role: .none) {
-                viewModel.toggleCamperArchival(camperToArchive: camper)
+                camper.isArchived = false
+//                viewModel.toggleCamperArchival(camperToArchive: camper)
             } label: {
                 Text("Unarchive")
             }
             .padding(.bottom, 8)
             Button(role: .destructive) {
-                viewModel.deleteCamper(camperToDelete: camper)
+//                viewModel.deleteCamper(camperToDelete: camper)
             } label: {
                 Text("Delete")
             }
@@ -51,6 +52,6 @@ struct ArchivedCamperView: View {
 }
 
 #Preview {
-    ArchivedCamperView(camper: Camper.example)
-        .environmentObject(ViewModel())
+    ArchivedCamperView(camper: SwiftDataCamper(name: "Preview camper", isArchived: true))
+//        .environmentObject(ViewModel())
 }

@@ -11,7 +11,8 @@ import SwiftUI
 struct TripCardView: View {
     var trip: SwiftDataLogEntry
     
-    @EnvironmentObject var viewModel: ViewModel
+//    @EnvironmentObject var viewModel: ViewModel
+    @Environment(\.modelContext) var modelContext
     @State private var showModMenu = false
     
     var body: some View {
@@ -20,14 +21,17 @@ struct TripCardView: View {
                 HStack {
                     Text("Title:  \(trip.title)")
                     Spacer()
-                    Image(systemName: "ellipsis")
-                        .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
-                        .onTapGesture(perform: { showModMenu = true })
-                        .padding(.trailing, 12)
+                    Menu {
+                        Button(role: .destructive, action: { deleteTrip(trip: trip) }) {
+                            Text("Delete trip")
+                        }
+                        Button(action: {  }) {
+                            Text("Edit trip")
+                        }
+                    } label: {
+                        Text("Trip options")
+                    }
                 }
-                .popover(isPresented: $showModMenu,
-                         attachmentAnchor: .point(.trailing),
-                         content: { popoverContents })
                 Text("When:  \(trip.startDate.formatted(date: .long, time: .omitted))")
                 let numberOfNightsText = "Number of nights:  " + String(trip.numberOfNights)
                 Text(numberOfNightsText)
@@ -40,16 +44,10 @@ struct TripCardView: View {
         }
     }
     
-    @ViewBuilder var popoverContents: some View {
-        VStack {
-            Button(role: .destructive) {
-//                viewModel.deleteTrip(tripID: trip.id)
-            } label: {
-                Text("Delete trip")
-            }
-        }
-        .padding(12)
-        .presentationCompactAdaptation(.popover)
+    func deleteTrip(trip: SwiftDataLogEntry) {
+        let camper = SwiftDataCamper.selectedCamper(with: modelContext)
+        guard let index = camper.trips.firstIndex(of: trip) else { return }
+        camper.trips.remove(at: index)
     }
 }
 

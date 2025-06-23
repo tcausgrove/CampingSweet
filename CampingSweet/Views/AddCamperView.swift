@@ -15,13 +15,10 @@ struct AddCamperView: View {
     @State private var name: String = ""
     @State private var registration: String = ""
     
-//    @EnvironmentObject var viewModel: ViewModel
+    //    @EnvironmentObject var viewModel: ViewModel
     
     var body: some View {
-//            Text("Add a camper", tableName: "Localizable")
-//                .padding()
-//                .font(.title2)
-
+        NavigationStack {
             Form {
                 TextField(text: $name, prompt: Text("Name", tableName: "Localizable")) { }
                     .padding()
@@ -38,13 +35,14 @@ struct AddCamperView: View {
                 }
             }
             .padding()
+            .navigationTitle("Add a camper")
         }
-//        .navigationTitle("Add a camper")
+    }
     
     func addNewCamper() {
         let newCamper = SwiftDataCamper(name: name, isDefaultCamper: true, isArchived: false, registrationNumber: registration)
         modelContext.insert(newCamper)
-//        viewModel.addNewCamper(newCamper: newCamper)
+        //        viewModel.addNewCamper(newCamper: newCamper)
         dismiss()
     }
 }

@@ -61,7 +61,6 @@
     },
     "Add a camper" : {
       "comment" : "Main title above data entry form",
-      "extractionState" : "stale",
       "localizations" : {
         "es-419" : {
           "stringUnit" : {
@@ -85,7 +84,6 @@
       }
     },
     "Archived campers" : {
-      "extractionState" : "stale",
       "localizations" : {
         "es-419" : {
           "stringUnit" : {
@@ -246,6 +244,9 @@
           }
         }
       }
+    },
+    "Edit trip" : {
+
     },
     "Export CSV" : {
 
@@ -422,6 +423,9 @@
           }
         }
       }
+    },
+    "Trip options" : {
+
     },
     "Unarchive" : {
 

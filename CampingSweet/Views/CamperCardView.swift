@@ -10,9 +10,8 @@ import SwiftData
 
 struct CamperCardView: View {
     @Bindable var camper: SwiftDataCamper
-    
-//    @EnvironmentObject var viewModel: ViewModel
-    
+    @Environment(\.modelContext) var modelContext
+
     @State private var showModMenu = false
 
     var body: some View {
@@ -51,6 +50,7 @@ struct CamperCardView: View {
             .font(.title3)
         VStack(alignment: .center, spacing: 16) {
             Button(role: .destructive, action: {
+                modelContext.delete(camper)
 //                viewModel.deleteCamper(camperToDelete: camper)
                 showModMenu = false
             }) {
@@ -59,7 +59,8 @@ struct CamperCardView: View {
             .sheetButtonStyle()
 
             Button(action: {
-//                viewModel.toggleCamperArchival(camperToArchive: camper)
+                camper.isArchived = true
+                camper.isDefaultCamper = false
                 showModMenu = false
             }) {
                 Text("Archive camper")
@@ -80,5 +81,4 @@ struct CamperCardView: View {
 
 #Preview {
     CamperCardView(camper: SwiftDataCamper(name: "Preview camper", isDefaultCamper: false, isArchived: false, registrationNumber: "Anything"))
-//        .environmentObject(ViewModel())
 }

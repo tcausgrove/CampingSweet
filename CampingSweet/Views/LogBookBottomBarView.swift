@@ -6,10 +6,11 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct LogBookBottomBarView: View {
     @Binding var isImporting: Bool
-    var camper: Camper
+    var camper: SwiftDataCamper
     
     var body: some View {
         HStack {
@@ -29,6 +30,14 @@ struct LogBookBottomBarView: View {
     }
 }
 
-#Preview {
-    LogBookBottomBarView(isImporting: .constant(false), camper: Camper.example)
-}
+//#Preview {
+//    do {
+//        let config = ModelConfiguration(isStoredInMemoryOnly: true)
+//        let container = try ModelContainer(for: SwiftDataCamper.self, configurations: config)
+        
+//        return LogBookBottomBarView(isImporting: false)
+//            .modelContainer(container)
+//    } catch {
+//        return Text("Can't do it")
+//    }
+//}
