@@ -70,9 +70,6 @@
         }
       }
     },
-    "Add Log Book Entry" : {
-
-    },
     "Archive camper" : {
       "localizations" : {
         "es-419" : {
@@ -236,6 +233,7 @@
       }
     },
     "Edit Log Book Entry" : {
+      "extractionState" : "stale",
       "localizations" : {
         "es-419" : {
           "stringUnit" : {
@@ -329,6 +327,7 @@
 
     },
     "New Log Book Entry" : {
+      "extractionState" : "stale",
       "localizations" : {
         "es-419" : {
           "stringUnit" : {

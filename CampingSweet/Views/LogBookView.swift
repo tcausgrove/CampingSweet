@@ -14,9 +14,7 @@ struct LogBookView: View {
     @Bindable var camper: SwiftDataCamper
     @State private var path = [SwiftDataCamper]()
     
-    //    @State private var addingLogEntry = false
     @State private var editingLogEntry: Bool = false
-    @State private var checkForDelete = false
     @State private var isImporting: Bool = false
     @State private var isExporting: Bool = false
     
@@ -25,7 +23,7 @@ struct LogBookView: View {
     @State var tripToEdit: SwiftDataLogEntry? = nil
     
     var body: some View {
-        VStack {
+        ScrollView {
             NavigationStack(path: $path) {
                 ForEach(camper.trips) { trip in
                     TripCardView(trip: trip)
@@ -34,15 +32,11 @@ struct LogBookView: View {
                             editingLogEntry.toggle()
                         })
                 }
-                //FIXME:  Deleting a trip doesn't work; swipe left does nothing; plan is add a Delete button in EditLogBookView
-                .onDelete { indexSet in
-                    checkForDelete = true
-//                    viewModel.deleteTrips(indexSet: indexSet)
-                }
             }
-            Spacer()
-            LogBookBottomBarView(isImporting: $isImporting, camper: camper)
         }
+        .safeAreaInset(edge: .bottom, content: {
+            LogBookBottomBarView(isImporting: $isImporting, camper: camper)
+        })
         .toolbar() {
             ToolbarItem {
                 Button(action: {
@@ -63,7 +57,6 @@ struct LogBookView: View {
 //        .modifier(BackgroundView())
         .sheet(isPresented: $editingLogEntry, content: {
             EditLogEntryView(previousLogEntry: tripToEdit)
-//                .environmentObject(viewModel)
         })
 //        .sheet(isPresented: $isExporting, content: {})
         .navigationTitle("Log Book")
@@ -79,7 +72,6 @@ struct LogBookView: View {
                                                           dateFormat: DateFormatType.monthFirst,
                                                           locationType: LocationImportFormat.dms,
                                                           dateImportFormat: DateImportFormat.startEnd)
-//            viewModel.addImportedTrips(newTrips: newTripData)
             for newLogEntry in newTripData {
                 camper.trips.append(newLogEntry)
             }
@@ -88,15 +80,6 @@ struct LogBookView: View {
         }
     }
 }
-
-
-//struct LogBookView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        LogBookView(camper: SwiftDataCamper(name: "Preview", isDefaultCamper: false, isArchived: true))
-//            .environmentObject(ViewModel())
-//    }
-//}
-
 
 #Preview {
     do {

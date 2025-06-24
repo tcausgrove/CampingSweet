@@ -30,7 +30,6 @@
 		78A4152229E4D3AC005CBEF1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 78A4152129E4D3AC005CBEF1 /* Assets.xcassets */; };
 		78A4152529E4D3AC005CBEF1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 78A4152429E4D3AC005CBEF1 /* Preview Assets.xcassets */; };
 		78A4152C29E4D584005CBEF1 /* LogBookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A4152B29E4D584005CBEF1 /* LogBookView.swift */; };
-		78A4153429E778F8005CBEF1 /* AddLogBookEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A4153329E778F8005CBEF1 /* AddLogBookEntryView.swift */; };
 		78A4153929F08713005CBEF1 /* CampersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A4153829F08713005CBEF1 /* CampersView.swift */; };
 		78A4153B29F094EB005CBEF1 /* AddCamperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A4153A29F094EB005CBEF1 /* AddCamperView.swift */; };
 		78A4153D29F0BDC0005CBEF1 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A4153C29F0BDC0005CBEF1 /* Enums.swift */; };
@@ -65,7 +64,6 @@
 		78A4152129E4D3AC005CBEF1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		78A4152429E4D3AC005CBEF1 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		78A4152B29E4D584005CBEF1 /* LogBookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogBookView.swift; sourceTree = "<group>"; };
-		78A4153329E778F8005CBEF1 /* AddLogBookEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLogBookEntryView.swift; sourceTree = "<group>"; };
 		78A4153829F08713005CBEF1 /* CampersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampersView.swift; sourceTree = "<group>"; };
 		78A4153A29F094EB005CBEF1 /* AddCamperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCamperView.swift; sourceTree = "<group>"; };
 		78A4153C29F0BDC0005CBEF1 /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
@@ -144,7 +142,6 @@
 			isa = PBXGroup;
 			children = (
 				78A4153A29F094EB005CBEF1 /* AddCamperView.swift */,
-				78A4153329E778F8005CBEF1 /* AddLogBookEntryView.swift */,
 				78F8ACDF2DAAF0CC0094718D /* ArchivedCamperView.swift */,
 				787D38682E0223A900B32DA4 /* BackgroundView.swift */,
 				7826F2C12BBB4D4B0075B0A3 /* CamperCardView.swift */,
@@ -261,7 +258,6 @@
 				78820E742D35D39200AA6807 /* GetLocation.swift in Sources */,
 				78A4152C29E4D584005CBEF1 /* LogBookView.swift in Sources */,
 				785949812CEC0E5800D8060A /* TripDataEntryView.swift in Sources */,
-				78A4153429E778F8005CBEF1 /* AddLogBookEntryView.swift in Sources */,
 				78A4154129F34E3B005CBEF1 /* FileManager-DocumentsDirectory.swift in Sources */,
 				78F810292DD3F42D008632D6 /* HelpTextView.swift in Sources */,
 				78820E892D3EBB7700AA6807 /* HelpView.swift in Sources */,
@@ -414,7 +410,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_ASSET_PATHS = "\"CampingSweet/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -451,7 +447,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_ASSET_PATHS = "\"CampingSweet/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;

@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import SwiftData
+//import SwiftData
 
 struct LogBookBottomBarView: View {
     @Binding var isImporting: Bool
@@ -26,18 +26,12 @@ struct LogBookBottomBarView: View {
 //                }
         }
         .padding([.leading, .trailing], 30)
+        .padding(.top, 12)
         .background(.sheetButtonBackground)
     }
 }
 
-//#Preview {
-//    do {
-//        let config = ModelConfiguration(isStoredInMemoryOnly: true)
-//        let container = try ModelContainer(for: SwiftDataCamper.self, configurations: config)
-        
-//        return LogBookBottomBarView(isImporting: false)
-//            .modelContainer(container)
-//    } catch {
-//        return Text("Can't do it")
-//    }
-//}
+#Preview {
+    LogBookBottomBarView(isImporting: .constant(false),
+                         camper: SwiftDataCamper(name: "Foo", isDefaultCamper: false, isArchived: false, registrationNumber: "None", trips: []))
+}

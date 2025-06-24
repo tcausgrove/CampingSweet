@@ -6,35 +6,29 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct EditLogEntryView: View {
     
     var previousLogEntry: SwiftDataLogEntry?
-    
-//    @EnvironmentObject var viewModel: ViewModel
+
+    @State var title: String = ""
+    @State var start: Date = Date.now
+    @State var end: Date = Date.now
+    @State var distance: String = ""
+    @State var latitude: String = ""
+    @State var longitude: String = ""
+
     @Environment(\.dismiss) var dismiss
     @Environment(\.modelContext) var modelContext
     
-    @State private var title: String = ""
-    @State private var start: Date = Date()
-    @State private var end: Date = Date()
-    @State private var distance: String = ""
-    @State private var latitude: String = ""
-    @State private var longitude: String = ""
+    private var editorTitle: String {
+        previousLogEntry == nil ? "Add Trip" : "Edit Trip"
+    }
     
     var body: some View {
         NavigationStack {
             VStack {
-                if previousLogEntry == nil {
-                    Text( "Add Log Book Entry" )
-                        .padding(.bottom, 30)
-                        .font(.title)
-                } else {
-                    Text( "Edit Log Book Entry" )
-                        .padding(.bottom, 30)
-                        .font(.title)
-                }
-                
                 TripDataEntryView(title: $title,
                                   start: $start,
                                   end: $end,
@@ -47,6 +41,9 @@ struct EditLogEntryView: View {
                 ToolbarItem(placement: .cancellationAction) {
                     Button("Cancel", role: .cancel, action: { dismiss() })
                 }
+                ToolbarItem(placement: .principal) {
+                    Text(editorTitle)
+                }
                 ToolbarItem(placement: .confirmationAction) {
                     Button("Save", role: .none, action: {
                         saveLogBookEntry()
@@ -54,49 +51,51 @@ struct EditLogEntryView: View {
                     })
                 }
             }
-            .onAppear(perform: { populateVariables() })
         }
-    }
-    
-    func populateVariables() {
-        if previousLogEntry == nil { // We are adding a new entry
-            
-        } else {
-            title = previousLogEntry!.title
-            start = previousLogEntry!.startDate
-            end = previousLogEntry!.endDate
-            let newDistance: Double = previousLogEntry!.distance!
-            distance = String(newDistance)
-            let newLatitude: Double? = previousLogEntry!.latitude
-            let newLongitude: Double? = previousLogEntry!.longitude
-            if newLatitude != nil { latitude = String(newLatitude!) }
-            if newLongitude != nil { longitude = String(newLongitude!) }
+        .onAppear(){
+            populateVariables()
         }
+
     }
     
     func saveLogBookEntry() {
-        if previousLogEntry == nil {
-            let camper = SwiftDataCamper.selectedCamper(with: modelContext)
+        let camper = SwiftDataCamper.selectedCamper(with: modelContext)
+        if let previousLogEntry {
+            // Edit the trip
+            previousLogEntry.title = title
+            previousLogEntry.distance = Double(distance)
+            previousLogEntry.startDate = start
+            previousLogEntry.endDate = end
+            previousLogEntry.latitude = Double(latitude) ?? 0.0
+            previousLogEntry.longitude = Double(longitude) ?? 0.0
+        } else {
+            // Add a new trip
             let newLogEntry = SwiftDataLogEntry(title: title,
-                                                distance: Double(distance),
+                                               distance: Double(distance),
                                                 startDate: start,
                                                 endDate: end,
                                                 latitude: Double(latitude) ?? 0.0,
                                                 longitude: Double(longitude) ?? 0.0)
             camper.trips.append(newLogEntry)
-//            viewModel.addTrip(title: title, startDate: start, endDate: end, distance: distance, latitude: latitude, longitude: longitude)
-            return
         }
-//        let theTripID = previousLogEntry?.id ?? UUID()
-//        viewModel.editTrip(tripID: theTripID,
-//                           title: title, startDate: start,
-//                           endDate: end, distance: distance,
-//                           latitude: latitude,
-//                           longitude: longitude)
+    }
+    
+    func populateVariables() {
+        if let previousLogEntry {
+            title = previousLogEntry.title
+            start = previousLogEntry.startDate
+            end = previousLogEntry.endDate
+            let newDistance: Double = previousLogEntry.distance ?? 0.0
+            distance = String(newDistance)
+            let newLatitude: Double? = previousLogEntry.latitude
+            let newLongitude: Double? = previousLogEntry.longitude
+            if newLatitude != nil { latitude = String(newLatitude!) }
+            if newLongitude != nil { longitude = String(newLongitude!) }
+        }
     }
 }
 
 #Preview {
     EditLogEntryView(previousLogEntry: SwiftDataLogEntry(title: "Preview", distance: 12.3))
-//        .environmentObject(ViewModel())
+//    EditLogEntryView(previousLogEntry: nil)
 }

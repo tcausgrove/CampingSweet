@@ -10,9 +10,6 @@ import CoreLocation
 import CoreLocationUI
 
 struct TripDataEntryView: View {
-    
-//    @EnvironmentObject var viewModel: ViewModel
-    let getLocation = GetLocation()
 
     @Binding var title: String
     @Binding var start: Date
@@ -22,6 +19,7 @@ struct TripDataEntryView: View {
     @Binding var longitude: String
     
     @State private var numberOfNightsText: String = " "
+    let getLocation = GetLocation()
 
     var body: some View {
         Form {
@@ -49,12 +47,12 @@ struct TripDataEntryView: View {
             Section(header: Text("Dates")) {
                 DatePicker("Arrival date", selection: $start, in: ...end, displayedComponents: [.date])
                     .onChange(of: start) {
-                        numberOfNightsText = "3"
+//                        numberOfNightsText =
                     }
                 
                 DatePicker("Departure date", selection: $end, in: start..., displayedComponents: [.date])
                     .onChange(of: end) {
-                        numberOfNightsText = "4"
+//                        numberOfNightsText = "4"
                     }
                 
                 Text(numberOfNightsText)
@@ -78,7 +76,7 @@ struct TripDataEntryView: View {
     TripDataEntryView(title: .constant("Preview trip"),
                       start: .constant(Date.now),
                       end: .constant(Date.now),
-                      distance: .constant("666"),
-                      latitude: .constant("-12"),
-                      longitude: .constant("34"))
+                      distance: .constant("345.6"),
+                      latitude: .constant("-45.6"),
+                      longitude: .constant("-123.4") )
 }

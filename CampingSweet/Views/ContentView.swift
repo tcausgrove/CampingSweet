@@ -21,7 +21,7 @@ struct ContentView: View {
                 Spacer()
                 
                 NavigationLink {
-                    CampersView()//.environmentObject(viewModel)
+                    CampersView()
                 } label: {
                     Label("My Campers", image: "Camper")
                 }

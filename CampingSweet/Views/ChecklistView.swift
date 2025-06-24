@@ -93,13 +93,6 @@ struct ChecklistView: View {
     }
 }
 
-//struct ChecklistView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        ChecklistView()
-//    }
-//}
-
-
 #Preview {
     do {
         let config = ModelConfiguration(isStoredInMemoryOnly: true)
