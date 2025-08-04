@@ -11,15 +11,13 @@ import SwiftData
 struct LogBookView: View {
     @Environment(\.dismiss) var dismiss
     @Environment(\.modelContext) var modelContext
+    @EnvironmentObject var viewModel: ViewModel
+
     @Bindable var camper: SwiftDataCamper
+    
     @State private var path = [SwiftDataCamper]()
-    
     @State private var editingLogEntry: Bool = false
-    @State private var isImporting: Bool = false
     @State private var isExporting: Bool = false
-    
-    @State private var document: MessageDocument = MessageDocument(message: "")
-    
     @State var tripToEdit: SwiftDataLogEntry? = nil
     
     var body: some View {
@@ -27,15 +25,15 @@ struct LogBookView: View {
             NavigationStack(path: $path) {
                 ForEach(camper.trips) { trip in
                     TripCardView(trip: trip)
-                       .onLongPressGesture(perform: {
-                            tripToEdit = trip
-                            editingLogEntry.toggle()
-                        })
+//                       .onLongPressGesture(perform: {
+//                            tripToEdit = trip
+//                            editingLogEntry.toggle()
+//                        })
                 }
             }
         }
         .safeAreaInset(edge: .bottom, content: {
-            LogBookBottomBarView(isImporting: $isImporting, camper: camper)
+            LogBookBottomBarView(camper: camper)
         })
         .toolbar() {
             ToolbarItem {
@@ -47,37 +45,12 @@ struct LogBookView: View {
                 }
             }
         }
-        .fileImporter(
-            isPresented: $isImporting,
-            allowedContentTypes: [.plainText],
-            allowsMultipleSelection: false
-        ) { result in
-            handleCSVFileImport(result: result)
-        }
 //        .modifier(BackgroundView())
         .sheet(isPresented: $editingLogEntry, content: {
             EditLogEntryView(previousLogEntry: tripToEdit)
         })
 //        .sheet(isPresented: $isExporting, content: {})
         .navigationTitle("Log Book")
-    }
-    
-    func handleCSVFileImport(result: Result<[URL], any Error>) {
-        do {
-            guard let selectedFile: URL = try result.get().first else { return }
-            guard let message = String(data: try Data(contentsOf: selectedFile), encoding: .utf8) else { return }
-            
-            document.message = message
-            let newTripData: [SwiftDataLogEntry] = getCSV(inputString: document.message,
-                                                          dateFormat: DateFormatType.monthFirst,
-                                                          locationType: LocationImportFormat.dms,
-                                                          dateImportFormat: DateImportFormat.startEnd)
-            for newLogEntry in newTripData {
-                camper.trips.append(newLogEntry)
-            }
-        } catch {
-            // FIXME:  Need to handle failure here
-        }
     }
 }
 
@@ -92,6 +65,7 @@ struct LogBookView: View {
         
         return LogBookView(camper: previewCamper)
             .modelContainer(container)
+            .environmentObject(ViewModel())
     } catch {
         return Text("Can't do it")
     }

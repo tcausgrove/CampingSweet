@@ -69,6 +69,17 @@ func convertDatesToString(arrival: Date, departure: Date?) -> String {
     return returnString
 }
 
+func startEndDateToNights(startDate: Date, endDate: Date) -> String {
+    let number = Int( ((endDate - startDate) / 24 / 3600).rounded() )
+    var result: String
+    if number == 1 {
+        result = String( number ) + " night"
+    } else {
+        result = String( number ) + " nights"
+    }
+    return result
+}
+
 func getCSV(inputString: String,
             dateFormat: DateFormatType,
             locationType: LocationImportFormat,
@@ -113,6 +124,7 @@ func getCSV(inputString: String,
     }
 }
 
+// Functino below uses the CodableCSV package
 func saveCSVImperatively(camper: SwiftDataCamper) {
     var writer: CSVWriter!
     
@@ -123,7 +135,6 @@ func saveCSVImperatively(camper: SwiftDataCamper) {
                                                create: false)
         
         let fileURL = path.appendingPathComponent("\(camper.name)_trips.csv")
-        print("\(fileURL)")
         writer = try CSVWriter(fileURL: fileURL)
     } catch {
         // Handle errors

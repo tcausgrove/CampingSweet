@@ -11,7 +11,6 @@ import SwiftData
 struct ArchivedCamperView: View {
     @Bindable var camper: SwiftDataCamper
 
-//    @EnvironmentObject var viewModel: ViewModel
     @State private var showModMenu = false
     
     var body: some View {        
@@ -35,13 +34,11 @@ struct ArchivedCamperView: View {
         VStack {
             Button(role: .none) {
                 camper.isArchived = false
-//                viewModel.toggleCamperArchival(camperToArchive: camper)
             } label: {
                 Text("Unarchive")
             }
             .padding(.bottom, 8)
             Button(role: .destructive) {
-//                viewModel.deleteCamper(camperToDelete: camper)
             } label: {
                 Text("Delete")
             }
@@ -53,5 +50,4 @@ struct ArchivedCamperView: View {
 
 #Preview {
     ArchivedCamperView(camper: SwiftDataCamper(name: "Preview camper", isArchived: true))
-//        .environmentObject(ViewModel())
 }

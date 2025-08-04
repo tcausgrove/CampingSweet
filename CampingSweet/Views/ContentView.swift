@@ -12,6 +12,8 @@ struct ContentView: View {
     @Query var campers: [SwiftDataCamper]
     @Environment(\.modelContext) var modelContext
     
+    @StateObject var viewModel = ViewModel()
+
     @State private var showHelpMenu = false
     @State private var changingSettings = false
     
@@ -49,9 +51,9 @@ struct ContentView: View {
             }
             
             .padding(2)
-            //            .toolbar {
-            //                ToolbarItemGroup(placement: .bottomBar) {
-            //                    Button(action: { showHelpMenu = true }) {
+           .toolbar {
+                ToolbarItemGroup(placement: .bottomBar) {
+//                    Button(action: { showHelpMenu = true }) {
             //                        Image(systemName: "questionmark")
             //                            .font(.title)
             //                            .fontWeight(.bold)
@@ -59,26 +61,26 @@ struct ContentView: View {
             //                   }
             //                    .navigationDestination(isPresented: $showHelpMenu) {
             //                        HelpView()
-            //                    }
-            //                    Spacer()
+//                   }
+                    Spacer()
             
-            //                    Button(action: { changingSettings = true }) {
-            //                        Image(systemName: "gearshape.fill")
-            //                            .font(.title)
-            //                            .padding([.bottom, .trailing])
-            ///                    }
-            //                    .navigationDestination(isPresented: $changingSettings) {
-            //                        SettingsView()
-            //                            .environmentObject(viewModel)
-            //                    }
-            //                }
-            //            }
+                    Button(action: { changingSettings = true }) {
+                        Image(systemName: "gearshape.fill")
+                            .font(.title)
+                           .padding([.bottom, .trailing])
+                    }
+                    .navigationDestination(isPresented: $changingSettings) {
+                        SettingsView()
+//                            .environmentObject(viewModel)
+                   }
+                }
+            }
             .navigationTitle("CampingSweet")
             //            .modifier(BackgroundView())
             
         }
+        .environmentObject(viewModel)
     }
-    //        .errorAlert($viewModel.userError)
 }
 
 #Preview {
@@ -88,6 +90,7 @@ struct ContentView: View {
         
         return ContentView()
             .modelContainer(container)
+            .environmentObject(ViewModel())
     } catch {
         return Text("Can't do it")
     }

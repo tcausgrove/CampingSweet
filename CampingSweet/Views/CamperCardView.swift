@@ -45,13 +45,12 @@ struct CamperCardView: View {
     }
     
     @ViewBuilder var sheetContents: some View {
-        let menuHeaderText = "Options for camper " + camper.name  //viewModel.getCurrentCamperName()
+        let menuHeaderText = "Options for camper " + camper.name
         Text(menuHeaderText)
             .font(.title3)
         VStack(alignment: .center, spacing: 16) {
             Button(role: .destructive, action: {
                 modelContext.delete(camper)
-//                viewModel.deleteCamper(camperToDelete: camper)
                 showModMenu = false
             }) {
                 Text("Delete camper")

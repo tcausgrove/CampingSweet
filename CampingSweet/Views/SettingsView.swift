@@ -68,7 +68,7 @@ struct SettingsView: View {
                     })
                 }
             }
-            .toolbar(){  // Needs to change
+            .toolbar() {  // Needs to change
                 ToolbarItemGroup(placement: .navigation) {
                     Button(role: .cancel, action: {
                         viewModel.changeSettings(newChosenDistance: defaultDistance,

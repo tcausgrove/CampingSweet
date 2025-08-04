@@ -96,6 +96,6 @@ struct EditLogEntryView: View {
 }
 
 #Preview {
-    EditLogEntryView(previousLogEntry: SwiftDataLogEntry(title: "Preview", distance: 12.3))
+    EditLogEntryView(previousLogEntry: SwiftDataLogEntry(title: "Preview", distance: 12.3, latitude: 123.45678))
 //    EditLogEntryView(previousLogEntry: nil)
 }

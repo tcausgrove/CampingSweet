@@ -60,5 +60,4 @@ struct TripCardView: View {
 
 #Preview {
     TripCardView(trip: SwiftDataLogEntry(title: "Preview trip", distance: 666.0))
-//        .environmentObject(ViewModel())
 }

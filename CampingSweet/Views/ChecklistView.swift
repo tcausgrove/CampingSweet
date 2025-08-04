@@ -58,7 +58,6 @@ struct ChecklistView: View {
                 }
             }
             .navigationTitle("Departure checklist")
-//        .errorAlert($checklistViewModel.checklistError)
     }
     
     struct showCheckMark: View {

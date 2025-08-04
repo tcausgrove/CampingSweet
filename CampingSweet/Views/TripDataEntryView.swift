@@ -25,19 +25,21 @@ struct TripDataEntryView: View {
         Form {
             Section(header: Text("Place")) {
                 TextField("Destination", text: $title)
-                let unit = "Distance (" //+ viewModel.getDistanceUnitFromSetting() + ")"
+                // FIXME:  Settings aren't being used
+                let unit = "Distance (" //+ .getDistanceUnitFromSetting() + ")"
                 TextField(unit, text: $distance)
                     .keyboardType(.decimalPad)
-                    .numbersOnly($distance, includeDecimal: true, includeNegative: false)  // See NumbersOnlyViewModifier.swift
+                // FIXME:  Need to do a test on numbersOnly, it prevents display
+//                    .numbersOnly($distance, includeDecimal: true, includeNegative: false)  // See NumbersOnlyViewModifier.swift
             }
             
             Section(header: Text("Geolocation")) {
                 TextField("Latitude", text: $latitude)
                     .keyboardType(.numbersAndPunctuation)
-                    .numbersOnly($latitude, includeDecimal: true, includeNegative: true)  // See NumbersOnlyViewModifier.swift
+//                    .numbersOnly($latitude, includeDecimal: true, includeNegative: true)  // See NumbersOnlyViewModifier.swift
                 TextField("Longitude", text: $longitude)
                     .keyboardType(.numbersAndPunctuation)
-                    .numbersOnly($longitude, includeDecimal: true, includeNegative: true)  // See NumbersOnlyViewModifier.swift
+//                    .numbersOnly($longitude, includeDecimal: true, includeNegative: true)  // See NumbersOnlyViewModifier.swift
                 LocationButton {
                     readLocation()
                 }
@@ -47,12 +49,12 @@ struct TripDataEntryView: View {
             Section(header: Text("Dates")) {
                 DatePicker("Arrival date", selection: $start, in: ...end, displayedComponents: [.date])
                     .onChange(of: start) {
-//                        numberOfNightsText =
+                        numberOfNightsText = startEndDateToNights(startDate: start, endDate: end)
                     }
                 
                 DatePicker("Departure date", selection: $end, in: start..., displayedComponents: [.date])
                     .onChange(of: end) {
-//                        numberOfNightsText = "4"
+                        numberOfNightsText = startEndDateToNights(startDate: start, endDate: end)
                     }
                 
                 Text(numberOfNightsText)

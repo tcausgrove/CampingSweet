@@ -6,10 +6,12 @@
 //
 
 import SwiftUI
-//import SwiftData
+import SwiftData
 
 struct LogBookBottomBarView: View {
-    @Binding var isImporting: Bool
+    @EnvironmentObject var viewModel: ViewModel
+    @State private var isImporting: Bool = false
+    @State private var document: MessageDocument = MessageDocument(message: "")
     var camper: SwiftDataCamper
     
     var body: some View {
@@ -17,6 +19,14 @@ struct LogBookBottomBarView: View {
             Button("Import CSV") {
                 isImporting = true
             }
+            .fileImporter(
+                isPresented: $isImporting,
+                allowedContentTypes: [.plainText],
+                allowsMultipleSelection: false
+            ) { result in
+                handleCSVFileImport(result: result)
+            }
+
             Spacer()
             Button("Export CSV") {
                 saveCSVImperatively(camper: camper)
@@ -29,9 +39,27 @@ struct LogBookBottomBarView: View {
         .padding(.top, 12)
         .background(.sheetButtonBackground)
     }
+    
+    func handleCSVFileImport(result: Result<[URL], any Error>) {
+        do {
+            guard let selectedFile: URL = try result.get().first else { return }
+            guard let message = String(data: try Data(contentsOf: selectedFile), encoding: .utf8) else { return }
+            
+            document.message = message
+            let newTripData: [SwiftDataLogEntry] = getCSV(inputString: document.message,
+                                                          dateFormat: viewModel.settings.chosenDateFormat,
+                                                          locationType: viewModel.settings.locationImportFormat,
+                                                          dateImportFormat: viewModel.settings.dateImportFormat)
+            for newLogEntry in newTripData {
+                camper.trips.append(newLogEntry)
+            }
+        } catch {
+            // FIXME:  Need to handle failure here
+        }
+    }
 }
 
 #Preview {
-    LogBookBottomBarView(isImporting: .constant(false),
-                         camper: SwiftDataCamper(name: "Foo", isDefaultCamper: false, isArchived: false, registrationNumber: "None", trips: []))
+    LogBookBottomBarView(camper: SwiftDataCamper(name: "Foo", isDefaultCamper: false, isArchived: false, registrationNumber: "None", trips: []))
+        .environmentObject(ViewModel())
 }

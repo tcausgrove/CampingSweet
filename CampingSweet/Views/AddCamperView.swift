@@ -15,8 +15,6 @@ struct AddCamperView: View {
     @State private var name: String = ""
     @State private var registration: String = ""
     
-    //    @EnvironmentObject var viewModel: ViewModel
-    
     var body: some View {
         NavigationStack {
             Form {
@@ -42,7 +40,6 @@ struct AddCamperView: View {
     func addNewCamper() {
         let newCamper = SwiftDataCamper(name: name, isDefaultCamper: true, isArchived: false, registrationNumber: registration)
         modelContext.insert(newCamper)
-        //        viewModel.addNewCamper(newCamper: newCamper)
         dismiss()
     }
 }
@@ -50,9 +47,3 @@ struct AddCamperView: View {
 #Preview {
     AddCamperView()
 }
-//struct AddCamperLogView_Previews: PreviewProvider {
-///    static var previews: some View {
-//        AddCamperView()
-//            .environmentObject(ViewModel())
-//    }
-//}
