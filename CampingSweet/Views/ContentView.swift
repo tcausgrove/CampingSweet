@@ -71,7 +71,7 @@ struct ContentView: View {
                     }
                     .navigationDestination(isPresented: $changingSettings) {
                         SettingsView()
-//                            .environmentObject(viewModel)
+//for                            .environmentObject(viewModel)
                    }
                 }
             }

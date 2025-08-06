@@ -30,6 +30,7 @@ struct SettingsView: View {
                             defaultDistance = viewModel.settings.chosenDistance
                         })
                     
+                    // FIXME: This doesn't appear to be used anywhere
                         Picker("Time format", selection: $timeFormat) {
                             ForEach(ClockHours.allCases) { option in
                                 Text(option.rawValue)
@@ -38,7 +39,7 @@ struct SettingsView: View {
                         .onAppear(perform: {
                             timeFormat = viewModel.settings.chosenClockHours
                         })
-                    
+                    // FIXME: This doesn't appear to be used anywhere
                         Picker("Date format", selection: $dateFormat) {
                             ForEach(DateFormatType.allCases) { option in
                                 Text(option.rawValue)
@@ -68,18 +69,12 @@ struct SettingsView: View {
                     })
                 }
             }
-            .toolbar() {  // Needs to change
-                ToolbarItemGroup(placement: .navigation) {
-                    Button(role: .cancel, action: {
-                        viewModel.changeSettings(newChosenDistance: defaultDistance,
-                                                 newClockHours: timeFormat,
-                                                 newDateFormat: dateFormat,
-                                                 newLocationFormat: locationFormat,
-                                                 newDateImportFormat: dateImportFormat)
-                        dismiss() }) {
-                            Text("Done")
-                        }
-                }
+            .onDisappear {
+                viewModel.changeSettings(newChosenDistance: defaultDistance,
+                                         newClockHours: timeFormat,
+                                         newDateFormat: dateFormat,
+                                         newLocationFormat: locationFormat,
+                                         newDateImportFormat: dateImportFormat)
             }
             .navigationTitle("User settings")
     }

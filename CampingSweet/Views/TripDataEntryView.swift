@@ -10,6 +10,7 @@ import CoreLocation
 import CoreLocationUI
 
 struct TripDataEntryView: View {
+    @EnvironmentObject var viewModel: ViewModel
 
     @Binding var title: String
     @Binding var start: Date
@@ -25,8 +26,9 @@ struct TripDataEntryView: View {
         Form {
             Section(header: Text("Place")) {
                 TextField("Destination", text: $title)
+                
                 // FIXME:  Settings aren't being used
-                let unit = "Distance (" //+ .getDistanceUnitFromSetting() + ")"
+                let unit = "Distance (" + viewModel.getDistanceUnitFromSetting() + ")"
                 TextField(unit, text: $distance)
                     .keyboardType(.decimalPad)
                 // FIXME:  Need to do a test on numbersOnly, it prevents display
@@ -74,11 +76,20 @@ struct TripDataEntryView: View {
     }
 }
 
+
 #Preview {
-    TripDataEntryView(title: .constant("Preview trip"),
-                      start: .constant(Date.now),
-                      end: .constant(Date.now),
-                      distance: .constant("345.6"),
-                      latitude: .constant("-45.6"),
-                      longitude: .constant("-123.4") )
+    @Previewable @State var title = "Preview trip"
+    @Previewable @State var start = Date.now
+    @Previewable @State var end = Date.now
+    @Previewable @State var distance: String = "123.4"
+    @Previewable @State var latitude: String = "-45.6"
+    @Previewable @State var longitude: String = "-123.4"
+
+    TripDataEntryView(title: $title,
+                              start: $start,
+                              end: $end,
+                              distance: $distance,
+                              latitude: $latitude,
+                              longitude: $longitude )
+    .environmentObject(ViewModel())
 }

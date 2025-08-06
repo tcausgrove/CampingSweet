@@ -11,6 +11,7 @@ import SwiftData
 struct CamperCardView: View {
     @Bindable var camper: SwiftDataCamper
     @Environment(\.modelContext) var modelContext
+    @EnvironmentObject var viewModel: ViewModel
 
     @State private var showModMenu = false
 
@@ -37,7 +38,9 @@ struct CamperCardView: View {
                 Text("Registration: \(camper.registrationNumber)")
                 
                 if camper.totalCamperDistance > 0.1 {
-                    Text("Distance traveled: \(camper.totalCamperDistance.formatted())")
+                    let tripDistanceString = viewModel.formatDistanceBySetting(distance: camper.totalCamperDistance)
+                    Text("Distance traveled" + ": " + tripDistanceString)
+//                    Text("Distance traveled: \(camper.totalCamperDistance.formatted())")
                 }
                 Text("Number of nights used: \(camper.totalCamperNights)")
             }
@@ -79,5 +82,8 @@ struct CamperCardView: View {
 }
 
 #Preview {
-    CamperCardView(camper: SwiftDataCamper(name: "Preview camper", isDefaultCamper: false, isArchived: false, registrationNumber: "Anything"))
+    let previewTrips = [SwiftDataLogEntry(title: "Trip 1", distance: 123, startDate: Date(), endDate: Date()),
+                        SwiftDataLogEntry(title: "Trip 2", distance: 234, startDate: Date(), endDate: Date())]
+    CamperCardView(camper: SwiftDataCamper(name: "Preview camper", isDefaultCamper: false, isArchived: false, registrationNumber: "Anything", trips: previewTrips))
+        .environmentObject(ViewModel())
 }

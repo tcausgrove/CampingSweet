@@ -80,22 +80,24 @@ struct EditLogEntryView: View {
         }
     }
     
-    func populateVariables() {
-        if let previousLogEntry {
-            title = previousLogEntry.title
-            start = previousLogEntry.startDate
-            end = previousLogEntry.endDate
-            let newDistance: Double = previousLogEntry.distance ?? 0.0
-            distance = String(newDistance)
-            let newLatitude: Double? = previousLogEntry.latitude
-            let newLongitude: Double? = previousLogEntry.longitude
-            if newLatitude != nil { latitude = String(newLatitude!) }
-            if newLongitude != nil { longitude = String(newLongitude!) }
-        }
-    }
+     func populateVariables() {
+         if let previousLogEntry {
+             title = previousLogEntry.title
+             start = previousLogEntry.startDate
+             end = previousLogEntry.endDate
+             let newDistance: Double = previousLogEntry.distance ?? 0.0
+             distance = String(newDistance)
+             let newLatitude: Double? = previousLogEntry.latitude
+             let newLongitude: Double? = previousLogEntry.longitude
+             if newLatitude != nil { latitude = String(newLatitude!) }
+             if newLongitude != nil { longitude = String(newLongitude!) }
+         }
+     }
 }
 
 #Preview {
-    EditLogEntryView(previousLogEntry: SwiftDataLogEntry(title: "Preview", distance: 12.3, latitude: 123.45678))
-//    EditLogEntryView(previousLogEntry: nil)
+    // PREVIEW IS NOT OPERATIONAL:  There is a problem with LocationButton
+//    EditLogEntryView(previousLogEntry: SwiftDataLogEntry(title: "Preview", distance: 12.3, latitude: 123.45678, longitude: -46.34567))
+    EditLogEntryView(previousLogEntry: nil)
+        .environmentObject(ViewModel())
 }

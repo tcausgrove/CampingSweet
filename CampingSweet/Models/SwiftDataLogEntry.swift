@@ -13,7 +13,7 @@ class SwiftDataLogEntry {
     var title: String = ""
     var distance: Double?
     var startDate: Date
-    var endDate: Date = Date()
+    var endDate: Date
     var latitude: Double?
     var longitude: Double?
 
