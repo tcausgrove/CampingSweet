@@ -15,12 +15,15 @@ struct NumbersOnlyViewModifier: ViewModifier {
     @Binding var text: String
     var includeDecimal: Bool
     var includeNegative: Bool
-    var digitAllowedAfterDecimal: Int = 3
+    var digitAllowedAfterDecimal: Int
     
     func body(content: Content) -> some View {
         content
-            .keyboardType(includeDecimal ? .decimalPad : .numberPad)
+        //  Decided to control keyboard type separately
+//            .keyboardType(includeDecimal ? .decimalPad : .numberPad)
+//            .keyboardType(includeNegative ? .numbersAndPunctuation : .decimalPad)
             .onReceive(Just(text)) { newValue in
+                if ( newValue == "" && text != "") { return } // This happens on the first read; allow display of text
                 var numbers = "0123456789"
                 let decimalSeparator: String = Locale.current.decimalSeparator ?? "."
                 if includeDecimal {

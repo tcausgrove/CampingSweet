@@ -10,38 +10,31 @@ import CoreLocation
 import CoreLocationUI
 
 struct TripDataEntryView: View {
-    @EnvironmentObject var viewModel: ViewModel
-
     @Binding var title: String
     @Binding var start: Date
     @Binding var end: Date
-    @Binding var distance: String
+//    @Binding var distance: Measurement<UnitLength>
+    @Binding var distanceString: String
     @Binding var latitude: String
     @Binding var longitude: String
     
-    @State private var numberOfNightsText: String = " "
+    @State private var numberOfNightsText: String? = nil
     let getLocation = GetLocation()
 
     var body: some View {
         Form {
             Section(header: Text("Place")) {
-                TextField("Destination", text: $title)
-                
-                // FIXME:  Settings aren't being used
-                let unit = "Distance (" + viewModel.getDistanceUnitFromSetting() + ")"
-                TextField(unit, text: $distance)
-                    .keyboardType(.decimalPad)
-                // FIXME:  Need to do a test on numbersOnly, it prevents display
-//                    .numbersOnly($distance, includeDecimal: true, includeNegative: false)  // See NumbersOnlyViewModifier.swift
+                TextField("Destination", text: $title)                
+                DrivingDistanceView(distanceString: $distanceString)
             }
             
             Section(header: Text("Geolocation")) {
                 TextField("Latitude", text: $latitude)
                     .keyboardType(.numbersAndPunctuation)
-//                    .numbersOnly($latitude, includeDecimal: true, includeNegative: true)  // See NumbersOnlyViewModifier.swift
+                    .numbersOnly($latitude, includeDecimal: true, includeNegative: true, digitAllowedAfterDecimal: 6)  // See NumbersOnlyViewModifier.swift
                 TextField("Longitude", text: $longitude)
                     .keyboardType(.numbersAndPunctuation)
-//                    .numbersOnly($longitude, includeDecimal: true, includeNegative: true)  // See NumbersOnlyViewModifier.swift
+                    .numbersOnly($longitude, includeDecimal: true, includeNegative: true, digitAllowedAfterDecimal: 6)  // See NumbersOnlyViewModifier.swift
                 LocationButton {
                     readLocation()
                 }
@@ -59,7 +52,9 @@ struct TripDataEntryView: View {
                         numberOfNightsText = startEndDateToNights(startDate: start, endDate: end)
                     }
                 
-                Text(numberOfNightsText)
+                if numberOfNightsText != nil {
+                    Text(numberOfNightsText!)
+                }
             }
         }
     }
@@ -81,15 +76,18 @@ struct TripDataEntryView: View {
     @Previewable @State var title = "Preview trip"
     @Previewable @State var start = Date.now
     @Previewable @State var end = Date.now
-    @Previewable @State var distance: String = "123.4"
+    @Previewable @State var distanceString: String = "123.4"
+//    @Previewable @State var distance: Measurement<UnitLength> = .init(value: 123.4, unit: .miles)
     @Previewable @State var latitude: String = "-45.6"
     @Previewable @State var longitude: String = "-123.4"
+    
+    @Previewable @State var numberOfNightsText = "1 night"
 
     TripDataEntryView(title: $title,
                               start: $start,
                               end: $end,
-                              distance: $distance,
+                              distanceString: $distanceString,
                               latitude: $latitude,
                               longitude: $longitude )
-    .environmentObject(ViewModel())
+//    .environmentObject(ViewModel())
 }

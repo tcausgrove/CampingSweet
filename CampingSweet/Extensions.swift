@@ -10,8 +10,11 @@ import SwiftUI
 import MapKit
 
 extension View {
-    func numbersOnly(_ text: Binding<String>, includeDecimal: Bool = false, includeNegative: Bool = false) -> some View {
-        self.modifier(NumbersOnlyViewModifier(text: text, includeDecimal: includeDecimal, includeNegative: includeNegative))
+    func numbersOnly(_ text: Binding<String>, includeDecimal: Bool, includeNegative: Bool, digitAllowedAfterDecimal: Int) -> some View {
+        self.modifier(NumbersOnlyViewModifier(text: text,
+                                              includeDecimal: includeDecimal,
+                                              includeNegative: includeNegative,
+                                              digitAllowedAfterDecimal: digitAllowedAfterDecimal))
     }
 }
 

@@ -9,15 +9,18 @@ import SwiftUI
 import SwiftData
 
 struct EditLogEntryView: View {
-    
+    @EnvironmentObject var viewModel: ViewModel
+
     var previousLogEntry: SwiftDataLogEntry?
 
     @State var title: String = ""
     @State var start: Date = Date.now
     @State var end: Date = Date.now
-    @State var distance: String = ""
+    @State var distance: Measurement<UnitLength> = .init(value: 1.0, unit: .miles)
     @State var latitude: String = ""
     @State var longitude: String = ""
+    
+    @State var distanceString = ""
 
     @Environment(\.dismiss) var dismiss
     @Environment(\.modelContext) var modelContext
@@ -32,7 +35,7 @@ struct EditLogEntryView: View {
                 TripDataEntryView(title: $title,
                                   start: $start,
                                   end: $end,
-                                  distance: $distance,
+                                  distanceString: $distanceString,
                                   latitude: $latitude,
                                   longitude: $longitude)
             }
@@ -59,11 +62,12 @@ struct EditLogEntryView: View {
     }
     
     func saveLogBookEntry() {
+        distance = Measurement(value: Double(distanceString) ?? 0.0, unit: viewModel.settings.chosenDistance.unit)
         let camper = SwiftDataCamper.selectedCamper(with: modelContext)
         if let previousLogEntry {
             // Edit the trip
             previousLogEntry.title = title
-            previousLogEntry.distance = Double(distance)
+            previousLogEntry.drivingDistanceMiles = distance
             previousLogEntry.startDate = start
             previousLogEntry.endDate = end
             previousLogEntry.latitude = Double(latitude) ?? 0.0
@@ -71,7 +75,7 @@ struct EditLogEntryView: View {
         } else {
             // Add a new trip
             let newLogEntry = SwiftDataLogEntry(title: title,
-                                               distance: Double(distance),
+                                                distance: distance.converted(to: .miles).value,
                                                 startDate: start,
                                                 endDate: end,
                                                 latitude: Double(latitude) ?? 0.0,
@@ -83,10 +87,15 @@ struct EditLogEntryView: View {
      func populateVariables() {
          if let previousLogEntry {
              title = previousLogEntry.title
+             print("Title is \(title)")
              start = previousLogEntry.startDate
              end = previousLogEntry.endDate
-             let newDistance: Double = previousLogEntry.distance ?? 0.0
-             distance = String(newDistance)
+//             let newDistance: Double = previousLogEntry.distance ?? 0.0
+             print("Previous distance is \(String(describing: previousLogEntry.distance))")
+             distance = previousLogEntry.drivingDistanceMiles ?? .init(value: 0.0, unit: .miles)
+             print("Distance is \(String(describing: distance))")
+             distanceString = String(format: "%.1f", distance.value)
+             print("DistanceString is \(distanceString)")
              let newLatitude: Double? = previousLogEntry.latitude
              let newLongitude: Double? = previousLogEntry.longitude
              if newLatitude != nil { latitude = String(newLatitude!) }

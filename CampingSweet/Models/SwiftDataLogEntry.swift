@@ -30,4 +30,14 @@ class SwiftDataLogEntry {
         let number = ((endDate - startDate) / 24 / 3600).rounded()
         return Int(number)
     }
+    
+    var drivingDistanceMiles: Measurement<UnitLength>? {
+            get {
+                if let distance {
+                    return Measurement<UnitLength>(value: distance, unit: .miles)
+                } else { return nil }
+            }
+        set { distance = newValue?.converted(to: .miles).value }
+    }
+
 }

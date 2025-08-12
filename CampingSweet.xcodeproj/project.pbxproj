@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7817B8832E4559E600CC7B7E /* DrivingDistanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7817B8822E4559E600CC7B7E /* DrivingDistanceView.swift */; };
 		7826F2C22BBB4D4B0075B0A3 /* CamperCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7826F2C12BBB4D4B0075B0A3 /* CamperCardView.swift */; };
 		78413C042A44EB49006DCF9E /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78413C032A44EB49006DCF9E /* Extensions.swift */; };
 		78413C0A2A6DEE84006DCF9E /* NumbersOnlyViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78413C092A6DEE84006DCF9E /* NumbersOnlyViewModifier.swift */; };
@@ -42,6 +43,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7817B8822E4559E600CC7B7E /* DrivingDistanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrivingDistanceView.swift; sourceTree = "<group>"; };
 		7826F2C12BBB4D4B0075B0A3 /* CamperCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CamperCardView.swift; sourceTree = "<group>"; };
 		78413C032A44EB49006DCF9E /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		78413C092A6DEE84006DCF9E /* NumbersOnlyViewModifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NumbersOnlyViewModifier.swift; path = Views/NumbersOnlyViewModifier.swift; sourceTree = "<group>"; };
@@ -158,6 +160,7 @@
 				78A4153E29F1E414005CBEF1 /* SettingsView.swift */,
 				78F8ACDD2DA7335D0094718D /* TripCardView.swift */,
 				785949802CEC0E5800D8060A /* TripDataEntryView.swift */,
+				7817B8822E4559E600CC7B7E /* DrivingDistanceView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -263,6 +266,7 @@
 				78820E892D3EBB7700AA6807 /* HelpView.swift in Sources */,
 				78F8ACE02DAAF0CC0094718D /* ArchivedCamperView.swift in Sources */,
 				785949832CEC13C300D8060A /* EditLogEntryView.swift in Sources */,
+				7817B8832E4559E600CC7B7E /* DrivingDistanceView.swift in Sources */,
 				78A4153B29F094EB005CBEF1 /* AddCamperView.swift in Sources */,
 				785949542CE6CADD00D8060A /* MessageDocument.swift in Sources */,
 				78413C042A44EB49006DCF9E /* Extensions.swift in Sources */,
@@ -410,7 +414,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_ASSET_PATHS = "\"CampingSweet/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -448,7 +452,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_ASSET_PATHS = "\"CampingSweet/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;

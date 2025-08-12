@@ -24,7 +24,7 @@ struct LogBookView: View {
         ScrollView {
             NavigationStack(path: $path) {
                 ForEach(camper.trips) { trip in
-                    TripCardView(trip: trip)
+                    TripCardView(logEntry: trip)
 //                       .onLongPressGesture(perform: {
 //                            tripToEdit = trip
 //                            editingLogEntry.toggle()

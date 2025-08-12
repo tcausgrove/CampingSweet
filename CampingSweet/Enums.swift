@@ -20,6 +20,14 @@ enum DistanceOptions: String, CaseIterable, Identifiable, Codable {
     case nm = "Nautical miles"
     
     var id: Self { self }
+    
+    var unit: UnitLength {
+        switch self {
+        case .mi: return .miles
+        case .km: return .kilometers
+        case .nm: return .nauticalMiles
+        }
+    }
 }
 
 enum ClockHours: String, CaseIterable, Identifiable, Codable {

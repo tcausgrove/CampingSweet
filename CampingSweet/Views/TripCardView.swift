@@ -9,7 +9,7 @@ import SwiftUI
 
 
 struct TripCardView: View {
-    var trip: SwiftDataLogEntry
+    var logEntry: SwiftDataLogEntry
     
     @EnvironmentObject var viewModel: ViewModel
     @Environment(\.modelContext) var modelContext
@@ -19,12 +19,12 @@ struct TripCardView: View {
         CardView(backgroundColor: Color.sheetButtonBackground) {
             VStack(alignment: .leading, spacing: 2) {
                 HStack {
-                    Text("Title:  \(trip.title)")
+                    Text("Title:  \(logEntry.title)")
                     
                     Spacer()
                     
                     Menu {
-                        Button(role: .destructive, action: { deleteTrip(trip: trip) }) {
+                        Button(role: .destructive, action: { deleteTrip(trip: logEntry) }) {
                             Text("Delete trip")
                         }
                         Button(action: {
@@ -36,11 +36,11 @@ struct TripCardView: View {
                     }
 
                 }
-                Text("When:  \(trip.startDate.formatted(date: .long, time: .omitted))")
-                let numberOfNightsText = "Number of nights:  " + String(trip.numberOfNights)
+                Text("When:  \(logEntry.startDate.formatted(date: .long, time: .omitted))")
+                let numberOfNightsText = "Number of nights:  " + String(logEntry.numberOfNights)
                 Text(numberOfNightsText)
                 
-                let tripDistance = trip.distance ?? 0.0
+                let tripDistance = logEntry.distance ?? 0.0
                 HStack {
                     if tripDistance > 0.1 {
                         Text("Distance: " + viewModel.formatDistanceBySetting(distance: tripDistance))
@@ -51,7 +51,7 @@ struct TripCardView: View {
             }
         }
         .sheet(isPresented: $editingLogEntry, content: {
-            EditLogEntryView(previousLogEntry: trip)
+            EditLogEntryView(previousLogEntry: logEntry)
         })
 
     }
@@ -64,6 +64,6 @@ struct TripCardView: View {
 }
 
 #Preview {
-    TripCardView(trip: SwiftDataLogEntry(title: "Preview trip", distance: 666.0))
+    TripCardView(logEntry: SwiftDataLogEntry(title: "Preview trip", distance: 666.0))
         .environmentObject(ViewModel())
 }
