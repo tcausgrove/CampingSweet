@@ -51,7 +51,7 @@ struct ContentView: View {
             }
             
             .padding(2)
-           .toolbar {
+            .toolbar {
                 ToolbarItemGroup(placement: .bottomBar) {
 //                    Button(action: { showHelpMenu = true }) {
             //                        Image(systemName: "questionmark")
