@@ -45,7 +45,6 @@ struct TripCardView: View {
                     if tripDistance > 0.1 {
                         Text("Distance: " + viewModel.formatDistanceBySetting(distance: tripDistance))
                     }
-//                    Text("Distance:  " + tripDistance )
                     Spacer()
                 }
             }

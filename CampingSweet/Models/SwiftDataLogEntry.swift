@@ -7,6 +7,7 @@
 
 import SwiftUI
 import SwiftData
+import CoreLocation
 
 @Model
 class SwiftDataLogEntry {
@@ -16,14 +17,27 @@ class SwiftDataLogEntry {
     var endDate: Date
     var latitude: Double?
     var longitude: Double?
-
-    init(title: String, distance: Double? = nil, startDate: Date = Date(), endDate: Date = Date(), latitude: Double? = nil, longitude: Double? = nil) {
+    
+    var camper: SwiftDataCamper?
+    
+    init(title: String,
+         distance: Double? = nil,
+         startDate: Date = Date(),
+         endDate: Date = Date(),
+         location: CLLocationCoordinate2D? = nil,
+         latitude: Double? = nil,
+         longitude: Double? = nil,
+         camper: SwiftDataCamper? = nil)
+    {
         self.title = title
         self.distance = distance
         self.startDate = startDate
         self.endDate = endDate
         self.latitude = latitude
         self.longitude = longitude
+        self.camper = camper
+        
+        //        self.camper = camper
     }
     
     var numberOfNights: Int {
@@ -32,12 +46,24 @@ class SwiftDataLogEntry {
     }
     
     var drivingDistanceMiles: Measurement<UnitLength>? {
-            get {
-                if let distance {
-                    return Measurement<UnitLength>(value: distance, unit: .miles)
-                } else { return nil }
-            }
+        get {
+            if let distance {
+                return Measurement<UnitLength>(value: distance, unit: .miles)
+            } else { return nil }
+        }
         set { distance = newValue?.converted(to: .miles).value }
     }
-
+    
+    var location: CLLocationCoordinate2D? {
+        get {
+            if let latitude, let longitude {
+                return CLLocationCoordinate2DMake(latitude, longitude)
+            }
+            else { return nil }
+        }
+        set {
+            latitude = newValue?.latitude
+            longitude = newValue?.longitude
+        }
+    }
 }

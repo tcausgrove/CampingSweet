@@ -7,6 +7,7 @@
 
 import SwiftUI
 import SwiftData
+import CoreLocation
 
 struct EditLogEntryView: View {
     @EnvironmentObject var viewModel: ViewModel
@@ -17,6 +18,7 @@ struct EditLogEntryView: View {
     @State var start: Date = Date.now
     @State var end: Date = Date.now
     @State var distance: Measurement<UnitLength> = .init(value: 1.0, unit: .miles)
+//    @State var location: CLLocationCoordinate2D
     @State var latitude: String = ""
     @State var longitude: String = ""
     
@@ -79,7 +81,8 @@ struct EditLogEntryView: View {
                                                 startDate: start,
                                                 endDate: end,
                                                 latitude: Double(latitude) ?? 0.0,
-                                                longitude: Double(longitude) ?? 0.0)
+                                                longitude: Double(longitude) ?? 0.0,
+                                                camper: camper)
             camper.trips.append(newLogEntry)
         }
     }
@@ -87,15 +90,11 @@ struct EditLogEntryView: View {
      func populateVariables() {
          if let previousLogEntry {
              title = previousLogEntry.title
-             print("Title is \(title)")
              start = previousLogEntry.startDate
              end = previousLogEntry.endDate
 //             let newDistance: Double = previousLogEntry.distance ?? 0.0
-             print("Previous distance is \(String(describing: previousLogEntry.distance))")
              distance = previousLogEntry.drivingDistanceMiles ?? .init(value: 0.0, unit: .miles)
-             print("Distance is \(String(describing: distance))")
              distanceString = String(format: "%.1f", distance.value)
-             print("DistanceString is \(distanceString)")
              let newLatitude: Double? = previousLogEntry.latitude
              let newLongitude: Double? = previousLogEntry.longitude
              if newLatitude != nil { latitude = String(newLatitude!) }

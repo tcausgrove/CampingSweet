@@ -13,7 +13,6 @@ struct TripDataEntryView: View {
     @Binding var title: String
     @Binding var start: Date
     @Binding var end: Date
-//    @Binding var distance: Measurement<UnitLength>
     @Binding var distanceString: String
     @Binding var latitude: String
     @Binding var longitude: String
@@ -77,6 +76,7 @@ struct TripDataEntryView: View {
     @Previewable @State var start = Date.now
     @Previewable @State var end = Date.now
     @Previewable @State var distanceString: String = "123.4"
+//    @Previewable @State var location = CLLocationCoordinate2DMake(123.456, -45.678)
 //    @Previewable @State var distance: Measurement<UnitLength> = .init(value: 123.4, unit: .miles)
     @Previewable @State var latitude: String = "-45.6"
     @Previewable @State var longitude: String = "-123.4"

@@ -9,9 +9,9 @@ import SwiftUI
 
 struct DrivingDistanceView: View {
     @EnvironmentObject var viewModel: ViewModel
-//    @Binding var distance: Measurement<UnitLength>
-//    @State private var distanceString: String = ""
+
     @Binding var distanceString: String
+//    @FocusState private var focused: Bool
     
     let formatter: NumberFormatter = {
         let formatter = NumberFormatter()
@@ -24,12 +24,23 @@ struct DrivingDistanceView: View {
         HStack {
             Text("Distance (\( viewModel.getDistanceUnitFromSetting() )): ")
             TextField("Enter value", text: $distanceString)
-               .keyboardType(.decimalPad)
+//                .onAppear(perform: { focused = true })
+//                .focused($focused)
+                .keyboardType(.decimalPad)
                .numbersOnly($distanceString, includeDecimal: true, includeNegative: false, digitAllowedAfterDecimal: 1)
-//               .onSubmit {
-//                   distance = Measurement(value: Double(distanceString) ?? 0.0, unit: viewModel.settings.chosenDistance.unit)
-//                }
         }
+//        .toolbar {
+//            ToolbarItem(placement: .keyboard) {
+//                Spacer()
+//            }
+//            ToolbarItem(placement: .keyboard) {
+//                Button() {
+//                    focused = false
+//                } label: {
+//                    Image(systemName: "keyboard.chevron.compact.down")
+//                }
+//            }
+//        }
     }
 }
 

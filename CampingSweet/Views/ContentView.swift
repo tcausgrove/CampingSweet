@@ -10,6 +10,7 @@ import SwiftData
 
 struct ContentView: View {
     @Query var campers: [SwiftDataCamper]
+    
     @Environment(\.modelContext) var modelContext
     
     @StateObject var viewModel = ViewModel()
@@ -33,6 +34,7 @@ struct ContentView: View {
                 }
                 
                 NavigationLink {
+                    // FIXME: With changes to the model, I shouldn't have to send a camper to LogBookView
                     let selectedCamper = SwiftDataCamper.selectedCamper(with: modelContext)
                     LogBookView(camper: selectedCamper)
                 } label: {

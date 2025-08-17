@@ -28,7 +28,7 @@ struct CamperCardView: View {
                 .sheet(isPresented: $showModMenu, content: { sheetContents })
                 HStack {
                     Text("Name: \(camper.name)")
-                    if camper.isDefaultCamper {
+                    if camper.isDefaultCamperBool {
                         Text("Selected")
                             .italic()
                             .font(.callout)
@@ -40,7 +40,6 @@ struct CamperCardView: View {
                 if camper.totalCamperDistance > 0.1 {
                     let tripDistanceString = viewModel.formatDistanceBySetting(distance: camper.totalCamperDistance)
                     Text("Distance traveled" + ": " + tripDistanceString)
-//                    Text("Distance traveled: \(camper.totalCamperDistance.formatted())")
                 }
                 Text("Number of nights used: \(camper.totalCamperNights)")
             }
@@ -53,8 +52,9 @@ struct CamperCardView: View {
             .font(.title3)
         VStack(alignment: .center, spacing: 16) {
             Button(role: .destructive, action: {
-                modelContext.delete(camper)
-                showModMenu = false
+                // FIXME:  Before deleting, check to see if this is default camper;
+                //  if so, look for another for default. If no others, then create a camper
+                deleteCamper(camper: camper)
             }) {
                 Text("Delete camper")
             }
@@ -62,7 +62,7 @@ struct CamperCardView: View {
 
             Button(action: {
                 camper.isArchived = true
-                camper.isDefaultCamper = false
+                camper.isDefaultCamperBool = false
                 showModMenu = false
             }) {
                 Text("Archive camper")
@@ -79,11 +79,23 @@ struct CamperCardView: View {
         .presentationDetents([.fraction(0.35)])
         .presentationDragIndicator(.hidden)
     }
+    
+    func deleteCamper(camper: SwiftDataCamper) {
+        if camper.isDefaultCamperBool {
+            // set a new default
+            if let topCamper = try! modelContext.fetch(FetchDescriptor<SwiftDataCamper>()).first {
+                topCamper.isDefaultCamperBool = true
+            }
+        }
+        modelContext.delete(camper)
+        showModMenu = false
+    }
 }
 
 #Preview {
-    let previewTrips = [SwiftDataLogEntry(title: "Trip 1", distance: 123, startDate: Date(), endDate: Date()),
-                        SwiftDataLogEntry(title: "Trip 2", distance: 234, startDate: Date(), endDate: Date())]
-    CamperCardView(camper: SwiftDataCamper(name: "Preview camper", isDefaultCamper: false, isArchived: false, registrationNumber: "Anything", trips: previewTrips))
+    let previewTrips =
+    [SwiftDataLogEntry(title: "Trip 1", distance: 123, startDate: Date(), endDate: Date()),
+     SwiftDataLogEntry(title: "Trip 2", distance: 234, startDate: Date(), endDate: Date())]
+    CamperCardView(camper: SwiftDataCamper(name: "Preview camper", isDefaultCamper: 0, isArchived: false, registrationNumber: "Anything", trips: previewTrips))
         .environmentObject(ViewModel())
 }

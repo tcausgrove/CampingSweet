@@ -61,7 +61,7 @@ struct LogBookView: View {
         
         let trips = [SwiftDataLogEntry(title: "Trip 1", distance: 123.4),
                      SwiftDataLogEntry(title: "Trip 2", distance: 234.5)]
-        let previewCamper = SwiftDataCamper(name: "Preview camper", isDefaultCamper: false, isArchived: false, registrationNumber: "TX", trips: trips)
+        let previewCamper = SwiftDataCamper(name: "Preview camper", isDefaultCamper: 0, isArchived: false, registrationNumber: "TX", trips: trips)
         
         return LogBookView(camper: previewCamper)
             .modelContainer(container)

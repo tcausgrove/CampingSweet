@@ -38,7 +38,9 @@ struct AddCamperView: View {
     }
     
     func addNewCamper() {
-        let newCamper = SwiftDataCamper(name: name, isDefaultCamper: true, isArchived: false, registrationNumber: registration)
+        let oldCamper = SwiftDataCamper.selectedCamper(with: modelContext)
+        oldCamper.isDefaultCamper = 0
+        let newCamper = SwiftDataCamper(name: name, isDefaultCamper: 1, isArchived: false, registrationNumber: registration)
         modelContext.insert(newCamper)
         dismiss()
     }

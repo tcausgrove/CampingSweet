@@ -60,6 +60,6 @@ struct LogBookBottomBarView: View {
 }
 
 #Preview {
-    LogBookBottomBarView(camper: SwiftDataCamper(name: "Foo", isDefaultCamper: false, isArchived: false, registrationNumber: "None", trips: []))
+    LogBookBottomBarView(camper: SwiftDataCamper(name: "Foo", isDefaultCamper: 0, isArchived: false, registrationNumber: "None", trips: []))
         .environmentObject(ViewModel())
 }

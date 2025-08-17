@@ -11,13 +11,17 @@ import SwiftData
 @Model
 class SwiftDataCamper {
     var name: String
-    var isDefaultCamper: Bool
+    var isDefaultCamper: UInt8
     var isArchived: Bool
     var registrationNumber: String
     var trips: [SwiftDataLogEntry]
     
+    var isDefaultCamperBool: Bool {
+        get { isDefaultCamper == 1 }
+        set { isDefaultCamper = newValue ? 1 : 0 }
+    }
     
-    init(name: String = "Initial camper", isDefaultCamper: Bool = false, isArchived: Bool = false, registrationNumber: String = "", trips: [SwiftDataLogEntry] = []) {
+    init(name: String = "Initial camper", isDefaultCamper: UInt8 = 0, isArchived: Bool = false, registrationNumber: String = "", trips: [SwiftDataLogEntry] = []) {
         self.name = name
         self.isDefaultCamper = isDefaultCamper
         self.isArchived = isArchived
@@ -26,10 +30,11 @@ class SwiftDataCamper {
     }
     
     public static func selectedCamper(with modelContext: ModelContext) -> SwiftDataCamper {
-        if let result = try! modelContext.fetch(FetchDescriptor<SwiftDataCamper>()).first(where: { $0.isDefaultCamper == true }) {
+        if let result = try! modelContext.fetch(FetchDescriptor<SwiftDataCamper>()).first(where: { $0.isDefaultCamper == 1 }) {
             return result
         } else {
-            let newInstance = SwiftDataCamper(name: "Example Camper", isDefaultCamper: true, isArchived: false , registrationNumber: "")
+            // Make a new camper if there is no selected camper
+            let newInstance = SwiftDataCamper(name: "Example Camper", isDefaultCamper: 1, isArchived: false , registrationNumber: "")
             modelContext.insert(newInstance)
             return newInstance
         }
