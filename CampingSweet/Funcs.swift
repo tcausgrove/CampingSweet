@@ -124,8 +124,8 @@ func getCSV(inputString: String,
     }
 }
 
-// Functino below uses the CodableCSV package
-func saveCSVImperatively(camper: SwiftDataCamper) {
+// Function below uses the CodableCSV package
+func saveCSVImperatively(camper: SwiftDataCamper) -> UserError? {
     var writer: CSVWriter!
     
     do {
@@ -137,7 +137,7 @@ func saveCSVImperatively(camper: SwiftDataCamper) {
         let fileURL = path.appendingPathComponent("\(camper.name)_trips.csv")
         writer = try CSVWriter(fileURL: fileURL)
     } catch {
-        // Handle errors
+        return .couldNotSaveCSV
     }
     do {
         let heading = ["Start Date", "Nights", "Location", "Coordinates", "Miles driven"]
@@ -154,6 +154,7 @@ func saveCSVImperatively(camper: SwiftDataCamper) {
         }
         try writer.endEncoding()
     } catch {
-        print("Error is \(error)")
+        return .couldNotSaveCSV
     }
+    return .exportCSVSucceeded
 }

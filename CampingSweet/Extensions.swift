@@ -159,6 +159,9 @@ extension View {
     }
 }
 
+// See https://stackoverflow.com/questions/75172798/how-to-display-an-error-alert-in-swiftui
+// Usage (e.g.) Text("Some text").errorAlert($error)
+//    with variable defined as @State private var error: UserError?
 struct ErrorAlert: ViewModifier {
     
     @Binding var error: UserError?
@@ -187,6 +190,7 @@ extension View {
     }
 }
 
+// Extension to make it possible to subtract one date from another
 extension Date {
     static func - (lhs: Date, rhs: Date) -> TimeInterval {
         return lhs.timeIntervalSinceReferenceDate - rhs.timeIntervalSinceReferenceDate

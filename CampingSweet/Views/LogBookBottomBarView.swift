@@ -12,8 +12,9 @@ struct LogBookBottomBarView: View {
     @EnvironmentObject var viewModel: ViewModel
     @State private var isImporting: Bool = false
     @State private var document: MessageDocument = MessageDocument(message: "")
+    @State private var exportResult: UserError? = nil
     var camper: SwiftDataCamper
-    
+
     var body: some View {
         HStack {
             Button("Import CSV") {
@@ -29,8 +30,14 @@ struct LogBookBottomBarView: View {
 
             Spacer()
             Button("Export CSV") {
-                saveCSVImperatively(camper: camper)
+                exportResult = saveCSVImperatively(camper: camper)
             }
+            .errorAlert($exportResult)
+//            .alert(Text(exportResult?.errorDescription ?? "Error unknown"), isPresented: $alertIsPresented, actions: {
+//                ErrorView(error: result)
+//            }, message: {
+//                Text(exportResult?.errorMessage ?? "Error message here")
+//            })
 //                ShareLink(item:generateCSV(camper: camper)) {
 //                    Label("Export CSV", systemImage: "list.bullet.rectangle.portrait")
 //                }

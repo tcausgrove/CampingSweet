@@ -10,10 +10,11 @@ import SwiftData
 
 @Model
 class SwiftDataCamper {
-    var name: String
+    @Attribute(.unique) var name: String
     var isDefaultCamper: UInt8
     var isArchived: Bool
     var registrationNumber: String
+    @Relationship(deleteRule: .cascade, inverse: \SwiftDataLogEntry.camper)
     var trips: [SwiftDataLogEntry]
     
     var isDefaultCamperBool: Bool {
@@ -57,3 +58,15 @@ class SwiftDataCamper {
         return tempDistance
     }
 }
+
+// A convenience for accessing a camper in an array by its identifier.
+// Usage:  e.g., SwiftDataCamper[selectedId]?.name
+// Not currently in use; not storing the selected camper ID
+extension Array where Element: SwiftDataCamper {
+    /// Gets the first camper in the array with the specified ID, if any.
+    subscript(id: SwiftDataCamper.ID?) -> SwiftDataCamper? {
+        first { $0.id == id }
+    }
+    
+}
+

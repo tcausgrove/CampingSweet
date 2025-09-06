@@ -13,8 +13,8 @@ struct LogBookView: View {
     @Environment(\.modelContext) var modelContext
     @EnvironmentObject var viewModel: ViewModel
 
-    @Bindable var camper: SwiftDataCamper
-    
+    @Query(sort: \SwiftDataLogEntry.startDate,
+           order: .reverse) var trips: [SwiftDataLogEntry]
     @State private var path = [SwiftDataCamper]()
     @State private var editingLogEntry: Bool = false
     @State private var isExporting: Bool = false
@@ -23,7 +23,7 @@ struct LogBookView: View {
     var body: some View {
         ScrollView {
             NavigationStack(path: $path) {
-                ForEach(camper.trips) { trip in
+                ForEach(trips) { trip in
                     TripCardView(logEntry: trip)
 //                       .onLongPressGesture(perform: {
 //                            tripToEdit = trip
@@ -33,7 +33,7 @@ struct LogBookView: View {
             }
         }
         .safeAreaInset(edge: .bottom, content: {
-            LogBookBottomBarView(camper: camper)
+            LogBookBottomBarView(camper: SwiftDataCamper.selectedCamper(with: modelContext))
         })
         .toolbar() {
             ToolbarItem {
@@ -63,7 +63,7 @@ struct LogBookView: View {
                      SwiftDataLogEntry(title: "Trip 2", distance: 234.5)]
         let previewCamper = SwiftDataCamper(name: "Preview camper", isDefaultCamper: 0, isArchived: false, registrationNumber: "TX", trips: trips)
         
-        return LogBookView(camper: previewCamper)
+        return LogBookView()
             .modelContainer(container)
             .environmentObject(ViewModel())
     } catch {

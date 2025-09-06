@@ -18,7 +18,7 @@ class SwiftDataLogEntry {
     var latitude: Double?
     var longitude: Double?
     
-    var camper: SwiftDataCamper?
+    @Relationship var camper: SwiftDataCamper?
     
     init(title: String,
          distance: Double? = nil,
