@@ -10,6 +10,7 @@ import SwiftCSV
 import CoreLocation
 import CodableCSV
 
+// Helper for CSV import; assumes a dash between initial and final dates
 func convertStringToDates(inputString: String, dateFormat: DateFormatType) -> (Date, Date) {
     var arrivalDate = Date.now
     var departureDate = Date.now

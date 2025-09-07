@@ -35,8 +35,8 @@ struct ContentView: View {
                 
                 NavigationLink {
                     // FIXME: With changes to the model, I shouldn't have to send a camper to LogBookView
-//                    let selectedCamper = SwiftDataCamper.selectedCamper(with: modelContext)
-                    LogBookView()
+                    let selectedCamperName = SwiftDataCamper.selectedCamper(with: modelContext).name
+                    LogBookView(selectedCamperName: selectedCamperName)
                 } label: {
                     Label("Log Book", systemImage: "list.bullet.rectangle.fill")
                 }

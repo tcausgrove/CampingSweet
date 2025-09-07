@@ -20,6 +20,16 @@ struct LogBookView: View {
     @State private var isExporting: Bool = false
     @State var tripToEdit: SwiftDataLogEntry? = nil
     
+    var selectedCamperName: String 
+    
+    init(selectedCamperName: String) {
+        self.selectedCamperName = selectedCamperName
+        let predicate = #Predicate<SwiftDataLogEntry> { trip in
+            trip.camper?.name == selectedCamperName
+        }
+        _trips = Query(filter: predicate, sort: \SwiftDataLogEntry.startDate, order: .reverse)
+    }
+    
     var body: some View {
         ScrollView {
             NavigationStack(path: $path) {
@@ -49,7 +59,6 @@ struct LogBookView: View {
         .sheet(isPresented: $editingLogEntry, content: {
             EditLogEntryView(previousLogEntry: tripToEdit)
         })
-//        .sheet(isPresented: $isExporting, content: {})
         .navigationTitle("Log Book")
     }
 }
@@ -63,7 +72,7 @@ struct LogBookView: View {
                      SwiftDataLogEntry(title: "Trip 2", distance: 234.5)]
         let previewCamper = SwiftDataCamper(name: "Preview camper", isDefaultCamper: 0, isArchived: false, registrationNumber: "TX", trips: trips)
         
-        return LogBookView()
+        return LogBookView(selectedCamperName: previewCamper.name)
             .modelContainer(container)
             .environmentObject(ViewModel())
     } catch {
