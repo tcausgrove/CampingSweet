@@ -29,10 +29,11 @@ struct CamperCardView: View {
                 .sheet(isPresented: $showModMenu, content: { sheetContents })
                 HStack {
                     Text("Name: \(camper.name)")
-                    if camper.isDefaultCamperBool {
+                    if camper.isDefaultCamper {
                         Text("Selected")
                             .italic()
-                            .font(.callout)
+                            .foregroundColor(.red)
+//                            .font(.callout)
                     }
                 }
                 
@@ -63,7 +64,7 @@ struct CamperCardView: View {
 
             Button(action: {
                 camper.isArchived = true
-                camper.isDefaultCamperBool = false
+                camper.isDefaultCamper = false
                 showModMenu = false
             }) {
                 Text("Archive camper")
@@ -82,10 +83,12 @@ struct CamperCardView: View {
     }
     
     func deleteCamper(camper: SwiftDataCamper) {
-        if camper.isDefaultCamperBool {
-            // set a new default
+        if camper.isDefaultCamper {
+            // set the first camper as the new default
             if let topCamper = try! modelContext.fetch(FetchDescriptor<SwiftDataCamper>()).first {
-                topCamper.isDefaultCamperBool = true
+                topCamper.isDefaultCamper = true
+            } else {
+                // There is no camper to set as default
             }
         }
         modelContext.delete(camper)
@@ -94,9 +97,9 @@ struct CamperCardView: View {
 }
 
 #Preview {
-    let previewTrips =
-    [SwiftDataLogEntry(title: "Trip 1", distance: 123, startDate: Date(), endDate: Date()),
-     SwiftDataLogEntry(title: "Trip 2", distance: 234, startDate: Date(), endDate: Date())]
-    CamperCardView(camper: SwiftDataCamper(name: "Preview camper", isDefaultCamper: 1, isArchived: false, registrationNumber: "Anything", trips: previewTrips))
-        .environmentObject(ViewModel())
+    ModelContainerPreview(ModelContainer.sample) {
+        CamperCardView(camper: SwiftDataCamper.previewCamperA)
+            .environmentObject(ViewModel())
+    }
+
 }

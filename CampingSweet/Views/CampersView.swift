@@ -9,7 +9,7 @@ import SwiftUI
 import SwiftData
 
 struct CampersView: View {
-    @Query(sort: \SwiftDataCamper.isDefaultCamper, order: .reverse) var campers: [SwiftDataCamper]
+    @Query(sort: \SwiftDataCamper.name) var campers: [SwiftDataCamper]
     @Environment(\.modelContext) var modelContext
     
     @State private var addingCamper: Bool = false
@@ -67,9 +67,9 @@ struct CampersView: View {
     
     func setSelectedCamper(camper: SwiftDataCamper) {
         for oldCamper in campers {
-            oldCamper.isDefaultCamper = 0
+            oldCamper.isDefaultCamper = false
         }
-        camper.isDefaultCamper = 1
+        camper.isDefaultCamper = true
         try? modelContext.save()
     }
     

@@ -49,5 +49,8 @@ struct ArchivedCamperView: View {
 }
 
 #Preview {
-    ArchivedCamperView(camper: SwiftDataCamper(name: "Preview camper", isArchived: true))
+    ModelContainerPreview(ModelContainer.sample) {
+        ArchivedCamperView(camper: SwiftDataCamper.archivedCamper)
+    }
+
 }
