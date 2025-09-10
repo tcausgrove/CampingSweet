@@ -20,82 +20,83 @@ struct ContentView: View {
     
     var body: some View {
         NavigationStack {
-            VStack {
-                Spacer()
-                
-                NavigationLink {
-                    CampersView()
-                } label: {
-                    Label("My Campers", image: "Camper")
-                }
-                .buttonStyle(PrimaryButtonStyle(isActive: true))
-                .navigationDestination(for: SwiftDataCamper.self) {_ in 
-                    CampersView()
-                }
-                
-                NavigationLink {
-                    // FIXME: With changes to the model, I shouldn't have to send a camper to LogBookView
-                    let selectedCamperName = SwiftDataCamper.selectedCamper(with: modelContext).name
-                    LogBookView(selectedCamperName: selectedCamperName)
-                } label: {
-                    Label("Log Book", systemImage: "list.bullet.rectangle.fill")
-                }
-                .buttonStyle(PrimaryButtonStyle(isActive: campers.count > 0))
-                
-                NavigationLink {
-                    ChecklistView()
-                } label: {
-                    Label("Departure checklist", systemImage: "checklist")
-                }
-                .buttonStyle(PrimaryButtonStyle(isActive: true))
-                
-                Spacer()
-            }
-            
-            .padding(2)
-            .toolbar {
-                ToolbarItemGroup(placement: .bottomBar) {
-//                    Button(action: { showHelpMenu = true }) {
-            //                        Image(systemName: "questionmark")
-            //                            .font(.title)
-            //                            .fontWeight(.bold)
-            //                            .padding([.bottom, .leading])
-            //                   }
-            //                    .navigationDestination(isPresented: $showHelpMenu) {
-            //                        HelpView()
-//                   }
+            ZStack {
+                BackgroundView()
+                VStack {
                     Spacer()
-            
-                    Button(action: { changingSettings = true }) {
-                        Image(systemName: "gearshape.fill")
-                            .font(.title)
-                           .padding([.bottom, .trailing])
+                    
+                    NavigationLink {
+                        CampersView()
+                    } label: {
+                        Label("My Campers", image: "Camper")
                     }
-                    .navigationDestination(isPresented: $changingSettings) {
-                        SettingsView()
-//for                            .environmentObject(viewModel)
-                   }
+                    .buttonStyle(PrimaryButtonStyle(isActive: true))
+//                    .navigationDestination(for: SwiftDataCamper.self) {_ in
+//                        CampersView()
+//                    }
+                    
+                    NavigationLink {
+                        let selectedCamperName = SwiftDataCamper.selectedCamper(with: modelContext).name
+                        LogBookView(selectedCamperName: selectedCamperName)
+                    } label: {
+                        Label("Log Book", systemImage: "list.bullet.rectangle.fill")
+                    }
+                    .buttonStyle(PrimaryButtonStyle(isActive: campers.count > 0))
+                    
+                    NavigationLink {
+                        ChecklistView()
+                    } label: {
+                        Label("Departure checklist", systemImage: "checklist")
+                    }
+                    .buttonStyle(PrimaryButtonStyle(isActive: true))
+                    
+                    Spacer()
                 }
+                
+                .padding(2)
+                .toolbar {
+                    ToolbarItemGroup(placement: .bottomBar) {
+                        Button(action: { showHelpMenu = true }) {
+                            Image(systemName: "questionmark")
+                                .font(.title)
+                                .fontWeight(.bold)
+                                .padding([.bottom, .leading])
+                        }
+                        .navigationDestination(isPresented: $showHelpMenu) {
+                            HelpView()
+                        }
+                        Spacer()
+                        
+                        Button(action: { changingSettings = true }) {
+                            Image(systemName: "gearshape.fill")
+                                .font(.title)
+                                .padding([.bottom, .trailing])
+                        }
+                        .navigationDestination(isPresented: $changingSettings) {
+                            SettingsView()
+                        }
+                    }
+                }
+                .navigationTitle("CampingSweet")
             }
-            .navigationTitle("CampingSweet")
-            //            .modifier(BackgroundView())
-            
         }
         .environmentObject(viewModel)
     }
 }
 
 #Preview {
-    do {
-        let config = ModelConfiguration(isStoredInMemoryOnly: true)
-        let container = try ModelContainer(for: SwiftDataCamper.self, configurations: config)
+    ContentView()
+        .modelContainer(try! ModelContainer.sample())
+//    do {
+//        let config = ModelConfiguration(isStoredInMemoryOnly: true)
+//        let container = try ModelContainer(for: SwiftDataCamper.self, configurations: config)
         
-        return ContentView()
-            .modelContainer(container)
-            .environmentObject(ViewModel())
-    } catch {
-        return Text("Can't do it")
-    }
+//        return ContentView()
+//            .modelContainer(container)
+//            .environmentObject(ViewModel())
+//    } catch {
+//        return Text("Can't do it")
+//    }
 }
 
 struct PrimaryButtonStyle: ButtonStyle {

@@ -29,18 +29,12 @@ struct LogBookBottomBarView: View {
             }
 
             Spacer()
+            
             Button("Export CSV") {
                 exportResult = saveCSVImperatively(camper: camper)
             }
+            .disabled(camper.trips.isEmpty)
             .errorAlert($exportResult)
-//            .alert(Text(exportResult?.errorDescription ?? "Error unknown"), isPresented: $alertIsPresented, actions: {
-//                ErrorView(error: result)
-//            }, message: {
-//                Text(exportResult?.errorMessage ?? "Error message here")
-//            })
-//                ShareLink(item:generateCSV(camper: camper)) {
-//                    Label("Export CSV", systemImage: "list.bullet.rectangle.portrait")
-//                }
         }
         .padding([.leading, .trailing], 30)
         .padding(.top, 12)

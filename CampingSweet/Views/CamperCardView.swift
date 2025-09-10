@@ -9,7 +9,8 @@ import SwiftUI
 import SwiftData
 
 struct CamperCardView: View {
-    @Bindable var camper: SwiftDataCamper
+    var camper: SwiftDataCamper
+//    @Bindable var camper: SwiftDataCamper
     @Environment(\.modelContext) var modelContext
     @EnvironmentObject var viewModel: ViewModel
 
@@ -96,6 +97,6 @@ struct CamperCardView: View {
     let previewTrips =
     [SwiftDataLogEntry(title: "Trip 1", distance: 123, startDate: Date(), endDate: Date()),
      SwiftDataLogEntry(title: "Trip 2", distance: 234, startDate: Date(), endDate: Date())]
-    CamperCardView(camper: SwiftDataCamper(name: "Preview camper", isDefaultCamper: 0, isArchived: false, registrationNumber: "Anything", trips: previewTrips))
+    CamperCardView(camper: SwiftDataCamper(name: "Preview camper", isDefaultCamper: 1, isArchived: false, registrationNumber: "Anything", trips: previewTrips))
         .environmentObject(ViewModel())
 }

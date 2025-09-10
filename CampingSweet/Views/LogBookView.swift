@@ -31,52 +31,44 @@ struct LogBookView: View {
     }
     
     var body: some View {
-        ScrollView {
-            NavigationStack(path: $path) {
-                ForEach(trips) { trip in
-                    TripCardView(logEntry: trip)
-//                       .onLongPressGesture(perform: {
-//                            tripToEdit = trip
-//                            editingLogEntry.toggle()
-//                        })
+        ZStack {
+            BackgroundView()
+            ScrollView {
+                NavigationStack(path: $path) {
+                    ForEach(trips) { trip in
+                        TripCardView(logEntry: trip)
+                        //                       .onLongPressGesture(perform: {
+                        //                            tripToEdit = trip
+                        //                            editingLogEntry.toggle()
+                        //                        })
+                    }
                 }
             }
-        }
-        .safeAreaInset(edge: .bottom, content: {
-            LogBookBottomBarView(camper: SwiftDataCamper.selectedCamper(with: modelContext))
-        })
-        .toolbar() {
-            ToolbarItem {
-                Button(action: {
-                    tripToEdit = nil
-                    editingLogEntry.toggle()
-                }) {
-                    Image(systemName: "plus")
+            .safeAreaInset(edge: .bottom, content: {
+                LogBookBottomBarView(camper: SwiftDataCamper.selectedCamper(with: modelContext))
+            })
+            .toolbar() {
+                ToolbarItem {
+                    Button(action: {
+                        tripToEdit = nil
+                        editingLogEntry.toggle()
+                    }) {
+                        Image(systemName: "plus")
+                    }
                 }
             }
+            //        .modifier(BackgroundView())
+            .sheet(isPresented: $editingLogEntry, content: {
+                EditLogEntryView(previousLogEntry: tripToEdit)
+            })
+            .navigationTitle("Log Book")
         }
-//        .modifier(BackgroundView())
-        .sheet(isPresented: $editingLogEntry, content: {
-            EditLogEntryView(previousLogEntry: tripToEdit)
-        })
-        .navigationTitle("Log Book")
     }
 }
 
 #Preview {
-    do {
-        let config = ModelConfiguration(isStoredInMemoryOnly: true)
-        let container = try ModelContainer(for: SwiftDataCamper.self, configurations: config)
-        
-        let trips = [SwiftDataLogEntry(title: "Trip 1", distance: 123.4),
-                     SwiftDataLogEntry(title: "Trip 2", distance: 234.5)]
-        let previewCamper = SwiftDataCamper(name: "Preview camper", isDefaultCamper: 0, isArchived: false, registrationNumber: "TX", trips: trips)
-        
-        return LogBookView(selectedCamperName: previewCamper.name)
-            .modelContainer(container)
-            .environmentObject(ViewModel())
-    } catch {
-        return Text("Can't do it")
+    ModelContainerPreview(ModelContainer.sample) {
+        LogBookView(selectedCamperName: "Preview Camper A")
+        .environmentObject(ViewModel())
     }
-    
 }

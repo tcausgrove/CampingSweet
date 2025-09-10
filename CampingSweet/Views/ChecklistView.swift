@@ -20,6 +20,8 @@ struct ChecklistView: View {
     @FocusState var editingFocused: Bool
     
     var body: some View {
+        ZStack {
+            BackgroundView()
             List {
                 ForEach(checklist) { item in
                     HStack {
@@ -33,7 +35,7 @@ struct ChecklistView: View {
                     }
                 }
                 .onDelete(perform: deleteItems)
-
+                
                 if addingItem {
                     addingItemView
                 } else {
@@ -46,7 +48,7 @@ struct ChecklistView: View {
             }
             .listStyle(PlainListStyle())
             .padding()
-//            .modifier(BackgroundView())
+            //            .modifier(BackgroundView())
             .toolbar() {
                 ToolbarItem {
                     Button(action: {
@@ -58,6 +60,7 @@ struct ChecklistView: View {
                 }
             }
             .navigationTitle("Departure checklist")
+        }
     }
     
     struct showCheckMark: View {

@@ -14,23 +14,26 @@ struct HelpView: View {
     
     
     var body: some View {
-        VStack {
-            Text("CampingSweet Help")
-                .font(.title)
-                .padding(12)
-            
-            Menu {
-                Picker(selection: $helpSection) {
-                    ForEach(HelpSection.allCases) { theSection in
-                        Text(theSection.rawValue.capitalized)
-                    }
-                } label: { }
-            } label: {
-                Text("\(helpSection.rawValue.capitalized) \(Image(systemName: "chevron.up.chevron.down"))")
-                    .font(.title3)
+        ZStack {
+            BackgroundView()
+            VStack {
+                Text("CampingSweet Help")
+                    .font(.title)
+                    .padding(12)
+                
+                Menu {
+                    Picker(selection: $helpSection) {
+                        ForEach(HelpSection.allCases) { theSection in
+                            Text(theSection.rawValue.capitalized)
+                        }
+                    } label: { }
+                } label: {
+                    Text("\(helpSection.rawValue.capitalized) \(Image(systemName: "chevron.up.chevron.down"))")
+                        .font(.title3)
+                }
+                HelpTextView(helpSection: helpSection)
+                Spacer()
             }
-            HelpTextView(helpSection: helpSection)
-            Spacer()
         }
     }
 }

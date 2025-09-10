@@ -19,37 +19,38 @@ struct SettingsView: View {
     @State var dateImportFormat: DateImportFormat = .startEnd
 
     var body: some View {
+        NavigationStack {
             Form {
                 Section(header: Text("Display").font(.headline)) {
-                        Picker("Distance in", selection: $defaultDistance) {
-                            ForEach(DistanceOptions.allCases) { option in
-                                Text(option.rawValue)
-                            }
+                    Picker("Distance in", selection: $defaultDistance) {
+                        ForEach(DistanceOptions.allCases) { option in
+                            Text(option.rawValue)
                         }
-                        .onAppear(perform: {
-                            defaultDistance = viewModel.settings.chosenDistance
-                        })
+                    }
+                    .onAppear(perform: {
+                        defaultDistance = viewModel.settings.chosenDistance
+                    })
                     
                     // FIXME: This doesn't appear to be used anywhere
-                        Picker("Time format", selection: $timeFormat) {
-                            ForEach(ClockHours.allCases) { option in
-                                Text(option.rawValue)
-                            }
+                    Picker("Time format", selection: $timeFormat) {
+                        ForEach(ClockHours.allCases) { option in
+                            Text(option.rawValue)
                         }
-                        .onAppear(perform: {
-                            timeFormat = viewModel.settings.chosenClockHours
-                        })
-                    // FIXME: This doesn't appear to be used anywhere
-                        Picker("Date format", selection: $dateFormat) {
-                            ForEach(DateFormatType.allCases) { option in
-                                Text(option.rawValue)
-                            }
-                        }
-                        .onAppear(perform: {
-                            dateFormat = viewModel.settings.chosenDateFormat
-                        })
                     }
-
+                    .onAppear(perform: {
+                        timeFormat = viewModel.settings.chosenClockHours
+                    })
+                    // FIXME: This doesn't appear to be used anywhere
+                    Picker("Date format", selection: $dateFormat) {
+                        ForEach(DateFormatType.allCases) { option in
+                            Text(option.rawValue)
+                        }
+                    }
+                    .onAppear(perform: {
+                        dateFormat = viewModel.settings.chosenDateFormat
+                    })
+                }
+                
                 Section(header: Text("CSV Import").font(.headline)) {
                     Picker("Location", selection: $locationFormat) {
                         ForEach(LocationImportFormat.allCases) { option in
@@ -59,7 +60,7 @@ struct SettingsView: View {
                     .onAppear(perform: {
                         locationFormat = viewModel.settings.locationImportFormat
                     })
-
+                    
                     Picker("Date entries", selection: $dateImportFormat) {
                         ForEach(DateImportFormat.allCases) { option in
                             Text(option.rawValue)}
@@ -69,6 +70,7 @@ struct SettingsView: View {
                     })
                 }
             }
+            .background(BackgroundView()).scrollContentBackground(.hidden)
             .onDisappear {
                 viewModel.changeSettings(newChosenDistance: defaultDistance,
                                          newClockHours: timeFormat,
@@ -77,6 +79,7 @@ struct SettingsView: View {
                                          newDateImportFormat: dateImportFormat)
             }
             .navigationTitle("User settings")
+        }
     }
 }
 
