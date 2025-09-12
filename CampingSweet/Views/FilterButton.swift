@@ -1,0 +1,29 @@
+//
+//  FilterButton.swift
+//  CampingSweet
+//
+//  Created by Timothy Causgrove on 9/11/25.
+//
+
+import SwiftUI
+
+struct FilterButton: View {
+   @State var selection: FilterTrips = .allTrips
+    
+    var body: some View {
+        Menu {
+            Picker("", selection: $selection) {
+                ForEach(FilterTrips.allCases, id: \.self) { filter in
+                    Text(filter.rawValue)
+                }
+            }
+        } label: {
+            Label("Show", systemImage: "slider.horizontal.3")
+        }
+        .pickerStyle(.inline)
+    }
+}
+
+#Preview {
+    FilterButton(selection: FilterTrips.allTrips)
+}

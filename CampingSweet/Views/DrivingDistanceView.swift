@@ -29,25 +29,13 @@ struct DrivingDistanceView: View {
                 .keyboardType(.decimalPad)
                .numbersOnly($distanceString, includeDecimal: true, includeNegative: false, digitAllowedAfterDecimal: 1)
         }
-//        .toolbar {
-//            ToolbarItem(placement: .keyboard) {
-//                Spacer()
-//            }
-//            ToolbarItem(placement: .keyboard) {
-//                Button() {
-//                    focused = false
-//                } label: {
-//                    Image(systemName: "keyboard.chevron.compact.down")
-//                }
-//            }
-//        }
     }
 }
 
 
 #Preview {
 //    let distance: Measurement<UnitLength> = Measurement(value: 0, unit: .miles)
-    DrivingDistanceView(distanceString: .constant("100.0"))
+    DrivingDistanceView(distanceString: .constant("123.4"))
 //    DrivingDistanceView()
         .environmentObject(ViewModel())
 }

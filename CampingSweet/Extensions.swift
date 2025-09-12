@@ -196,3 +196,13 @@ extension Date {
         return lhs.timeIntervalSinceReferenceDate - rhs.timeIntervalSinceReferenceDate
     }
 }
+
+extension Date {
+    static func isThisYear(_ testDate: Date) -> Bool {
+        let nowDate = Date.now
+        let calendar = Calendar(identifier: .gregorian)
+        let components1 = calendar.dateComponents([.year], from: testDate)
+        let components2 = calendar.dateComponents([.year], from: nowDate)
+        return components1.year == components2.year
+    }
+}

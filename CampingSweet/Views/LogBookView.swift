@@ -19,14 +19,17 @@ struct LogBookView: View {
     @State private var editingLogEntry: Bool = false
     @State private var isExporting: Bool = false
     @State var tripToEdit: SwiftDataLogEntry? = nil
-    
+    @State private var searchText: String = ""
+    @State private var selection: FilterTrips = .allTrips
+
     var selectedCamperName: String 
     
     init(selectedCamperName: String) {
         self.selectedCamperName = selectedCamperName
-        let predicate = #Predicate<SwiftDataLogEntry> { trip in
-            trip.camper?.name == selectedCamperName
-        }
+        // Definition of .predicate is in SwiftDataLogEntry.swift
+        let predicate = SwiftDataLogEntry.predicate(searchText: searchText,
+                                                    datesToShow: selection,
+                                                    camperName: selectedCamperName)
         _trips = Query(filter: predicate, sort: \SwiftDataLogEntry.startDate, order: .reverse)
     }
     
@@ -37,10 +40,6 @@ struct LogBookView: View {
                 NavigationStack(path: $path) {
                     ForEach(trips) { trip in
                         TripCardView(logEntry: trip)
-                        //                       .onLongPressGesture(perform: {
-                        //                            tripToEdit = trip
-                        //                            editingLogEntry.toggle()
-                        //                        })
                     }
                 }
             }
@@ -56,8 +55,8 @@ struct LogBookView: View {
                         Image(systemName: "plus")
                     }
                 }
+//                FilterButton()
             }
-            //        .modifier(BackgroundView())
             .sheet(isPresented: $editingLogEntry, content: {
                 EditLogEntryView(previousLogEntry: tripToEdit)
             })

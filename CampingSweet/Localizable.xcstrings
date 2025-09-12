@@ -1,6 +1,9 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "" : {
+
+    },
     "- Archived campers are kept at the bottom; tap the ellipsis to unarchive them or delete them" : {
 
     },
@@ -45,16 +48,6 @@
     },
     "- Use Degrees minutes seconds setting if your coordinates look like 36°10'40.5\"N 105°58'17.3\"W" : {
 
-    },
-    "%@ %@" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "%1$@ %2$@"
-          }
-        }
-      }
     },
     "Add" : {
       "comment" : "Top right button to add new camper; top right button to add trip"
@@ -411,6 +404,9 @@
     "Settings" : {
 
     },
+    "Show" : {
+
+    },
     "Time format" : {
       "localizations" : {
         "es-419" : {
@@ -420,6 +416,9 @@
           }
         }
       }
+    },
+    "Title key" : {
+
     },
     "Title:  %@" : {
       "localizations" : {

@@ -40,7 +40,6 @@ import Foundation
     }
     
     func save() {
-        
         do {
             let encodedSettings = try JSONEncoder().encode(settings)
             UserDefaults.standard.set(encodedSettings, forKey: "settings")

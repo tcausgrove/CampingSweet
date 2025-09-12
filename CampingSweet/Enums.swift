@@ -113,3 +113,10 @@ enum HelpSection: String, CaseIterable, Identifiable {
     
     var id: Self { self }
 }
+
+enum FilterTrips: String, CaseIterable, Identifiable {
+    case currentYear = "Current year only"
+    case allTrips = "All trips"
+    
+    var id: Self { self }
+}

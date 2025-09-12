@@ -67,3 +67,35 @@ class SwiftDataLogEntry {
         }
     }
 }
+
+extension SwiftDataLogEntry {
+    static func predicate(searchText: String, datesToShow: FilterTrips, camperName: String) -> Predicate<SwiftDataLogEntry> {
+        let nowDate = Date.now
+        let calendar = Calendar(identifier: .gregorian)
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy"
+        let yearString = dateFormatter.string(from: nowDate)
+        
+        let startOfYearComponents = DateComponents(
+          calendar: calendar,
+          year: Int(yearString),
+          month: 1,
+          day: 1,
+          hour: 0,
+          minute: 00
+        )
+        let startOfYear = calendar.date(from: startOfYearComponents)!
+        
+        if datesToShow == .currentYear {
+            return #Predicate<SwiftDataLogEntry> { trip in
+            // Need to used a closed range of dates
+                return trip.camper?.name == camperName && (trip.startDate >= startOfYear && trip.startDate <= nowDate)
+            }
+        } else {
+            return #Predicate<SwiftDataLogEntry> { trip in
+                trip.camper?.name == camperName
+            }
+        }
+    }
+}

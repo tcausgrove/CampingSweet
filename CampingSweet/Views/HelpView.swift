@@ -21,19 +21,27 @@ struct HelpView: View {
                     .font(.title)
                     .padding(12)
                 
-                Menu {
-                    Picker(selection: $helpSection) {
-                        ForEach(HelpSection.allCases) { theSection in
-                            Text(theSection.rawValue.capitalized)
-                        }
-                    } label: { }
-                } label: {
-                    Text("\(helpSection.rawValue.capitalized) \(Image(systemName: "chevron.up.chevron.down"))")
-                        .font(.title3)
-                }
+                Picker("Title key", selection: $helpSection, content: {
+                    ForEach(HelpSection.allCases) { theSection in
+                        Text(theSection.rawValue.capitalized)
+                    }
+                })
+                .pickerStyle(MenuPickerStyle())
+
+//                Menu {
+//                    Picker(selection: $helpSection) {
+//                        ForEach(HelpSection.allCases) { theSection in
+//                            Text(theSection.rawValue.capitalized)
+//                        }
+//                    } label: { }
+//                } label: {
+//                    Text("\(helpSection.rawValue.capitalized) \(Image(systemName: "chevron.up.chevron.down"))")
+//                        .font(.title3)
+//                }
                 HelpTextView(helpSection: helpSection)
                 Spacer()
             }
+//            .pickerStyle(.wheel)
         }
     }
 }
