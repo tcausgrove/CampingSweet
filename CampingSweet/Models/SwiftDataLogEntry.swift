@@ -36,8 +36,6 @@ class SwiftDataLogEntry {
         self.latitude = latitude
         self.longitude = longitude
         self.camper = camper
-        
-        //        self.camper = camper
     }
     
     var numberOfNights: Int {
@@ -69,7 +67,7 @@ class SwiftDataLogEntry {
 }
 
 extension SwiftDataLogEntry {
-    static func predicate(searchText: String, datesToShow: FilterTrips, camperName: String) -> Predicate<SwiftDataLogEntry> {
+    static func predicate(searchText: String, datesToShow: FilterTrips, camperID: SwiftDataCamper.ID?) -> Predicate<SwiftDataLogEntry> {
         let nowDate = Date.now
         let calendar = Calendar(identifier: .gregorian)
         
@@ -90,11 +88,11 @@ extension SwiftDataLogEntry {
         if datesToShow == .currentYear {
             return #Predicate<SwiftDataLogEntry> { trip in
             // Need to used a closed range of dates
-                return trip.camper?.name == camperName && (trip.startDate >= startOfYear && trip.startDate <= nowDate)
+                return (trip.camper?.persistentModelID == camperID) && (trip.startDate >= startOfYear && trip.startDate <= nowDate)
             }
         } else {
             return #Predicate<SwiftDataLogEntry> { trip in
-                trip.camper?.name == camperName
+                trip.camper?.persistentModelID == camperID
             }
         }
     }

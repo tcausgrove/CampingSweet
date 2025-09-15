@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct FilterButton: View {
-   @State var selection: FilterTrips = .allTrips
+    @State var tripFilter: FilterTrips = .allTrips
     
     var body: some View {
         Menu {
-            Picker("", selection: $selection) {
+            Picker("", selection: $tripFilter) {
                 ForEach(FilterTrips.allCases, id: \.self) { filter in
                     Text(filter.rawValue)
                 }
@@ -25,5 +25,5 @@ struct FilterButton: View {
 }
 
 #Preview {
-    FilterButton(selection: FilterTrips.allTrips)
+    FilterButton()
 }

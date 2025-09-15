@@ -12,7 +12,8 @@ struct ContentView: View {
     @Query var campers: [SwiftDataCamper]
     
     @Environment(\.modelContext) var modelContext
-    
+    @AppSettings(\.settingsSelectedCamperID) var selectedCamperID
+
     @StateObject var viewModel = ViewModel()
 
     @State private var showHelpMenu = false
@@ -36,12 +37,12 @@ struct ContentView: View {
 //                    }
                     
                     NavigationLink {
-                        let selectedCamperName = SwiftDataCamper.selectedCamper(with: modelContext).name
-                        LogBookView(selectedCamperName: selectedCamperName)
+                        let camper = SwiftDataCamper.selectedCamperFromID(with: modelContext, selectedCamperID: selectedCamperID)
+                        LogBookView(camper: camper!)  //Force unwrap b/c disabled if nil
                     } label: {
                         Label("Log Book", systemImage: "list.bullet.rectangle.fill")
                     }
-                    .buttonStyle(PrimaryButtonStyle(isActive: campers.count > 0))
+                    .buttonStyle(PrimaryButtonStyle(isActive: selectedCamperID != nil))
                     
                     NavigationLink {
                         ChecklistView()

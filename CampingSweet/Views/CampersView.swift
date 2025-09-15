@@ -11,10 +11,11 @@ import SwiftData
 struct CampersView: View {
     @Query(sort: \SwiftDataCamper.name) var campers: [SwiftDataCamper]
     @Environment(\.modelContext) var modelContext
-    
+    @AppSettings(\.settingsSelectedCamperID) var selectedCamperID
+
     @State private var addingCamper: Bool = false
     @State private var path = [SwiftDataCamper]()
-    
+
     var body: some View {
         ZStack {
             BackgroundView()
@@ -61,15 +62,14 @@ struct CampersView: View {
     
     func addCamper() {
         let camper = SwiftDataCamper()
+        // Set to be selected camper
+        selectedCamperID = camper.persistentModelID
         modelContext.insert(camper)
         path = [camper]
     }
     
     func setSelectedCamper(camper: SwiftDataCamper) {
-        for oldCamper in campers {
-            oldCamper.isDefaultCamper = false
-        }
-        camper.isDefaultCamper = true
+        selectedCamperID = camper.persistentModelID
         try? modelContext.save()
     }
     
@@ -89,20 +89,4 @@ struct CampersView: View {
         CampersView()
             .environmentObject(ViewModel())
     }
-
-//    do {
-//        let config = ModelConfiguration(isStoredInMemoryOnly: true)
-//        let container = try ModelContainer(for: SwiftDataCamper.self, configurations: config)
-        
-//        let trips = [SwiftDataLogEntry(title: "Trip 1", distance: 123.4),
-//                     SwiftDataLogEntry(title: "Trip 2", distance: 234.5)]
-//        let previewCamper1 = SwiftDataCamper(name: "Preview camper", isDefaultCamper: 0, isArchived: false, registrationNumber: "TX", trips: trips)
-//        let previewCamper2 = SwiftDataCamper(name: "Archived camper", isDefaultCamper: 1, isArchived: false, registrationNumber: "TX", trips: trips)
-//        container.mainContext.insert(previewCamper1)
-//        container.mainContext.insert(previewCamper2)
-//        return CampersView()
-//            .modelContainer(container)
-//    } catch {
-//        return Text("Can't do it")
-//    }
 }

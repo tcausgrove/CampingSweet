@@ -5,7 +5,7 @@
 //  Created by Timothy Causgrove on 4/10/23.
 //
 
-import Foundation
+import SwiftUI
 
 @MainActor class ViewModel: ObservableObject {
     @Published private(set) var settings = Settings.example

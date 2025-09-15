@@ -6,11 +6,14 @@
 //
 
 import SwiftUI
+import SwiftData
 
 
 struct TripCardView: View {
     var logEntry: SwiftDataLogEntry
+//    @Binding var selectedCamperID: SwiftDataCamper.ID?
     
+    @AppSettings(\.settingsSelectedCamperID) var selectedCamperID
     @EnvironmentObject var viewModel: ViewModel
     @Environment(\.modelContext) var modelContext
     @State private var editingLogEntry: Bool = false
@@ -56,9 +59,15 @@ struct TripCardView: View {
     }
     
     func deleteTrip(trip: SwiftDataLogEntry) {
-        let camper = SwiftDataCamper.selectedCamper(with: modelContext)
-        guard let index = camper.trips.firstIndex(of: trip) else { return }
-        camper.trips.remove(at: index)
+        let camper = SwiftDataCamper.selectedCamperFromID(with: modelContext, selectedCamperID: selectedCamperID)
+        print("camper is \(camper?.name ?? "Not found")")
+        if camper != nil {
+            guard let index = camper!.trips.firstIndex(of: trip) else {
+                print("Returning early")
+                return }
+            print("Remove trip at index \(index)")
+            camper!.trips.remove(at: index)
+        }
     }
 }
 

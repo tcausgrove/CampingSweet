@@ -9,27 +9,30 @@ import SwiftUI
 import SwiftData
 
 struct LogBookView: View {
+    var camper: SwiftDataCamper
+
     @Environment(\.dismiss) var dismiss
     @Environment(\.modelContext) var modelContext
     @EnvironmentObject var viewModel: ViewModel
+    @AppSettings(\.settingsSelectedCamperID) var selectedCamperID
+//    @Environment(\.viewSettings) private var selectedCamperID: Binding<SwiftDataCamper.ID?>
 
     @Query(sort: \SwiftDataLogEntry.startDate,
            order: .reverse) var trips: [SwiftDataLogEntry]
+    
     @State private var path = [SwiftDataCamper]()
     @State private var editingLogEntry: Bool = false
     @State private var isExporting: Bool = false
     @State var tripToEdit: SwiftDataLogEntry? = nil
     @State private var searchText: String = ""
-    @State private var selection: FilterTrips = .allTrips
+    @State var selection: FilterTrips = .allTrips
 
-    var selectedCamperName: String 
-    
-    init(selectedCamperName: String) {
-        self.selectedCamperName = selectedCamperName
+    init(camper: SwiftDataCamper) {
+        self.camper = camper
         // Definition of .predicate is in SwiftDataLogEntry.swift
         let predicate = SwiftDataLogEntry.predicate(searchText: searchText,
                                                     datesToShow: selection,
-                                                    camperName: selectedCamperName)
+                                                    camperID: selectedCamperID)
         _trips = Query(filter: predicate, sort: \SwiftDataLogEntry.startDate, order: .reverse)
     }
     
@@ -44,7 +47,7 @@ struct LogBookView: View {
                 }
             }
             .safeAreaInset(edge: .bottom, content: {
-                LogBookBottomBarView(camper: SwiftDataCamper.selectedCamper(with: modelContext))
+                    LogBookBottomBarView(camper: camper)
             })
             .toolbar() {
                 ToolbarItem {
@@ -55,6 +58,7 @@ struct LogBookView: View {
                         Image(systemName: "plus")
                     }
                 }
+                
 //                FilterButton()
             }
             .sheet(isPresented: $editingLogEntry, content: {
@@ -62,12 +66,12 @@ struct LogBookView: View {
             })
             .navigationTitle("Log Book")
         }
-    }
+    }    
 }
 
 #Preview {
     ModelContainerPreview(ModelContainer.sample) {
-        LogBookView(selectedCamperName: "Preview Camper A")
+        LogBookView(camper: SwiftDataCamper.previewCamperA)
         .environmentObject(ViewModel())
     }
 }

@@ -11,7 +11,7 @@ import SwiftData
 @Model
 class SwiftDataCamper {
     @Attribute(.unique) var name: String
-    var isDefaultCamper: Bool
+//    var isDefaultCamper: Bool
     var isArchived: Bool
     var registrationNumber: String
     @Relationship(deleteRule: .cascade, inverse: \SwiftDataLogEntry.camper)
@@ -22,24 +22,44 @@ class SwiftDataCamper {
 //        set { isDefaultCamper = newValue ? 1 : 0 }
 //    }
     
-    init(name: String = "Initial camper", isDefaultCamper: Bool = false, isArchived: Bool = false, registrationNumber: String = "", trips: [SwiftDataLogEntry] = []) {
+    init(name: String = "Initial camper", isArchived: Bool = false, registrationNumber: String = "", trips: [SwiftDataLogEntry] = []) {
         self.name = name
-        self.isDefaultCamper = isDefaultCamper
+//        self.isDefaultCamper = isDefaultCamper
         self.isArchived = isArchived
         self.registrationNumber = registrationNumber
         self.trips = trips
     }
     
-    public static func selectedCamper(with modelContext: ModelContext) -> SwiftDataCamper {
-        if let result = try! modelContext.fetch(FetchDescriptor<SwiftDataCamper>()).first(where: { $0.isDefaultCamper }) {
+    static let example = SwiftDataCamper(name: "Example camper", isArchived: false, registrationNumber: "Some reg number", trips: [])
+    
+
+    public static func selectedCamperFromName(with modelContext: ModelContext, defaultCamperName: String?) -> SwiftDataCamper? {
+        if let result = try! modelContext.fetch(FetchDescriptor<SwiftDataCamper>()).first(where: { $0.name == defaultCamperName! }) {
             return result
         } else {
-            // Make a new camper if there is no selected camper
-            let newInstance = SwiftDataCamper(name: "Example Camper", isDefaultCamper: true, isArchived: false , registrationNumber: "")
-            modelContext.insert(newInstance)
-            return newInstance
+            return nil
         }
     }
+    
+    public static func selectedCamperFromID(with modelContext: ModelContext, selectedCamperID: SwiftDataCamper.ID?) -> SwiftDataCamper? {
+        if let result = try! modelContext.fetch(FetchDescriptor<SwiftDataCamper>()).first(where: { $0.persistentModelID == selectedCamperID}) {
+            print("Selected camper is \(result.name)")
+            return result
+        } else {
+            return nil
+        }
+    }
+    
+//    public static func selectedCamper(with modelContext: ModelContext) -> SwiftDataCamper {
+//        if let result = try! modelContext.fetch(FetchDescriptor<SwiftDataCamper>()).first(where: { $0.isDefaultCamper }) {
+//            return result
+//        } else {
+            // Make a new camper if there is no selected camper
+//            let newInstance = SwiftDataCamper(name: "Example Camper", isDefaultCamper: true, isArchived: false , registrationNumber: "")
+//            modelContext.insert(newInstance)
+//            return newInstance
+//        }
+//    }
 
     var totalCamperNights: Int {
         var tempNights: Int = 0
@@ -70,3 +90,5 @@ extension Array where Element: SwiftDataCamper {
     
 }
 
+// Ensure that the model's conformance to Identifiable is public.
+extension SwiftDataCamper: Identifiable {}

@@ -77,6 +77,7 @@ enum UserError: LocalizedError {
     case tripDoesNotExist
     case settingsNotFound
     case couldNotSaveCSV
+    case camperNotFound
     case exportCSVSucceeded // Not really an error, but I want the dialog
     
     var errorDescription: String? {    // This shows up as the first thing in bold in the error alert
@@ -93,6 +94,7 @@ enum UserError: LocalizedError {
         case .tripDoesNotExist: return "Unable to save changes; can't find this trip"
         case .settingsNotFound: return "Unable to find saved settings"
         case .couldNotSaveCSV: return "Unable to save CSV file"
+        case .camperNotFound: return "Could not find a camper with that ID"
         case .exportCSVSucceeded: return "CSV file saved successfully"
         }
     }

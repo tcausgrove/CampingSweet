@@ -11,6 +11,7 @@ import CoreLocation
 
 struct EditLogEntryView: View {
     @EnvironmentObject var viewModel: ViewModel
+    @AppSettings(\.settingsSelectedCamperID) var selectedCamperID
 
     var previousLogEntry: SwiftDataLogEntry?
 
@@ -18,7 +19,6 @@ struct EditLogEntryView: View {
     @State var start: Date = Date.now
     @State var end: Date = Date.now
     @State var distance: Measurement<UnitLength> = .init(value: 1.0, unit: .miles)
-//    @State var location: CLLocationCoordinate2D
     @State var latitude: String = ""
     @State var longitude: String = ""
     
@@ -65,7 +65,7 @@ struct EditLogEntryView: View {
     
     func saveLogBookEntry() {
         distance = Measurement(value: Double(distanceString) ?? 0.0, unit: viewModel.settings.chosenDistance.unit)
-        let camper = SwiftDataCamper.selectedCamper(with: modelContext)
+        let camper = SwiftDataCamper.selectedCamperFromID(with: modelContext, selectedCamperID: selectedCamperID)
         if let previousLogEntry {
             // Edit the trip
             previousLogEntry.title = title
@@ -83,7 +83,7 @@ struct EditLogEntryView: View {
                                                 latitude: Double(latitude) ?? 0.0,
                                                 longitude: Double(longitude) ?? 0.0,
                                                 camper: camper)
-            camper.trips.append(newLogEntry)
+            camper!.trips.append(newLogEntry)
         }
     }
     
@@ -106,6 +106,9 @@ struct EditLogEntryView: View {
 #Preview {
     // PREVIEW IS NOT OPERATIONAL:  There is a problem with LocationButton
 //    EditLogEntryView(previousLogEntry: SwiftDataLogEntry(title: "Preview", distance: 12.3, latitude: 123.45678, longitude: -46.34567))
+    
+//    let previousLogEntry = SwiftDataLogEntry(title: "Preview", distance: 12.3, latitude: 123.45678, longitude: -46.34567)
+//    let camper = SwiftDataCamper(name: "Example", isArchived: false, registrationNumber: "N/A", trips: [previousLogEntry])
     EditLogEntryView(previousLogEntry: nil)
         .environmentObject(ViewModel())
 }
