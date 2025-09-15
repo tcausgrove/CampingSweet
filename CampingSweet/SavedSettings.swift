@@ -3,6 +3,7 @@
 //  CampingSweet
 //
 //  Created by Timothy Causgrove on 9/15/25.
+//  Based on https://fatbobman.com/en/posts/appstorage/
 //
 
 import SwiftUI

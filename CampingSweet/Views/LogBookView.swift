@@ -15,7 +15,7 @@ struct LogBookView: View {
     @Environment(\.modelContext) var modelContext
     @EnvironmentObject var viewModel: ViewModel
     @AppSettings(\.settingsSelectedCamperID) var selectedCamperID
-//    @Environment(\.viewSettings) private var selectedCamperID: Binding<SwiftDataCamper.ID?>
+    @AppSettings(\.settingsTripFilter) var tripFilter
 
     @Query(sort: \SwiftDataLogEntry.startDate,
            order: .reverse) var trips: [SwiftDataLogEntry]
@@ -25,13 +25,12 @@ struct LogBookView: View {
     @State private var isExporting: Bool = false
     @State var tripToEdit: SwiftDataLogEntry? = nil
     @State private var searchText: String = ""
-    @State var selection: FilterTrips = .allTrips
 
     init(camper: SwiftDataCamper) {
         self.camper = camper
         // Definition of .predicate is in SwiftDataLogEntry.swift
         let predicate = SwiftDataLogEntry.predicate(searchText: searchText,
-                                                    datesToShow: selection,
+                                                    datesToShow: tripFilter,
                                                     camperID: selectedCamperID)
         _trips = Query(filter: predicate, sort: \SwiftDataLogEntry.startDate, order: .reverse)
     }
@@ -59,7 +58,9 @@ struct LogBookView: View {
                     }
                 }
                 
-//                FilterButton()
+                ToolbarItem {
+                    FilterButton()
+                }
             }
             .sheet(isPresented: $editingLogEntry, content: {
                 EditLogEntryView(previousLogEntry: tripToEdit)

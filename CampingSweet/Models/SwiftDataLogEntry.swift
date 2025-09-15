@@ -66,6 +66,7 @@ class SwiftDataLogEntry {
     }
 }
 
+//  See https://developer.apple.com/documentation/swiftdata/filtering-and-sorting-persistent-data
 extension SwiftDataLogEntry {
     static func predicate(searchText: String, datesToShow: FilterTrips, camperID: SwiftDataCamper.ID?) -> Predicate<SwiftDataLogEntry> {
         let nowDate = Date.now

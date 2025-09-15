@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct FilterButton: View {
-    @State var tripFilter: FilterTrips = .allTrips
-    
+    @AppSettings(\.settingsTripFilter) var tripFilter
+
     var body: some View {
         Menu {
             Picker("", selection: $tripFilter) {
