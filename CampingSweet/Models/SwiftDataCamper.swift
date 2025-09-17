@@ -11,20 +11,13 @@ import SwiftData
 @Model
 class SwiftDataCamper {
     @Attribute(.unique) var name: String
-//    var isDefaultCamper: Bool
     var isArchived: Bool
     var registrationNumber: String
     @Relationship(deleteRule: .cascade, inverse: \SwiftDataLogEntry.camper)
     var trips: [SwiftDataLogEntry]
-    
-//    var isDefaultCamperBool: Bool {
-//        get { isDefaultCamper == 1 }
-//        set { isDefaultCamper = newValue ? 1 : 0 }
-//    }
-    
+        
     init(name: String = "Initial camper", isArchived: Bool = false, registrationNumber: String = "", trips: [SwiftDataLogEntry] = []) {
         self.name = name
-//        self.isDefaultCamper = isDefaultCamper
         self.isArchived = isArchived
         self.registrationNumber = registrationNumber
         self.trips = trips
@@ -32,34 +25,23 @@ class SwiftDataCamper {
     
     static let example = SwiftDataCamper(name: "Example camper", isArchived: false, registrationNumber: "Some reg number", trips: [])
     
-
-    public static func selectedCamperFromName(with modelContext: ModelContext, defaultCamperName: String?) -> SwiftDataCamper? {
-        if let result = try! modelContext.fetch(FetchDescriptor<SwiftDataCamper>()).first(where: { $0.name == defaultCamperName! }) {
+// Should return nil when selectedCamperName is empty string
+    public static func selectedCamperFromName(with modelContext: ModelContext, selectedCamperName: String) -> SwiftDataCamper? {
+        if let result = try! modelContext.fetch(FetchDescriptor<SwiftDataCamper>()).first(where: { $0.name == selectedCamperName }) {
             return result
         } else {
+            print("This really shouldn't happen")
             return nil
         }
     }
     
     public static func selectedCamperFromID(with modelContext: ModelContext, selectedCamperID: SwiftDataCamper.ID?) -> SwiftDataCamper? {
         if let result = try! modelContext.fetch(FetchDescriptor<SwiftDataCamper>()).first(where: { $0.persistentModelID == selectedCamperID}) {
-            print("Selected camper is \(result.name)")
             return result
         } else {
             return nil
         }
     }
-    
-//    public static func selectedCamper(with modelContext: ModelContext) -> SwiftDataCamper {
-//        if let result = try! modelContext.fetch(FetchDescriptor<SwiftDataCamper>()).first(where: { $0.isDefaultCamper }) {
-//            return result
-//        } else {
-            // Make a new camper if there is no selected camper
-//            let newInstance = SwiftDataCamper(name: "Example Camper", isDefaultCamper: true, isArchived: false , registrationNumber: "")
-//            modelContext.insert(newInstance)
-//            return newInstance
-//        }
-//    }
 
     var totalCamperNights: Int {
         var tempNights: Int = 0

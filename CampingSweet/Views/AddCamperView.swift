@@ -11,7 +11,7 @@ import SwiftData
 struct AddCamperView: View {
     @Environment(\.modelContext) var modelContext
     @Environment(\.dismiss) var dismiss
-    @AppSettings(\.settingsSelectedCamperID) var selectedCamperID
+    @AppSettings(\.settingsSelectedCamperName) var selectedCamperName
 
     @State private var name: String = ""
     @State private var registration: String = ""
@@ -43,7 +43,7 @@ struct AddCamperView: View {
 //        oldCamper.isDefaultCamper = false
         let newCamper = SwiftDataCamper(name: name, isArchived: false, registrationNumber: registration)
         modelContext.insert(newCamper)
-        selectedCamperID = newCamper.persistentModelID
+        selectedCamperName = newCamper.name
         
         dismiss()
     }

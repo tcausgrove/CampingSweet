@@ -68,7 +68,7 @@ class SwiftDataLogEntry {
 
 //  See https://developer.apple.com/documentation/swiftdata/filtering-and-sorting-persistent-data
 extension SwiftDataLogEntry {
-    static func predicate(searchText: String, datesToShow: FilterTrips, camperID: SwiftDataCamper.ID?) -> Predicate<SwiftDataLogEntry> {
+    static func predicate(searchText: String, datesToShow: FilterTrips, camperName: String) -> Predicate<SwiftDataLogEntry> {
         let nowDate = Date.now
         let calendar = Calendar(identifier: .gregorian)
         
@@ -89,11 +89,11 @@ extension SwiftDataLogEntry {
         if datesToShow == .currentYear {
             return #Predicate<SwiftDataLogEntry> { trip in
             // Need to used a closed range of dates
-                return (trip.camper?.persistentModelID == camperID) && (trip.startDate >= startOfYear && trip.startDate <= nowDate)
+                return (trip.camper?.name == camperName) && (trip.startDate >= startOfYear && trip.startDate <= nowDate)
             }
         } else {
             return #Predicate<SwiftDataLogEntry> { trip in
-                trip.camper?.persistentModelID == camperID
+                trip.camper?.name == camperName
             }
         }
     }

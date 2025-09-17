@@ -12,7 +12,7 @@ struct ContentView: View {
     @Query var campers: [SwiftDataCamper]
     
     @Environment(\.modelContext) var modelContext
-    @AppSettings(\.settingsSelectedCamperID) var selectedCamperID
+    @AppSettings(\.settingsSelectedCamperName) var selectedCamperName
 
     @StateObject var viewModel = ViewModel()
 
@@ -37,12 +37,14 @@ struct ContentView: View {
 //                    }
                     
                     NavigationLink {
-                        let camper = SwiftDataCamper.selectedCamperFromID(with: modelContext, selectedCamperID: selectedCamperID)
-                        LogBookView(camper: camper!)  //Force unwrap b/c disabled if nil
+                        let camper = SwiftDataCamper.selectedCamperFromName(with: modelContext, selectedCamperName: selectedCamperName)
+                        if camper != nil {
+                            LogBookView(camper: camper!)  //  Force unwrap b/c disabled if nil
+                        }
                     } label: {
                         Label("Log Book", systemImage: "list.bullet.rectangle.fill")
                     }
-                    .buttonStyle(PrimaryButtonStyle(isActive: selectedCamperID != nil))
+                    .buttonStyle(PrimaryButtonStyle(isActive: selectedCamperName != ""))
                     
                     NavigationLink {
                         ChecklistView()
@@ -51,6 +53,8 @@ struct ContentView: View {
                     }
                     .buttonStyle(PrimaryButtonStyle(isActive: true))
                     
+                    let text = (selectedCamperName != "") ? "Saved as: \(selectedCamperName)" : "Not saved"
+                    Text(text)
                     Spacer()
                 }
                 
@@ -87,17 +91,10 @@ struct ContentView: View {
 
 #Preview {
     ContentView()
+        .environmentObject(ViewModel())
         .modelContainer(try! ModelContainer.sample())
-//    do {
-//        let config = ModelConfiguration(isStoredInMemoryOnly: true)
-//        let container = try ModelContainer(for: SwiftDataCamper.self, configurations: config)
-        
-//        return ContentView()
-//            .modelContainer(container)
-//            .environmentObject(ViewModel())
-//    } catch {
-//        return Text("Can't do it")
-//    }
+    
+//        .modelContainer(try! ModelContainer.sample())
 }
 
 struct PrimaryButtonStyle: ButtonStyle {

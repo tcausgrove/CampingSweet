@@ -11,7 +11,7 @@ import SwiftData
 struct CampersView: View {
     @Query(sort: \SwiftDataCamper.name) var campers: [SwiftDataCamper]
     @Environment(\.modelContext) var modelContext
-    @AppSettings(\.settingsSelectedCamperID) var selectedCamperID
+    @AppSettings(\.settingsSelectedCamperName) var selectedCamperName
 
     @State private var addingCamper: Bool = false
     @State private var path = [SwiftDataCamper]()
@@ -20,8 +20,8 @@ struct CampersView: View {
         ZStack {
             BackgroundView()
             VStack {
-//            NavigationStack(path: $path) {
-                ForEach(campers) { camper in
+            NavigationStack(path: $path) {
+                ForEach(campers, id: \.self) { camper in
                     if !camper.isArchived {
                         CamperCardView(camper: camper)
                             .padding(.bottom, 8)
@@ -30,7 +30,7 @@ struct CampersView: View {
                             }
                     }
                 }
-//            }
+            }
                 
                 Spacer()
                 
@@ -63,13 +63,13 @@ struct CampersView: View {
     func addCamper() {
         let camper = SwiftDataCamper()
         // Set to be selected camper
-        selectedCamperID = camper.persistentModelID
+        selectedCamperName = camper.name
         modelContext.insert(camper)
         path = [camper]
     }
     
     func setSelectedCamper(camper: SwiftDataCamper) {
-        selectedCamperID = camper.persistentModelID
+        selectedCamperName = camper.name
         try? modelContext.save()
     }
     

@@ -10,7 +10,7 @@ import SwiftData
 
 struct CamperCardView: View {
     var camper: SwiftDataCamper
-    @AppSettings(\.settingsSelectedCamperID) var selectedCamperID
+    @AppSettings(\.settingsSelectedCamperName) var selectedCamperName
 
     @Environment(\.modelContext) var modelContext
     @EnvironmentObject var viewModel: ViewModel
@@ -30,7 +30,7 @@ struct CamperCardView: View {
                 .sheet(isPresented: $showModMenu, content: { sheetContents })
                 HStack {
                     Text("Name: \(camper.name)")
-                    if camper.persistentModelID == selectedCamperID {
+                    if camper.name == selectedCamperName {
                         Text("Selected")
                             .italic()
                             .foregroundColor(.red)
@@ -65,8 +65,8 @@ struct CamperCardView: View {
 
             Button(action: {
                 camper.isArchived = true
-                if camper.persistentModelID == selectedCamperID {
-                    selectedCamperID = nil
+                if camper.name == selectedCamperName {
+                    selectedCamperName = ""
                 }
                 showModMenu = false
             }) {
@@ -86,13 +86,15 @@ struct CamperCardView: View {
     }
     
     func deleteCamper(camper: SwiftDataCamper) {
-        if camper.persistentModelID == selectedCamperID {
+        if camper.name == selectedCamperName {
             // set the first camper as the new default
             if let topCamper = try! modelContext.fetch(FetchDescriptor<SwiftDataCamper>()).first {
-                selectedCamperID = topCamper.persistentModelID
+                print("Setting sCID to \(topCamper.name)")
+                selectedCamperName = topCamper.name
             } else {
                 // There is no camper to set as default
-                selectedCamperID = nil
+                print("Setting sCID to nil")
+                selectedCamperName = ""
             }
         }
         modelContext.delete(camper)

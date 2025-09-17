@@ -1,5 +1,5 @@
 //
-//  TestDefault.swift
+//  SavedSettings.swift
 //  CampingSweet
 //
 //  Created by Timothy Causgrove on 9/15/25.
@@ -11,7 +11,7 @@ import SwiftData
 
 public class SavedSettings: ObservableObject {
     @AppStorage("settingsTripFilter") var settingsTripFilter = FilterTrips.allTrips
-    @AppStorage("settingsSelectedCamperID") var settingsSelectedCamperID: SwiftDataCamper.ID?
+    @AppStorage("settingsSelectedCamperName") var settingsSelectedCamperName: String = ""
     public static let shared = SavedSettings()
 }
 

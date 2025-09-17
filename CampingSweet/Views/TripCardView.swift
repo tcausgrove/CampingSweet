@@ -11,9 +11,8 @@ import SwiftData
 
 struct TripCardView: View {
     var logEntry: SwiftDataLogEntry
-//    @Binding var selectedCamperID: SwiftDataCamper.ID?
     
-    @AppSettings(\.settingsSelectedCamperID) var selectedCamperID
+    @AppSettings(\.settingsSelectedCamperName) var selectedCamperName
     @EnvironmentObject var viewModel: ViewModel
     @Environment(\.modelContext) var modelContext
     @State private var editingLogEntry: Bool = false
@@ -53,19 +52,18 @@ struct TripCardView: View {
             }
         }
         .sheet(isPresented: $editingLogEntry, content: {
-            EditLogEntryView(previousLogEntry: logEntry)
+            EditLogEntryView()
         })
 
     }
     
     func deleteTrip(trip: SwiftDataLogEntry) {
-        let camper = SwiftDataCamper.selectedCamperFromID(with: modelContext, selectedCamperID: selectedCamperID)
-        print("camper is \(camper?.name ?? "Not found")")
+        let camper = SwiftDataCamper.selectedCamperFromName(with: modelContext, selectedCamperName: selectedCamperName)
         if camper != nil {
             guard let index = camper!.trips.firstIndex(of: trip) else {
-                print("Returning early")
-                return }
-            print("Remove trip at index \(index)")
+            print("Why is there not a trip?")
+            return
+        }
             camper!.trips.remove(at: index)
         }
     }
