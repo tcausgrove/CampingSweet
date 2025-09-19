@@ -16,6 +16,7 @@ struct ContentView: View {
 
     @StateObject var viewModel = ViewModel()
     @Default(.selectedCamperIDKey) var selectedCamperID
+    @Default(.tripFilterKey) var tripFilter
 
     @State private var showHelpMenu = false
     @State private var changingSettings = false
@@ -41,7 +42,7 @@ struct ContentView: View {
                     NavigationLink {
                         let camper = SwiftDataCamper.selectedCamperFromID(with: modelContext, selectedCamperID: selectedCamperID)
                         if camper != nil {
-                            LogBookView(camper: camper!, selectedID: selectedCamperID)  //  Force unwrap b/c disabled if nil
+                            LogBookView(camper: camper!, tripFilter: tripFilter)  //  Force unwrap b/c disabled if nil
                                 .environmentObject(viewModel)
                         }
                     } label: {
@@ -56,9 +57,6 @@ struct ContentView: View {
                     }
                     .buttonStyle(PrimaryButtonStyle(isActive: true))
                     
-                    let camper = SwiftDataCamper.selectedCamperFromID(with: modelContext, selectedCamperID: selectedCamperID)
-                    let text = (camper != nil) ? "Saved as: \(camper!.name)" : "Not saved"
-                    Text(text)
                     Spacer()
                 }
                 
