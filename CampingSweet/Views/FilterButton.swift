@@ -6,9 +6,10 @@
 //
 
 import SwiftUI
+import Defaults
 
 struct FilterButton: View {
-    @AppSettings(\.settingsTripFilter) var tripFilter
+    @Default(.tripFilterKey) var tripFilter: FilterTrips
 
     var body: some View {
         Menu {

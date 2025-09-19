@@ -11,6 +11,7 @@ import SwiftUI
     @Published private(set) var settings = Settings.example
     @Published var userError: UserError? = nil
     
+    
     init() {
         
         if let data = UserDefaults.standard.data(forKey: "settings") {

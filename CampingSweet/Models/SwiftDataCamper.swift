@@ -10,20 +10,22 @@ import SwiftData
 
 @Model
 class SwiftDataCamper {
+    var id: UUID
     @Attribute(.unique) var name: String
     var isArchived: Bool
     var registrationNumber: String
     @Relationship(deleteRule: .cascade, inverse: \SwiftDataLogEntry.camper)
     var trips: [SwiftDataLogEntry]
         
-    init(name: String = "Initial camper", isArchived: Bool = false, registrationNumber: String = "", trips: [SwiftDataLogEntry] = []) {
+    init(id: UUID, name: String = "Initial camper", isArchived: Bool = false, registrationNumber: String = "", trips: [SwiftDataLogEntry] = []) {
+        self.id = id
         self.name = name
         self.isArchived = isArchived
         self.registrationNumber = registrationNumber
         self.trips = trips
     }
     
-    static let example = SwiftDataCamper(name: "Example camper", isArchived: false, registrationNumber: "Some reg number", trips: [])
+    static let example = SwiftDataCamper(id: UUID(), name: "Example camper", isArchived: false, registrationNumber: "Some reg number", trips: [])
     
 // Should return nil when selectedCamperName is empty string
     public static func selectedCamperFromName(with modelContext: ModelContext, selectedCamperName: String) -> SwiftDataCamper? {
@@ -36,7 +38,7 @@ class SwiftDataCamper {
     }
     
     public static func selectedCamperFromID(with modelContext: ModelContext, selectedCamperID: SwiftDataCamper.ID?) -> SwiftDataCamper? {
-        if let result = try! modelContext.fetch(FetchDescriptor<SwiftDataCamper>()).first(where: { $0.persistentModelID == selectedCamperID}) {
+        if let result = try! modelContext.fetch(FetchDescriptor<SwiftDataCamper>()).first(where: { $0.id == selectedCamperID}) {
             return result
         } else {
             return nil

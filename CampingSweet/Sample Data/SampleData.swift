@@ -9,17 +9,20 @@ import Foundation
 import SwiftData
 
 extension SwiftDataCamper {
-    static let previewCamperA = SwiftDataCamper(name: "Preview Camper A",
+    static let previewCamperA = SwiftDataCamper(id: UUID(),
+                                                name: "Preview Camper A",
                                                 isArchived: false,
                                                 registrationNumber: "TX 12345",
                                                 trips: [])
     
-    static let previewCamperB = SwiftDataCamper(name: "Preview Camper B",
+    static let previewCamperB = SwiftDataCamper(id: UUID(),
+                                                name: "Preview Camper B",
                                                 isArchived: false,
                                                 registrationNumber: "TX 67890",
                                                 trips: [])
     
-    static let archivedCamper = SwiftDataCamper(name: "Archived Camper",
+    static let archivedCamper = SwiftDataCamper(id: UUID(),
+                                                name: "Archived Camper",
                                                 isArchived: true,
                                                 registrationNumber: "TX 11111",
                                                 trips: [])

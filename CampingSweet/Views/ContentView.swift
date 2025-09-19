@@ -7,14 +7,15 @@
 
 import SwiftUI
 import SwiftData
+import Defaults
 
 struct ContentView: View {
     @Query var campers: [SwiftDataCamper]
     
     @Environment(\.modelContext) var modelContext
-    @AppSettings(\.settingsSelectedCamperName) var selectedCamperName
 
     @StateObject var viewModel = ViewModel()
+    @Default(.selectedCamperIDKey) var selectedCamperID
 
     @State private var showHelpMenu = false
     @State private var changingSettings = false
@@ -28,6 +29,7 @@ struct ContentView: View {
                     
                     NavigationLink {
                         CampersView()
+                            .environmentObject(viewModel)
                     } label: {
                         Label("My Campers", image: "Camper")
                     }
@@ -37,14 +39,15 @@ struct ContentView: View {
 //                    }
                     
                     NavigationLink {
-                        let camper = SwiftDataCamper.selectedCamperFromName(with: modelContext, selectedCamperName: selectedCamperName)
+                        let camper = SwiftDataCamper.selectedCamperFromID(with: modelContext, selectedCamperID: selectedCamperID)
                         if camper != nil {
-                            LogBookView(camper: camper!)  //  Force unwrap b/c disabled if nil
+                            LogBookView(camper: camper!, selectedID: selectedCamperID)  //  Force unwrap b/c disabled if nil
+                                .environmentObject(viewModel)
                         }
                     } label: {
                         Label("Log Book", systemImage: "list.bullet.rectangle.fill")
                     }
-                    .buttonStyle(PrimaryButtonStyle(isActive: selectedCamperName != ""))
+                    .buttonStyle(PrimaryButtonStyle(isActive: selectedCamperID != nil))
                     
                     NavigationLink {
                         ChecklistView()
@@ -53,7 +56,8 @@ struct ContentView: View {
                     }
                     .buttonStyle(PrimaryButtonStyle(isActive: true))
                     
-                    let text = (selectedCamperName != "") ? "Saved as: \(selectedCamperName)" : "Not saved"
+                    let camper = SwiftDataCamper.selectedCamperFromID(with: modelContext, selectedCamperID: selectedCamperID)
+                    let text = (camper != nil) ? "Saved as: \(camper!.name)" : "Not saved"
                     Text(text)
                     Spacer()
                 }
@@ -93,8 +97,6 @@ struct ContentView: View {
     ContentView()
         .environmentObject(ViewModel())
         .modelContainer(try! ModelContainer.sample())
-    
-//        .modelContainer(try! ModelContainer.sample())
 }
 
 struct PrimaryButtonStyle: ButtonStyle {

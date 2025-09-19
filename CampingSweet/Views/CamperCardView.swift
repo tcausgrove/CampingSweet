@@ -7,13 +7,14 @@
 
 import SwiftUI
 import SwiftData
+import Defaults
 
 struct CamperCardView: View {
     var camper: SwiftDataCamper
-    @AppSettings(\.settingsSelectedCamperName) var selectedCamperName
 
     @Environment(\.modelContext) var modelContext
     @EnvironmentObject var viewModel: ViewModel
+    @Default(.selectedCamperIDKey) var selectedCamperID
 
     @State private var showModMenu = false
 
@@ -30,7 +31,7 @@ struct CamperCardView: View {
                 .sheet(isPresented: $showModMenu, content: { sheetContents })
                 HStack {
                     Text("Name: \(camper.name)")
-                    if camper.name == selectedCamperName {
+                    if camper.id == selectedCamperID {
                         Text("Selected")
                             .italic()
                             .foregroundColor(.red)
@@ -55,8 +56,6 @@ struct CamperCardView: View {
             .font(.title3)
         VStack(alignment: .center, spacing: 16) {
             Button(role: .destructive, action: {
-                // FIXME:  Before deleting, check to see if this is default camper;
-                //  if so, look for another for default. If no others, then create a camper
                 deleteCamper(camper: camper)
             }) {
                 Text("Delete camper")
@@ -65,8 +64,8 @@ struct CamperCardView: View {
 
             Button(action: {
                 camper.isArchived = true
-                if camper.name == selectedCamperName {
-                    selectedCamperName = ""
+                if camper.id == selectedCamperID {
+                    selectedCamperID = nil
                 }
                 showModMenu = false
             }) {
@@ -86,15 +85,15 @@ struct CamperCardView: View {
     }
     
     func deleteCamper(camper: SwiftDataCamper) {
-        if camper.name == selectedCamperName {
-            // set the first camper as the new default
-            if let topCamper = try! modelContext.fetch(FetchDescriptor<SwiftDataCamper>()).first {
-                print("Setting sCID to \(topCamper.name)")
-                selectedCamperName = topCamper.name
+        if camper.id == selectedCamperID {
+            // set the first camper that is not selected as the new selected
+            if let topCamper = try! modelContext.fetch(FetchDescriptor<SwiftDataCamper>()).first(where: { $0.id != selectedCamperID }) {
+                print("Setting selectedName to \(topCamper.name)")
+                selectedCamperID = topCamper.id
             } else {
                 // There is no camper to set as default
-                print("Setting sCID to nil")
-                selectedCamperName = ""
+                print("Setting selectedName to empty")
+                selectedCamperID = nil
             }
         }
         modelContext.delete(camper)

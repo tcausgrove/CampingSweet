@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Defaults
 
 //enum VolumeOptions: String, CaseIterable, Identifiable, Codable {
 //    case america = "Gallons"
@@ -116,7 +117,7 @@ enum HelpSection: String, CaseIterable, Identifiable {
     var id: Self { self }
 }
 
-enum FilterTrips: String, CaseIterable, Identifiable {
+enum FilterTrips: String, CaseIterable, Identifiable, Defaults.Serializable {
     case currentYear = "Current year only"
     case allTrips = "All trips"
     

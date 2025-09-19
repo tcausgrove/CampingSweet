@@ -8,6 +8,7 @@
 import Foundation
 import SwiftUI
 import MapKit
+import Defaults
 
 extension View {
     func numbersOnly(_ text: Binding<String>, includeDecimal: Bool, includeNegative: Bool, digitAllowedAfterDecimal: Int) -> some View {
@@ -206,3 +207,11 @@ extension Date {
         return components1.year == components2.year
     }
 }
+
+extension Defaults.Keys {
+    static let tripFilterKey = Key<FilterTrips>("tripFilterKey", default: .allTrips)
+    static let selectedCamperIDKey = Key<UUID?>("selectedCamperIDKey")
+    //            ^                ^            ^                ^
+    //           Key              Type    UserDefaults name   Default value
+}
+

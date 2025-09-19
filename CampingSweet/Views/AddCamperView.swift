@@ -7,11 +7,13 @@
 
 import SwiftUI
 import SwiftData
+import Defaults
 
 struct AddCamperView: View {
     @Environment(\.modelContext) var modelContext
+    @EnvironmentObject var viewModel: ViewModel
+    @Default(.selectedCamperIDKey) var selectedCamperID
     @Environment(\.dismiss) var dismiss
-    @AppSettings(\.settingsSelectedCamperName) var selectedCamperName
 
     @State private var name: String = ""
     @State private var registration: String = ""
@@ -29,6 +31,7 @@ struct AddCamperView: View {
                     Button("Add", role: .none, action: {
                         addNewCamper()
                     })
+                    .disabled(name.isEmpty)
                     Spacer()
                     Button("Cancel", role: .cancel, action: { dismiss() })
                 }
@@ -39,11 +42,9 @@ struct AddCamperView: View {
     }
     
     func addNewCamper() {
-//        let oldCamper = SwiftDataCamper.selectedCamper(with: modelContext)
-//        oldCamper.isDefaultCamper = false
-        let newCamper = SwiftDataCamper(name: name, isArchived: false, registrationNumber: registration)
+        let newCamper = SwiftDataCamper(id: UUID(), name: name, isArchived: false, registrationNumber: registration)
         modelContext.insert(newCamper)
-        selectedCamperName = newCamper.name
+        selectedCamperID = newCamper.id
         
         dismiss()
     }

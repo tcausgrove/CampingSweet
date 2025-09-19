@@ -19,7 +19,6 @@
 		785949832CEC13C300D8060A /* EditLogEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785949822CEC13C300D8060A /* EditLogEntryView.swift */; };
 		787A4EAD2DCC2C930064B2A8 /* CodableCSV in Frameworks */ = {isa = PBXBuildFile; productRef = 787A4EAC2DCC2C930064B2A8 /* CodableCSV */; };
 		787D38692E0223A900B32DA4 /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787D38682E0223A900B32DA4 /* BackgroundView.swift */; };
-		787F55592E7852E800BDC333 /* SavedSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787F55582E7852E800BDC333 /* SavedSettings.swift */; };
 		78820E582D2F506000AA6807 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 78820E572D2F506000AA6807 /* Localizable.xcstrings */; };
 		78820E742D35D39200AA6807 /* GetLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78820E732D35D39200AA6807 /* GetLocation.swift */; };
 		78820E892D3EBB7700AA6807 /* HelpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78820E882D3EBB7700AA6807 /* HelpView.swift */; };
@@ -38,6 +37,8 @@
 		78A4153D29F0BDC0005CBEF1 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A4153C29F0BDC0005CBEF1 /* Enums.swift */; };
 		78A4153F29F1E414005CBEF1 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A4153E29F1E414005CBEF1 /* SettingsView.swift */; };
 		78A4154129F34E3B005CBEF1 /* FileManager-DocumentsDirectory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A4154029F34E3B005CBEF1 /* FileManager-DocumentsDirectory.swift */; };
+		78B4BE832E7CAD6D0000E8EA /* Defaults in Frameworks */ = {isa = PBXBuildFile; productRef = 78B4BE822E7CAD6D0000E8EA /* Defaults */; };
+		78B4BE852E7CAD6D0000E8EA /* DefaultsMacros in Frameworks */ = {isa = PBXBuildFile; productRef = 78B4BE842E7CAD6D0000E8EA /* DefaultsMacros */; };
 		78F810272DD29D33008632D6 /* LogBookBottomBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F810262DD29D33008632D6 /* LogBookBottomBarView.swift */; };
 		78F810292DD3F42D008632D6 /* HelpTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F810282DD3F42D008632D6 /* HelpTextView.swift */; };
 		78F8ACDE2DA7335D0094718D /* TripCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F8ACDD2DA7335D0094718D /* TripCardView.swift */; };
@@ -55,7 +56,6 @@
 		785949802CEC0E5800D8060A /* TripDataEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripDataEntryView.swift; sourceTree = "<group>"; };
 		785949822CEC13C300D8060A /* EditLogEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditLogEntryView.swift; sourceTree = "<group>"; };
 		787D38682E0223A900B32DA4 /* BackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundView.swift; sourceTree = "<group>"; };
-		787F55582E7852E800BDC333 /* SavedSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedSettings.swift; sourceTree = "<group>"; };
 		78820E572D2F506000AA6807 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		78820E732D35D39200AA6807 /* GetLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetLocation.swift; sourceTree = "<group>"; };
 		78820E882D3EBB7700AA6807 /* HelpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpView.swift; sourceTree = "<group>"; };
@@ -92,8 +92,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				78B4BE832E7CAD6D0000E8EA /* Defaults in Frameworks */,
 				787A4EAD2DCC2C930064B2A8 /* CodableCSV in Frameworks */,
 				785949572CE6CAF600D8060A /* SwiftCSV in Frameworks */,
+				78B4BE852E7CAD6D0000E8EA /* DefaultsMacros in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -122,7 +124,6 @@
 				7899B4882E70E9B100452F8C /* PreviewHelper */,
 				78A4153529F021D4005CBEF1 /* Views */,
 				78413C032A44EB49006DCF9E /* Extensions.swift */,
-				787F55582E7852E800BDC333 /* SavedSettings.swift */,
 				78820E732D35D39200AA6807 /* GetLocation.swift */,
 				7899B4832E70D0A500452F8C /* Sample Data */,
 				78820E902D46AF5200AA6807 /* LaunchScreen.storyboard */,
@@ -199,6 +200,8 @@
 			packageProductDependencies = (
 				785949562CE6CAF600D8060A /* SwiftCSV */,
 				787A4EAC2DCC2C930064B2A8 /* CodableCSV */,
+				78B4BE822E7CAD6D0000E8EA /* Defaults */,
+				78B4BE842E7CAD6D0000E8EA /* DefaultsMacros */,
 			);
 			productName = BoatingSweet;
 			productReference = 78A4151A29E4D3AB005CBEF1 /* CampingSweet.app */;
@@ -233,6 +236,7 @@
 			packageReferences = (
 				785949552CE6CAF600D8060A /* XCRemoteSwiftPackageReference "SwiftCSV" */,
 				787A4EAB2DCC2C930064B2A8 /* XCRemoteSwiftPackageReference "CodableCSV" */,
+				78B4BE812E7CAD6D0000E8EA /* XCRemoteSwiftPackageReference "Defaults" */,
 			);
 			productRefGroup = 78A4151B29E4D3AB005CBEF1 /* Products */;
 			projectDirPath = "";
@@ -283,7 +287,6 @@
 				785949542CE6CADD00D8060A /* MessageDocument.swift in Sources */,
 				78413C042A44EB49006DCF9E /* Extensions.swift in Sources */,
 				78A4152029E4D3AB005CBEF1 /* ContentView.swift in Sources */,
-				787F55592E7852E800BDC333 /* SavedSettings.swift in Sources */,
 				7826F2C22BBB4D4B0075B0A3 /* CamperCardView.swift in Sources */,
 				78A4153F29F1E414005CBEF1 /* SettingsView.swift in Sources */,
 				78A4151E29E4D3AB005CBEF1 /* CampingSweetApp.swift in Sources */,
@@ -430,7 +433,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 0;
 				DEVELOPMENT_ASSET_PATHS = "\"CampingSweet/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -447,7 +450,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.7;
+				MARKETING_VERSION = 0.8;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tcaus.CampingSweet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -468,7 +471,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 0;
 				DEVELOPMENT_ASSET_PATHS = "\"CampingSweet/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -485,7 +488,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.7;
+				MARKETING_VERSION = 0.8;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tcaus.CampingSweet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -539,6 +542,14 @@
 				minimumVersion = 0.6.7;
 			};
 		};
+		78B4BE812E7CAD6D0000E8EA /* XCRemoteSwiftPackageReference "Defaults" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sindresorhus/Defaults";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.4;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -551,6 +562,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 787A4EAB2DCC2C930064B2A8 /* XCRemoteSwiftPackageReference "CodableCSV" */;
 			productName = CodableCSV;
+		};
+		78B4BE822E7CAD6D0000E8EA /* Defaults */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 78B4BE812E7CAD6D0000E8EA /* XCRemoteSwiftPackageReference "Defaults" */;
+			productName = Defaults;
+		};
+		78B4BE842E7CAD6D0000E8EA /* DefaultsMacros */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 78B4BE812E7CAD6D0000E8EA /* XCRemoteSwiftPackageReference "Defaults" */;
+			productName = DefaultsMacros;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

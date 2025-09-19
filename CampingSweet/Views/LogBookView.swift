@@ -7,6 +7,7 @@
 
 import SwiftUI
 import SwiftData
+import Defaults
 
 struct LogBookView: View {
     var camper: SwiftDataCamper
@@ -14,8 +15,7 @@ struct LogBookView: View {
     @Environment(\.dismiss) var dismiss
     @Environment(\.modelContext) var modelContext
     @EnvironmentObject var viewModel: ViewModel
-    @AppSettings(\.settingsSelectedCamperName) var selectedCamperName
-    @AppSettings(\.settingsTripFilter) var tripFilter
+    @Default(.selectedCamperIDKey) var selectedCamperID
 
     @Query(sort: \SwiftDataLogEntry.startDate,
            order: .reverse) var trips: [SwiftDataLogEntry]
@@ -26,13 +26,18 @@ struct LogBookView: View {
     @State var tripToEdit: SwiftDataLogEntry? = nil
     @State private var searchText: String = ""
 
-    init(camper: SwiftDataCamper) {
+    init(camper: SwiftDataCamper, selectedID: UUID?) {
         self.camper = camper
+//        self.selectedID = selectedID
         // Definition of .predicate is in SwiftDataLogEntry.swift
-        let predicate = SwiftDataLogEntry.predicate(searchText: searchText,
-                                                    datesToShow: tripFilter,
-                                                    camperName: selectedCamperName)
-        _trips = Query(filter: predicate, sort: \SwiftDataLogEntry.startDate, order: .reverse)
+//        if selectedID == nil {
+            _trips = Query(sort: \SwiftDataLogEntry.startDate, order: .reverse)
+//        } else {
+//            let predicate = SwiftDataLogEntry.predicate(searchText: searchText,
+//                                                        datesToShow: tripFilter,
+//                                                        camperID: viewModel.settings.newSelectedCamperId!)
+//            _trips = Query(filter: predicate, sort: \SwiftDataLogEntry.startDate, order: .reverse)
+//        }
     }
     
     var body: some View {
@@ -72,7 +77,7 @@ struct LogBookView: View {
 
 #Preview {
     ModelContainerPreview(ModelContainer.sample) {
-        LogBookView(camper: SwiftDataCamper.previewCamperA)
+        LogBookView(camper: SwiftDataCamper.previewCamperA, selectedID: nil)
         .environmentObject(ViewModel())
     }
 }

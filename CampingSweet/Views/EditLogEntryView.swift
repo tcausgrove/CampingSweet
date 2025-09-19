@@ -8,12 +8,13 @@
 import SwiftUI
 import SwiftData
 import CoreLocation
+import Defaults
 
 struct EditLogEntryView: View {
     var previousLogEntry: SwiftDataLogEntry?
 
     @EnvironmentObject var viewModel: ViewModel
-    @AppSettings(\.settingsSelectedCamperName) var selectedCamperName
+    @Default(.selectedCamperIDKey) var selectedCamperID
 
     @State var title: String = ""
     @State var start: Date = Date.now
@@ -65,7 +66,7 @@ struct EditLogEntryView: View {
     
     func saveLogBookEntry() {
         distance = Measurement(value: Double(distanceString) ?? 0.0, unit: viewModel.settings.chosenDistance.unit)
-        var camper = SwiftDataCamper.selectedCamperFromName(with: modelContext, selectedCamperName: selectedCamperName)
+        let camper = SwiftDataCamper.selectedCamperFromID(with: modelContext, selectedCamperID: selectedCamperID)
         if camper == nil {
             print("Why is this nil")
             return

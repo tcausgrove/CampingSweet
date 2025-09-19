@@ -7,30 +7,32 @@
 
 import SwiftUI
 import SwiftData
+import Defaults
 
 struct CampersView: View {
     @Query(sort: \SwiftDataCamper.name) var campers: [SwiftDataCamper]
     @Environment(\.modelContext) var modelContext
-    @AppSettings(\.settingsSelectedCamperName) var selectedCamperName
-
+    @EnvironmentObject var viewModel: ViewModel
+    @Default(.selectedCamperIDKey) var selectedCamperID
+    
     @State private var addingCamper: Bool = false
     @State private var path = [SwiftDataCamper]()
-
+    
     var body: some View {
         ZStack {
             BackgroundView()
             VStack {
-            NavigationStack(path: $path) {
-                ForEach(campers, id: \.self) { camper in
-                    if !camper.isArchived {
-                        CamperCardView(camper: camper)
-                            .padding(.bottom, 8)
-                            .onTapGesture {
-                                setSelectedCamper(camper: camper)
-                            }
+                NavigationStack(path: $path) {
+                    ForEach(campers, id: \.self) { camper in
+                        if !camper.isArchived {
+                            CamperCardView(camper: camper)
+                                .padding(.bottom, 8)
+                                .onTapGesture {
+                                    setSelectedCamper(camper: camper)
+                                }
+                        }
                     }
                 }
-            }
                 
                 Spacer()
                 
@@ -61,15 +63,15 @@ struct CampersView: View {
     }
     
     func addCamper() {
-        let camper = SwiftDataCamper()
+        let camper = SwiftDataCamper(id: UUID())
         // Set to be selected camper
-        selectedCamperName = camper.name
+        selectedCamperID = camper.id
         modelContext.insert(camper)
         path = [camper]
     }
     
     func setSelectedCamper(camper: SwiftDataCamper) {
-        selectedCamperName = camper.name
+        selectedCamperID = camper.id
         try? modelContext.save()
     }
     
