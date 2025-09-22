@@ -10,6 +10,7 @@ import SwiftData
 
 struct LogBookBottomBarView: View {
     @EnvironmentObject var viewModel: ViewModel
+    
     @State private var isImporting: Bool = false
     @State private var document: MessageDocument = MessageDocument(message: "")
     @State private var exportResult: UserError? = nil

@@ -11,6 +11,7 @@ import Defaults
 
 struct CampersView: View {
     @Query(sort: \SwiftDataCamper.name) var campers: [SwiftDataCamper]
+    
     @Environment(\.modelContext) var modelContext
     @EnvironmentObject var viewModel: ViewModel
     @Default(.selectedCamperIDKey) var selectedCamperID
@@ -22,7 +23,7 @@ struct CampersView: View {
         ZStack {
             BackgroundView()
             VStack {
-                NavigationStack(path: $path) {
+//                NavigationStack(path: $path) {
                     ForEach(campers, id: \.self) { camper in
                         if !camper.isArchived {
                             CamperCardView(camper: camper)
@@ -32,7 +33,7 @@ struct CampersView: View {
                                 }
                         }
                     }
-                }
+//                }
                 
                 Spacer()
                 

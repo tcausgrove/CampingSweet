@@ -10,13 +10,12 @@ import SwiftData
 import Defaults
 
 struct LogBookView: View {
-    var localCamper: SwiftDataCamper
+    var localCamperID: UUID
     var tripFilter: FilterTrips
 
     @Environment(\.dismiss) var dismiss
     @Environment(\.modelContext) var modelContext
     @EnvironmentObject var viewModel: ViewModel
-//    @Default(.tripFilterKey) var tripFilter
 
     @Query(sort: \SwiftDataLogEntry.startDate,
            order: .reverse) var trips: [SwiftDataLogEntry]
@@ -27,19 +26,15 @@ struct LogBookView: View {
     @State var tripToEdit: SwiftDataLogEntry? = nil
     @State private var searchText: String = ""
 
-    init(camper: SwiftDataCamper, tripFilter: FilterTrips) {
-        self.localCamper = camper
+    init(camperID: UUID, tripFilter: FilterTrips) {
+        self.localCamperID = camperID
         self.tripFilter = tripFilter
-//        self.selectedID = selectedID
-        // Definition of .predicate is in SwiftDataLogEntry.swift
-//        if camper == nil {
-//            _trips = Query(sort: \SwiftDataLogEntry.startDate, order: .reverse)
-//        } else {
-            let predicate = SwiftDataLogEntry.predicate(searchText: searchText,
+
+        let predicate = SwiftDataLogEntry.predicate(searchText: searchText,
                                                         datesToShow: tripFilter,
-                                                        camperID: localCamper.id)
-            _trips = Query(filter: predicate, sort: \SwiftDataLogEntry.startDate, order: .reverse)
-//        }
+                                                        camperID: localCamperID)
+        _trips = Query(filter: predicate, sort: \SwiftDataLogEntry.startDate, order: .reverse)
+        print("#trips = \(trips.count)")
     }
     
     var body: some View {
@@ -53,7 +48,10 @@ struct LogBookView: View {
                 }
             }
             .safeAreaInset(edge: .bottom, content: {
-                    LogBookBottomBarView(camper: localCamper)
+                let camper = SwiftDataCamper.selectedCamperFromID(with: modelContext, selectedCamperID: localCamperID)
+                if camper != nil {
+                    LogBookBottomBarView(camper: camper!)
+                }
             })
             .toolbar() {
                 ToolbarItem {
@@ -79,7 +77,7 @@ struct LogBookView: View {
 
 #Preview {
     ModelContainerPreview(ModelContainer.sample) {
-        LogBookView(camper: SwiftDataCamper.previewCamperA, tripFilter: .allTrips)
+        LogBookView(camperID: SwiftDataCamper.previewCamperA.id, tripFilter: .allTrips)
         .environmentObject(ViewModel())
     }
 }

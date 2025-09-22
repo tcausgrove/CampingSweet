@@ -211,6 +211,7 @@ extension Date {
 extension Defaults.Keys {
     static let tripFilterKey = Key<FilterTrips>("tripFilterKey", default: .allTrips)
     static let selectedCamperIDKey = Key<UUID?>("selectedCamperIDKey")
+    static let settingsKey = Key<Settings>("settingsKey", default: Settings.example)
     //            ^                ^            ^                ^
     //           Key              Type    UserDefaults name   Default value
 }

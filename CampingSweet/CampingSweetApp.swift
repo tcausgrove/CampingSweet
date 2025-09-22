@@ -10,9 +10,12 @@ import SwiftData
 
 @main
 struct CampingSweetApp: App {
+    @StateObject var viewModel = ViewModel()
+
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(viewModel)
         }
         .modelContainer(for: [CheckListItem.self, SwiftDataCamper.self])
     }

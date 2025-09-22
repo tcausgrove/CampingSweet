@@ -7,8 +7,9 @@
 
 import Foundation
 import MapKit
+import Defaults
 
-struct Settings: Codable {
+struct Settings: Codable, Defaults.Serializable {
     var chosenDistance: DistanceOptions
     var chosenClockHours: ClockHours
     var chosenDateFormat: DateFormatType

@@ -13,8 +13,8 @@ struct ContentView: View {
     @Query var campers: [SwiftDataCamper]
     
     @Environment(\.modelContext) var modelContext
+    @EnvironmentObject var viewModel: ViewModel
 
-    @StateObject var viewModel = ViewModel()
     @Default(.selectedCamperIDKey) var selectedCamperID
     @Default(.tripFilterKey) var tripFilter
 
@@ -30,20 +30,14 @@ struct ContentView: View {
                     
                     NavigationLink {
                         CampersView()
-                            .environmentObject(viewModel)
                     } label: {
                         Label("My Campers", image: "Camper")
                     }
                     .buttonStyle(PrimaryButtonStyle(isActive: true))
-//                    .navigationDestination(for: SwiftDataCamper.self) {_ in
-//                        CampersView()
-//                    }
                     
                     NavigationLink {
-                        let camper = SwiftDataCamper.selectedCamperFromID(with: modelContext, selectedCamperID: selectedCamperID)
-                        if camper != nil {
-                            LogBookView(camper: camper!, tripFilter: tripFilter)  //  Force unwrap b/c disabled if nil
-                                .environmentObject(viewModel)
+                        if selectedCamperID != nil {
+                            LogBookView(camperID: selectedCamperID!, tripFilter: tripFilter)
                         }
                     } label: {
                         Label("Log Book", systemImage: "list.bullet.rectangle.fill")
@@ -63,25 +57,42 @@ struct ContentView: View {
                 .padding(2)
                 .toolbar {
                     ToolbarItemGroup(placement: .bottomBar) {
-                        Button(action: { showHelpMenu = true }) {
+                        NavigationLink {
+                            HelpView()
+                        } label: {
                             Image(systemName: "questionmark")
                                 .font(.title)
                                 .fontWeight(.bold)
                                 .padding([.bottom, .leading])
                         }
-                        .navigationDestination(isPresented: $showHelpMenu) {
-                            HelpView()
-                        }
+//                        Button(action: { showHelpMenu = true }) {
+//                            Image(systemName: "questionmark")
+//                                .font(.title)
+//                                .fontWeight(.bold)
+//                                .padding([.bottom, .leading])
+//                        }
+//                        .navigationDestination(isPresented: $showHelpMenu) {
+//                            HelpView()
+//                        }
+                        
                         Spacer()
                         
-                        Button(action: { changingSettings = true }) {
+                        NavigationLink {
+                            SettingsView()
+                        } label: {
                             Image(systemName: "gearshape.fill")
                                 .font(.title)
-                                .padding([.bottom, .trailing])
+                                .fontWeight(.bold)
+                                .padding([.bottom, .leading])
                         }
-                        .navigationDestination(isPresented: $changingSettings) {
-                            SettingsView()
-                        }
+//                        Button(action: { changingSettings = true }) {
+//                            Image(systemName: "gearshape.fill")
+//                                .font(.title)
+//                                .padding([.bottom, .trailing])
+//                        }
+//                        .navigationDestination(isPresented: $changingSettings) {
+//                            SettingsView()
+//                        }
                     }
                 }
                 .navigationTitle("CampingSweet")
