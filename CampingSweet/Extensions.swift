@@ -208,6 +208,7 @@ extension Date {
     }
 }
 
+//  See https://github.com/sindresorhus/Defaults for documentation
 extension Defaults.Keys {
     static let tripFilterKey = Key<FilterTrips>("tripFilterKey", default: .allTrips)
     static let selectedCamperIDKey = Key<UUID?>("selectedCamperIDKey")

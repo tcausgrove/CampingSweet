@@ -6,12 +6,12 @@
 //
 
 import SwiftUI
+import Defaults
 
 struct SettingsView: View {
-    @EnvironmentObject var viewModel: ViewModel
-    
     @Environment(\.dismiss) var dismiss
-    
+    @Default(.settingsKey) var settings
+
     @State var defaultDistance: DistanceOptions = .mi
     @State var timeFormat: ClockHours = .two
     @State var dateFormat: DateFormatType = .monthFirst
@@ -28,7 +28,7 @@ struct SettingsView: View {
                         }
                     }
                     .onAppear(perform: {
-                        defaultDistance = viewModel.settings.chosenDistance
+                        defaultDistance = settings.chosenDistance
                     })
                     
                     // FIXME: This doesn't appear to be used anywhere
@@ -38,7 +38,7 @@ struct SettingsView: View {
                         }
                     }
                     .onAppear(perform: {
-                        timeFormat = viewModel.settings.chosenClockHours
+                        timeFormat = settings.chosenClockHours
                     })
                     // FIXME: This doesn't appear to be used anywhere
                     Picker("Date format", selection: $dateFormat) {
@@ -47,7 +47,7 @@ struct SettingsView: View {
                         }
                     }
                     .onAppear(perform: {
-                        dateFormat = viewModel.settings.chosenDateFormat
+                        dateFormat = settings.chosenDateFormat
                     })
                 }
                 
@@ -58,7 +58,7 @@ struct SettingsView: View {
                         }
                     }
                     .onAppear(perform: {
-                        locationFormat = viewModel.settings.locationImportFormat
+                        locationFormat = settings.locationImportFormat
                     })
                     
                     Picker("Date entries", selection: $dateImportFormat) {
@@ -66,17 +66,22 @@ struct SettingsView: View {
                             Text(option.rawValue)}
                     }
                     .onAppear(perform: {
-                        dateImportFormat = viewModel.settings.dateImportFormat
+                        dateImportFormat = settings.dateImportFormat
                     })
                 }
             }
             .background(BackgroundView()).scrollContentBackground(.hidden)
             .onDisappear {
-                viewModel.changeSettings(newChosenDistance: defaultDistance,
-                                         newClockHours: timeFormat,
-                                         newDateFormat: dateFormat,
-                                         newLocationFormat: locationFormat,
-                                         newDateImportFormat: dateImportFormat)
+                settings.chosenDistance = defaultDistance
+                settings.chosenClockHours = timeFormat
+                settings.chosenDateFormat = dateFormat
+                settings.locationImportFormat = locationFormat
+                settings.dateImportFormat = dateImportFormat
+//                changeSettings(newChosenDistance: defaultDistance,
+//                                         newClockHours: timeFormat,
+//                                         newDateFormat: dateFormat,
+//                                         newLocationFormat: locationFormat,
+//                                         newDateImportFormat: dateImportFormat)
             }
             .navigationTitle("User settings")
         }
@@ -86,6 +91,5 @@ struct SettingsView: View {
 struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
         SettingsView()
-            .environmentObject(ViewModel())
     }
 }

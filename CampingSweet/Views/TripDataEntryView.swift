@@ -89,5 +89,4 @@ struct TripDataEntryView: View {
                               distanceString: $distanceString,
                               latitude: $latitude,
                               longitude: $longitude )
-    .environmentObject(ViewModel())
 }

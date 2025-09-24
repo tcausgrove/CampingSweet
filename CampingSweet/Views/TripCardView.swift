@@ -13,8 +13,8 @@ import Defaults
 struct TripCardView: View {
     var logEntry: SwiftDataLogEntry
     
-    @EnvironmentObject var viewModel: ViewModel
     @Default(.selectedCamperIDKey) var selectedCamperID
+    @Default(.settingsKey) var settings
     @Environment(\.modelContext) var modelContext
     @State private var editingLogEntry: Bool = false
 
@@ -46,7 +46,7 @@ struct TripCardView: View {
                 let tripDistance = logEntry.distance ?? 0.0
                 HStack {
                     if tripDistance > 0.1 {
-                        Text("Distance: " + viewModel.formatDistanceBySetting(distance: tripDistance))
+                        Text("Distance: " + formatDistanceBySetting(distance: tripDistance))
                     }
                     Spacer()
                 }
@@ -72,5 +72,4 @@ struct TripCardView: View {
 
 #Preview {
     TripCardView(logEntry: SwiftDataLogEntry(title: "Preview trip", distance: 666.0))
-        .environmentObject(ViewModel())
 }

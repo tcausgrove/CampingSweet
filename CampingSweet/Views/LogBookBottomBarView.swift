@@ -7,13 +7,15 @@
 
 import SwiftUI
 import SwiftData
+import Defaults
 
 struct LogBookBottomBarView: View {
-    @EnvironmentObject var viewModel: ViewModel
-    
     @State private var isImporting: Bool = false
     @State private var document: MessageDocument = MessageDocument(message: "")
-    @State private var exportResult: UserError? = nil
+    @State private var actionResult: UserError? = nil
+    
+    @Default(.settingsKey) var settings
+
     var camper: SwiftDataCamper
 
     var body: some View {
@@ -32,10 +34,10 @@ struct LogBookBottomBarView: View {
             Spacer()
             
             Button("Export CSV") {
-                exportResult = saveCSVImperatively(camper: camper)
+                actionResult = saveCSVImperatively(camper: camper)
             }
             .disabled(camper.trips.isEmpty)
-            .errorAlert($exportResult)
+            .errorAlert($actionResult)
         }
         .padding([.leading, .trailing], 30)
         .padding(.top, 12)
@@ -49,9 +51,9 @@ struct LogBookBottomBarView: View {
             
             document.message = message
             let newTripData: [SwiftDataLogEntry] = getCSV(inputString: document.message,
-                                                          dateFormat: viewModel.settings.chosenDateFormat,
-                                                          locationType: viewModel.settings.locationImportFormat,
-                                                          dateImportFormat: viewModel.settings.dateImportFormat)
+                                                          dateFormat: settings.chosenDateFormat,
+                                                          locationType: settings.locationImportFormat,
+                                                          dateImportFormat: settings.dateImportFormat)
             for newLogEntry in newTripData {
                 camper.trips.append(newLogEntry)
             }
@@ -63,5 +65,4 @@ struct LogBookBottomBarView: View {
 
 #Preview {
     LogBookBottomBarView(camper: SwiftDataCamper(id: UUID(), name: "Foo", isArchived: false, registrationNumber: "None", trips: []))
-        .environmentObject(ViewModel())
 }

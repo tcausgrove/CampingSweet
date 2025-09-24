@@ -11,7 +11,6 @@ import Defaults
 
 struct AddCamperView: View {
     @Environment(\.modelContext) var modelContext
-    @EnvironmentObject var viewModel: ViewModel
     @Default(.selectedCamperIDKey) var selectedCamperID
     @Environment(\.dismiss) var dismiss
 

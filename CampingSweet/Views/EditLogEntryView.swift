@@ -13,8 +13,8 @@ import Defaults
 struct EditLogEntryView: View {
     var previousLogEntry: SwiftDataLogEntry?
 
-    @EnvironmentObject var viewModel: ViewModel
     @Default(.selectedCamperIDKey) var selectedCamperID
+    @Default(.settingsKey) var settings
 
     @State var title: String = ""
     @State var start: Date = Date.now
@@ -65,7 +65,7 @@ struct EditLogEntryView: View {
     }
     
     func saveLogBookEntry() {
-        distance = Measurement(value: Double(distanceString) ?? 0.0, unit: viewModel.settings.chosenDistance.unit)
+        distance = Measurement(value: Double(distanceString) ?? 0.0, unit: settings.chosenDistance.unit)
         let camper = SwiftDataCamper.selectedCamperFromID(with: modelContext, selectedCamperID: selectedCamperID)
         if camper == nil {
             print("Why is this nil")
@@ -115,5 +115,4 @@ struct EditLogEntryView: View {
 //    let previousLogEntry = SwiftDataLogEntry(title: "Preview", distance: 12.3, latitude: 123.45678, longitude: -46.34567)
 //    let camper = SwiftDataCamper(name: "Example", isArchived: false, registrationNumber: "N/A", trips: [previousLogEntry])
     EditLogEntryView(previousLogEntry: nil)
-        .environmentObject(ViewModel())
 }

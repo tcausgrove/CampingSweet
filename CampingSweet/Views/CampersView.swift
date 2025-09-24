@@ -13,9 +13,9 @@ struct CampersView: View {
     @Query(sort: \SwiftDataCamper.name) var campers: [SwiftDataCamper]
     
     @Environment(\.modelContext) var modelContext
-    @EnvironmentObject var viewModel: ViewModel
     @Default(.selectedCamperIDKey) var selectedCamperID
-    
+    @Default(.settingsKey) var settings
+
     @State private var addingCamper: Bool = false
     @State private var path = [SwiftDataCamper]()
     
@@ -90,6 +90,5 @@ struct CampersView: View {
 #Preview {
     ModelContainerPreview(ModelContainer.sample) {
         CampersView()
-            .environmentObject(ViewModel())
     }
 }

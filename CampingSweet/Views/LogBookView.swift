@@ -15,7 +15,6 @@ struct LogBookView: View {
 
     @Environment(\.dismiss) var dismiss
     @Environment(\.modelContext) var modelContext
-    @EnvironmentObject var viewModel: ViewModel
 
     @Query(sort: \SwiftDataLogEntry.startDate,
            order: .reverse) var trips: [SwiftDataLogEntry]
@@ -78,6 +77,5 @@ struct LogBookView: View {
 #Preview {
     ModelContainerPreview(ModelContainer.sample) {
         LogBookView(camperID: SwiftDataCamper.previewCamperA.id, tripFilter: .allTrips)
-        .environmentObject(ViewModel())
     }
 }

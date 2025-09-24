@@ -13,10 +13,10 @@ struct ContentView: View {
     @Query var campers: [SwiftDataCamper]
     
     @Environment(\.modelContext) var modelContext
-    @EnvironmentObject var viewModel: ViewModel
 
     @Default(.selectedCamperIDKey) var selectedCamperID
     @Default(.tripFilterKey) var tripFilter
+    @Default(.settingsKey) var settings
 
     @State private var showHelpMenu = false
     @State private var changingSettings = false
@@ -98,13 +98,11 @@ struct ContentView: View {
                 .navigationTitle("CampingSweet")
             }
         }
-        .environmentObject(viewModel)
     }
 }
 
 #Preview {
     ContentView()
-        .environmentObject(ViewModel())
         .modelContainer(try! ModelContainer.sample())
 }
 

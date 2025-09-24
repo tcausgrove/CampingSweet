@@ -6,11 +6,12 @@
 //
 
 import SwiftUI
+import Defaults
 
 struct DrivingDistanceView: View {
-    @EnvironmentObject var viewModel: ViewModel
 
     @Binding var distanceString: String
+    @Default(.settingsKey) var settings
 //    @FocusState private var focused: Bool
     
     let formatter: NumberFormatter = {
@@ -22,7 +23,7 @@ struct DrivingDistanceView: View {
     var body: some View {
         
         HStack {
-            Text("Distance (\( viewModel.getDistanceUnitFromSetting() )): ")
+            Text("Distance (\( getDistanceUnitFromSetting() )): ")
             TextField("Enter value", text: $distanceString)
 //                .onAppear(perform: { focused = true })
 //                .focused($focused)
@@ -34,8 +35,5 @@ struct DrivingDistanceView: View {
 
 
 #Preview {
-//    let distance: Measurement<UnitLength> = Measurement(value: 0, unit: .miles)
     DrivingDistanceView(distanceString: .constant("123.4"))
-//    DrivingDistanceView()
-        .environmentObject(ViewModel())
 }

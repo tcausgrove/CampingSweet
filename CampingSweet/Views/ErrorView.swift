@@ -8,15 +8,14 @@
 import SwiftUI
 
 struct ErrorView: View {
-    let errorType: UserError
-    @EnvironmentObject var viewModel: ViewModel
+    @Binding var errorType: UserError?
 
     var body: some View {
         RoundedRectangle(cornerRadius: 20)
             .overlay {
                 VStack {
                     Button( "OK" ) {
-                        viewModel.userError = nil
+                        errorType = nil
                     }
                     .buttonStyle(.borderedProminent)
                 }
@@ -25,6 +24,5 @@ struct ErrorView: View {
 }
 
 #Preview {
-    ErrorView(errorType: UserError.failedLoading)
-        .environmentObject(ViewModel())
+    ErrorView(errorType: .constant(UserError.failedLoading))
 }
