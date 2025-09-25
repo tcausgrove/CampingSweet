@@ -40,15 +40,6 @@ struct SettingsView: View {
                     .onAppear(perform: {
                         timeFormat = settings.chosenClockHours
                     })
-                    // FIXME: This doesn't appear to be used anywhere
-                    Picker("Date format", selection: $dateFormat) {
-                        ForEach(DateFormatType.allCases) { option in
-                            Text(option.rawValue)
-                        }
-                    }
-                    .onAppear(perform: {
-                        dateFormat = settings.chosenDateFormat
-                    })
                 }
                 
                 Section(header: Text("CSV Import").font(.headline)) {
@@ -67,6 +58,15 @@ struct SettingsView: View {
                     }
                     .onAppear(perform: {
                         dateImportFormat = settings.dateImportFormat
+                    })
+                    
+                    Picker("Date format", selection: $dateFormat) {
+                        ForEach(DateFormatType.allCases) { option in
+                            Text(option.rawValue)
+                        }
+                    }
+                    .onAppear(perform: {
+                        dateFormat = settings.chosenDateFormat
                     })
                 }
             }

@@ -17,7 +17,7 @@ struct CampersView: View {
     @Default(.settingsKey) var settings
 
     @State private var addingCamper: Bool = false
-    @State private var path = [SwiftDataCamper]()
+//    @State private var path = [SwiftDataCamper]()
     
     var body: some View {
         ZStack {
@@ -68,7 +68,7 @@ struct CampersView: View {
         // Set to be selected camper
         selectedCamperID = camper.id
         modelContext.insert(camper)
-        path = [camper]
+//        path = [camper]
     }
     
     func setSelectedCamper(camper: SwiftDataCamper) {

@@ -14,37 +14,36 @@ struct LogBookView: View {
     var tripFilter: FilterTrips
 
     @Environment(\.dismiss) var dismiss
-    @Environment(\.modelContext) var modelContext
+    @Environment(\.modelContext) private var modelContext
 
     @Query(sort: \SwiftDataLogEntry.startDate,
-           order: .reverse) var trips: [SwiftDataLogEntry]
+           order: .reverse) private var trips: [SwiftDataLogEntry]
     
-    @State private var path = [SwiftDataCamper]()
+//    @State private var path = [SwiftDataCamper]()
     @State private var editingLogEntry: Bool = false
     @State private var isExporting: Bool = false
     @State var tripToEdit: SwiftDataLogEntry? = nil
     @State private var searchText: String = ""
-
-    init(camperID: UUID, tripFilter: FilterTrips) {
-        self.localCamperID = camperID
+    
+    init(localCamperID: UUID, tripFilter: FilterTrips) {
+        self.localCamperID = localCamperID
         self.tripFilter = tripFilter
-
+        
         let predicate = SwiftDataLogEntry.predicate(searchText: searchText,
                                                         datesToShow: tripFilter,
                                                         camperID: localCamperID)
         _trips = Query(filter: predicate, sort: \SwiftDataLogEntry.startDate, order: .reverse)
-        print("#trips = \(trips.count)")
     }
     
     var body: some View {
         ZStack {
             BackgroundView()
             ScrollView {
-                NavigationStack(path: $path) {
+//                NavigationStack(path: $path) {
                     ForEach(trips) { trip in
                         TripCardView(logEntry: trip)
                     }
-                }
+//                }
             }
             .safeAreaInset(edge: .bottom, content: {
                 let camper = SwiftDataCamper.selectedCamperFromID(with: modelContext, selectedCamperID: localCamperID)
@@ -62,7 +61,7 @@ struct LogBookView: View {
                     }
                 }
                 
-                ToolbarItem {
+                 ToolbarItem {
                     FilterButton()
                 }
             }
@@ -76,6 +75,6 @@ struct LogBookView: View {
 
 #Preview {
     ModelContainerPreview(ModelContainer.sample) {
-        LogBookView(camperID: SwiftDataCamper.previewCamperA.id, tripFilter: .allTrips)
+        LogBookView(localCamperID: SwiftDataCamper.previewCamperA.id, tripFilter: .allTrips)
     }
 }

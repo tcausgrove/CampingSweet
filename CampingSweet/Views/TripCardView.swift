@@ -53,7 +53,7 @@ struct TripCardView: View {
             }
         }
         .sheet(isPresented: $editingLogEntry, content: {
-            EditLogEntryView()
+            EditLogEntryView(previousLogEntry: logEntry )
         })
 
     }
@@ -65,7 +65,9 @@ struct TripCardView: View {
             print("Why is there not a trip?")
             return
         }
+            print("index is \(index)")
             camper!.trips.remove(at: index)
+            try? modelContext.save()
         }
     }
 }

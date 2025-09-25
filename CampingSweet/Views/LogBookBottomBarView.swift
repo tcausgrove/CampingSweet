@@ -23,6 +23,7 @@ struct LogBookBottomBarView: View {
             Button("Import CSV") {
                 isImporting = true
             }
+            .errorAlert($actionResult)
             .fileImporter(
                 isPresented: $isImporting,
                 allowedContentTypes: [.plainText],
@@ -56,9 +57,10 @@ struct LogBookBottomBarView: View {
                                                           dateImportFormat: settings.dateImportFormat)
             for newLogEntry in newTripData {
                 camper.trips.append(newLogEntry)
+                actionResult = .importCSVSucceeded
             }
         } catch {
-            // FIXME:  Need to handle failure here
+            actionResult = .failedLoading
         }
     }
 }

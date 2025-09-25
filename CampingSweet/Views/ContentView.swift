@@ -37,7 +37,7 @@ struct ContentView: View {
                     
                     NavigationLink {
                         if selectedCamperID != nil {
-                            LogBookView(camperID: selectedCamperID!, tripFilter: tripFilter)
+                            LogBookView(localCamperID: selectedCamperID!, tripFilter: tripFilter)
                         }
                     } label: {
                         Label("Log Book", systemImage: "list.bullet.rectangle.fill")
