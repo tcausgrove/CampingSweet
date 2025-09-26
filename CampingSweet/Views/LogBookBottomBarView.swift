@@ -16,7 +16,7 @@ struct LogBookBottomBarView: View {
     
     @Default(.settingsKey) var settings
 
-    var camper: SwiftDataCamper
+    var camper: Camper
 
     var body: some View {
         HStack {
@@ -51,7 +51,7 @@ struct LogBookBottomBarView: View {
             guard let message = String(data: try Data(contentsOf: selectedFile), encoding: .utf8) else { return }
             
             document.message = message
-            let newTripData: [SwiftDataLogEntry] = getCSV(inputString: document.message,
+            let newTripData: [LogEntry] = getCSV(inputString: document.message,
                                                           dateFormat: settings.chosenDateFormat,
                                                           locationType: settings.locationImportFormat,
                                                           dateImportFormat: settings.dateImportFormat)
@@ -66,5 +66,5 @@ struct LogBookBottomBarView: View {
 }
 
 #Preview {
-    LogBookBottomBarView(camper: SwiftDataCamper(id: UUID(), name: "Foo", isArchived: false, registrationNumber: "None", trips: []))
+    LogBookBottomBarView(camper: Camper(id: UUID(), name: "Foo", isArchived: false, registrationNumber: "None", trips: []))
 }

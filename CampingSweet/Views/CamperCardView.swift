@@ -10,7 +10,7 @@ import SwiftData
 import Defaults
 
 struct CamperCardView: View {
-    var camper: SwiftDataCamper
+    var camper: Camper
 
     @Environment(\.modelContext) var modelContext
     @Default(.settingsKey) var settings
@@ -84,15 +84,13 @@ struct CamperCardView: View {
         .presentationDragIndicator(.hidden)
     }
     
-    func deleteCamper(camper: SwiftDataCamper) {
+    func deleteCamper(camper: Camper) {
         if camper.id == selectedCamperID {
             // set the first camper that is not selected as the new selected
-            if let topCamper = try! modelContext.fetch(FetchDescriptor<SwiftDataCamper>()).first(where: { $0.id != selectedCamperID }) {
-                print("Setting selectedName to \(topCamper.name)")
+            if let topCamper = try! modelContext.fetch(FetchDescriptor<Camper>()).first(where: { $0.id != selectedCamperID }) {
                 selectedCamperID = topCamper.id
             } else {
                 // There is no camper to set as default
-                print("Setting selectedName to empty")
                 selectedCamperID = nil
             }
         }
@@ -103,7 +101,7 @@ struct CamperCardView: View {
 
 #Preview {
     ModelContainerPreview(ModelContainer.sample) {
-        CamperCardView(camper: SwiftDataCamper.previewCamperA)
+        CamperCardView(camper: Camper.previewCamperA)
     }
 
 }

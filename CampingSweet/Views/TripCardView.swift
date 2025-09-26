@@ -11,7 +11,7 @@ import Defaults
 
 
 struct TripCardView: View {
-    var logEntry: SwiftDataLogEntry
+    var logEntry: LogEntry
     
     @Default(.selectedCamperIDKey) var selectedCamperID
     @Default(.settingsKey) var settings
@@ -58,14 +58,12 @@ struct TripCardView: View {
 
     }
     
-    func deleteTrip(trip: SwiftDataLogEntry) {
-        let camper = SwiftDataCamper.selectedCamperFromID(with: modelContext, selectedCamperID: selectedCamperID)
+    func deleteTrip(trip: LogEntry) {
+        let camper = Camper.selectedCamperFromID(with: modelContext, selectedCamperID: selectedCamperID)
         if camper != nil {
             guard let index = camper!.trips.firstIndex(of: trip) else {
-            print("Why is there not a trip?")
             return
         }
-            print("index is \(index)")
             camper!.trips.remove(at: index)
             try? modelContext.save()
         }
@@ -73,5 +71,5 @@ struct TripCardView: View {
 }
 
 #Preview {
-    TripCardView(logEntry: SwiftDataLogEntry(title: "Preview trip", distance: 666.0))
+    TripCardView(logEntry: LogEntry(title: "Preview trip", distance: 666.0))
 }

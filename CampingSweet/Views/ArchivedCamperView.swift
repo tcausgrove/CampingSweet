@@ -9,7 +9,7 @@ import SwiftUI
 import SwiftData
 
 struct ArchivedCamperView: View {
-    @Bindable var camper: SwiftDataCamper
+    @Bindable var camper: Camper
 
     @State private var showModMenu = false
     
@@ -50,7 +50,7 @@ struct ArchivedCamperView: View {
 
 #Preview {
     ModelContainerPreview(ModelContainer.sample) {
-        ArchivedCamperView(camper: SwiftDataCamper.archivedCamper)
+        ArchivedCamperView(camper: Camper.archivedCamper)
     }
 
 }

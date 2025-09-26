@@ -15,6 +15,6 @@ struct CampingSweetApp: App {
         WindowGroup {
             ContentView()
         }
-        .modelContainer(for: [CheckListItem.self, SwiftDataCamper.self])
+        .modelContainer(for: [CheckListItem.self, Camper.self])
     }
 }

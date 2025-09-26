@@ -10,14 +10,13 @@ import SwiftData
 import Defaults
 
 struct CampersView: View {
-    @Query(sort: \SwiftDataCamper.name) var campers: [SwiftDataCamper]
+    @Query(sort: \Camper.name) var campers: [Camper]
     
     @Environment(\.modelContext) var modelContext
     @Default(.selectedCamperIDKey) var selectedCamperID
     @Default(.settingsKey) var settings
 
     @State private var addingCamper: Bool = false
-//    @State private var path = [SwiftDataCamper]()
     
     var body: some View {
         ZStack {
@@ -64,14 +63,14 @@ struct CampersView: View {
     }
     
     func addCamper() {
-        let camper = SwiftDataCamper(id: UUID())
+        let camper = Camper(id: UUID())
         // Set to be selected camper
         selectedCamperID = camper.id
         modelContext.insert(camper)
 //        path = [camper]
     }
     
-    func setSelectedCamper(camper: SwiftDataCamper) {
+    func setSelectedCamper(camper: Camper) {
         selectedCamperID = camper.id
         try? modelContext.save()
     }

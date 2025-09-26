@@ -11,7 +11,7 @@ import CoreLocation
 import Defaults
 
 struct EditLogEntryView: View {
-    var previousLogEntry: SwiftDataLogEntry?
+    var previousLogEntry: LogEntry?
 
     @Default(.selectedCamperIDKey) var selectedCamperID
     @Default(.settingsKey) var settings
@@ -66,9 +66,8 @@ struct EditLogEntryView: View {
     
     func saveLogBookEntry() {
         distance = Measurement(value: Double(distanceString) ?? 0.0, unit: settings.chosenDistance.unit)
-        let camper = SwiftDataCamper.selectedCamperFromID(with: modelContext, selectedCamperID: selectedCamperID)
+        let camper = Camper.selectedCamperFromID(with: modelContext, selectedCamperID: selectedCamperID)
         if camper == nil {
-            print("Why is this nil")
             return
         }
         if let previousLogEntry {
@@ -81,7 +80,7 @@ struct EditLogEntryView: View {
             previousLogEntry.longitude = Double(longitude) ?? 0.0
         } else {
             // Add a new trip
-            let newLogEntry = SwiftDataLogEntry(title: title,
+            let newLogEntry = LogEntry(title: title,
                                                 distance: distance.converted(to: .miles).value,
                                                 startDate: start,
                                                 endDate: end,
@@ -110,9 +109,6 @@ struct EditLogEntryView: View {
 
 #Preview {
     // PREVIEW IS NOT OPERATIONAL:  There is a problem with LocationButton
-//    EditLogEntryView(previousLogEntry: SwiftDataLogEntry(title: "Preview", distance: 12.3, latitude: 123.45678, longitude: -46.34567))
-    
-//    let previousLogEntry = SwiftDataLogEntry(title: "Preview", distance: 12.3, latitude: 123.45678, longitude: -46.34567)
-//    let camper = SwiftDataCamper(name: "Example", isArchived: false, registrationNumber: "N/A", trips: [previousLogEntry])
+
     EditLogEntryView(previousLogEntry: nil)
 }

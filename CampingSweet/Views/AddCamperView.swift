@@ -41,7 +41,7 @@ struct AddCamperView: View {
     }
     
     func addNewCamper() {
-        let newCamper = SwiftDataCamper(id: UUID(), name: name, isArchived: false, registrationNumber: registration)
+        let newCamper = Camper(id: UUID(), name: name, isArchived: false, registrationNumber: registration)
         modelContext.insert(newCamper)
         selectedCamperID = newCamper.id
         

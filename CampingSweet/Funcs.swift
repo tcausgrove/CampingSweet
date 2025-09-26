@@ -84,9 +84,9 @@ func startEndDateToNights(startDate: Date, endDate: Date) -> String {
 func getCSV(inputString: String,
             dateFormat: DateFormatType,
             locationType: LocationImportFormat,
-            dateImportFormat: DateImportFormat) -> [SwiftDataLogEntry] {
+            dateImportFormat: DateImportFormat) -> [LogEntry] {
     
-    var tripDataArray: [SwiftDataLogEntry] = []
+    var tripDataArray: [LogEntry] = []
     
     do {
         let csv: CSV = try CSV<Named>(string: inputString, delimiter: .comma)
@@ -110,7 +110,7 @@ func getCSV(inputString: String,
                 
             }
             let theRowDistance: Double = Double(dict["Miles driven"] ?? "") ?? 0.0
-            let rowData = SwiftDataLogEntry(title: dict["Location"] ?? "Unknown",
+            let rowData = LogEntry(title: dict["Location"] ?? "Unknown",
                                     distance: theRowDistance,
                                    startDate: theDates.0,
                                    endDate: theDates.1,
@@ -126,7 +126,7 @@ func getCSV(inputString: String,
 }
 
 // Function below uses the CodableCSV package
-func saveCSVImperatively(camper: SwiftDataCamper) -> UserError? {
+func saveCSVImperatively(camper: Camper) -> UserError? {
     var writer: CSVWriter!
     
     do {

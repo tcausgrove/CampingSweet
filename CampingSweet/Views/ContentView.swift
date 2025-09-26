@@ -10,7 +10,7 @@ import SwiftData
 import Defaults
 
 struct ContentView: View {
-    @Query var campers: [SwiftDataCamper]
+    @Query var campers: [Camper]
     
     @Environment(\.modelContext) var modelContext
 

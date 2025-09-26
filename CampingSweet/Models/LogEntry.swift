@@ -1,5 +1,5 @@
 //
-//  SwiftDataLogEntry.swift
+//  LogEntry.swift
 //  CampingSweet
 //
 //  Created by Timothy Causgrove on 6/19/25.
@@ -10,7 +10,7 @@ import SwiftData
 import CoreLocation
 
 @Model
-class SwiftDataLogEntry {
+class LogEntry {
     var title: String = ""
     var distance: Double?
     var startDate: Date
@@ -18,7 +18,7 @@ class SwiftDataLogEntry {
     var latitude: Double?
     var longitude: Double?
     
-    @Relationship var camper: SwiftDataCamper?
+    @Relationship var camper: Camper?
     
     init(title: String,
          distance: Double? = nil,
@@ -27,7 +27,7 @@ class SwiftDataLogEntry {
          location: CLLocationCoordinate2D? = nil,
          latitude: Double? = nil,
          longitude: Double? = nil,
-         camper: SwiftDataCamper? = nil)
+         camper: Camper? = nil)
     {
         self.title = title
         self.distance = distance
@@ -67,8 +67,8 @@ class SwiftDataLogEntry {
 }
 
 //  See https://developer.apple.com/documentation/swiftdata/filtering-and-sorting-persistent-data
-extension SwiftDataLogEntry {
-    static func predicate(searchText: String, datesToShow: FilterTrips, camperID: UUID) -> Predicate<SwiftDataLogEntry> {
+extension LogEntry {
+    static func predicate(searchText: String, datesToShow: FilterTrips, camperID: UUID) -> Predicate<LogEntry> {
         let nowDate = Date.now
         let calendar = Calendar(identifier: .gregorian)
         
@@ -87,12 +87,12 @@ extension SwiftDataLogEntry {
         let startOfYear = calendar.date(from: startOfYearComponents)!
         
         if datesToShow == .currentYear {
-            return #Predicate<SwiftDataLogEntry> { trip in
+            return #Predicate<LogEntry> { trip in
             // Need to used a closed range of dates
                 return (trip.camper?.id == camperID) && (trip.startDate >= startOfYear && trip.startDate <= nowDate)
             }
         } else {
-            return #Predicate<SwiftDataLogEntry> { trip in
+            return #Predicate<LogEntry> { trip in
                 trip.camper?.id == camperID
             }
         }

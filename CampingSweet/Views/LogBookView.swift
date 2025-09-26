@@ -16,23 +16,22 @@ struct LogBookView: View {
     @Environment(\.dismiss) var dismiss
     @Environment(\.modelContext) private var modelContext
 
-    @Query(sort: \SwiftDataLogEntry.startDate,
-           order: .reverse) private var trips: [SwiftDataLogEntry]
+    @Query(sort: \LogEntry.startDate,
+           order: .reverse) private var trips: [LogEntry]
     
-//    @State private var path = [SwiftDataCamper]()
     @State private var editingLogEntry: Bool = false
     @State private var isExporting: Bool = false
-    @State var tripToEdit: SwiftDataLogEntry? = nil
+    @State var tripToEdit: LogEntry? = nil
     @State private var searchText: String = ""
     
     init(localCamperID: UUID, tripFilter: FilterTrips) {
         self.localCamperID = localCamperID
         self.tripFilter = tripFilter
         
-        let predicate = SwiftDataLogEntry.predicate(searchText: searchText,
+        let predicate = LogEntry.predicate(searchText: searchText,
                                                         datesToShow: tripFilter,
                                                         camperID: localCamperID)
-        _trips = Query(filter: predicate, sort: \SwiftDataLogEntry.startDate, order: .reverse)
+        _trips = Query(filter: predicate, sort: \LogEntry.startDate, order: .reverse)
     }
     
     var body: some View {
@@ -46,7 +45,7 @@ struct LogBookView: View {
 //                }
             }
             .safeAreaInset(edge: .bottom, content: {
-                let camper = SwiftDataCamper.selectedCamperFromID(with: modelContext, selectedCamperID: localCamperID)
+                let camper = Camper.selectedCamperFromID(with: modelContext, selectedCamperID: localCamperID)
                 if camper != nil {
                     LogBookBottomBarView(camper: camper!)
                 }
@@ -75,6 +74,6 @@ struct LogBookView: View {
 
 #Preview {
     ModelContainerPreview(ModelContainer.sample) {
-        LogBookView(localCamperID: SwiftDataCamper.previewCamperA.id, tripFilter: .allTrips)
+        LogBookView(localCamperID: Camper.previewCamperA.id, tripFilter: .allTrips)
     }
 }

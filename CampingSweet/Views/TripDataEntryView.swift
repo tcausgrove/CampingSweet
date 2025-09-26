@@ -64,7 +64,7 @@ struct TripDataEntryView: View {
                 latitude = String(location.coordinate.latitude)
                 longitude = String(location.coordinate.longitude)
             } else {
-                print("Get Location failed \(String(describing: getLocation.didFailWithError))")
+//                print("Get Location failed \(String(describing: getLocation.didFailWithError))")
             }
         }
     }
