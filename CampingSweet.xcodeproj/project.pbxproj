@@ -73,6 +73,7 @@
 		78A4153A29F094EB005CBEF1 /* AddCamperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCamperView.swift; sourceTree = "<group>"; };
 		78A4153C29F0BDC0005CBEF1 /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		78A4153E29F1E414005CBEF1 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		78B4BF2C2E89AEDE0000E8EA /* CampingSweet.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CampingSweet.entitlements; sourceTree = "<group>"; };
 		78F810262DD29D33008632D6 /* LogBookBottomBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogBookBottomBarView.swift; sourceTree = "<group>"; };
 		78F810282DD3F42D008632D6 /* HelpTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpTextView.swift; sourceTree = "<group>"; };
 		78F8ACDD2DA7335D0094718D /* TripCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripCardView.swift; sourceTree = "<group>"; };
@@ -119,6 +120,7 @@
 		78A4151C29E4D3AB005CBEF1 /* CampingSweet */ = {
 			isa = PBXGroup;
 			children = (
+				78B4BF2C2E89AEDE0000E8EA /* CampingSweet.entitlements */,
 				7899B4882E70E9B100452F8C /* PreviewHelper */,
 				78A4153529F021D4005CBEF1 /* Views */,
 				78413C032A44EB49006DCF9E /* Extensions.swift */,
@@ -427,9 +429,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = CampingSweet/CampingSweet.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_ASSET_PATHS = "\"CampingSweet/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -465,9 +468,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = CampingSweet/CampingSweet.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_ASSET_PATHS = "\"CampingSweet/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;

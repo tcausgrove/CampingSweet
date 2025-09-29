@@ -38,7 +38,7 @@ struct CampersView: View {
                 
                 if hasArchivedCampers() {
                     Text("Archived campers")
-                        .font(.title2)
+                        .font(.title)
                         .bold()
                     ForEach(campers) { camper in
                         if camper.isArchived {

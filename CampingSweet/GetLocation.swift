@@ -21,9 +21,13 @@ public class GetLocation: NSObject, CLLocationManagerDelegate {
         manager.delegate = self
         manager.desiredAccuracy = kCLLocationAccuracyBestForNavigation
         manager.requestWhenInUseAuthorization()
-        hasLocationServices = CLLocationManager.locationServicesEnabled()
-        if hasLocationServices { manager.startUpdatingLocation() }
-        else { locationCallback(nil) }
+// The following is based on https://stackoverflow.com/questions/73805219/main-thread-warning-with-cllocationmanager-locationservicesenabled
+        let myQueue = DispatchQueue(label:"myOwnQueue")
+        myQueue.async {
+            self.hasLocationServices = CLLocationManager.locationServicesEnabled()
+            if self.hasLocationServices { self.manager.startUpdatingLocation() }
+            else { self.locationCallback(nil) }
+        }
     }
     
     public func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {

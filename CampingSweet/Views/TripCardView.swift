@@ -23,6 +23,7 @@ struct TripCardView: View {
             VStack(alignment: .leading, spacing: 2) {
                 HStack {
                     Text("Title:  \(logEntry.title)")
+                        .lineLimit(1)
                     
                     Spacer()
                     

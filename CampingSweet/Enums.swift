@@ -8,13 +8,6 @@
 import Foundation
 import Defaults
 
-//enum VolumeOptions: String, CaseIterable, Identifiable, Codable {
-//    case america = "Gallons"
-//    case europe = "Liters"
-//
-//    var id: Self { self }
-//}
-
 enum DistanceOptions: String, CaseIterable, Identifiable, Codable {
     case mi = "Miles"
     case km = "Kilometers"
@@ -84,7 +77,8 @@ enum UserError: LocalizedError {
     
     var errorDescription: String? {    // This shows up as the first thing in bold in the error alert
         switch self {
-            case .exportCSVSucceeded: return "File saved"
+        case .exportCSVSucceeded: return "File saved"
+        case .importCSVSucceeded: return "File loaded"
         default: return "Data error"
         }
     }

@@ -77,11 +77,6 @@ struct SettingsView: View {
                 settings.chosenDateFormat = dateFormat
                 settings.locationImportFormat = locationFormat
                 settings.dateImportFormat = dateImportFormat
-//                changeSettings(newChosenDistance: defaultDistance,
-//                                         newClockHours: timeFormat,
-//                                         newDateFormat: dateFormat,
-//                                         newLocationFormat: locationFormat,
-//                                         newDateImportFormat: dateImportFormat)
             }
             .navigationTitle("User settings")
         }

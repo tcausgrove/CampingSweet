@@ -111,7 +111,7 @@ func getCSV(inputString: String,
             }
             let theRowDistance: Double = Double(dict["Miles driven"] ?? "") ?? 0.0
             let rowData = LogEntry(title: dict["Location"] ?? "Unknown",
-                                    distance: theRowDistance,
+                                   distance: theRowDistance,
                                    startDate: theDates.0,
                                    endDate: theDates.1,
                                    latitude: theLocation?.latitude,
@@ -141,7 +141,7 @@ func saveCSVImperatively(camper: Camper) -> UserError? {
         return .couldNotSaveCSV
     }
     do {
-        let heading = ["Start Date", "Nights", "Location", "Coordinates", "Miles driven"]
+        let heading = ["Date", "Nights", "Location", "Coordinates", "Miles driven"]
         try writer.write(row: heading)
         
         for trip in camper.trips {
