@@ -13,7 +13,7 @@ struct SettingsView: View {
     @Default(.settingsKey) var settings
 
     @State var defaultDistance: DistanceOptions = .mi
-    @State var timeFormat: ClockHours = .two
+    @State var tripFormat: TripDisplayType = .card
     @State var dateFormat: DateFormatType = .monthFirst
     @State var locationFormat: LocationImportFormat = .dd
     @State var dateImportFormat: DateImportFormat = .startEnd
@@ -32,13 +32,13 @@ struct SettingsView: View {
                     })
                     
                     // FIXME: This doesn't appear to be used anywhere
-                    Picker("Time format", selection: $timeFormat) {
-                        ForEach(ClockHours.allCases) { option in
+                    Picker("Log Book Display", selection: $tripFormat) {
+                        ForEach(TripDisplayType.allCases) { option in
                             Text(option.rawValue)
                         }
                     }
                     .onAppear(perform: {
-                        timeFormat = settings.chosenClockHours
+                        tripFormat = settings.chosentripFormat
                     })
                 }
                 
@@ -73,7 +73,7 @@ struct SettingsView: View {
             .background(BackgroundView()).scrollContentBackground(.hidden)
             .onDisappear {
                 settings.chosenDistance = defaultDistance
-                settings.chosenClockHours = timeFormat
+                settings.chosentripFormat = tripFormat
                 settings.chosenDateFormat = dateFormat
                 settings.locationImportFormat = locationFormat
                 settings.dateImportFormat = dateImportFormat

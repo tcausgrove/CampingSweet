@@ -24,9 +24,9 @@ enum DistanceOptions: String, CaseIterable, Identifiable, Codable {
     }
 }
 
-enum ClockHours: String, CaseIterable, Identifiable, Codable {
-    case two = "12 Hour"
-    case one = "24 Hour"
+enum TripDisplayType: String, CaseIterable, Identifiable, Codable {
+    case card = "Card"
+    case list = "List"
     
     var id: Self { self }
 }

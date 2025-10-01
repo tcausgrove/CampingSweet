@@ -38,6 +38,7 @@
 		78A4153F29F1E414005CBEF1 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A4153E29F1E414005CBEF1 /* SettingsView.swift */; };
 		78B4BE832E7CAD6D0000E8EA /* Defaults in Frameworks */ = {isa = PBXBuildFile; productRef = 78B4BE822E7CAD6D0000E8EA /* Defaults */; };
 		78B4BE852E7CAD6D0000E8EA /* DefaultsMacros in Frameworks */ = {isa = PBXBuildFile; productRef = 78B4BE842E7CAD6D0000E8EA /* DefaultsMacros */; };
+		78B4BF2F2E8B2F190000E8EA /* TripListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B4BF2E2E8B2F190000E8EA /* TripListView.swift */; };
 		78F810272DD29D33008632D6 /* LogBookBottomBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F810262DD29D33008632D6 /* LogBookBottomBarView.swift */; };
 		78F810292DD3F42D008632D6 /* HelpTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F810282DD3F42D008632D6 /* HelpTextView.swift */; };
 		78F8ACDE2DA7335D0094718D /* TripCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F8ACDD2DA7335D0094718D /* TripCardView.swift */; };
@@ -74,6 +75,7 @@
 		78A4153C29F0BDC0005CBEF1 /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		78A4153E29F1E414005CBEF1 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		78B4BF2C2E89AEDE0000E8EA /* CampingSweet.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CampingSweet.entitlements; sourceTree = "<group>"; };
+		78B4BF2E2E8B2F190000E8EA /* TripListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripListView.swift; sourceTree = "<group>"; };
 		78F810262DD29D33008632D6 /* LogBookBottomBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogBookBottomBarView.swift; sourceTree = "<group>"; };
 		78F810282DD3F42D008632D6 /* HelpTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpTextView.swift; sourceTree = "<group>"; };
 		78F8ACDD2DA7335D0094718D /* TripCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripCardView.swift; sourceTree = "<group>"; };
@@ -171,6 +173,7 @@
 				78A4153E29F1E414005CBEF1 /* SettingsView.swift */,
 				78F8ACDD2DA7335D0094718D /* TripCardView.swift */,
 				785949802CEC0E5800D8060A /* TripDataEntryView.swift */,
+				78B4BF2E2E8B2F190000E8EA /* TripListView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -271,6 +274,7 @@
 				785949522CE6CAA200D8060A /* Funcs.swift in Sources */,
 				78A4153929F08713005CBEF1 /* CampersView.swift in Sources */,
 				78413C0A2A6DEE84006DCF9E /* NumbersOnlyViewModifier.swift in Sources */,
+				78B4BF2F2E8B2F190000E8EA /* TripListView.swift in Sources */,
 				78413C0C2A7435D1006DCF9E /* ChecklistView.swift in Sources */,
 				78F810272DD29D33008632D6 /* LogBookBottomBarView.swift in Sources */,
 				78820E742D35D39200AA6807 /* GetLocation.swift in Sources */,
@@ -432,7 +436,7 @@
 				CODE_SIGN_ENTITLEMENTS = CampingSweet/CampingSweet.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_ASSET_PATHS = "\"CampingSweet/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -471,7 +475,7 @@
 				CODE_SIGN_ENTITLEMENTS = CampingSweet/CampingSweet.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_ASSET_PATHS = "\"CampingSweet/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;

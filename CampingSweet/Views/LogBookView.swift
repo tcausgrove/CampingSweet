@@ -12,9 +12,11 @@ import Defaults
 struct LogBookView: View {
     var localCamperID: UUID
     var tripFilter: FilterTrips
-
+//    var tripDisplayType: TripDisplayType = .list
+    
     @Environment(\.dismiss) var dismiss
     @Environment(\.modelContext) private var modelContext
+    @Default(.settingsKey) var settings
 
     @Query(sort: \LogEntry.startDate,
            order: .reverse) private var trips: [LogEntry]
@@ -29,8 +31,8 @@ struct LogBookView: View {
         self.tripFilter = tripFilter
         
         let predicate = LogEntry.predicate(searchText: searchText,
-                                                        datesToShow: tripFilter,
-                                                        camperID: localCamperID)
+                                           datesToShow: tripFilter,
+                                           camperID: localCamperID)
         _trips = Query(filter: predicate, sort: \LogEntry.startDate, order: .reverse)
     }
     
@@ -39,37 +41,45 @@ struct LogBookView: View {
             BackgroundView()
             ScrollView {
 //                NavigationStack(path: $path) {
-                    ForEach(trips) { trip in
+                if settings.chosentripFormat == .list {
+                    Divider()
+                }
+                ForEach(trips) { trip in
+                    switch settings.chosentripFormat {
+                    case .card:
                         TripCardView(logEntry: trip)
+                    case .list:
+                        TripListView(logEntry: trip)
                     }
+                }
+            }
 //                }
-            }
-            .safeAreaInset(edge: .bottom, content: {
-                let camper = Camper.selectedCamperFromID(with: modelContext, selectedCamperID: localCamperID)
-                if camper != nil {
-                    LogBookBottomBarView(camper: camper!)
-                }
-            })
-            .toolbar() {
-                ToolbarItem {
-                    Button(action: {
-                        tripToEdit = nil
-                        editingLogEntry.toggle()
-                    }) {
-                        Image(systemName: "plus")
-                    }
-                }
-                
-                 ToolbarItem {
-                    FilterButton()
-                }
-            }
-            .sheet(isPresented: $editingLogEntry, content: {
-                EditLogEntryView()
-            })
-            .navigationTitle("Log Book")
         }
-    }    
+        .safeAreaInset(edge: .bottom, content: {
+            let camper = Camper.selectedCamperFromID(with: modelContext, selectedCamperID: localCamperID)
+            if camper != nil {
+                LogBookBottomBarView(camper: camper!)
+            }
+        })
+        .toolbar() {
+            ToolbarItem {
+                Button(action: {
+                    tripToEdit = nil
+                    editingLogEntry.toggle()
+                }) {
+                    Image(systemName: "plus")
+                }
+            }
+            
+            ToolbarItem {
+                FilterButton()
+            }
+        }
+        .sheet(isPresented: $editingLogEntry, content: {
+            EditLogEntryView()
+        })
+        .navigationTitle("Log Book")
+    }
 }
 
 #Preview {

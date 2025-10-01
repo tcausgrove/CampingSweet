@@ -11,13 +11,13 @@ import Defaults
 
 struct Settings: Codable, Defaults.Serializable {
     var chosenDistance: DistanceOptions
-    var chosenClockHours: ClockHours
+    var chosentripFormat: TripDisplayType
     var chosenDateFormat: DateFormatType
     var locationImportFormat: LocationImportFormat
     var dateImportFormat: DateImportFormat
     
     static let example = Settings(chosenDistance: .mi,
-                                  chosenClockHours: .two,
+                                  chosentripFormat: .card,
                                   chosenDateFormat: .monthFirst,
                                   locationImportFormat: .dd,
                                   dateImportFormat: .startEnd)
