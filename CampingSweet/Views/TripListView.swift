@@ -41,8 +41,13 @@ struct TripListView: View {
             
             Divider()
         }
+        .sheet(isPresented: $editingLogEntry, content: {
+            EditLogEntryView(previousLogEntry: logEntry )
+        })
+
     }
     
+    // FIXME:  This appears two places, need to consolidate
     func deleteTrip(trip: LogEntry) {
         let camper = Camper.selectedCamperFromID(with: modelContext, selectedCamperID: selectedCamperID)
         if camper != nil {

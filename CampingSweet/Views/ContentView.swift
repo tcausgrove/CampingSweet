@@ -13,6 +13,7 @@ struct ContentView: View {
     @Query var campers: [Camper]
     
     @Environment(\.modelContext) var modelContext
+    @State private var navigationManager = NavigationManager()
 
     @Default(.selectedCamperIDKey) var selectedCamperID
     @Default(.tripFilterKey) var tripFilter
@@ -22,82 +23,52 @@ struct ContentView: View {
     @State private var changingSettings = false
     
     var body: some View {
-        NavigationStack {
+        NavigationStack(path: $navigationManager.path) {
             ZStack {
                 BackgroundView()
                 VStack {
                     Spacer()
                     
-                    NavigationLink {
-                        CampersView()
-                    } label: {
-                        Label("My Campers", image: "Camper")
-                    }
+                    NavigationLink(value: ViewList.campers,
+                                   label: { Label("My Campers", image: "Camper")
+                    })
+                    .showSubView()
                     .buttonStyle(PrimaryButtonStyle(isActive: true))
                     
-                    NavigationLink {
-                        if selectedCamperID != nil {
-                            LogBookView(localCamperID: selectedCamperID!, tripFilter: tripFilter)
-                        }
-                    } label: {
-                        Label("Log Book", systemImage: "list.bullet.rectangle.fill")
-                    }
+                    NavigationLink(value: selectedCamperID,
+                                   label: { Label("Log Book", systemImage: "list.bullet.rectangle.fill")
+                    })
+                    .navigationDestination(for: UUID.self) { camperID in
+                            LogBookView(localCamperID: camperID, tripFilter: tripFilter) }
                     .buttonStyle(PrimaryButtonStyle(isActive: selectedCamperID != nil))
                     
-                    NavigationLink {
-                        ChecklistView()
-                    } label: {
-                        Label("Departure checklist", systemImage: "checklist")
-                    }
-                    .buttonStyle(PrimaryButtonStyle(isActive: true))
+                    NavigationLink(value: ViewList.checklist,
+                                   label: { Label("Departure checklist", systemImage: "checklist") })
+                    .showSubView()
+                        .buttonStyle(PrimaryButtonStyle(isActive: true))
                     
                     Spacer()
-                }
                 
-                .padding(2)
-                .toolbar {
-                    ToolbarItemGroup(placement: .bottomBar) {
-                        NavigationLink {
-                            HelpView()
-                        } label: {
-                            Image(systemName: "questionmark")
-                                .font(.title)
-                                .fontWeight(.bold)
-                                .padding([.bottom, .leading])
-                        }
-//                        Button(action: { showHelpMenu = true }) {
-//                            Image(systemName: "questionmark")
-//                                .font(.title)
-//                                .fontWeight(.bold)
-//                                .padding([.bottom, .leading])
-//                        }
-//                        .navigationDestination(isPresented: $showHelpMenu) {
-//                            HelpView()
-//                        }
+                    HStack {
+                    
+//                .padding(2)
+                        NavigationLink(value: ViewList.help,
+                                       label: { Image(systemName: "questionmark").toolbarImageStyle()
+                        })
+                        .showSubView()
                         
                         Spacer()
                         
-                        NavigationLink {
-                            SettingsView()
-                        } label: {
-                            Image(systemName: "gearshape.fill")
-                                .font(.title)
-                                .fontWeight(.bold)
-                                .padding([.bottom, .leading])
-                        }
-//                        Button(action: { changingSettings = true }) {
-//                            Image(systemName: "gearshape.fill")
-//                                .font(.title)
-//                                .padding([.bottom, .trailing])
-//                        }
-//                        .navigationDestination(isPresented: $changingSettings) {
-//                            SettingsView()
-//                        }
+                        NavigationLink(value: ViewList.settings,
+                                       label: { Image(systemName: "gearshape.fill").toolbarImageStyle()
+                        })
+                        .showSubView()
                     }
                 }
                 .navigationTitle("CampingSweet")
             }
         }
+        .environment(navigationManager)
     }
 }
 
@@ -119,3 +90,18 @@ struct PrimaryButtonStyle: ButtonStyle {
     }
 }
 
+struct ToolbarViewModifier: ViewModifier {
+    
+    func body(content: Content) -> some View {
+        content
+            .font(.title)
+            .fontWeight(.bold)
+            .padding([.leading, .trailing], 34)
+    }
+}
+
+extension View {
+    func toolbarImageStyle() -> some View {
+        self.modifier(ToolbarViewModifier())
+    }
+}
