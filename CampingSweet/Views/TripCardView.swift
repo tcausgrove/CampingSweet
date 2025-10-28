@@ -27,18 +27,7 @@ struct TripCardView: View {
                     
                     Spacer()
                     
-                    Menu {
-                        Button(role: .destructive, action: { deleteTrip(trip: logEntry) }) {
-                            Text("Delete trip")
-                        }
-                        Button(action: {
-                            editingLogEntry = true
-                        }) {
-                            Text("Edit trip")                       }
-                    } label: {
-                        Text("Trip options")
-                    }
-
+                    TripOptionsMenuView(logEntry: logEntry, editingLogEntry: $editingLogEntry)
                 }
                 Text("When:  \(logEntry.startDate.formatted(date: .long, time: .omitted))")
                 let numberOfNightsText = "Number of nights:  " + String(logEntry.numberOfNights)
@@ -57,17 +46,6 @@ struct TripCardView: View {
             EditLogEntryView(previousLogEntry: logEntry )
         })
 
-    }
-    
-    func deleteTrip(trip: LogEntry) {
-        let camper = Camper.selectedCamperFromID(with: modelContext, selectedCamperID: selectedCamperID)
-        if camper != nil {
-            guard let index = camper!.trips.firstIndex(of: trip) else {
-            return
-        }
-            camper!.trips.remove(at: index)
-            try? modelContext.save()
-        }
     }
 }
 

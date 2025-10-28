@@ -11,7 +11,6 @@ import Defaults
 struct TripListView: View {
     var logEntry: LogEntry
     
-    @Default(.selectedCamperIDKey) var selectedCamperID
     @Default(.settingsKey) var settings
     @Environment(\.modelContext) var modelContext
     @State private var editingLogEntry: Bool = false
@@ -24,18 +23,7 @@ struct TripListView: View {
                 
                 Spacer()
                 
-                Menu {
-                    Button(role: .destructive, action: { deleteTrip(trip: logEntry) }) {
-                        Text("Delete trip")
-                    }
-                    Button(action: {
-                        editingLogEntry = true
-                    }) {
-                        Text("Edit trip")                       }
-                } label: {
-                    Text("Trip options")
-                }
-                
+                TripOptionsMenuView(logEntry: logEntry, editingLogEntry: $editingLogEntry)
             }
             .padding(8)
             
@@ -45,18 +33,6 @@ struct TripListView: View {
             EditLogEntryView(previousLogEntry: logEntry )
         })
 
-    }
-    
-    // FIXME:  This appears two places, need to consolidate
-    func deleteTrip(trip: LogEntry) {
-        let camper = Camper.selectedCamperFromID(with: modelContext, selectedCamperID: selectedCamperID)
-        if camper != nil {
-            guard let index = camper!.trips.firstIndex(of: trip) else {
-            return
-        }
-            camper!.trips.remove(at: index)
-            try? modelContext.save()
-        }
     }
 }
 

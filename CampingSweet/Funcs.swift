@@ -9,6 +9,7 @@ import Foundation
 import SwiftCSV
 import CoreLocation
 import CodableCSV
+import MapKit
 
 // Helper for CSV import; assumes a dash between initial and final dates
 func convertStringToDates(inputString: String, dateFormat: DateFormatType) -> (Date, Date) {
@@ -158,4 +159,16 @@ func saveCSVImperatively(camper: Camper) -> UserError? {
         return .couldNotSaveCSV
     }
     return .exportCSVSucceeded
+}
+
+
+func openMapAtLocation(logEntry: LogEntry) {
+    let regionDistance: CLLocationDistance = 50000
+    let coordinates = CLLocationCoordinate2D(latitude: logEntry.latitude!, longitude: logEntry.longitude!)
+    
+    let options = [MKLaunchOptionsMapSpanKey: NSNumber(value: regionDistance)]
+    let placemark = MKPlacemark(coordinate: coordinates, addressDictionary: nil)
+    let mapItem = MKMapItem(placemark: placemark)  // Placemark is deprecated; find an alternative
+    mapItem.name = logEntry.title
+    mapItem.openInMaps(launchOptions: options)
 }
