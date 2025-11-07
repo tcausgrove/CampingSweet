@@ -19,7 +19,6 @@ struct HelpTextView: View {
                         .font(.title2)
                     Text("- Tap on the plus to add a camper")
                     Text("- Tap on a camper to select it for the log book")
-                    Text("- Long press on a camper to edit its information")
                     Text("- Tap on the ellipsis (three dots) to delete or archive a camper")
                     Text("- Archived campers are kept at the bottom; tap the ellipsis to unarchive them or delete them")
                 }
@@ -30,7 +29,7 @@ struct HelpTextView: View {
                         .font(.title2)
                     Text("- Scroll up or down for more trips")
                     Text("- Tap on the plus to add a log entry")
-                    Text("- Long press on a log entry to edit its information")
+                    Text("- Tap on Trip Options to edit, delete, or see a trip in Maps")
                     Text("- Trips can be imported or exported from/to a CSV file")
                     Text("- For more information about the CSV format, see the README")
                 }

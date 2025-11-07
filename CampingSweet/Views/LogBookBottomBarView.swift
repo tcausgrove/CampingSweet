@@ -11,8 +11,11 @@ import Defaults
 
 struct LogBookBottomBarView: View {
     @State private var isImporting: Bool = false
-    @State private var document: MessageDocument = MessageDocument(message: "")
+    @State private var isExporting: Bool = false
     @State private var actionResult: UserError? = nil
+    @State var exportData: TextFile = TextFile(initialText: "")
+    
+    @State private var document: MessageDocument = MessageDocument(message: "")
     
     @Default(.settingsKey) var settings
 
@@ -35,7 +38,14 @@ struct LogBookBottomBarView: View {
             Spacer()
             
             Button("Export CSV") {
-                actionResult = saveCSVImperatively(camper: camper)
+                exportData = fileExporterCSVSaver(camper: camper)
+                isExporting = true
+//                actionResult = saveCSVImperatively(camper: camper)
+            }
+            .fileExporter(isPresented: $isExporting,
+                          document: exportData,
+                          contentType: .plainText,
+                          defaultFilename: "\(camper.name)_log.csv") { result in
             }
             .disabled(camper.trips.isEmpty)
             .errorAlert($actionResult)
@@ -44,7 +54,7 @@ struct LogBookBottomBarView: View {
         .padding(.top, 12)
         .background(.sheetButtonBackground)
     }
-    
+
     func handleCSVFileImport(result: Result<[URL], any Error>) {
         do {
             guard let selectedFile: URL = try result.get().first else { return }

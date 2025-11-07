@@ -31,7 +31,6 @@ struct SettingsView: View {
                         defaultDistance = settings.chosenDistance
                     })
                     
-                    // FIXME: This doesn't appear to be used anywhere
                     Picker("Log Book Display", selection: $tripFormat) {
                         ForEach(TripDisplayType.allCases) { option in
                             Text(option.rawValue)
