@@ -41,7 +41,8 @@ struct TextFile: FileDocument {
 
 
 // Function below uses the CodableCSV package
-// Not being used; superseded by fileExporterCSVSaver
+// Not being used; superseded by fileExporterCSVSaver because
+//   this routine saves only to documentDirectory; I want to present a file dialog
 func saveCSVImperatively(camper: Camper) -> UserError? {
     var writer: CSVWriter!
     
@@ -77,6 +78,8 @@ func saveCSVImperatively(camper: Camper) -> UserError? {
 }
 
 func fileExporterCSVSaver(camper: Camper) -> TextFile {
+    // This can be written better.  See https://developer.apple.com/documentation/swift/preserving-the-results-of-a-throwing-expression and
+    // https://learn-swift.com/the-result-type/ to return both error on failure and the file on success.
     var data: String = ""
     let heading = ["Date", "Nights", "Location", "Coordinates", "Miles driven"]
     do {
@@ -93,6 +96,7 @@ func fileExporterCSVSaver(camper: Camper) -> TextFile {
         }
         data = try encoder.endEncoding()
     } catch {
+        // FIXME:  Need to handle error below
         print("couldn't do it")
     }
     var file = TextFile()

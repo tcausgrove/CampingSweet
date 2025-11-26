@@ -83,10 +83,11 @@ func startEndDateToNights(startDate: Date, endDate: Date) -> String {
 func openMapAtLocation(logEntry: LogEntry) {
     let regionDistance: CLLocationDistance = 50000
     let coordinates = CLLocationCoordinate2D(latitude: logEntry.latitude!, longitude: logEntry.longitude!)
-    
-    let options = [MKLaunchOptionsMapSpanKey: NSNumber(value: regionDistance)]
+    let regionSpan = MKCoordinateRegion(center: coordinates, latitudinalMeters: regionDistance, longitudinalMeters: regionDistance)
+
     let placemark = MKPlacemark(coordinate: coordinates, addressDictionary: nil)
-    let mapItem = MKMapItem(placemark: placemark)  // Placemark is deprecated; find an alternative
+    let mapItem = MKMapItem(placemark: placemark)
+    let options = [MKLaunchOptionsMapSpanKey: NSValue(mkCoordinateSpan: regionSpan.span)]
     mapItem.name = logEntry.title
     mapItem.openInMaps(launchOptions: options)
 }
