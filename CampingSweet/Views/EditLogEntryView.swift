@@ -76,16 +76,16 @@ struct EditLogEntryView: View {
             previousLogEntry.drivingDistanceMiles = distance
             previousLogEntry.startDate = start
             previousLogEntry.endDate = end
-            previousLogEntry.latitude = Double(latitude) ?? 0.0
-            previousLogEntry.longitude = Double(longitude) ?? 0.0
+            previousLogEntry.latitude = Double(latitude) ?? nil
+            previousLogEntry.longitude = Double(longitude) ?? nil
         } else {
             // Add a new trip
             let newLogEntry = LogEntry(title: title,
                                                 distance: distance.converted(to: .miles).value,
                                                 startDate: start,
                                                 endDate: end,
-                                                latitude: Double(latitude) ?? 0.0,
-                                                longitude: Double(longitude) ?? 0.0,
+                                                latitude: Double(latitude) ?? nil,
+                                                longitude: Double(longitude) ?? nil,
                                                 camper: camper)
             camper!.trips.append(newLogEntry)
         }

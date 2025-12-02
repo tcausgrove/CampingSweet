@@ -86,7 +86,7 @@ extension Double {
 }
 
 
-extension CLLocationCoordinate2D {
+extension CLLocationCoordinate2D {  // Used for CSV Import
     init(dmsString: String) {
         let scanner = Scanner(string: dmsString)
         scanner.charactersToBeSkipped = CharacterSet(charactersIn: "°'\" ")
@@ -123,7 +123,7 @@ extension CLLocationCoordinate2D {
     }
 }
 
-extension CLLocationCoordinate2D {
+extension CLLocationCoordinate2D {  // Used for CSV Import
     init(ddString: String) {
         let stringArray = ddString.components(separatedBy: " ")
         let latitudeDouble = Double(stringArray[0])?.decimalPlaces(toPlaces: 6) ?? 0.0

@@ -123,14 +123,13 @@ func getCSV(inputString: String,
                 let numberOfNights: Int = Int(dict["Nights"] ?? "") ?? 0
                 theDates.1 = theDates.0.addingTimeInterval(86400 * Double(numberOfNights))
             }
-            let theLocationString: String = dict["Coordinates"] ?? ""
-            if theLocationString != "" {
+            let theLocationString: String? = dict["Coordinates"] ?? nil
+            if theLocationString != "" && theLocation != nil {
                 if locationType == .dms {
-                    theLocation = CLLocationCoordinate2D(dmsString: theLocationString) // Custom written extension to CLLocationCoordinate2D; see Extensions file
+                    theLocation = CLLocationCoordinate2D(dmsString: theLocationString!) // Custom written extension to CLLocationCoordinate2D; see Extensions file
                 } else {
-                    theLocation = CLLocationCoordinate2D(ddString: theLocationString)  // Custom written extension to CLLocationCoordinate2D; see Extensions file
+                    theLocation = CLLocationCoordinate2D(ddString: theLocationString!)  // Custom written extension to CLLocationCoordinate2D; see Extensions file
                 }
-                
             }
             let theRowDistance: Double = Double(dict["Miles driven"] ?? "") ?? 0.0
             let rowData = LogEntry(title: dict["Location"] ?? "Unknown",
