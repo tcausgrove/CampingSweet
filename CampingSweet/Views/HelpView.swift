@@ -20,28 +20,13 @@ struct HelpView: View {
                 Text("CampingSweet Help")
                     .font(.title)
                     .padding(12)
-                
-                Picker("Title key", selection: $helpSection, content: {
-                    ForEach(HelpSection.allCases) { theSection in
-                        Text(theSection.rawValue.capitalized)
-                    }
-                })
-                .pickerStyle(MenuPickerStyle())
 
-//                Menu {
-//                    Picker(selection: $helpSection) {
-//                        ForEach(HelpSection.allCases) { theSection in
-//                            Text(theSection.rawValue.capitalized)
-//                        }
-//                    } label: { }
-//                } label: {
-//                    Text("\(helpSection.rawValue.capitalized) \(Image(systemName: "chevron.up.chevron.down"))")
-//                        .font(.title3)
-//                }
-                HelpTextView(helpSection: helpSection)
+                ScrollView {
+                    HelpTextView()
+                }
+
                 Spacer()
             }
-//            .pickerStyle(.wheel)
         }
     }
 }

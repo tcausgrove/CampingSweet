@@ -38,7 +38,13 @@ struct LogBookBottomBarView: View {
             Spacer()
             
             Button("Export CSV") {
-                exportData = fileExporterCSVSaver(camper: camper)
+                let exportResult = fileExporterCSVSaver(camper: camper)
+                switch exportResult {
+                case .success(let text):
+                    exportData = text
+                case .failure(let error):
+                    actionResult = error
+                }
                 isExporting = true
 //                actionResult = saveCSVImperatively(camper: camper)
             }

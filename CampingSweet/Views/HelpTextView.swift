@@ -8,48 +8,49 @@
 import SwiftUI
 
 struct HelpTextView: View {
-    var helpSection: HelpSection
     
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
-            switch helpSection {
-            case .camperScreen:
-                Group {
-                    Text("Options on Campers Screen")
-                        .font(.title2)
-                    Text("- Tap on the plus to add a camper")
-                    Text("- Tap on a camper to select it for the log book")
-                    Text("- Tap on the ellipsis (three dots) to delete or archive a camper")
-                    Text("- Archived campers are kept at the bottom; tap the ellipsis to unarchive them or delete them")
-                }
+            let overviewText = """
+                CampingSweet helps you keep track of campsites you have visited.  It stores data such as the dates and number of nights spent there, the milage driven to the site. The app allows more than one camper; for each camper, the total miles driven and number of nights used are displayed.
                 
-            case .logBookScreen:
-                Group {
-                    Text("Log Book")
-                        .font(.title2)
-                    Text("- Scroll up or down for more trips")
-                    Text("- Tap on the plus to add a log entry")
-                    Text("- Tap on Trip Options to edit, delete, or see a trip in Maps")
-                    Text("- Trips can be imported or exported from/to a CSV file")
-                    Text("- For more information about the CSV format, see the README")
-                }
+                """
+            
+                let camperText = """
+                From here you can add, delete, or archive different campers.  The camper's mileage and number of nights used is displayed.  One camper is the Selected Camper for use by the Log Book Display. For more information see the app's [help page](https://sites.google.com/view/tcausgrove/campingsweet/campingsweet-support).
                 
-            case .settingsScreen:
-                Group {
-                    Text("Settings")
-                        .font(.title2)
-                    Text("- The DISPLAY section settings only affects data presentation")
-                    Text("- Use Decimal degrees setting if your coordinates look like 36.16664 -105.96667")
-                    Text("- Use Degrees minutes seconds setting if your coordinates look like 36°10'40.5\"N 105°58'17.3\"W")
-                    Text("- Latitude and longitude should NOT be separated by commas")
-                    Text("- The option to export CSV files should help in determining the format for importing data")
-                }
-            }
+                """
+
+            let logbookText = """
+                This shows the campsited visited by the Selected camper.  Each stop may be edited, deleted, or shown in Apple Maps.  See the Settings screen for Card display vs. List display.
+                
+                """
+
+            let settingsText = """
+                User preferences are set here, including distance in miles vs. kilometers and date format.  The second section of settings are for importing CSV files.  For more information about CSV export or import, see the [CSV Import section of the help page](https://sites.google.com/view/tcausgrove/campingsweet/campingsweet-support#h.uq7zpiapgygn).  
+                
+                """
+
+            Text("Overview")
+                .font(.title2.bold())
+            Text(LocalizedStringKey(overviewText))
+
+            Text("Campers screen")
+                .font(.title2.bold())
+            Text(LocalizedStringKey(camperText))
+            
+            Text("Log Book screen")
+                .font(.title2.bold())
+            Text(LocalizedStringKey(logbookText))
+
+            Text("Settings screen")
+                .font(.title2.bold())
+            Text(LocalizedStringKey(settingsText))
         }
-        .padding(.leading, 16)
+        .padding([.leading, .trailing], 10)
     }
 }
 
 #Preview {
-    HelpTextView(helpSection: .settingsScreen)
+    HelpTextView()
 }

@@ -77,7 +77,7 @@ func saveCSVImperatively(camper: Camper) -> UserError? {
     return .exportCSVSucceeded
 }
 
-func fileExporterCSVSaver(camper: Camper) -> TextFile {
+func fileExporterCSVSaver(camper: Camper) -> Result<TextFile, UserError> {
     // This can be written better.  See https://developer.apple.com/documentation/swift/preserving-the-results-of-a-throwing-expression and
     // https://learn-swift.com/the-result-type/ to return both error on failure and the file on success.
     var data: String = ""
@@ -95,13 +95,12 @@ func fileExporterCSVSaver(camper: Camper) -> TextFile {
             try encoder.encodeRow(row)
         }
         data = try encoder.endEncoding()
+        var file = TextFile()
+        file.text = data
+        return .success(file)
     } catch {
-        // FIXME:  Need to handle error below
-        print("couldn't do it")
+        return .failure(.couldNotSaveCSV)
     }
-    var file = TextFile()
-    file.text = data
-    return file
 }
 
 func getCSV(inputString: String,
