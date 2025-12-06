@@ -50,8 +50,6 @@ struct ContentView: View {
                     Spacer()
                 
                     HStack {
-                    
-//                .padding(2)
                         NavigationLink(value: ViewList.help,
                                        label: { Image(systemName: "questionmark").toolbarImageStyle()
                         })

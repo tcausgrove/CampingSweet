@@ -8,91 +8,64 @@
 
 /* Begin PBXBuildFile section */
 		7817B8832E4559E600CC7B7E /* DrivingDistanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7817B8822E4559E600CC7B7E /* DrivingDistanceView.swift */; };
-		7826F2C22BBB4D4B0075B0A3 /* CamperCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7826F2C12BBB4D4B0075B0A3 /* CamperCardView.swift */; };
 		78413C042A44EB49006DCF9E /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78413C032A44EB49006DCF9E /* Extensions.swift */; };
 		78413C0A2A6DEE84006DCF9E /* NumbersOnlyViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78413C092A6DEE84006DCF9E /* NumbersOnlyViewModifier.swift */; };
 		78413C0C2A7435D1006DCF9E /* ChecklistView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78413C0B2A7435D1006DCF9E /* ChecklistView.swift */; };
 		785949522CE6CAA200D8060A /* Funcs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785949512CE6CAA200D8060A /* Funcs.swift */; };
 		785949542CE6CADD00D8060A /* MessageDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785949532CE6CADD00D8060A /* MessageDocument.swift */; };
 		785949572CE6CAF600D8060A /* SwiftCSV in Frameworks */ = {isa = PBXBuildFile; productRef = 785949562CE6CAF600D8060A /* SwiftCSV */; };
-		785949812CEC0E5800D8060A /* TripDataEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785949802CEC0E5800D8060A /* TripDataEntryView.swift */; };
-		785949832CEC13C300D8060A /* EditLogEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785949822CEC13C300D8060A /* EditLogEntryView.swift */; };
 		787A4EAD2DCC2C930064B2A8 /* CodableCSV in Frameworks */ = {isa = PBXBuildFile; productRef = 787A4EAC2DCC2C930064B2A8 /* CodableCSV */; };
 		787D38692E0223A900B32DA4 /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 787D38682E0223A900B32DA4 /* BackgroundView.swift */; };
 		78820E582D2F506000AA6807 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 78820E572D2F506000AA6807 /* Localizable.xcstrings */; };
 		78820E742D35D39200AA6807 /* GetLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78820E732D35D39200AA6807 /* GetLocation.swift */; };
-		78820E892D3EBB7700AA6807 /* HelpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78820E882D3EBB7700AA6807 /* HelpView.swift */; };
 		78820E8B2D431B7900AA6807 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 78820E8A2D431B7900AA6807 /* README.md */; };
 		78820E8F2D43E9FA00AA6807 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78820E8E2D43E9FA00AA6807 /* ErrorView.swift */; };
 		78820E912D46AF5200AA6807 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 78820E902D46AF5200AA6807 /* LaunchScreen.storyboard */; };
-		7899B4952E736DF800452F8C /* FilterButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7899B4942E736DF800452F8C /* FilterButton.swift */; };
 		7899CB8B2CD527F500395082 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7899CB8A2CD527F500395082 /* CardView.swift */; };
 		78A4151E29E4D3AB005CBEF1 /* CampingSweetApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A4151D29E4D3AB005CBEF1 /* CampingSweetApp.swift */; };
 		78A4152029E4D3AB005CBEF1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A4151F29E4D3AB005CBEF1 /* ContentView.swift */; };
 		78A4152229E4D3AC005CBEF1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 78A4152129E4D3AC005CBEF1 /* Assets.xcassets */; };
 		78A4152529E4D3AC005CBEF1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 78A4152429E4D3AC005CBEF1 /* Preview Assets.xcassets */; };
-		78A4152C29E4D584005CBEF1 /* LogBookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A4152B29E4D584005CBEF1 /* LogBookView.swift */; };
-		78A4153929F08713005CBEF1 /* CampersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A4153829F08713005CBEF1 /* CampersView.swift */; };
-		78A4153B29F094EB005CBEF1 /* AddCamperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A4153A29F094EB005CBEF1 /* AddCamperView.swift */; };
 		78A4153D29F0BDC0005CBEF1 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A4153C29F0BDC0005CBEF1 /* Enums.swift */; };
-		78A4153F29F1E414005CBEF1 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A4153E29F1E414005CBEF1 /* SettingsView.swift */; };
 		78A6751C2EAD8B330005816C /* NavigationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A6751B2EAD8B330005816C /* NavigationManager.swift */; };
 		78A6751E2EAFF5FE0005816C /* ContentViewHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A6751D2EAFF5FE0005816C /* ContentViewHelper.swift */; };
-		78A675202EB1630F0005816C /* TripOptionsMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A6751F2EB1630F0005816C /* TripOptionsMenuView.swift */; };
 		78A675792EBD71CD0005816C /* CSVImportExport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A675782EBD71CD0005816C /* CSVImportExport.swift */; };
 		78B4BE832E7CAD6D0000E8EA /* Defaults in Frameworks */ = {isa = PBXBuildFile; productRef = 78B4BE822E7CAD6D0000E8EA /* Defaults */; };
 		78B4BE852E7CAD6D0000E8EA /* DefaultsMacros in Frameworks */ = {isa = PBXBuildFile; productRef = 78B4BE842E7CAD6D0000E8EA /* DefaultsMacros */; };
-		78B4BF2F2E8B2F190000E8EA /* TripListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78B4BF2E2E8B2F190000E8EA /* TripListView.swift */; };
-		78F810272DD29D33008632D6 /* LogBookBottomBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F810262DD29D33008632D6 /* LogBookBottomBarView.swift */; };
-		78F810292DD3F42D008632D6 /* HelpTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F810282DD3F42D008632D6 /* HelpTextView.swift */; };
-		78F8ACDE2DA7335D0094718D /* TripCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F8ACDD2DA7335D0094718D /* TripCardView.swift */; };
-		78F8ACE02DAAF0CC0094718D /* ArchivedCamperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F8ACDF2DAAF0CC0094718D /* ArchivedCamperView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		7817B8822E4559E600CC7B7E /* DrivingDistanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrivingDistanceView.swift; sourceTree = "<group>"; };
-		7826F2C12BBB4D4B0075B0A3 /* CamperCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CamperCardView.swift; sourceTree = "<group>"; };
 		78413C032A44EB49006DCF9E /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		78413C092A6DEE84006DCF9E /* NumbersOnlyViewModifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NumbersOnlyViewModifier.swift; path = Views/NumbersOnlyViewModifier.swift; sourceTree = "<group>"; };
 		78413C0B2A7435D1006DCF9E /* ChecklistView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistView.swift; sourceTree = "<group>"; };
 		785949512CE6CAA200D8060A /* Funcs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Funcs.swift; sourceTree = "<group>"; };
 		785949532CE6CADD00D8060A /* MessageDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageDocument.swift; sourceTree = "<group>"; };
-		785949802CEC0E5800D8060A /* TripDataEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripDataEntryView.swift; sourceTree = "<group>"; };
-		785949822CEC13C300D8060A /* EditLogEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditLogEntryView.swift; sourceTree = "<group>"; };
 		787D38682E0223A900B32DA4 /* BackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundView.swift; sourceTree = "<group>"; };
 		78820E572D2F506000AA6807 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		78820E732D35D39200AA6807 /* GetLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetLocation.swift; sourceTree = "<group>"; };
-		78820E882D3EBB7700AA6807 /* HelpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpView.swift; sourceTree = "<group>"; };
 		78820E8A2D431B7900AA6807 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		78820E8E2D43E9FA00AA6807 /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
 		78820E902D46AF5200AA6807 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
-		7899B4942E736DF800452F8C /* FilterButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterButton.swift; sourceTree = "<group>"; };
 		7899CB8A2CD527F500395082 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		78A4151A29E4D3AB005CBEF1 /* CampingSweet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CampingSweet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		78A4151D29E4D3AB005CBEF1 /* CampingSweetApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampingSweetApp.swift; sourceTree = "<group>"; };
 		78A4151F29E4D3AB005CBEF1 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		78A4152129E4D3AC005CBEF1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		78A4152429E4D3AC005CBEF1 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		78A4152B29E4D584005CBEF1 /* LogBookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogBookView.swift; sourceTree = "<group>"; };
-		78A4153829F08713005CBEF1 /* CampersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampersView.swift; sourceTree = "<group>"; };
-		78A4153A29F094EB005CBEF1 /* AddCamperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCamperView.swift; sourceTree = "<group>"; };
 		78A4153C29F0BDC0005CBEF1 /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
-		78A4153E29F1E414005CBEF1 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		78A6751B2EAD8B330005816C /* NavigationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationManager.swift; sourceTree = "<group>"; };
 		78A6751D2EAFF5FE0005816C /* ContentViewHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewHelper.swift; sourceTree = "<group>"; };
-		78A6751F2EB1630F0005816C /* TripOptionsMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripOptionsMenuView.swift; sourceTree = "<group>"; };
 		78A675782EBD71CD0005816C /* CSVImportExport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSVImportExport.swift; sourceTree = "<group>"; };
-		78B4BF2E2E8B2F190000E8EA /* TripListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripListView.swift; sourceTree = "<group>"; };
-		78F810262DD29D33008632D6 /* LogBookBottomBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogBookBottomBarView.swift; sourceTree = "<group>"; };
-		78F810282DD3F42D008632D6 /* HelpTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpTextView.swift; sourceTree = "<group>"; };
-		78F8ACDD2DA7335D0094718D /* TripCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripCardView.swift; sourceTree = "<group>"; };
-		78F8ACDF2DAAF0CC0094718D /* ArchivedCamperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArchivedCamperView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		787D38672E00E1D500B32DA4 /* Models */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Models; sourceTree = "<group>"; };
 		7899B4832E70D0A500452F8C /* Sample Data */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = "Sample Data"; sourceTree = "<group>"; };
 		7899B4882E70E9B100452F8C /* PreviewHelper */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = PreviewHelper; sourceTree = "<group>"; };
+		789AE61C2EE498CF00709636 /* TripViews */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = TripViews; sourceTree = "<group>"; };
+		789AE61D2EE4990100709636 /* CamperViews */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = CamperViews; sourceTree = "<group>"; };
+		789AE61E2EE4995800709636 /* HelpAndSettingsViews */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = HelpAndSettingsViews; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,27 +136,15 @@
 		78A4153529F021D4005CBEF1 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				78A4153A29F094EB005CBEF1 /* AddCamperView.swift */,
-				78F8ACDF2DAAF0CC0094718D /* ArchivedCamperView.swift */,
+				789AE61D2EE4990100709636 /* CamperViews */,
 				787D38682E0223A900B32DA4 /* BackgroundView.swift */,
-				7826F2C12BBB4D4B0075B0A3 /* CamperCardView.swift */,
-				78A4153829F08713005CBEF1 /* CampersView.swift */,
 				7899CB8A2CD527F500395082 /* CardView.swift */,
 				78413C0B2A7435D1006DCF9E /* ChecklistView.swift */,
 				78A4151F29E4D3AB005CBEF1 /* ContentView.swift */,
 				7817B8822E4559E600CC7B7E /* DrivingDistanceView.swift */,
-				785949822CEC13C300D8060A /* EditLogEntryView.swift */,
+				789AE61C2EE498CF00709636 /* TripViews */,
 				78820E8E2D43E9FA00AA6807 /* ErrorView.swift */,
-				7899B4942E736DF800452F8C /* FilterButton.swift */,
-				78820E882D3EBB7700AA6807 /* HelpView.swift */,
-				78F810282DD3F42D008632D6 /* HelpTextView.swift */,
-				78A4152B29E4D584005CBEF1 /* LogBookView.swift */,
-				78F810262DD29D33008632D6 /* LogBookBottomBarView.swift */,
-				78A4153E29F1E414005CBEF1 /* SettingsView.swift */,
-				78F8ACDD2DA7335D0094718D /* TripCardView.swift */,
-				785949802CEC0E5800D8060A /* TripDataEntryView.swift */,
-				78B4BF2E2E8B2F190000E8EA /* TripListView.swift */,
-				78A6751F2EB1630F0005816C /* TripOptionsMenuView.swift */,
+				789AE61E2EE4995800709636 /* HelpAndSettingsViews */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -207,6 +168,9 @@
 				787D38672E00E1D500B32DA4 /* Models */,
 				7899B4832E70D0A500452F8C /* Sample Data */,
 				7899B4882E70E9B100452F8C /* PreviewHelper */,
+				789AE61C2EE498CF00709636 /* TripViews */,
+				789AE61D2EE4990100709636 /* CamperViews */,
+				789AE61E2EE4995800709636 /* HelpAndSettingsViews */,
 			);
 			name = CampingSweet;
 			packageProductDependencies = (
@@ -282,33 +246,18 @@
 				787D38692E0223A900B32DA4 /* BackgroundView.swift in Sources */,
 				78820E8F2D43E9FA00AA6807 /* ErrorView.swift in Sources */,
 				785949522CE6CAA200D8060A /* Funcs.swift in Sources */,
-				78A4153929F08713005CBEF1 /* CampersView.swift in Sources */,
 				78413C0A2A6DEE84006DCF9E /* NumbersOnlyViewModifier.swift in Sources */,
-				78B4BF2F2E8B2F190000E8EA /* TripListView.swift in Sources */,
 				78413C0C2A7435D1006DCF9E /* ChecklistView.swift in Sources */,
-				78F810272DD29D33008632D6 /* LogBookBottomBarView.swift in Sources */,
 				78820E742D35D39200AA6807 /* GetLocation.swift in Sources */,
 				78A6751C2EAD8B330005816C /* NavigationManager.swift in Sources */,
-				78A4152C29E4D584005CBEF1 /* LogBookView.swift in Sources */,
-				785949812CEC0E5800D8060A /* TripDataEntryView.swift in Sources */,
-				78F810292DD3F42D008632D6 /* HelpTextView.swift in Sources */,
-				78820E892D3EBB7700AA6807 /* HelpView.swift in Sources */,
-				78F8ACE02DAAF0CC0094718D /* ArchivedCamperView.swift in Sources */,
-				785949832CEC13C300D8060A /* EditLogEntryView.swift in Sources */,
 				7817B8832E4559E600CC7B7E /* DrivingDistanceView.swift in Sources */,
-				78A4153B29F094EB005CBEF1 /* AddCamperView.swift in Sources */,
 				785949542CE6CADD00D8060A /* MessageDocument.swift in Sources */,
 				78A6751E2EAFF5FE0005816C /* ContentViewHelper.swift in Sources */,
 				78413C042A44EB49006DCF9E /* Extensions.swift in Sources */,
 				78A4152029E4D3AB005CBEF1 /* ContentView.swift in Sources */,
-				7826F2C22BBB4D4B0075B0A3 /* CamperCardView.swift in Sources */,
-				78A4153F29F1E414005CBEF1 /* SettingsView.swift in Sources */,
 				78A675792EBD71CD0005816C /* CSVImportExport.swift in Sources */,
 				78A4151E29E4D3AB005CBEF1 /* CampingSweetApp.swift in Sources */,
-				7899B4952E736DF800452F8C /* FilterButton.swift in Sources */,
 				7899CB8B2CD527F500395082 /* CardView.swift in Sources */,
-				78F8ACDE2DA7335D0094718D /* TripCardView.swift in Sources */,
-				78A675202EB1630F0005816C /* TripOptionsMenuView.swift in Sources */,
 				78A4153D29F0BDC0005CBEF1 /* Enums.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -450,7 +399,7 @@
 				CODE_SIGN_ENTITLEMENTS = CampingSweet/CampingSweet.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 13;
+				CURRENT_PROJECT_VERSION = 14;
 				DEVELOPMENT_ASSET_PATHS = "\"CampingSweet/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -491,7 +440,7 @@
 				CODE_SIGN_ENTITLEMENTS = CampingSweet/CampingSweet.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 13;
+				CURRENT_PROJECT_VERSION = 14;
 				DEVELOPMENT_ASSET_PATHS = "\"CampingSweet/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
