@@ -28,15 +28,18 @@ struct LowerMapView: View {
             Text("There are no log entries with location data for \(camperName) in the given time period.")
                 .padding([.leading, .trailing], 32)
         } else {
-            Map(bounds: centerCoordinate,
-                interactionModes: [.pan, .zoom]) {
+            Map() {
                 ForEach(trips) { trip in
                     if trip.hasLocationData {
                         Marker(trip.title, coordinate: trip.location!)
                     }
                 }
             }
-                .mapStyle(.standard)
+                .mapStyle(.standard(
+                    elevation: .flat,
+                    emphasis: .muted,
+                    pointsOfInterest: .excludingAll)
+                )
                 .padding(8)
         }
     }
