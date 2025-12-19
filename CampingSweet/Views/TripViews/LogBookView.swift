@@ -12,7 +12,6 @@ import Defaults
 struct LogBookView: View {
     var localCamperID: UUID
     var tripFilter: FilterTrips
-//    var tripDisplayType: TripDisplayType = .list
     
     @Environment(\.dismiss) var dismiss
     @Environment(\.modelContext) private var modelContext
@@ -40,7 +39,6 @@ struct LogBookView: View {
         ZStack {
             BackgroundView()
             ScrollView {
-//                NavigationStack(path: $path) {
                 if settings.chosentripFormat == .list {
                     Divider()
                 }
@@ -53,7 +51,6 @@ struct LogBookView: View {
                     }
                 }
             }
-//                }
         }
         .safeAreaInset(edge: .bottom, content: {
             let camper = Camper.selectedCamperFromID(with: modelContext, selectedCamperID: localCamperID)

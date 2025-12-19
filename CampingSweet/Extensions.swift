@@ -61,7 +61,6 @@ extension Button {
 }
 
 extension Date {
-    
     var yesterday: Date {
        return Calendar.current.date(byAdding: .day, value: -1, to: Date.now)!
     }
@@ -74,6 +73,14 @@ extension Date {
         let formatter = DateFormatter()
         formatter.dateFormat = format
         return formatter.string(from: self)
+    }
+    
+    func containsYearFromString(string: String) -> Bool {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy"
+        let yearString = dateFormatter.string(from: self)
+        
+        return string == yearString
     }
 }
 
@@ -211,8 +218,9 @@ extension Date {
 //  See https://github.com/sindresorhus/Defaults for documentation
 extension Defaults.Keys {
     static let tripFilterKey = Key<FilterTrips>("tripFilterKey", default: .allTrips)
-    static let selectedCamperIDKey = Key<UUID?>("selectedCamperIDKey")
+    static let selectedCamperIDKey = Key<UUID?>("selectedCamperIDKey")  // Default value of nil
     static let settingsKey = Key<Settings>("settingsKey", default: Settings.example)
+//    static let yearSelectionKey = Key<YearSelection>("yearSelection", default: .allYears)
     //            ^                ^            ^                ^
     //           Key              Type    UserDefaults name   Default value
 }

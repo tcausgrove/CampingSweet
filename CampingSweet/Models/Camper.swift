@@ -60,6 +60,18 @@ class Camper {
         }
         return tempDistance
     }
+    
+    var yearsUsed: [String] {
+        var yearList: [String] = ["All years"]
+        for trip in trips {
+            let year: String = String(Calendar.current.component(.year, from: trip.startDate))
+            if !yearList.contains(year) {
+                yearList.append(year)
+            }
+        }
+        return yearList.sorted()
+
+    }
 }
 
 // A convenience for accessing a camper in an array by its identifier.

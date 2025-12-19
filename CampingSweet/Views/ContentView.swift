@@ -30,22 +30,28 @@ struct ContentView: View {
                     Spacer()
                     
                     NavigationLink(value: ViewList.campers,
-                                   label: { Label("My Campers", image: "Camper")
+                                   label: { Label("My Campers", image: "Camper").padding(.leading, 8)
                     })
                     .showSubView()
                     .buttonStyle(PrimaryButtonStyle(isActive: true))
                     
                     NavigationLink(value: selectedCamperID,
-                                   label: { Label("Log Book", systemImage: "list.bullet.rectangle.fill")
+                                   label: { Label("Log Book", systemImage: "list.bullet.rectangle.fill").padding(.leading, 8)
                     })
                     .navigationDestination(for: UUID.self) { camperID in
-                            LogBookView(localCamperID: camperID, tripFilter: tripFilter) }
+                        LogBookView(localCamperID: camperID, tripFilter: tripFilter) }
                     .buttonStyle(PrimaryButtonStyle(isActive: selectedCamperID != nil))
                     
+                    NavigationLink(value: ViewList.maps,
+                                   label: { Label("Maps", systemImage: "map.fill").padding(.leading, 8)
+                    })
+                    .buttonStyle(PrimaryButtonStyle(isActive: campers.count > 0))
+                    
                     NavigationLink(value: ViewList.checklist,
-                                   label: { Label("Departure checklist", systemImage: "checklist") })
+                                   label: { Label("Departure checklist", systemImage: "checklist").padding(.leading, 8)
+                    })
                     .showSubView()
-                        .buttonStyle(PrimaryButtonStyle(isActive: true))
+                    .buttonStyle(PrimaryButtonStyle(isActive: campers.count > 0))
                     
                     Spacer()
                 

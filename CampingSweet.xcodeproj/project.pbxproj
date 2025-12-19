@@ -22,6 +22,8 @@
 		78820E8F2D43E9FA00AA6807 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78820E8E2D43E9FA00AA6807 /* ErrorView.swift */; };
 		78820E912D46AF5200AA6807 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 78820E902D46AF5200AA6807 /* LaunchScreen.storyboard */; };
 		7899CB8B2CD527F500395082 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7899CB8A2CD527F500395082 /* CardView.swift */; };
+		789AE62D2EF35C4400709636 /* MapsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789AE62C2EF35C4400709636 /* MapsView.swift */; };
+		789AE62F2EF3745A00709636 /* LowerMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 789AE62E2EF3745A00709636 /* LowerMapView.swift */; };
 		78A4151E29E4D3AB005CBEF1 /* CampingSweetApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A4151D29E4D3AB005CBEF1 /* CampingSweetApp.swift */; };
 		78A4152029E4D3AB005CBEF1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A4151F29E4D3AB005CBEF1 /* ContentView.swift */; };
 		78A4152229E4D3AC005CBEF1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 78A4152129E4D3AC005CBEF1 /* Assets.xcassets */; };
@@ -48,6 +50,8 @@
 		78820E8E2D43E9FA00AA6807 /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
 		78820E902D46AF5200AA6807 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7899CB8A2CD527F500395082 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		789AE62C2EF35C4400709636 /* MapsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapsView.swift; sourceTree = "<group>"; };
+		789AE62E2EF3745A00709636 /* LowerMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LowerMapView.swift; sourceTree = "<group>"; };
 		78A4151A29E4D3AB005CBEF1 /* CampingSweet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CampingSweet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		78A4151D29E4D3AB005CBEF1 /* CampingSweetApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampingSweetApp.swift; sourceTree = "<group>"; };
 		78A4151F29E4D3AB005CBEF1 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -141,6 +145,8 @@
 				7899CB8A2CD527F500395082 /* CardView.swift */,
 				78413C0B2A7435D1006DCF9E /* ChecklistView.swift */,
 				78A4151F29E4D3AB005CBEF1 /* ContentView.swift */,
+				789AE62C2EF35C4400709636 /* MapsView.swift */,
+				789AE62E2EF3745A00709636 /* LowerMapView.swift */,
 				7817B8822E4559E600CC7B7E /* DrivingDistanceView.swift */,
 				789AE61C2EE498CF00709636 /* TripViews */,
 				78820E8E2D43E9FA00AA6807 /* ErrorView.swift */,
@@ -246,6 +252,8 @@
 				787D38692E0223A900B32DA4 /* BackgroundView.swift in Sources */,
 				78820E8F2D43E9FA00AA6807 /* ErrorView.swift in Sources */,
 				785949522CE6CAA200D8060A /* Funcs.swift in Sources */,
+				789AE62D2EF35C4400709636 /* MapsView.swift in Sources */,
+				789AE62F2EF3745A00709636 /* LowerMapView.swift in Sources */,
 				78413C0A2A6DEE84006DCF9E /* NumbersOnlyViewModifier.swift in Sources */,
 				78413C0C2A7435D1006DCF9E /* ChecklistView.swift in Sources */,
 				78820E742D35D39200AA6807 /* GetLocation.swift in Sources */,
@@ -399,7 +407,7 @@
 				CODE_SIGN_ENTITLEMENTS = CampingSweet/CampingSweet.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 14;
+				CURRENT_PROJECT_VERSION = 0;
 				DEVELOPMENT_ASSET_PATHS = "\"CampingSweet/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -418,7 +426,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.8;
+				MARKETING_VERSION = 0.9;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tcaus.CampingSweet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -440,7 +448,7 @@
 				CODE_SIGN_ENTITLEMENTS = CampingSweet/CampingSweet.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 14;
+				CURRENT_PROJECT_VERSION = 0;
 				DEVELOPMENT_ASSET_PATHS = "\"CampingSweet/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -459,7 +467,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.8;
+				MARKETING_VERSION = 0.9;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tcaus.CampingSweet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

@@ -64,6 +64,11 @@ class LogEntry {
             longitude = newValue?.longitude
         }
     }
+    
+    var hasLocationData: Bool {
+        return (latitude != nil && longitude != nil)
+    }
+    
 }
 
 //  See https://developer.apple.com/documentation/swiftdata/filtering-and-sorting-persistent-data
@@ -77,18 +82,18 @@ extension LogEntry {
         let yearString = dateFormatter.string(from: nowDate)
         
         let startOfYearComponents = DateComponents(
-          calendar: calendar,
-          year: Int(yearString),
-          month: 1,
-          day: 1,
-          hour: 0,
-          minute: 00
+            calendar: calendar,
+            year: Int(yearString),
+            month: 1,
+            day: 1,
+            hour: 0,
+            minute: 00
         )
         let startOfYear = calendar.date(from: startOfYearComponents)!
         
         if datesToShow == .currentYear {
             return #Predicate<LogEntry> { trip in
-            // Need to used a closed range of dates
+                // Need to used a closed range of dates
                 return (trip.camper?.id == camperID) && (trip.startDate >= startOfYear && trip.startDate <= nowDate)
             }
         } else {
@@ -98,3 +103,51 @@ extension LogEntry {
         }
     }
 }
+
+
+extension LogEntry {
+    static func mapsPredicate(yearSelection: String, camperID: UUID?) -> Predicate<LogEntry> {
+        let calendar = Calendar(identifier: .gregorian)
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy"
+        
+        if camperID == nil {
+            return #Predicate<LogEntry> { trip in
+                trip.camper?.id == camperID
+            }
+        }
+        
+        if yearSelection == "All years" {
+            return #Predicate<LogEntry> { trip in
+                trip.camper?.id == camperID
+            }
+        }
+
+        let year:Int = Int(yearSelection) ?? 2025
+
+        let startOfYearComponents = DateComponents(
+          calendar: calendar,
+          year: year,
+          month: 1,
+          day: 1,
+          hour: 0,
+          minute: 00
+        )
+        let startOfYear = calendar.date(from: startOfYearComponents)!
+
+        let endOfYearComponents = DateComponents(
+          calendar: calendar,
+          year: year,
+          month: 12,
+          day: 31,
+          hour: 11,
+          minute: 59
+        )
+        let endOfYear = calendar.date(from: endOfYearComponents)!
+
+        return #Predicate<LogEntry> { trip in
+            (trip.camper?.id == camperID) && (trip.startDate >= startOfYear && trip.startDate <= endOfYear)
+        }
+    }
+}
+

@@ -9,19 +9,21 @@ import SwiftUI
 
 enum ViewList: Codable {
     case campers
+    case maps
     case checklist
     case settings
     case help
 }
 
 struct ViewToShow: ViewModifier {
-    
     func body(content: Content) -> some View {
         content
             .navigationDestination(for: ViewList.self) { screen in
                 switch screen {
                 case .campers:
                     return AnyView(CampersView())
+                case .maps:
+                    return AnyView(MapsView(yearToMap: "All years"))
                 case .checklist:
                     return AnyView(ChecklistView())
                 case .settings:

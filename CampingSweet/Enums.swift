@@ -119,3 +119,4 @@ enum FilterTrips: String, CaseIterable, Identifiable, Defaults.Serializable {
     
     var id: Self { self }
 }
+
