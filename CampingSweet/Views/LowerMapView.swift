@@ -11,11 +11,13 @@ import MapKit
 import Defaults
 
 struct LowerMapView: View {
+    var camperName = ""
     @Default(.selectedCamperIDKey) var selectedCamperID
     
     @Query var trips: [LogEntry]
     
-    init(yearSelection: String) {
+    init(yearSelection: String, camperName: String) {
+        self.camperName = camperName
         let mapsPredicate = LogEntry.mapsPredicate(yearSelection: yearSelection, camperID: selectedCamperID)
         _trips = Query(filter: mapsPredicate, sort: \LogEntry.startDate)
     }
@@ -23,7 +25,8 @@ struct LowerMapView: View {
     var body: some View {
         let centerCoordinate = logEntryArrayToRegion(sites: trips)
         if centerCoordinate == nil {
-            Text("No sites available")
+            Text("There are no log entries with location data for \(camperName) in the given time period.")
+                .padding([.leading, .trailing], 32)
         } else {
             Map(bounds: centerCoordinate,
                 interactionModes: [.pan, .zoom]) {
@@ -41,7 +44,7 @@ struct LowerMapView: View {
 
 #Preview {
     ModelContainerPreview(ModelContainer.sample) {
-        LowerMapView(yearSelection: "2023")
+        LowerMapView(yearSelection: "2023", camperName: "Some preview name")
     }
 }
 

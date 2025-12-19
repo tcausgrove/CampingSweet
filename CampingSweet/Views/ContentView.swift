@@ -51,7 +51,7 @@ struct ContentView: View {
                                    label: { Label("Departure checklist", systemImage: "checklist").padding(.leading, 8)
                     })
                     .showSubView()
-                    .buttonStyle(PrimaryButtonStyle(isActive: campers.count > 0))
+                    .buttonStyle(PrimaryButtonStyle(isActive: selectedCamperID != nil))
                     
                     Spacer()
                 

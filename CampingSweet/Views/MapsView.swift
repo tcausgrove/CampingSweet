@@ -16,31 +16,38 @@ struct MapsView: View {
     @Environment(\.modelContext) private var modelContext
     @State var yearToMap: String
     @State var years: [String] = []
+    @State var camperName: String = ""
     
     var body: some View {
         VStack {
-            Picker("Make a selection", selection: $yearToMap) {
-                ForEach(years, id: \.self) { selection in
-                    Text(selection)
-                        .tag(selection)
-                }
-            }
-            .padding(12)
-            
-            Text("Trip list")
-                .font(.title.bold())
-                .padding(10)
-            LowerMapView(yearSelection: yearToMap)
+            LowerMapView(yearSelection: yearToMap, camperName: camperName)
         }
         .onAppear(perform: {
             let camper = Camper.selectedCamperFromID(with: modelContext, selectedCamperID: selectedCamperID)
             years = camper?.yearsUsed ?? ["Not available"]
+            camperName = camper?.name ?? "Not available"
         })
+        .toolbar() {
+            ToolbarItem(placement: .automatic) {
+                Menu {
+                    Picker("", selection: $yearToMap) {
+                        ForEach(years, id: \.self) { selection in
+                            Text(selection)
+                                .tag(selection)
+                        }
+                    }
+                } label: {
+                    Label("Show", systemImage: "slider.horizontal.3")
+                }
+                .pickerStyle(.inline)
+            }
+            ToolbarItem(placement: .principal, content: { Text(camperName)})
+        }
     }
 }
 
 #Preview {
     ModelContainerPreview(ModelContainer.sample) {
-        MapsView(yearToMap: "2023")
+        MapsView(yearToMap: "All years")
     }
 }
