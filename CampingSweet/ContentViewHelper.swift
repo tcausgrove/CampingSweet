@@ -10,6 +10,7 @@ import SwiftUI
 enum ViewList: Codable {
     case campers
     case maps
+    case charts
     case checklist
     case settings
     case help
@@ -24,6 +25,8 @@ struct ViewToShow: ViewModifier {
                     return AnyView(CampersView())
                 case .maps:
                     return AnyView(MapsView(yearToMap: "All years"))
+                case .charts:
+                    return AnyView(ChartsView())
                 case .checklist:
                     return AnyView(ChecklistView())
                 case .settings:

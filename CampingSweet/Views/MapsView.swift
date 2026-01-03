@@ -22,7 +22,7 @@ struct MapsView: View {
         VStack {
             LowerMapView(yearSelection: yearToMap, camperName: camperName)
         }
-        .onAppear(perform: {
+        .onAppear(perform: { // Get the list of years to be listed in the picker
             let camper = Camper.selectedCamperFromID(with: modelContext, selectedCamperID: selectedCamperID)
             years = camper?.yearsUsed ?? ["Not available"]
             camperName = camper?.name ?? "Not available"

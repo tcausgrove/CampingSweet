@@ -73,7 +73,7 @@ class LogEntry {
 
 //  See https://developer.apple.com/documentation/swiftdata/filtering-and-sorting-persistent-data
 extension LogEntry {
-    static func predicate(searchText: String, datesToShow: FilterTrips, camperID: UUID) -> Predicate<LogEntry> {
+    static func logBookPredicate(searchText: String, datesToShow: FilterTrips, camperID: UUID) -> Predicate<LogEntry> {
         let nowDate = Date.now
         let calendar = Calendar(identifier: .gregorian)
         

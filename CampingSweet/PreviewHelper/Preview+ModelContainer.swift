@@ -9,7 +9,7 @@ import SwiftData
 
 extension ModelContainer {
     static var sample: () throws -> ModelContainer = {
-        let schema = Schema([CheckListItem.self, Camper.self])
+        let schema = Schema([CheckListItem.self, Camper.self, LogEntry.self]) // LogEntry is inferred from Relationship between Camper and LogEntry
         let configuration = ModelConfiguration(isStoredInMemoryOnly: true, cloudKitDatabase: .none)
         let container = try ModelContainer(for: schema, configurations: [configuration])
         Task { @MainActor in

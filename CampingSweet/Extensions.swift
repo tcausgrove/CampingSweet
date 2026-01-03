@@ -220,6 +220,7 @@ extension Defaults.Keys {
     static let tripFilterKey = Key<FilterTrips>("tripFilterKey", default: .allTrips)
     static let selectedCamperIDKey = Key<UUID?>("selectedCamperIDKey")  // Default value of nil
     static let settingsKey = Key<Settings>("settingsKey", default: Settings.example)
+    static let quantityToPlot = Key<ChartYAxis>("quantityToPlot", default: .distance)
 //    static let yearSelectionKey = Key<YearSelection>("yearSelection", default: .allYears)
     //            ^                ^            ^                ^
     //           Key              Type    UserDefaults name   Default value

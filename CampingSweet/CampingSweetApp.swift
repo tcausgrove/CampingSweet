@@ -15,6 +15,6 @@ struct CampingSweetApp: App {
         WindowGroup {
             ContentView()
         }
-        .modelContainer(for: [CheckListItem.self, Camper.self])
+        .modelContainer(for: [CheckListItem.self, Camper.self]) // The LogEntry class is inferred from the Relationship
     }
 }

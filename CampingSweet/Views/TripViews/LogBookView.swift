@@ -29,7 +29,7 @@ struct LogBookView: View {
         self.localCamperID = localCamperID
         self.tripFilter = tripFilter
         
-        let predicate = LogEntry.predicate(searchText: searchText,
+        let predicate = LogEntry.logBookPredicate(searchText: searchText,
                                            datesToShow: tripFilter,
                                            camperID: localCamperID)
         _trips = Query(filter: predicate, sort: \LogEntry.startDate, order: .reverse)

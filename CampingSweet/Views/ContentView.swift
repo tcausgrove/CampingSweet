@@ -45,6 +45,13 @@ struct ContentView: View {
                     NavigationLink(value: ViewList.maps,
                                    label: { Label("Maps", systemImage: "map.fill").padding(.leading, 8)
                     })
+                    .showSubView()
+                    .buttonStyle(PrimaryButtonStyle(isActive: campers.count > 0))
+                    
+                    NavigationLink(value: ViewList.charts,
+                                   label: { Label("Charts", systemImage: "chart.bar").padding(.leading, 8)
+                    })
+                    .showSubView()
                     .buttonStyle(PrimaryButtonStyle(isActive: campers.count > 0))
                     
                     NavigationLink(value: ViewList.checklist,
@@ -95,7 +102,6 @@ struct PrimaryButtonStyle: ButtonStyle {
 }
 
 struct ToolbarViewModifier: ViewModifier {
-    
     func body(content: Content) -> some View {
         content
             .font(.title)

@@ -123,7 +123,7 @@ func getCSV(inputString: String,
                 theDates.1 = theDates.0.addingTimeInterval(86400 * Double(numberOfNights))
             }
             let theLocationString: String? = dict["Coordinates"] ?? nil
-            if theLocationString != "" && theLocation != nil {
+            if theLocationString != "" && theLocationString != nil {
                 if locationType == .dms {
                     theLocation = CLLocationCoordinate2D(dmsString: theLocationString!) // Custom written extension to CLLocationCoordinate2D; see Extensions file
                 } else {

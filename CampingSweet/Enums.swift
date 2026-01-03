@@ -120,3 +120,9 @@ enum FilterTrips: String, CaseIterable, Identifiable, Defaults.Serializable {
     var id: Self { self }
 }
 
+enum ChartYAxis: String, CaseIterable, Identifiable, Defaults.Serializable {
+    case distance = "Distance by year"
+    case nights = "Nights used by year"
+    
+    var id: Self { self }
+}

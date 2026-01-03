@@ -37,7 +37,7 @@ struct LowerMapView: View {
             }
                 .mapStyle(.standard(
                     elevation: .flat,
-                    emphasis: .muted,
+                    emphasis: .automatic,
                     pointsOfInterest: .excludingAll)
                 )
                 .padding(8)

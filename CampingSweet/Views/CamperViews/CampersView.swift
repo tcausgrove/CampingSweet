@@ -21,8 +21,8 @@ struct CampersView: View {
     var body: some View {
         ZStack {
             BackgroundView()
-            VStack {
-//                NavigationStack(path: $path) {
+            ScrollView {
+                VStack {
                     ForEach(campers, id: \.self) { camper in
                         if !camper.isArchived {
                             CamperCardView(camper: camper)
@@ -32,33 +32,33 @@ struct CampersView: View {
                                 }
                         }
                     }
-//                }
-                
-                Spacer()
-                
-                if hasArchivedCampers() {
-                    Text("Archived campers")
-                        .font(.title)
-                        .bold()
-                    ForEach(campers) { camper in
-                        if camper.isArchived {
-                            ArchivedCamperView(camper: camper)
+                    
+                    Spacer()
+                    
+                    if hasArchivedCampers() {
+                        Text("Archived campers")
+                            .font(.title)
+                            .bold()
+                        ForEach(campers) { camper in
+                            if camper.isArchived {
+                                ArchivedCamperView(camper: camper)
+                            }
                         }
                     }
                 }
-            }
-            .padding([.top, .bottom])
-            .toolbar() {
-                ToolbarItem {
-                    Button(action: { addingCamper.toggle() }) {
-                        Image(systemName: "plus")
+                .padding([.top, .bottom])
+                .toolbar() {
+                    ToolbarItem {
+                        Button(action: { addingCamper.toggle() }) {
+                            Image(systemName: "plus")
+                        }
                     }
                 }
+                .sheet(isPresented: $addingCamper) {
+                    AddCamperView()
+                }
+                .navigationTitle("Campers")
             }
-            .sheet(isPresented: $addingCamper) {
-                AddCamperView()
-            }
-            .navigationTitle("Campers")
         }
     }
     
