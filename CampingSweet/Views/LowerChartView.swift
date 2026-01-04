@@ -8,6 +8,7 @@
 import SwiftUI
 import Charts
 import SwiftData
+import Defaults
 
 
 struct LowerChartView: View {
@@ -16,6 +17,8 @@ struct LowerChartView: View {
     @Environment(\.modelContext) private var modelContext
 
 //    @Query(sort: [SortDescriptor(\LogEntry.camper?.id, order: .forward)]) private var trips: [LogEntry]
+    @Default(.settingsKey) var settings: Settings
+    
     @Query private var trips: [LogEntry]
     @State private var yAxisText: String = ""
 
@@ -30,7 +33,7 @@ struct LowerChartView: View {
                 case .distance:
                 BarMark(
                     x: .value("Year", $0.startDate.formatted(Date.FormatStyle().year(.defaultDigits))),
-                    y: .value("Distance", $0.distance ?? 0.0)
+                    y: .value("Distance", $0.distanceMeasurement?.converted(to: settings.chosenDistance.unit).value ?? 0.0)
                 )
                 .foregroundStyle(by: .value("Camper", $0.camper?.name ?? "Unknown"))
             case .nights:
@@ -42,16 +45,16 @@ struct LowerChartView: View {
             }
         }
         .chartYAxisLabel(position: .trailing) {
-            Text(yAxisText) // Units added here!
+            Text(getYAxisLabel(quantityToPlot)) // Units added here!
         }
-        .onAppear() {
-            switch quantityToPlot {
-            case .distance:
-                yAxisText = "Distance (km)"
-            case .nights:
-                yAxisText = "Nights"
-            }
-        }
+//        .onAppear() {
+//            switch quantityToPlot {
+//            case .distance:
+//                yAxisText = "Distance (miles)"
+//            case .nights:
+//                yAxisText = "Nights"
+//            }
+//        }
         .aspectRatio(contentMode: .fit)
         .padding(20)
         
@@ -62,5 +65,15 @@ struct LowerChartView: View {
 #Preview {
     ModelContainerPreview(ModelContainer.sample) {
         LowerChartView(quantityToPlot: .distance)
+    }
+}
+
+func getYAxisLabel(_ quantity: ChartYAxis) -> String {
+    switch quantity {
+    case .distance:
+        let unitText = getDistanceUnitFromSetting()
+        return "Distance (\(unitText))"
+    case .nights:
+        return "Nights"
     }
 }

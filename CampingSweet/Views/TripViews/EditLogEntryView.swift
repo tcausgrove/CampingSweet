@@ -73,7 +73,7 @@ struct EditLogEntryView: View {
         if let previousLogEntry {
             // Edit the trip
             previousLogEntry.title = title
-            previousLogEntry.drivingDistanceMiles = distance
+            previousLogEntry.distanceMeasurement = distance
             previousLogEntry.startDate = start
             previousLogEntry.endDate = end
             previousLogEntry.latitude = Double(latitude) ?? nil
@@ -96,8 +96,7 @@ struct EditLogEntryView: View {
              title = previousLogEntry.title
              start = previousLogEntry.startDate
              end = previousLogEntry.endDate
-//             let newDistance: Double = previousLogEntry.distance ?? 0.0
-             distance = previousLogEntry.drivingDistanceMiles ?? .init(value: 0.0, unit: .miles)
+             distance = previousLogEntry.distanceMeasurement?.converted(to: settings.chosenDistance.unit) ?? .init(value: 0.0, unit: settings.chosenDistance.unit)
              distanceString = String(format: "%.1f", distance.value)
              let newLatitude: Double? = previousLogEntry.latitude
              let newLongitude: Double? = previousLogEntry.longitude

@@ -43,7 +43,7 @@ class LogEntry {
         return Int(number)
     }
     
-    var drivingDistanceMiles: Measurement<UnitLength>? {
+    var distanceMeasurement: Measurement<UnitLength>? {
         get {
             if let distance {
                 return Measurement<UnitLength>(value: distance, unit: .miles)
