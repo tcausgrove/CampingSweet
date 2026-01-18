@@ -21,43 +21,50 @@ struct CampersView: View {
     var body: some View {
         ZStack {
             BackgroundView()
-            ScrollView {
-                VStack {
-                    ForEach(campers, id: \.self) { camper in
-                        if !camper.isArchived {
-                            CamperCardView(camper: camper)
-                                .padding(.bottom, 8)
-                                .onTapGesture {
-                                    setSelectedCamper(camper: camper)
-                                }
+            VStack {
+                Text("Campers")
+                    .font(.title)
+                    .padding(12)
+                
+                ScrollView {
+                    VStack {
+                        ForEach(campers, id: \.self) { camper in
+                            if !camper.isArchived {
+                                CamperCardView(camper: camper)
+                                    .padding(.bottom, 8)
+                                    .onTapGesture {
+                                        setSelectedCamper(camper: camper)
+                                    }
+                            }
                         }
-                    }
-                    
-                    Spacer()
-                    
-                    if hasArchivedCampers() {
-                        Text("Archived campers")
-                            .font(.title)
-                            .bold()
-                        ForEach(campers) { camper in
-                            if camper.isArchived {
-                                ArchivedCamperView(camper: camper)
+                        
+                        Spacer()
+                        
+                        if hasArchivedCampers() {
+                            Text("Archived campers")
+                                .padding(.top, 36)
+                                .font(.title)
+//                                .bold()
+                            ForEach(campers) { camper in
+                                if camper.isArchived {
+                                    ArchivedCamperView(camper: camper)
+                                }
                             }
                         }
                     }
-                }
-                .padding([.top, .bottom])
-                .toolbar() {
-                    ToolbarItem {
-                        Button(action: { addingCamper.toggle() }) {
-                            Image(systemName: "plus")
+                    .padding([.top, .bottom])
+                    .toolbar() {
+                        ToolbarItem {
+                            Button(action: { addingCamper.toggle() }) {
+                                Image(systemName: "plus")
+                            }
                         }
                     }
+                    .sheet(isPresented: $addingCamper) {
+                        AddCamperView()
+                    }
+//                    .navigationBarTitle("Campers")
                 }
-                .sheet(isPresented: $addingCamper) {
-                    AddCamperView()
-                }
-                .navigationTitle("Campers")
             }
         }
     }

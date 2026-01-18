@@ -9,6 +9,7 @@ import SwiftUI
 import SwiftData
 import Defaults
 
+
 struct ContentView: View {
     @Query var campers: [Camper]
     
@@ -21,62 +22,38 @@ struct ContentView: View {
 
     @State private var showHelpMenu = false
     @State private var changingSettings = false
+    @State private var selection: ViewList? = nil
     
     var body: some View {
-        NavigationStack(path: $navigationManager.path) {
-            ZStack {
-                BackgroundView()
+        NavigationSplitView {
                 VStack {
-                    Spacer()
-                    
-                    NavigationLink(value: ViewList.campers,
-                                   label: { Label("My Campers", image: "Camper").padding(.leading, 8)
-                    })
-                    .showSubView()
-                    .buttonStyle(PrimaryButtonStyle(isActive: true))
-                    
-                    NavigationLink(value: selectedCamperID,
-                                   label: { Label("Log Book", systemImage: "list.bullet.rectangle.fill").padding(.leading, 8)
-                    })
-                    .navigationDestination(for: UUID.self) { camperID in
-                        LogBookView(localCamperID: camperID, tripFilter: tripFilter) }
-                    .buttonStyle(PrimaryButtonStyle(isActive: selectedCamperID != nil))
-                    
-                    NavigationLink(value: ViewList.maps,
-                                   label: { Label("Maps", systemImage: "map.fill").padding(.leading, 8)
-                    })
-                    .showSubView()
-                    .buttonStyle(PrimaryButtonStyle(isActive: campers.count > 0))
-                    
-                    NavigationLink(value: ViewList.charts,
-                                   label: { Label("Charts", systemImage: "chart.bar").padding(.leading, 8)
-                    })
-                    .showSubView()
-                    .buttonStyle(PrimaryButtonStyle(isActive: campers.count > 0))
-                    
-                    NavigationLink(value: ViewList.checklist,
-                                   label: { Label("Departure checklist", systemImage: "checklist").padding(.leading, 8)
-                    })
-                    .showSubView()
-                    .buttonStyle(PrimaryButtonStyle(isActive: selectedCamperID != nil))
-                    
-                    Spacer()
-                
-                    HStack {
-                        NavigationLink(value: ViewList.help,
-                                       label: { Image(systemName: "questionmark").toolbarImageStyle()
-                        })
-                        .showSubView()
-                        
-                        Spacer()
-                        
-                        NavigationLink(value: ViewList.settings,
-                                       label: { Image(systemName: "gearshape.fill").toolbarImageStyle()
-                        })
-                        .showSubView()
+                    List(ViewList.allCases, id: \.self, selection: $selection) { destination in
+                        NavigationLink(value: destination, label: { Text(verbatim: destination.rawValue)})
                     }
-                }
                 .navigationTitle("CampingSweet")
+            }
+        } detail: {
+            switch selection {
+            case .campers:
+                CampersView()
+            case .logbook:
+                if selectedCamperID == nil {
+                    ContentUnavailableView("No camper selected", systemImage: "exclamationmark.octagon", description: Text("Please select a camper from the Campers option"))
+                } else {
+                    LogBookView(localCamperID: selectedCamperID!)
+                }
+            case .maps:
+                MapsView(yearToMap: "All years")
+            case .charts:
+                ChartsView()
+            case .checklist:
+                ChecklistView()
+            case .settings:
+                SettingsView()
+            case .help:
+                HelpView()
+            case nil:
+                ContentUnavailableView("Choose an option", systemImage: "exclamationmark.octagon")
             }
         }
         .environment(navigationManager)
@@ -84,8 +61,9 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView()
-        .modelContainer(try! ModelContainer.sample())
+    ModelContainerPreview(ModelContainer.sample) {
+        ContentView()
+    }
 }
 
 struct PrimaryButtonStyle: ButtonStyle {

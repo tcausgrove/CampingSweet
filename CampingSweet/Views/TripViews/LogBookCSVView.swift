@@ -9,7 +9,7 @@ import SwiftUI
 import SwiftData
 import Defaults
 
-struct LogBookBottomBarView: View {
+struct LogBookCSVView: View {
     @State private var isImporting: Bool = false
     @State private var isExporting: Bool = false
     @State private var actionResult: UserError? = nil
@@ -58,7 +58,7 @@ struct LogBookBottomBarView: View {
         }
         .padding([.leading, .trailing], 30)
         .padding(.top, 12)
-        .background(.sheetButtonBackground)
+//        .background(.sheetButtonBackground)
     }
 
     func handleCSVFileImport(result: Result<[URL], any Error>) {
@@ -82,5 +82,5 @@ struct LogBookBottomBarView: View {
 }
 
 #Preview {
-    LogBookBottomBarView(camper: Camper(id: UUID(), name: "Foo", isArchived: false, registrationNumber: "None", trips: []))
+    LogBookCSVView(camper: Camper(id: UUID(), name: "Foo", isArchived: false, registrationNumber: "None", trips: []))
 }

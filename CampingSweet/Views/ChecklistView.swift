@@ -22,33 +22,38 @@ struct ChecklistView: View {
     var body: some View {
         ZStack {
             BackgroundView()
-            List {
-                ForEach(checklist) { item in
-                    HStack {
-                        if item.hasCheck { showCheckMark() }
-                        Text(item.name)
-                        Spacer()
-                    }
-                    .contentShape(Rectangle())
-                    .onTapGesture {
-                        item.hasCheck.toggle()
-                    }
-                }
-                .onDelete(perform: deleteItems)
+            VStack {
+                Text("Departure checklist")
+                    .font(.title)
+                    .padding(12)
                 
-                if addingItem {
-                    addingItemView
-                } else {
-                    Button(
-                        action: { addingItem = true },
-                        label: { Image(systemName: "plus")
-                            .foregroundColor(Color.blue)}
-                    )
+                List {
+                    ForEach(checklist) { item in
+                        HStack {
+                            if item.hasCheck { showCheckMark() }
+                            Text(item.name)
+                            Spacer()
+                        }
+                        .contentShape(Rectangle())
+                        .onTapGesture {
+                            item.hasCheck.toggle()
+                        }
+                    }
+                    .onDelete(perform: deleteItems)
+                    
+                    if addingItem {
+                        addingItemView
+                    } else {
+                        Button(
+                            action: { addingItem = true },
+                            label: { Image(systemName: "plus")
+                                .foregroundColor(Color.blue)}
+                        )
+                    }
                 }
             }
             .listStyle(PlainListStyle())
             .padding()
-            //            .modifier(BackgroundView())
             .toolbar() {
                 ToolbarItem {
                     Button(action: {
@@ -59,7 +64,7 @@ struct ChecklistView: View {
                     }
                 }
             }
-            .navigationTitle("Departure checklist")
+//            .navigationTitle("Departure checklist")
         }
     }
     
@@ -96,13 +101,7 @@ struct ChecklistView: View {
 }
 
 #Preview {
-    do {
-        let config = ModelConfiguration(isStoredInMemoryOnly: true)
-        let container = try ModelContainer(for: CheckListItem.self, configurations: config)
-        
-        return ChecklistView()
-            .modelContainer(container)
-    } catch {
-        return Text("Can't do it")
+    ModelContainerPreview(ModelContainer.sample) {
+        ChecklistView()
     }
 }

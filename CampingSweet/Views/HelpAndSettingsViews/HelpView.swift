@@ -10,7 +10,7 @@ import SwiftUI
 struct HelpView: View {
     
     @Environment(\.dismiss) var dismiss
-    @State private var helpSection: HelpSection = .camperScreen
+//    @State private var helpSection: HelpSection = .camperScreen
     
     
     var body: some View {

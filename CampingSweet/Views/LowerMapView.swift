@@ -14,7 +14,7 @@ struct LowerMapView: View {
     var camperName = ""
     @State private var position: MapCameraPosition = .camera(
         .init(centerCoordinate: .init(latitude: 37.7749, longitude: -122.4194), distance: 0) // Default values are in San Francisco
-        )
+    )
     
     @Default(.selectedCamperIDKey) var selectedCamperID
     
@@ -42,12 +42,12 @@ struct LowerMapView: View {
             .onAppear {
                 position = .region(centerCoordinate ?? .init(center: CLLocationCoordinate2D(latitude: 39.5, longitude: -98.583), latitudinalMeters: 10000, longitudinalMeters: 10000))
             }
-                .mapStyle(.standard(
-                    elevation: .realistic,
-                    emphasis: .automatic,
-                    pointsOfInterest: .excludingAll)
-                )
-                .padding(8)
+            .mapStyle(.standard(
+                elevation: .realistic,
+                emphasis: .automatic,
+                pointsOfInterest: .excludingAll)
+            )
+            .padding(8)
         }
     }
 }
