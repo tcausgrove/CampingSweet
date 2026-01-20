@@ -22,20 +22,26 @@ struct LogBookView: View {
     @State var tripToEdit: LogEntry? = nil
     
     var body: some View {
-        ZStack {
-            BackgroundView()
+//        ZStack {
+//            BackgroundView()
             VStack {
-                Text("Log Book")
-                    .font(.title)
-                    .padding(-10)
+//                Text("Log Book")
+//                    .font(.title)
+//                    .padding(-10)
                 let camper = Camper.selectedCamperFromID(with: modelContext, selectedCamperID: localCamperID)
                 if camper != nil {
-                    LogBookCSVView(camper: camper!)
-                        .padding(12)
-                    LowerLogBookView(camper: camper!, tripFilter: tripFilter)
+//                    LogBookCSVView(camper: camper!)
+//                        .padding(12)
+                    LowerLogBookView(camperID: camper!.id, tripFilter: tripFilter)
+                } else {
+                    ContentUnavailableView("No camper selected",
+                                           systemImage: "exclamationmark.octagon",
+                                           description: Text("Choose a camper to view their log book"))
                 }
             }
-        }
+            .background(BackgroundView()).scrollContentBackground(.hidden)
+            .navigationTitle("Log Book")
+//        }
         .toolbar() {
             ToolbarItem {
                 Button(action: {
@@ -48,6 +54,11 @@ struct LogBookView: View {
             
             ToolbarItem {
                 FilterButton()
+            }
+            ToolbarItem {
+                let camper = Camper.selectedCamperFromID(with: modelContext, selectedCamperID: localCamperID)
+                LogBookCSVView(camper: camper!)
+                    .disabled(camper == nil)
             }
         }
         .sheet(isPresented: $editingLogEntry, content: {

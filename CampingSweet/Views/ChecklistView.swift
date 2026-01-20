@@ -20,12 +20,12 @@ struct ChecklistView: View {
     @FocusState var editingFocused: Bool
     
     var body: some View {
-        ZStack {
-            BackgroundView()
+//        ZStack {
+//            BackgroundView()
             VStack {
-                Text("Departure checklist")
-                    .font(.title)
-                    .padding(12)
+//                Text("Departure checklist")
+//                    .font(.title)
+//                    .padding(12)
                 
                 List {
                     ForEach(checklist) { item in
@@ -52,7 +52,7 @@ struct ChecklistView: View {
                     }
                 }
             }
-            .listStyle(PlainListStyle())
+//            .listStyle(PlainListStyle())
             .padding()
             .toolbar() {
                 ToolbarItem {
@@ -64,8 +64,9 @@ struct ChecklistView: View {
                     }
                 }
             }
-//            .navigationTitle("Departure checklist")
-        }
+            .background(BackgroundView()).scrollContentBackground(.hidden)
+            .navigationTitle("Departure checklist")
+//        }
     }
     
     struct showCheckMark: View {

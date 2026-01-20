@@ -43,6 +43,7 @@ struct MapsView: View {
             }
             ToolbarItem(placement: .principal, content: { Text(camperName)})
         }
+        .navigationTitle("Maps")
     }
 }
 

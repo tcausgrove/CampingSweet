@@ -1,5 +1,5 @@
 //
-//  LogBookBottomBarView.swift
+//  LogBookCSVView.swift
 //  CampingSweet
 //
 //  Created by Timothy Causgrove on 5/12/25.
@@ -10,6 +10,8 @@ import SwiftData
 import Defaults
 
 struct LogBookCSVView: View {
+    var camper: Camper
+
     @State private var isImporting: Bool = false
     @State private var isExporting: Bool = false
     @State private var actionResult: UserError? = nil
@@ -19,10 +21,8 @@ struct LogBookCSVView: View {
     
     @Default(.settingsKey) var settings
 
-    var camper: Camper
-
     var body: some View {
-        HStack {
+        Menu {
             Button("Import CSV") {
                 isImporting = true
             }
@@ -35,8 +35,6 @@ struct LogBookCSVView: View {
                 handleCSVFileImport(result: result)
             }
 
-            Spacer()
-            
             Button("Export CSV") {
                 let exportResult = fileExporterCSVSaver(camper: camper)
                 switch exportResult {
@@ -53,11 +51,14 @@ struct LogBookCSVView: View {
                           contentType: .plainText,
                           defaultFilename: "\(camper.name)_log.csv") { result in
             }
-            .disabled(camper.trips.isEmpty)
+//            .disabled(camper == nil)
             .errorAlert($actionResult)
+        } label: {
+            Label("CSV", systemImage: "ellipsis")
         }
-        .padding([.leading, .trailing], 30)
-        .padding(.top, 12)
+
+//        .padding([.leading, .trailing], 30)
+//        .padding(.top, 12)
 //        .background(.sheetButtonBackground)
     }
 
@@ -82,5 +83,7 @@ struct LogBookCSVView: View {
 }
 
 #Preview {
-    LogBookCSVView(camper: Camper(id: UUID(), name: "Foo", isArchived: false, registrationNumber: "None", trips: []))
+    ModelContainerPreview(ModelContainer.sample) {
+        LogBookCSVView(camper: Camper.previewCamperA)
+    }
 }

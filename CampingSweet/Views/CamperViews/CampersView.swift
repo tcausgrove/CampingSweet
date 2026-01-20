@@ -19,22 +19,24 @@ struct CampersView: View {
     @State private var addingCamper: Bool = false
     
     var body: some View {
-        ZStack {
-            BackgroundView()
-            VStack {
-                Text("Campers")
-                    .font(.title)
-                    .padding(12)
+//        ZStack {
+//            BackgroundView()
+//            VStack {
+//                Text("Campers")
+//                    .font(.title)
+//                    .padding(12)
                 
-                ScrollView {
+//                ScrollView {
                     VStack {
-                        ForEach(campers, id: \.self) { camper in
-                            if !camper.isArchived {
-                                CamperCardView(camper: camper)
-                                    .padding(.bottom, 8)
-                                    .onTapGesture {
-                                        setSelectedCamper(camper: camper)
-                                    }
+                        ScrollView {
+                            ForEach(campers, id: \.self) { camper in
+                                if !camper.isArchived {
+                                    CamperCardView(camper: camper)
+                                        .padding(.bottom, 8)
+                                        .onTapGesture {
+                                            setSelectedCamper(camper: camper)
+                                        }
+                                }
                             }
                         }
                         
@@ -42,7 +44,7 @@ struct CampersView: View {
                         
                         if hasArchivedCampers() {
                             Text("Archived campers")
-                                .padding(.top, 36)
+                                .padding(.top, 24)
                                 .font(.title)
 //                                .bold()
                             ForEach(campers) { camper in
@@ -63,10 +65,11 @@ struct CampersView: View {
                     .sheet(isPresented: $addingCamper) {
                         AddCamperView()
                     }
-//                    .navigationBarTitle("Campers")
-                }
-            }
-        }
+                    .background(BackgroundView()).scrollContentBackground(.hidden)
+                    .navigationTitle("Campers")
+//                }
+//            }
+//        }
     }
     
     func addCamper() {

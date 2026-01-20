@@ -10,7 +10,7 @@ import SwiftData
 import Defaults
 
 struct LowerLogBookView: View {
-    var camper: Camper
+    var camperID: UUID
     var tripFilter: FilterTrips
     
     @State private var searchText: String = ""
@@ -19,21 +19,18 @@ struct LowerLogBookView: View {
     @Query(sort: \LogEntry.startDate,
            order: .reverse) private var trips: [LogEntry]
     
-    init(camper: Camper, tripFilter: FilterTrips) {
-        self.camper = camper
+    init(camperID: UUID, tripFilter: FilterTrips) {
+        self.camperID = camperID
         self.tripFilter = tripFilter
         
         let predicate = LogEntry.logBookPredicate(searchText: searchText,
-                                           datesToShow: tripFilter,
-                                                  camperID: camper.id)
+                                                  datesToShow: tripFilter,
+                                                  camperID: camperID)
         _trips = Query(filter: predicate, sort: \LogEntry.startDate, order: .reverse)
     }
     
     var body: some View {
         ScrollView {
-//                    if settings.chosentripFormat == .list {
-//                        Divider()   // An extra divider at the top of the list
-//                    }
             ForEach(trips) { trip in
                 switch settings.chosentripFormat {
                 case .card:
@@ -48,9 +45,7 @@ struct LowerLogBookView: View {
 }
 
 #Preview {
-    @Previewable @Environment(\.modelContext) var modelContext
     ModelContainerPreview(ModelContainer.sample) {
-        let camper: Camper = try! modelContext.fetch(FetchDescriptor<Camper>()).first!
-        LowerLogBookView(camper: camper, tripFilter: .allTrips)
+        LowerLogBookView(camperID: Camper.previewCamperA.id, tripFilter: .allTrips)
     }
 }
