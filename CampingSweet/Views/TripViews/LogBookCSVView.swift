@@ -24,15 +24,8 @@ struct LogBookCSVView: View {
     var body: some View {
         Menu {
             Button("Import CSV") {
+                print("Set isImporting to true")
                 isImporting = true
-            }
-            .errorAlert($actionResult)
-            .fileImporter(
-                isPresented: $isImporting,
-                allowedContentTypes: [.plainText],
-                allowsMultipleSelection: false
-            ) { result in
-                handleCSVFileImport(result: result)
             }
 
             Button("Export CSV") {
@@ -43,27 +36,31 @@ struct LogBookCSVView: View {
                 case .failure(let error):
                     actionResult = error
                 }
+                print("Set isExporting to true")
                 isExporting = true
-//                actionResult = saveCSVImperatively(camper: camper)
             }
-            .fileExporter(isPresented: $isExporting,
-                          document: exportData,
-                          contentType: .plainText,
-                          defaultFilename: "\(camper.name)_log.csv") { result in
-            }
-//            .disabled(camper == nil)
-            .errorAlert($actionResult)
         } label: {
             Label("CSV", systemImage: "ellipsis")
         }
-
-//        .padding([.leading, .trailing], 30)
-//        .padding(.top, 12)
-//        .background(.sheetButtonBackground)
+        .fileImporter(
+            isPresented: $isImporting,
+            allowedContentTypes: [.plainText],
+            allowsMultipleSelection: false
+        ) { result in
+            print("Going to handleCSVFileImport")
+            handleCSVFileImport(result: result)
+        }
+        .fileExporter(isPresented: $isExporting,
+                      document: exportData,
+                      contentType: .plainText,
+                      defaultFilename: "\(camper.name)_log.csv") { result in
+        }
+        .errorAlert($actionResult)
     }
 
     func handleCSVFileImport(result: Result<[URL], any Error>) {
         do {
+            print("In handleCSVFileImport")
             guard let selectedFile: URL = try result.get().first else { return }
             guard let message = String(data: try Data(contentsOf: selectedFile), encoding: .utf8) else { return }
             

@@ -12,7 +12,7 @@ import Defaults
 struct ChartsView: View {
     
     @Environment(\.modelContext) private var modelContext
-    @Default(.quantityToPlot) var quantityToPlot
+    @Default(.quantityToPlotKey) var quantityToPlot
 
     var body: some View {
         VStack {

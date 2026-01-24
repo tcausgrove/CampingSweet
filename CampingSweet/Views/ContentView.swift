@@ -14,26 +14,25 @@ struct ContentView: View {
     @Query var campers: [Camper]
     
     @Environment(\.modelContext) var modelContext
-    @State private var navigationManager = NavigationManager()
 
     @Default(.selectedCamperIDKey) var selectedCamperID
     @Default(.tripFilterKey) var tripFilter
     @Default(.settingsKey) var settings
+    @Default(.detailSelectionKey) var detailSelection
 
     @State private var showHelpMenu = false
     @State private var changingSettings = false
-    @State private var selection: ViewList? = nil
     
     var body: some View {
         NavigationSplitView {
                 VStack {
-                    List(ViewList.allCases, id: \.self, selection: $selection) { destination in
+                    List(ViewList.allCases, id: \.self, selection: $detailSelection) { destination in
                         NavigationLink(value: destination, label: { Text(verbatim: destination.rawValue)})
                     }
                 .navigationTitle("CampingSweet")
             }
         } detail: {
-            switch selection {
+            switch detailSelection {
             case .campers:
                 CampersView()
             case .logbook:
@@ -53,10 +52,9 @@ struct ContentView: View {
             case .help:
                 HelpView()
             case nil:
-                ContentUnavailableView("Choose an option", systemImage: "exclamationmark.octagon")
+                ContentUnavailableView("No option selected", systemImage: "exclamationmark.octagon", description: Text("Please select an option from the sidebar"))
             }
         }
-        .environment(navigationManager)
     }
 }
 
