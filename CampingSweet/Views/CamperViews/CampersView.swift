@@ -19,14 +19,6 @@ struct CampersView: View {
     @State private var addingCamper: Bool = false
     
     var body: some View {
-//        ZStack {
-//            BackgroundView()
-//            VStack {
-//                Text("Campers")
-//                    .font(.title)
-//                    .padding(12)
-                
-//                ScrollView {
                     VStack {
                         ScrollView {
                             ForEach(campers, id: \.self) { camper in
@@ -46,7 +38,6 @@ struct CampersView: View {
                             Text("Archived campers")
                                 .padding(.top, 24)
                                 .font(.title)
-//                                .bold()
                             ForEach(campers) { camper in
                                 if camper.isArchived {
                                     ArchivedCamperView(camper: camper)
@@ -67,9 +58,6 @@ struct CampersView: View {
                     }
                     .background(BackgroundView()).scrollContentBackground(.hidden)
                     .navigationTitle("Campers")
-//                }
-//            }
-//        }
     }
     
     func addCamper() {
@@ -77,7 +65,6 @@ struct CampersView: View {
         // Set to be selected camper
         selectedCamperID = camper.id
         modelContext.insert(camper)
-//        path = [camper]
     }
     
     func setSelectedCamper(camper: Camper) {

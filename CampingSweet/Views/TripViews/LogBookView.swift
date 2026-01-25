@@ -16,32 +16,23 @@ struct LogBookView: View {
     @Environment(\.modelContext) private var modelContext
     @Default(.settingsKey) var settings
     @Default(.tripFilterKey) var tripFilter: FilterTrips
-
+    
     @State private var editingLogEntry: Bool = false
     @State private var isExporting: Bool = false
     @State var tripToEdit: LogEntry? = nil
     
     var body: some View {
-//        ZStack {
-//            BackgroundView()
-            VStack {
-//                Text("Log Book")
-//                    .font(.title)
-//                    .padding(-10)
-                let camper = Camper.selectedCamperFromID(with: modelContext, selectedCamperID: localCamperID)
-                if camper != nil {
-//                    LogBookCSVView(camper: camper!)
-//                        .padding(12)
-                    LowerLogBookView(camperID: camper!.id, tripFilter: tripFilter)
-                } else {
-                    ContentUnavailableView("No camper selected",
-                                           systemImage: "exclamationmark.octagon",
-                                           description: Text("Choose a camper to view their log book"))
-                }
+        VStack {
+            let camper = Camper.selectedCamperFromID(with: modelContext, selectedCamperID: localCamperID)
+            if camper != nil {
+                LowerLogBookView(camperID: camper!.id, tripFilter: tripFilter)
+            } else {
+                ContentUnavailableView("No camper selected",
+                                       systemImage: "exclamationmark.octagon",
+                                       description: Text("Choose a camper to view their log book"))
             }
-            .background(BackgroundView()).scrollContentBackground(.hidden)
-            .navigationTitle("Log Book")
-//        }
+        }
+        .background(BackgroundView()).scrollContentBackground(.hidden)
         .toolbar() {
             ToolbarItem {
                 Button(action: {
@@ -61,10 +52,10 @@ struct LogBookView: View {
                     .disabled(camper == nil)
             }
         }
+        .navigationTitle("Log Book")
         .sheet(isPresented: $editingLogEntry, content: {
             EditLogEntryView()
         })
-//        .navigationTitle("Log Book")
     }
 }
 

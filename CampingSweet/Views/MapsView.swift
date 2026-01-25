@@ -20,7 +20,11 @@ struct MapsView: View {
     
     var body: some View {
         VStack {
-            LowerMapView(yearSelection: yearToMap, camperName: camperName)
+            if selectedCamperID == nil {
+                ContentUnavailableView("No camper selected", systemImage: "exclamationmark.octagon", description: Text("Please select a camper from the Campers option"))
+            } else {
+                LowerMapView(yearSelection: yearToMap, camperName: camperName)
+            }
         }
         .onAppear(perform: { // Get the list of years to be listed in the picker
             let camper = Camper.selectedCamperFromID(with: modelContext, selectedCamperID: selectedCamperID)

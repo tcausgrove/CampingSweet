@@ -24,7 +24,6 @@ struct LogBookCSVView: View {
     var body: some View {
         Menu {
             Button("Import CSV") {
-                print("Set isImporting to true")
                 isImporting = true
             }
 
@@ -36,7 +35,6 @@ struct LogBookCSVView: View {
                 case .failure(let error):
                     actionResult = error
                 }
-                print("Set isExporting to true")
                 isExporting = true
             }
         } label: {
@@ -60,7 +58,6 @@ struct LogBookCSVView: View {
 
     func handleCSVFileImport(result: Result<[URL], any Error>) {
         do {
-            print("In handleCSVFileImport")
             guard let selectedFile: URL = try result.get().first else { return }
             guard let message = String(data: try Data(contentsOf: selectedFile), encoding: .utf8) else { return }
             
