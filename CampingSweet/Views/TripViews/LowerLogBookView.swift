@@ -14,6 +14,7 @@ struct LowerLogBookView: View {
     var tripFilter: FilterTrips
     
     @State private var searchText: String = ""
+    @State private var refreshView: Bool = false
     @Default(.settingsKey) var settings
     
     @Query(sort: \LogEntry.startDate,
@@ -31,7 +32,7 @@ struct LowerLogBookView: View {
     
     var body: some View {
         ScrollView {
-            ForEach(trips) { trip in
+            ForEach(trips, id: \.self) { trip in
                 switch settings.chosentripFormat {
                 case .card:
                     TripCardView(logEntry: trip)
@@ -41,6 +42,11 @@ struct LowerLogBookView: View {
                 }
             }
         }
+        /// The following two modifiers are a hack.  I should be able to do better.
+        .onAppear {
+            refreshView.toggle()
+        }
+        .id(refreshView)
     }
 }
 
