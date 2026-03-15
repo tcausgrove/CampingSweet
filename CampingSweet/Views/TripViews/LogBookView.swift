@@ -10,7 +10,7 @@ import SwiftData
 import Defaults
 
 struct LogBookView: View {
-    var localCamperID: UUID
+    var localCamper: Camper?
     
     @Environment(\.dismiss) var dismiss
     @Environment(\.modelContext) private var modelContext
@@ -23,9 +23,9 @@ struct LogBookView: View {
     
     var body: some View {
         VStack {
-            let camper = Camper.selectedCamperFromID(with: modelContext, selectedCamperID: localCamperID)
-            if camper != nil {
-                LowerLogBookView(camperID: camper!.id, tripFilter: tripFilter)
+//            let camper = Camper.selectedCamperFromID(with: modelContext, selectedCamperID: localCamperID)
+            if localCamper != nil {
+                LowerLogBookView(camperID: localCamper!.id, tripFilter: tripFilter)
             } else {
                 ContentUnavailableView("No camper selected",
                                        systemImage: "exclamationmark.octagon",
@@ -47,9 +47,9 @@ struct LogBookView: View {
                 FilterButton()
             }
             ToolbarItem {
-                let camper = Camper.selectedCamperFromID(with: modelContext, selectedCamperID: localCamperID)
-                LogBookCSVView(camper: camper!)
-                    .disabled(camper == nil)
+//                let camper = Camper.selectedCamperFromID(with: modelContext, selectedCamperID: localCamperID)
+                LogBookCSVView(camper: localCamper!)
+                    .disabled(localCamper == nil)
             }
         }
         .navigationTitle("Log Book")
@@ -61,6 +61,6 @@ struct LogBookView: View {
 
 #Preview {
     ModelContainerPreview(ModelContainer.sample) {
-        LogBookView(localCamperID: Camper.previewCamperA.id)
+        LogBookView(localCamper: Camper.previewCamperA)
     }
 }

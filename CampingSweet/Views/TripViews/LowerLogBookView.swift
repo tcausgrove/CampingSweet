@@ -20,15 +20,15 @@ struct LowerLogBookView: View {
     @Query(sort: \LogEntry.startDate,
            order: .reverse) private var trips: [LogEntry]
     
-    init(camperID: UUID, tripFilter: FilterTrips) {
-        self.camperID = camperID
-        self.tripFilter = tripFilter
+//    init(camperID: UUID, tripFilter: FilterTrips) {
+//        self.camperID = camperID
+//        self.tripFilter = tripFilter
         
-        let predicate = LogEntry.logBookPredicate(searchText: searchText,
-                                                  datesToShow: tripFilter,
-                                                  camperID: camperID)
-        _trips = Query(filter: predicate, sort: \LogEntry.startDate, order: .reverse)
-    }
+//        let predicate = LogEntry.logBookPredicate(searchText: searchText,
+//                                                  datesToShow: tripFilter,
+//                                                  camperID: camperID)
+//        _trips = Query(filter: predicate, sort: \LogEntry.startDate, order: .reverse)
+//    }
     
     var body: some View {
         ScrollView {

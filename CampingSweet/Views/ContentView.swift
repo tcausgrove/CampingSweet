@@ -37,9 +37,9 @@ struct ContentView: View {
                 CampersView()
             case .logbook:
                 if selectedCamperID == nil {
-                    ContentUnavailableView("No camper selected", systemImage: "exclamationmark.octagon", description: Text("Please select a camper from the Campers option"))
+                    ContentUnavailableView("No camper selected", systemImage: "exclamationmark.octagon", description: Text("Please select a camper from Campers in the sidebar"))
                 } else {
-                    LogBookView(localCamperID: selectedCamperID!)
+                    LogBookView(localCamper: campers.first(where: { $0.id == selectedCamperID! }) )
                 }
             case .maps:
                 MapsView(yearToMap: "All years")
@@ -52,7 +52,7 @@ struct ContentView: View {
             case .help:
                 HelpView()
             case nil:
-                ContentUnavailableView("No option selected", systemImage: "exclamationmark.octagon", description: Text("Please select an option from the sidebar"))
+                ContentUnavailableView("Why is this here", systemImage: "questionmark")
             }
         }
     }
