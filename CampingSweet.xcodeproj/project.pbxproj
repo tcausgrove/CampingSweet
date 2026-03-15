@@ -31,7 +31,6 @@
 		78A4152229E4D3AC005CBEF1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 78A4152129E4D3AC005CBEF1 /* Assets.xcassets */; };
 		78A4152529E4D3AC005CBEF1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 78A4152429E4D3AC005CBEF1 /* Preview Assets.xcassets */; };
 		78A4153D29F0BDC0005CBEF1 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A4153C29F0BDC0005CBEF1 /* Enums.swift */; };
-		78A6751C2EAD8B330005816C /* NavigationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A6751B2EAD8B330005816C /* NavigationManager.swift */; };
 		78A6751E2EAFF5FE0005816C /* ContentViewHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A6751D2EAFF5FE0005816C /* ContentViewHelper.swift */; };
 		78A675792EBD71CD0005816C /* CSVImportExport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78A675782EBD71CD0005816C /* CSVImportExport.swift */; };
 		78B4BE832E7CAD6D0000E8EA /* Defaults in Frameworks */ = {isa = PBXBuildFile; productRef = 78B4BE822E7CAD6D0000E8EA /* Defaults */; };
@@ -62,7 +61,6 @@
 		78A4152129E4D3AC005CBEF1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		78A4152429E4D3AC005CBEF1 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		78A4153C29F0BDC0005CBEF1 /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
-		78A6751B2EAD8B330005816C /* NavigationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationManager.swift; sourceTree = "<group>"; };
 		78A6751D2EAFF5FE0005816C /* ContentViewHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewHelper.swift; sourceTree = "<group>"; };
 		78A675782EBD71CD0005816C /* CSVImportExport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSVImportExport.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -127,7 +125,6 @@
 				78A4152129E4D3AC005CBEF1 /* Assets.xcassets */,
 				78820E572D2F506000AA6807 /* Localizable.xcstrings */,
 				78A4152329E4D3AC005CBEF1 /* Preview Content */,
-				78A6751B2EAD8B330005816C /* NavigationManager.swift */,
 				78A675782EBD71CD0005816C /* CSVImportExport.swift */,
 			);
 			path = CampingSweet;
@@ -264,7 +261,6 @@
 				78413C0C2A7435D1006DCF9E /* ChecklistView.swift in Sources */,
 				78A040442F04AA3A00767EA2 /* LowerChartView.swift in Sources */,
 				78820E742D35D39200AA6807 /* GetLocation.swift in Sources */,
-				78A6751C2EAD8B330005816C /* NavigationManager.swift in Sources */,
 				7817B8832E4559E600CC7B7E /* DrivingDistanceView.swift in Sources */,
 				78A0403F2EFE066100767EA2 /* ChartsView.swift in Sources */,
 				785949542CE6CADD00D8060A /* MessageDocument.swift in Sources */,
@@ -415,7 +411,7 @@
 				CODE_SIGN_ENTITLEMENTS = CampingSweet/CampingSweet.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_ASSET_PATHS = "\"CampingSweet/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -434,7 +430,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.9;
+				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tcaus.CampingSweet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -444,7 +440,7 @@
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -456,7 +452,7 @@
 				CODE_SIGN_ENTITLEMENTS = CampingSweet/CampingSweet.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_ASSET_PATHS = "\"CampingSweet/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -475,7 +471,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.9;
+				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tcaus.CampingSweet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -485,7 +481,7 @@
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
