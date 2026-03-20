@@ -1,5 +1,5 @@
 //
-//  LogBookBottomBarView.swift
+//  LogBookCSVView.swift
 //  CampingSweet
 //
 //  Created by Timothy Causgrove on 5/12/25.
@@ -9,7 +9,9 @@ import SwiftUI
 import SwiftData
 import Defaults
 
-struct LogBookBottomBarView: View {
+struct LogBookCSVView: View {
+    var camper: Camper
+
     @State private var isImporting: Bool = false
     @State private var isExporting: Bool = false
     @State private var actionResult: UserError? = nil
@@ -19,24 +21,12 @@ struct LogBookBottomBarView: View {
     
     @Default(.settingsKey) var settings
 
-    var camper: Camper
-
     var body: some View {
-        HStack {
+        Menu {
             Button("Import CSV") {
                 isImporting = true
             }
-            .errorAlert($actionResult)
-            .fileImporter(
-                isPresented: $isImporting,
-                allowedContentTypes: [.plainText],
-                allowsMultipleSelection: false
-            ) { result in
-                handleCSVFileImport(result: result)
-            }
 
-            Spacer()
-            
             Button("Export CSV") {
                 let exportResult = fileExporterCSVSaver(camper: camper)
                 switch exportResult {
@@ -46,19 +36,24 @@ struct LogBookBottomBarView: View {
                     actionResult = error
                 }
                 isExporting = true
-//                actionResult = saveCSVImperatively(camper: camper)
             }
-            .fileExporter(isPresented: $isExporting,
-                          document: exportData,
-                          contentType: .plainText,
-                          defaultFilename: "\(camper.name)_log.csv") { result in
-            }
-            .disabled(camper.trips.isEmpty)
-            .errorAlert($actionResult)
+        } label: {
+            Label("CSV", systemImage: "ellipsis")
         }
-        .padding([.leading, .trailing], 30)
-        .padding(.top, 12)
-        .background(.sheetButtonBackground)
+        .fileImporter(
+            isPresented: $isImporting,
+            allowedContentTypes: [.plainText],
+            allowsMultipleSelection: false
+        ) { result in
+            print("Going to handleCSVFileImport")
+            handleCSVFileImport(result: result)
+        }
+        .fileExporter(isPresented: $isExporting,
+                      document: exportData,
+                      contentType: .plainText,
+                      defaultFilename: "\(camper.name)_log.csv") { result in
+        }
+        .errorAlert($actionResult)
     }
 
     func handleCSVFileImport(result: Result<[URL], any Error>) {
@@ -82,5 +77,7 @@ struct LogBookBottomBarView: View {
 }
 
 #Preview {
-    LogBookBottomBarView(camper: Camper(id: UUID(), name: "Foo", isArchived: false, registrationNumber: "None", trips: []))
+    ModelContainerPreview(ModelContainer.sample) {
+        LogBookCSVView(camper: Camper.previewCamperA)
+    }
 }

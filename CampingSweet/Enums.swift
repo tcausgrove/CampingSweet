@@ -105,14 +105,6 @@ enum ArchivalAction: String, CaseIterable, Identifiable {
     var id: Self { self }
 }
 
-enum HelpSection: String, CaseIterable, Identifiable {
-    case camperScreen = "Campers"
-    case logBookScreen = "Log Book"
-    case settingsScreen = "Settings"
-    
-    var id: Self { self }
-}
-
 enum FilterTrips: String, CaseIterable, Identifiable, Defaults.Serializable {
     case currentYear = "Current year only"
     case allTrips = "All trips"

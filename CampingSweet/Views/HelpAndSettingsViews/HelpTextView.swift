@@ -12,15 +12,19 @@ struct HelpTextView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
             let overviewText = """
-                CampingSweet helps you keep track of campsites you have visited.  It stores data such as the dates and number of nights spent there, the milage driven to the site. The app allows more than one camper; for each camper, the total miles driven and number of nights used are displayed.
+                CampingSweet helps you keep track of campsites you have visited.  It includes a log book of campsites, maps of campsites visited and charts of overall camper usage.  The app allows more than one camper; for each camper, the total miles driven and number of nights used are displayed.
                 
                 """
             
                 let camperText = """
-                From here you can add, delete, or archive different campers.  The camper's mileage and number of nights used is displayed.  One camper is the Selected Camper for use by the Log Book Display. For more information see the app's [help page](https://sites.google.com/view/tcausgrove/campingsweet/campingsweet-support).
+                From here you can add, delete, or archive different campers.  The camper's mileage and number of nights used is displayed.  One camper is the Selected Camper for use by the Log Book and Maps display. For more information see the app's [help page](https://sites.google.com/view/tcausgrove/campingsweet/campingsweet-support).
                 
                 """
 
+            let mapsText = """
+            A map of campsites is displayed with pins at each campsite.  Includes a menu for narrowing the displayed sites to either a certain year or all years.  The map shows only sites for the selected camper.
+            """
+            
             let logbookText = """
                 This shows the campsited visited by the Selected camper.  Each stop may be edited, deleted, or shown in Apple Maps.  See the Settings screen for Card display vs. List display.
                 
@@ -42,6 +46,10 @@ struct HelpTextView: View {
             Text("Log Book screen")
                 .font(.title2.bold())
             Text(LocalizedStringKey(logbookText))
+
+            Text("Maps screen")
+                .font(.title2.bold())
+            Text(LocalizedStringKey(mapsText))
 
             Text("Settings screen")
                 .font(.title2.bold())

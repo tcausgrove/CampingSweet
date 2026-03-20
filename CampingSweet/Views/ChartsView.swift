@@ -12,10 +12,17 @@ import Defaults
 struct ChartsView: View {
     
     @Environment(\.modelContext) private var modelContext
-    @Default(.quantityToPlot) var quantityToPlot
+    @Default(.quantityToPlotKey) var quantityToPlot
 
     var body: some View {
         VStack {
+            LowerChartView(quantityToPlot: quantityToPlot)
+                .background()
+                .padding(.top, 20)
+            
+            Spacer()
+        }
+        .toolbar {
             Menu {
                 Picker("", selection: $quantityToPlot) {
                     ForEach(ChartYAxis.allCases, id: \.self) { selection in
@@ -27,11 +34,9 @@ struct ChartsView: View {
                 Label("\(quantityToPlot.rawValue)", systemImage: "slider.horizontal.3")
             }
             .pickerStyle(.inline)
-            
-            LowerChartView(quantityToPlot: quantityToPlot)
-            
-            Spacer()
-        }
+         }
+        .background(BackgroundView()).scrollContentBackground(.hidden)
+        .navigationTitle("Charts")
     }
 }
 

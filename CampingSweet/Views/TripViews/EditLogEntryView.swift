@@ -107,7 +107,5 @@ struct EditLogEntryView: View {
 }
 
 #Preview {
-    // PREVIEW IS NOT OPERATIONAL:  There is a problem with LocationButton
-
     EditLogEntryView(previousLogEntry: nil)
 }

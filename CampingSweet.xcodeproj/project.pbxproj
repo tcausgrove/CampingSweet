@@ -145,10 +145,10 @@
 				787D38682E0223A900B32DA4 /* BackgroundView.swift */,
 				7899CB8A2CD527F500395082 /* CardView.swift */,
 				78A0403E2EFE066100767EA2 /* ChartsView.swift */,
-				78A040432F04AA3A00767EA2 /* LowerChartView.swift */,
 				78413C0B2A7435D1006DCF9E /* ChecklistView.swift */,
 				78A4151F29E4D3AB005CBEF1 /* ContentView.swift */,
 				789AE62C2EF35C4400709636 /* MapsView.swift */,
+				78A040432F04AA3A00767EA2 /* LowerChartView.swift */,
 				789AE62E2EF3745A00709636 /* LowerMapView.swift */,
 				7817B8822E4559E600CC7B7E /* DrivingDistanceView.swift */,
 				789AE61C2EE498CF00709636 /* TripViews */,
@@ -425,7 +425,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportsDocumentBrowser = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -466,7 +466,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportsDocumentBrowser = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

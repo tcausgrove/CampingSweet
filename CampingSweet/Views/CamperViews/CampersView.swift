@@ -19,47 +19,45 @@ struct CampersView: View {
     @State private var addingCamper: Bool = false
     
     var body: some View {
-        ZStack {
-            BackgroundView()
-            ScrollView {
-                VStack {
-                    ForEach(campers, id: \.self) { camper in
-                        if !camper.isArchived {
-                            CamperCardView(camper: camper)
-                                .padding(.bottom, 8)
-                                .onTapGesture {
-                                    setSelectedCamper(camper: camper)
+                    VStack {
+                        ScrollView {
+                            ForEach(campers, id: \.self) { camper in
+                                if !camper.isArchived {
+                                    CamperCardView(camper: camper)
+                                        .padding(.bottom, 8)
+                                        .onTapGesture {
+                                            setSelectedCamper(camper: camper)
+                                        }
                                 }
+                            }
                         }
-                    }
-                    
-                    Spacer()
-                    
-                    if hasArchivedCampers() {
-                        Text("Archived campers")
-                            .font(.title)
-                            .bold()
-                        ForEach(campers) { camper in
-                            if camper.isArchived {
-                                ArchivedCamperView(camper: camper)
+                        
+                        Spacer()
+                        
+                        if hasArchivedCampers() {
+                            Text("Archived campers")
+                                .padding(.top, 24)
+                                .font(.title)
+                            ForEach(campers) { camper in
+                                if camper.isArchived {
+                                    ArchivedCamperView(camper: camper)
+                                }
                             }
                         }
                     }
-                }
-                .padding([.top, .bottom])
-                .toolbar() {
-                    ToolbarItem {
-                        Button(action: { addingCamper.toggle() }) {
-                            Image(systemName: "plus")
+                    .padding([.top, .bottom])
+                    .toolbar() {
+                        ToolbarItem {
+                            Button(action: { addingCamper.toggle() }) {
+                                Image(systemName: "plus")
+                            }
                         }
                     }
-                }
-                .sheet(isPresented: $addingCamper) {
-                    AddCamperView()
-                }
-                .navigationTitle("Campers")
-            }
-        }
+                    .sheet(isPresented: $addingCamper) {
+                        AddCamperView()
+                    }
+                    .background(BackgroundView()).scrollContentBackground(.hidden)
+                    .navigationTitle("Campers")
     }
     
     func addCamper() {
@@ -67,7 +65,6 @@ struct CampersView: View {
         // Set to be selected camper
         selectedCamperID = camper.id
         modelContext.insert(camper)
-//        path = [camper]
     }
     
     func setSelectedCamper(camper: Camper) {

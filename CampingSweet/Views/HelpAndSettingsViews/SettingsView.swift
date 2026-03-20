@@ -19,7 +19,6 @@ struct SettingsView: View {
     @State var dateImportFormat: DateImportFormat = .startEnd
 
     var body: some View {
-//        NavigationStack {
             Form {
                 Section(header: Text("Display").font(.headline)) {
                     Picker("Distance in", selection: $defaultDistance) {
@@ -78,7 +77,6 @@ struct SettingsView: View {
                 settings.dateImportFormat = dateImportFormat
             }
             .navigationTitle("User settings")
-//        }
     }
 }
 

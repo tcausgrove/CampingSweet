@@ -28,6 +28,10 @@ struct LowerChartView: View {
     }
     
     var body: some View {
+        if trips.count == 0 {
+            ContentUnavailableView("No campsites logged", systemImage: "exclamationmark.octagon", description: Text("There are no campsites logged. Try adding a new campsite in the log book."))
+        } else {
+            
         Chart(trips) {
             switch quantityToPlot {
                 case .distance:
@@ -47,17 +51,10 @@ struct LowerChartView: View {
         .chartYAxisLabel(position: .trailing) {
             Text(getYAxisLabel(quantityToPlot)) // Units added here!
         }
-//        .onAppear() {
-//            switch quantityToPlot {
-//            case .distance:
-//                yAxisText = "Distance (miles)"
-//            case .nights:
-//                yAxisText = "Nights"
-//            }
-//        }
         .aspectRatio(contentMode: .fit)
-        .padding(20)
-        
+        .padding(12)
+        }
+
         Spacer()
     }
 }

@@ -76,7 +76,12 @@ extension Camper {
                                        longitude: -80.0,
                                        camper: nil)
     
+    static let item1 = CheckListItem(name: "Turn off propane", hasCheck: true)
+    
     static func insertSampleData(modelContext: ModelContext) {
+        // Add the checklist item
+        modelContext.insert(item1)
+        
         // Add the campers to the model context
         modelContext.insert(previewCamperA)
         modelContext.insert(previewCamperB)
