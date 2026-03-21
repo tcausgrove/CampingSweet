@@ -107,5 +107,7 @@ struct EditLogEntryView: View {
 }
 
 #Preview {
-    EditLogEntryView(previousLogEntry: nil)
+    ModelContainerPreview(ModelContainer.sample) {
+        EditLogEntryView(previousLogEntry: nil)
+    }
 }

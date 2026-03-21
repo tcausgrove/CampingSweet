@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftData
 import Defaults
 
 struct TripListView: View {
@@ -37,5 +38,7 @@ struct TripListView: View {
 }
 
 #Preview {
-    TripListView(logEntry: LogEntry(title: "Preview trip", distance: 666.0))
+    ModelContainerPreview(ModelContainer.sample) {
+        TripListView(logEntry: LogEntry(title: "Preview trip", distance: 666.0))
+    }
 }

@@ -50,5 +50,7 @@ struct AddCamperView: View {
 }
 
 #Preview {
-    AddCamperView()
+    ModelContainerPreview(ModelContainer.sample) {
+        AddCamperView()
+    }
 }

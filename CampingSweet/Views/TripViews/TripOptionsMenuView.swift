@@ -49,6 +49,8 @@ struct TripOptionsMenuView: View {
 }
 
 #Preview {
-    let logEntry = LogEntry(title: "Preview trip", distance: 123.4, latitude: 33.33, longitude: -99.99)
-    TripOptionsMenuView(logEntry: logEntry, editingLogEntry: .constant(false))
+    ModelContainerPreview(ModelContainer.sample) {
+        let logEntry = LogEntry(title: "Preview trip", distance: 123.4, latitude: 33.33, longitude: -99.99)
+        TripOptionsMenuView(logEntry: logEntry, editingLogEntry: .constant(false))
+    }
 }
