@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		78156B7D2F6CCE4500E10131 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 78156B7C2F6CCE4500E10131 /* .gitignore */; };
 		7817B8832E4559E600CC7B7E /* DrivingDistanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7817B8822E4559E600CC7B7E /* DrivingDistanceView.swift */; };
 		78413C042A44EB49006DCF9E /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78413C032A44EB49006DCF9E /* Extensions.swift */; };
 		78413C0A2A6DEE84006DCF9E /* NumbersOnlyViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78413C092A6DEE84006DCF9E /* NumbersOnlyViewModifier.swift */; };
@@ -38,6 +39,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		78156B7C2F6CCE4500E10131 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		7817B8822E4559E600CC7B7E /* DrivingDistanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrivingDistanceView.swift; sourceTree = "<group>"; };
 		78413C032A44EB49006DCF9E /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		78413C092A6DEE84006DCF9E /* NumbersOnlyViewModifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NumbersOnlyViewModifier.swift; path = Views/NumbersOnlyViewModifier.swift; sourceTree = "<group>"; };
@@ -92,6 +94,7 @@
 		78A4151129E4D3AB005CBEF1 = {
 			isa = PBXGroup;
 			children = (
+				78156B7C2F6CCE4500E10131 /* .gitignore */,
 				78A4151C29E4D3AB005CBEF1 /* CampingSweet */,
 				78A4151B29E4D3AB005CBEF1 /* Products */,
 			);
@@ -241,6 +244,7 @@
 				78A4152229E4D3AC005CBEF1 /* Assets.xcassets in Resources */,
 				78820E8B2D431B7900AA6807 /* README.md in Resources */,
 				78820E912D46AF5200AA6807 /* LaunchScreen.storyboard in Resources */,
+				78156B7D2F6CCE4500E10131 /* .gitignore in Resources */,
 				78820E582D2F506000AA6807 /* Localizable.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
