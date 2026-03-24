@@ -25,6 +25,12 @@ class Camper {
         self.trips = trips
     }
     
+    var idString: String {
+        get { id.uuidString }
+        set { id = UUID(uuidString: newValue)!
+        }
+    }
+    
     static let example = Camper(id: UUID(), name: "Example camper", isArchived: false, registrationNumber: "Some reg number", trips: [])
     
 // Should return nil when selectedCamperName is empty string

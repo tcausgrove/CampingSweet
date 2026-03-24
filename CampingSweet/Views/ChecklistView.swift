@@ -20,11 +20,9 @@ struct ChecklistView: View {
     @FocusState var editingFocused: Bool
     
     var body: some View {
-//        ZStack {
-//            BackgroundView()
             VStack {
-//                Text("Departure checklist")
-//                    .font(.title)
+                Text("Departure checklist")
+                    .font(.title)
 //                    .padding(12)
                 
                 List {
@@ -66,7 +64,6 @@ struct ChecklistView: View {
             }
             .background(BackgroundView()).scrollContentBackground(.hidden)
             .navigationTitle("Departure checklist")
-//        }
     }
     
     struct showCheckMark: View {

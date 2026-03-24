@@ -12,7 +12,7 @@ import Defaults
 
 struct MapsView: View {
     
-    @Default(.selectedCamperIDKey) var selectedCamperID
+//    @Default(.selectedCamperIDKey) var selectedCamperID
     @Environment(\.modelContext) private var modelContext
     @State var yearToMap: String
     @State var years: [String] = []
@@ -20,6 +20,26 @@ struct MapsView: View {
     
     var body: some View {
         VStack {
+            HStack {
+                Spacer()
+                
+                Text(camperName)
+                
+                Spacer()
+                
+                Menu {
+                    Picker("", selection: $yearToMap) {
+                        ForEach(years, id: \.self) { selection in
+                            Text(selection)
+                                .tag(selection)
+                        }
+                    }
+                } label: {
+                    Label("Show", systemImage: "slider.horizontal.3")
+                }
+                .padding(.trailing, 30)
+                .pickerStyle(.inline)
+            }
             if selectedCamperID == nil {
                 ContentUnavailableView("No camper selected", systemImage: "exclamationmark.octagon", description: Text("Please select a camper from the Campers option"))
             } else {
@@ -31,23 +51,6 @@ struct MapsView: View {
             years = camper?.yearsUsed ?? ["Not available"]
             camperName = camper?.name ?? "Not available"
         })
-        .toolbar() {
-            ToolbarItem(placement: .automatic) {
-                Menu {
-                    Picker("", selection: $yearToMap) {
-                        ForEach(years, id: \.self) { selection in
-                            Text(selection)
-                                .tag(selection)
-                        }
-                    }
-                } label: {
-                    Label("Show", systemImage: "slider.horizontal.3")
-                }
-                .pickerStyle(.inline)
-            }
-            ToolbarItem(placement: .principal, content: { Text(camperName)})
-        }
-        .navigationTitle("Maps")
     }
 }
 

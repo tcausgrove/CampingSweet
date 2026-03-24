@@ -16,7 +16,7 @@ struct LowerMapView: View {
         .init(centerCoordinate: .init(latitude: 37.7749, longitude: -122.4194), distance: 0) // Default values are in San Francisco
     )
     
-    @Default(.selectedCamperIDKey) var selectedCamperID
+//    @Default(.selectedCamperIDKey) var selectedCamperID
     
     @Query var trips: [LogEntry]
     

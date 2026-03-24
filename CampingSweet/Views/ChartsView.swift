@@ -16,6 +16,23 @@ struct ChartsView: View {
 
     var body: some View {
         VStack {
+            HStack {
+                Spacer()
+                
+                Menu {
+                    Picker("", selection: $quantityToPlot) {
+                        ForEach(ChartYAxis.allCases, id: \.self) { selection in
+                            Text(selection.rawValue)
+                                .tag(selection)
+                        }
+                    }
+                } label: {
+                    Label("\(quantityToPlot.rawValue)", systemImage: "slider.horizontal.3")
+                }
+                .padding(.trailing, 30)
+                .pickerStyle(.inline)
+            }
+            
             LowerChartView(quantityToPlot: quantityToPlot)
                 .background()
                 .padding(.top, 20)
@@ -23,17 +40,6 @@ struct ChartsView: View {
             Spacer()
         }
         .toolbar {
-            Menu {
-                Picker("", selection: $quantityToPlot) {
-                    ForEach(ChartYAxis.allCases, id: \.self) { selection in
-                        Text(selection.rawValue)
-                            .tag(selection)
-                    }
-                }
-            } label: {
-                Label("\(quantityToPlot.rawValue)", systemImage: "slider.horizontal.3")
-            }
-            .pickerStyle(.inline)
          }
         .background(BackgroundView()).scrollContentBackground(.hidden)
         .navigationTitle("Charts")

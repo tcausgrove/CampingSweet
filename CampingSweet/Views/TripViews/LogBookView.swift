@@ -23,7 +23,25 @@ struct LogBookView: View {
     
     var body: some View {
         VStack {
-//            let camper = Camper.selectedCamperFromID(with: modelContext, selectedCamperID: localCamperID)
+            HStack {
+                LogBookCSVView(camper: localCamper!)
+                    .disabled(localCamper == nil)
+                
+                Spacer()
+                
+                FilterButton()
+                
+                Spacer()
+                
+                Button(action: {
+                    tripToEdit = nil
+                    editingLogEntry.toggle()
+                }) {
+                    Image(systemName: "plus")
+                }
+            }
+            .padding([.bottom, .leading, .trailing], 30)
+
             if localCamper != nil {
                 LowerLogBookView(camperID: localCamper!.id, tripFilter: tripFilter)
             } else {
@@ -33,25 +51,6 @@ struct LogBookView: View {
             }
         }
         .background(BackgroundView()).scrollContentBackground(.hidden)
-        .toolbar() {
-            ToolbarItem {
-                Button(action: {
-                    tripToEdit = nil
-                    editingLogEntry.toggle()
-                }) {
-                    Image(systemName: "plus")
-                }
-            }
-            
-            ToolbarItem {
-                FilterButton()
-            }
-            ToolbarItem {
-//                let camper = Camper.selectedCamperFromID(with: modelContext, selectedCamperID: localCamperID)
-                LogBookCSVView(camper: localCamper!)
-                    .disabled(localCamper == nil)
-            }
-        }
         .navigationTitle("Log Book")
         .sheet(isPresented: $editingLogEntry, content: {
             EditLogEntryView()

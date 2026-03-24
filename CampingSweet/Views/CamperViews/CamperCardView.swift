@@ -14,7 +14,7 @@ struct CamperCardView: View {
 
     @Environment(\.modelContext) var modelContext
     @Default(.settingsKey) var settings
-    @Default(.selectedCamperIDKey) var selectedCamperID
+//    @Default(.selectedCamperIDKey) var selectedCamperID
 
     @State private var showModMenu = false
 

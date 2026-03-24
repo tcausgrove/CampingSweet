@@ -13,13 +13,20 @@ struct CampersView: View {
     @Query(sort: \Camper.name) var campers: [Camper]
     
     @Environment(\.modelContext) var modelContext
-    @Default(.selectedCamperIDKey) var selectedCamperID
+//    @Default(.selectedCamperIDKey) var selectedCamperID
     @Default(.settingsKey) var settings
 
     @State private var addingCamper: Bool = false
     
     var body: some View {
                     VStack {
+                        HStack {
+                            Spacer()
+                            Button(action: { addingCamper.toggle() }) {
+                                Image(systemName: "plus")
+                            }
+                            .padding([.bottom, .trailing], 20)
+                        }
                         ScrollView {
                             ForEach(campers, id: \.self) { camper in
                                 if !camper.isArchived {
@@ -46,13 +53,13 @@ struct CampersView: View {
                         }
                     }
                     .padding([.top, .bottom])
-                    .toolbar() {
-                        ToolbarItem {
-                            Button(action: { addingCamper.toggle() }) {
-                                Image(systemName: "plus")
-                            }
-                        }
-                    }
+//                    .toolbar() {
+//                        ToolbarItem {
+//                            Button(action: { addingCamper.toggle() }) {
+//                                Image(systemName: "plus")
+//                            }
+//                        }
+//                    }
                     .sheet(isPresented: $addingCamper) {
                         AddCamperView()
                     }

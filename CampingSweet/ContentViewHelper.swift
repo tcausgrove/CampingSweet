@@ -8,7 +8,7 @@
 import SwiftUI
 import Defaults
 
-enum ViewList: String, Codable, CaseIterable, Identifiable, Defaults.Serializable {
+enum TabList: String, Codable, CaseIterable, Identifiable, Defaults.Serializable {
     var id: String { self.rawValue }
     
     case campers = "Campers"

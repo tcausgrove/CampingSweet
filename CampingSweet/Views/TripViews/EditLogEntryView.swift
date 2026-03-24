@@ -13,7 +13,7 @@ import Defaults
 struct EditLogEntryView: View {
     var previousLogEntry: LogEntry?
 
-    @Default(.selectedCamperIDKey) var selectedCamperID
+//    @Default(.selectedCamperIDKey) var selectedCamperID
     @Default(.settingsKey) var settings
 
     @State var title: String = ""

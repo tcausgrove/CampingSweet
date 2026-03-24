@@ -14,12 +14,10 @@ struct HelpView: View {
     
     
     var body: some View {
-//        ZStack {
-//            BackgroundView()
             VStack {
-//                Text("CampingSweet Help")
-//                    .font(.title)
-//                    .padding(12)
+                Text("CampingSweet Help")
+                    .font(.title)
+                    .padding(12)
 
                 ScrollView {
                     HelpTextView()
@@ -29,7 +27,6 @@ struct HelpView: View {
             }
             .background(BackgroundView()).scrollContentBackground(.hidden)
             .navigationTitle(Text("CampingSweet Help"))
-//        }
     }
 }
 

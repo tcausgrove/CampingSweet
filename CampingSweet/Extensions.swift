@@ -221,7 +221,7 @@ extension Defaults.Keys {
     static let selectedCamperIDKey = Key<UUID?>("selectedCamperIDKey")  // Default value of nil
     static let settingsKey = Key<Settings>("settingsKey", default: Settings.example)
     static let quantityToPlotKey = Key<ChartYAxis>("quantityToPlot", default: .distance)
-    static let detailSelectionKey = Key<ViewList?>("detailSelection")
+    static let detailSelectionKey = Key<TabList?>("detailSelection")
 //    static let yearSelectionKey = Key<YearSelection>("yearSelection", default: .allYears)
     //            ^                ^            ^                ^
     //           Key              Type    UserDefaults name   Default value

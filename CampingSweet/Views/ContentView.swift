@@ -14,49 +14,52 @@ struct ContentView: View {
     @Query var campers: [Camper]
     
     @Environment(\.modelContext) var modelContext
-
-    @Default(.selectedCamperIDKey) var selectedCamperID
+    
+//    @Default(.selectedCamperIDKey) var selectedCamperID
     @Default(.tripFilterKey) var tripFilter
     @Default(.settingsKey) var settings
-    @Default(.detailSelectionKey) var detailSelection
-
+    @Default(.detailSelectionKey) var tabSelection
+    
     @State private var showHelpMenu = false
     @State private var changingSettings = false
     
     var body: some View {
-        NavigationSplitView {
-                VStack {
-                    List(ViewList.allCases, id: \.self, selection: $detailSelection) { destination in
-                        NavigationLink(value: destination, label: { Text(verbatim: destination.rawValue)})
-                    }
-                .navigationTitle("CampingSweet")
-            }
-        } detail: {
-            switch detailSelection {
-            case .campers:
+        TabView(selection: $tabSelection) {
+            Tab(TabList.campers.rawValue, image: "Camper", value: TabList.campers) {
                 CampersView()
-            case .logbook:
-                if selectedCamperID == nil {
-                    ContentUnavailableView("No camper selected", systemImage: "exclamationmark.octagon", description: Text("Please select a camper from Campers in the sidebar"))
-                } else {
-                    LogBookView(localCamper: campers.first(where: { $0.id == selectedCamperID! }) )
-                }
-            case .maps:
+            }
+            
+            Tab(TabList.logbook.rawValue, systemImage: "list.bullet.rectangle", value: TabList.logbook) {
+                LogBookView(localCamper: campers.first(where: { $0.id == selectedCamperID! }) )
+            }
+            .hidden(selectedCamperID == nil)
+            
+            Tab(TabList.maps.rawValue, systemImage: "map", value: TabList.maps) {
                 MapsView(yearToMap: "All years")
-            case .charts:
+            }
+            
+            Tab(TabList.charts.rawValue, systemImage: "chart.bar.xaxis", value: TabList.charts) {
                 ChartsView()
-            case .checklist:
-                ChecklistView()
-            case .settings:
-                SettingsView()
-            case .help:
-                HelpView()
-            case nil:
-                ContentUnavailableView("Why is this here", systemImage: "questionmark")
+            }
+            
+            TabSection("Utilities") {
+                Tab(TabList.checklist.rawValue, systemImage: "checklist", value: TabList.checklist) {
+                    ChecklistView()
+                }
+                
+                Tab(TabList.settings.rawValue, systemImage: "gear", value: TabList.settings) {
+                    SettingsView()
+                }
+                
+                Tab(TabList.help.rawValue, systemImage: "questionmark", value: TabList.help) {
+                    HelpView()
+                }
             }
         }
+        .tabViewStyle(.tabBarOnly)
     }
 }
+
 
 #Preview {
     ModelContainerPreview(ModelContainer.sample) {

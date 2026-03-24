@@ -13,7 +13,7 @@ struct TripOptionsMenuView: View {
     var logEntry: LogEntry
     @Binding var editingLogEntry: Bool
     @Environment(\.modelContext) var modelContext
-    @Default(.selectedCamperIDKey) var selectedCamperID
+//    @Default(.selectedCamperIDKey) var selectedCamperID
     
     var body: some View {
         Menu {
