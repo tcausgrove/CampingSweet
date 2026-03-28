@@ -27,14 +27,20 @@ struct CampersView: View {
                             }
                             .padding([.bottom, .trailing], 20)
                         }
-                        ScrollView {
-                            ForEach(campers, id: \.self) { camper in
-                                if !camper.isArchived {
-                                    CamperCardView(camper: camper)
-                                        .padding(.bottom, 8)
-                                        .onTapGesture {
-                                            setSelectedCamper(camper: camper)
-                                        }
+                        
+                        if campers.isEmpty {
+                            Text("Use the plus button above to add your first camper")
+                                .padding(40)
+                        } else {
+                            ScrollView {
+                                ForEach(campers, id: \.self) { camper in
+                                    if !camper.isArchived {
+                                        CamperCardView(camper: camper)
+                                            .padding(.bottom, 8)
+                                            .onTapGesture {
+                                                setSelectedCamper(camper: camper)
+                                            }
+                                    }
                                 }
                             }
                         }
