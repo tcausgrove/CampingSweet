@@ -39,13 +39,13 @@ struct LowerChartView: View {
                     x: .value("Year", $0.startDate.formatted(Date.FormatStyle().year(.defaultDigits))),
                     y: .value("Distance", $0.distanceMeasurement?.converted(to: settings.chosenDistance.unit).value ?? 0.0)
                 )
-                .foregroundStyle(by: .value("Camper", $0.camper?.name ?? "Unknown"))
+                .foregroundStyle(by: .value("Camper", $0.camper.name))
             case .nights:
                 BarMark(
                     x: .value("Year", $0.startDate.formatted(Date.FormatStyle().year(.defaultDigits))),
                     y: .value("Nights", $0.numberOfNights)
                 )
-                .foregroundStyle(by: .value("Camper", $0.camper?.name ?? "Unknown"))
+                .foregroundStyle(by: .value("Camper", $0.camper.name))
             }
         }
         .chartYAxisLabel(position: .trailing) {

@@ -14,7 +14,7 @@ struct CamperCardView: View {
 
     @Environment(\.modelContext) var modelContext
     @Default(.settingsKey) var settings
-//    @Default(.selectedCamperIDKey) var selectedCamperID
+    @Default(.selectedCamperIDKey) var selectedCamperID
 
     @State private var showModMenu = false
 
@@ -31,7 +31,7 @@ struct CamperCardView: View {
                 .sheet(isPresented: $showModMenu, content: { sheetContents })
                 HStack {
                     Text("Name: \(camper.name)")
-                    if camper.id == selectedCamperID {
+                    if camper.id.matches(selectedCamperID) {
                         Text("Selected")
                             .italic()
                             .foregroundColor(.red)
@@ -88,7 +88,7 @@ struct CamperCardView: View {
     }
     
     func deleteCamper(camper: Camper) {
-        if camper.id == selectedCamperID {
+        if camper.id.matches(selectedCamperID) {
             // set the first camper that is not selected as the new selected
             if let topCamper = try! modelContext.fetch(FetchDescriptor<Camper>()).first(where: { $0.id != selectedCamperID }) {
                 selectedCamperID = topCamper.id

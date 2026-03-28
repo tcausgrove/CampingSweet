@@ -15,7 +15,7 @@ struct ContentView: View {
     
     @Environment(\.modelContext) var modelContext
     
-//    @Default(.selectedCamperIDKey) var selectedCamperID
+    @Default(.selectedCamperIDKey) var selectedCamperID
     @Default(.tripFilterKey) var tripFilter
     @Default(.settingsKey) var settings
     @Default(.detailSelectionKey) var tabSelection
@@ -30,13 +30,18 @@ struct ContentView: View {
             }
             
             Tab(TabList.logbook.rawValue, systemImage: "list.bullet.rectangle", value: TabList.logbook) {
-                LogBookView(localCamper: campers.first(where: { $0.id == selectedCamperID! }) )
+                if selectedCamperID != nil {
+                    LogBookView(localCamper: campers.first(where: { $0.id.matches(selectedCamperID)  }) )
+                } else {
+                    ContentUnavailableView("Select a camper", systemImage: "exclamationmark.octagon", description: Text("Please select a camper to view their logbook.") )
+                }
             }
-            .hidden(selectedCamperID == nil)
+            .disabled(selectedCamperID == nil)
             
             Tab(TabList.maps.rawValue, systemImage: "map", value: TabList.maps) {
-                MapsView(yearToMap: "All years")
+                MapsView(yearToShow: "All years")
             }
+            .disabled(selectedCamperID == nil)
             
             Tab(TabList.charts.rawValue, systemImage: "chart.bar.xaxis", value: TabList.charts) {
                 ChartsView()

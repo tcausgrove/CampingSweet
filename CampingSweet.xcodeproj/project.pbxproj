@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7806AC832F74758600A7CD42 /* SelectYearButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7806AC822F74758600A7CD42 /* SelectYearButton.swift */; };
 		78156B7D2F6CCE4500E10131 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 78156B7C2F6CCE4500E10131 /* .gitignore */; };
 		7817B8832E4559E600CC7B7E /* DrivingDistanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7817B8822E4559E600CC7B7E /* DrivingDistanceView.swift */; };
 		78413C042A44EB49006DCF9E /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78413C032A44EB49006DCF9E /* Extensions.swift */; };
@@ -39,6 +40,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7806AC822F74758600A7CD42 /* SelectYearButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectYearButton.swift; sourceTree = "<group>"; };
 		78156B7C2F6CCE4500E10131 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		7817B8822E4559E600CC7B7E /* DrivingDistanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrivingDistanceView.swift; sourceTree = "<group>"; };
 		78413C032A44EB49006DCF9E /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
@@ -151,6 +153,7 @@
 				78413C0B2A7435D1006DCF9E /* ChecklistView.swift */,
 				78A4151F29E4D3AB005CBEF1 /* ContentView.swift */,
 				789AE62C2EF35C4400709636 /* MapsView.swift */,
+				7806AC822F74758600A7CD42 /* SelectYearButton.swift */,
 				78A040432F04AA3A00767EA2 /* LowerChartView.swift */,
 				789AE62E2EF3745A00709636 /* LowerMapView.swift */,
 				7817B8822E4559E600CC7B7E /* DrivingDistanceView.swift */,
@@ -256,6 +259,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7806AC832F74758600A7CD42 /* SelectYearButton.swift in Sources */,
 				787D38692E0223A900B32DA4 /* BackgroundView.swift in Sources */,
 				78820E8F2D43E9FA00AA6807 /* ErrorView.swift in Sources */,
 				785949522CE6CAA200D8060A /* Funcs.swift in Sources */,
@@ -415,7 +419,7 @@
 				CODE_SIGN_ENTITLEMENTS = CampingSweet/CampingSweet.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_ASSET_PATHS = "\"CampingSweet/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -456,7 +460,7 @@
 				CODE_SIGN_ENTITLEMENTS = CampingSweet/CampingSweet.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_ASSET_PATHS = "\"CampingSweet/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;

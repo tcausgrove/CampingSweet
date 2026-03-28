@@ -39,6 +39,6 @@ struct TripListView: View {
 
 #Preview {
     ModelContainerPreview(ModelContainer.sample) {
-        TripListView(logEntry: LogEntry(title: "Preview trip", distance: 666.0))
+        TripListView(logEntry: Camper.previewCamperA.trips.first!)
     }
 }

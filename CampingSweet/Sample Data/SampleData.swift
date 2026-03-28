@@ -34,7 +34,7 @@ extension Camper {
                                  endDate: Date(timeIntervalSince1970: 1652639200),
                                  latitude: 27.46665,
                                  longitude: -97.3,
-                                 camper: nil)
+                                 camper: previewCamperA)
     
     static let tripA1 = LogEntry(title: "Second A trip",
                                  distance: 45.6,
@@ -42,7 +42,7 @@ extension Camper {
                                  endDate: Date(timeIntervalSinceNow: -86400),
                                  latitude: 33.316667,
                                  longitude: -104.316666,
-                                 camper: nil)
+                                 camper: previewCamperA)
     
     static let tripB0 = LogEntry(title: "First B trip",
                                  distance: 78.9,
@@ -50,7 +50,7 @@ extension Camper {
                                  endDate: Date(timeIntervalSince1970: 1688677200),
                                  latitude: 36.53333,
                                  longitude: -105.133334,
-                                 camper: nil)
+                                 camper: previewCamperB)
     
     static let tripB1 = LogEntry(title: "Second B trip",
                                  distance: 123.4,
@@ -58,7 +58,7 @@ extension Camper {
                                  endDate: Date(timeIntervalSince1970: 1710555200),
                                  latitude: 34.53333,
                                  longitude: -100.0,
-                                 camper: nil)
+                                 camper: previewCamperB)
     
     static let archiveTrip0 = LogEntry(title: "Archive A",
                                        distance: 32.1,
@@ -66,7 +66,7 @@ extension Camper {
                                        endDate: Date(timeIntervalSince1970: 1630_259_200),
                                        latitude: 38.0,
                                        longitude: -95.0,
-                                       camper: nil)
+                                       camper: archivedCamper)
     
     static let archiveTrip1 = LogEntry(title: "Archive B",
                                        distance: 123.4,
@@ -74,7 +74,7 @@ extension Camper {
                                        endDate: Date(timeIntervalSince1970: 1680_259_200),
                                        latitude: 28.0,
                                        longitude: -80.0,
-                                       camper: nil)
+                                       camper: archivedCamper)
     
     static let item1 = CheckListItem(name: "Turn off propane", hasCheck: true)
     
@@ -94,12 +94,12 @@ extension Camper {
         modelContext.insert(archiveTrip0)
         modelContext.insert(archiveTrip1)
         
-        tripA0.camper = previewCamperA
-        tripA1.camper = previewCamperA
-        tripB0.camper = previewCamperB
-        tripB1.camper = previewCamperB
-        archiveTrip0.camper = archivedCamper
-        archiveTrip1.camper = archivedCamper
+//        tripA0.camper = previewCamperA
+//        tripA1.camper = previewCamperA
+//        tripB0.camper = previewCamperB
+//        tripB1.camper = previewCamperB
+//        archiveTrip0.camper = archivedCamper
+//        archiveTrip1.camper = archivedCamper
         
         previewCamperA.trips.append(tripA0)
         previewCamperA.trips.append(tripA1)

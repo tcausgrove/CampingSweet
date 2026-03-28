@@ -13,7 +13,7 @@ struct TripOptionsMenuView: View {
     var logEntry: LogEntry
     @Binding var editingLogEntry: Bool
     @Environment(\.modelContext) var modelContext
-//    @Default(.selectedCamperIDKey) var selectedCamperID
+    @Default(.selectedCamperIDKey) var selectedCamperID
     
     var body: some View {
         Menu {
@@ -50,7 +50,6 @@ struct TripOptionsMenuView: View {
 
 #Preview {
     ModelContainerPreview(ModelContainer.sample) {
-        let logEntry = LogEntry(title: "Preview trip", distance: 123.4, latitude: 33.33, longitude: -99.99)
-        TripOptionsMenuView(logEntry: logEntry, editingLogEntry: .constant(false))
+        TripOptionsMenuView(logEntry: Camper.previewCamperA.trips.first!, editingLogEntry: .constant(false))
     }
 }

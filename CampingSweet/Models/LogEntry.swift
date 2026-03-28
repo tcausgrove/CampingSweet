@@ -18,16 +18,16 @@ class LogEntry {
     var latitude: Double?
     var longitude: Double?
     
-    @Relationship var camper: Camper?
+    @Relationship var camper: Camper
     
     init(title: String,
-         distance: Double? = nil,
-         startDate: Date = Date(),
-         endDate: Date = Date(),
-         location: CLLocationCoordinate2D? = nil,
-         latitude: Double? = nil,
-         longitude: Double? = nil,
-         camper: Camper? = nil)
+         distance: Double?,
+         startDate: Date,
+         endDate: Date,
+//         location: CLLocationCoordinate2D?,
+         latitude: Double?,
+         longitude: Double?,
+         camper: Camper)
     {
         self.title = title
         self.distance = distance
@@ -94,11 +94,11 @@ extension LogEntry {
         if datesToShow == .currentYear {
             return #Predicate<LogEntry> { trip in
                 // Need to used a closed range of dates
-                return (trip.camper?.id == camperID) && (trip.startDate >= startOfYear && trip.startDate <= nowDate)
+                return (trip.camper.id == camperID) && (trip.startDate >= startOfYear && trip.startDate <= nowDate)
             }
         } else {
             return #Predicate<LogEntry> { trip in
-                trip.camper?.id == camperID
+                trip.camper.id == camperID
             }
         }
     }
@@ -112,14 +112,15 @@ extension LogEntry {
         dateFormatter.dateFormat = "yyyy"
         
         if camperID == nil {
-            return #Predicate<LogEntry> { trip in
-                trip.camper?.id == camperID
+            return #Predicate<LogEntry> { _ in
+//                trip.camper.id == camperID
+                false  // don't find any trips
             }
         }
         
         if yearSelection == "All years" {
             return #Predicate<LogEntry> { trip in
-                trip.camper?.id == camperID
+                trip.camper.id == camperID!
             }
         }
 
@@ -146,7 +147,7 @@ extension LogEntry {
         let endOfYear = calendar.date(from: endOfYearComponents)!
 
         return #Predicate<LogEntry> { trip in
-            (trip.camper?.id == camperID) && (trip.startDate >= startOfYear && trip.startDate <= endOfYear)
+            (trip.camper.id == camperID!) && (trip.startDate >= startOfYear && trip.startDate <= endOfYear)
         }
     }
 }

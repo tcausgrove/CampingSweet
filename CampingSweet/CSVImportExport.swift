@@ -106,7 +106,8 @@ func fileExporterCSVSaver(camper: Camper) -> Result<TextFile, UserError> {
 func getCSV(inputString: String,
             dateFormat: DateFormatType,
             locationType: LocationImportFormat,
-            dateImportFormat: DateImportFormat) -> [LogEntry] {
+            dateImportFormat: DateImportFormat,
+            camper: Camper) -> [LogEntry] {
     
     var tripDataArray: [LogEntry] = []
     
@@ -136,7 +137,8 @@ func getCSV(inputString: String,
                                    startDate: theDates.0,
                                    endDate: theDates.1,
                                    latitude: theLocation?.latitude,
-                                   longitude: theLocation?.longitude)
+                                   longitude: theLocation?.longitude,
+                                   camper: camper)
             tripDataArray.append(rowData)
         })
         return tripDataArray

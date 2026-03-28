@@ -11,23 +11,26 @@ import MapKit
 import Defaults
 
 struct LowerMapView: View {
-    var camperName = ""
+//    var camperName = ""
+    @Environment(\.modelContext) private var modelContext
     @State private var position: MapCameraPosition = .camera(
         .init(centerCoordinate: .init(latitude: 37.7749, longitude: -122.4194), distance: 0) // Default values are in San Francisco
     )
     
-//    @Default(.selectedCamperIDKey) var selectedCamperID
+    @Default(.selectedCamperIDKey) var selectedCamperID
     
     @Query var trips: [LogEntry]
     
     init(yearSelection: String, camperName: String) {
-        self.camperName = camperName
+//        self.camperName = camperName
         let mapsPredicate = LogEntry.mapsPredicate(yearSelection: yearSelection, camperID: selectedCamperID)
         _trips = Query(filter: mapsPredicate, sort: \LogEntry.startDate)
     }
     
     var body: some View {
         let centerCoordinate = logEntryArrayToRegion(sites: trips)
+        let camperName: String = Camper.selectedCamperFromID(with: modelContext,
+                                                             selectedCamperID: selectedCamperID)?.name ?? "Unknown camper"
         if centerCoordinate == nil {
             Text("There are no log entries with location data for \(camperName) in the given time period.")
                 .padding([.leading, .trailing], 32)
@@ -54,7 +57,7 @@ struct LowerMapView: View {
 
 #Preview {
     ModelContainerPreview(ModelContainer.sample) {
-        LowerMapView(yearSelection: "2023", camperName: "Some preview name")
+        LowerMapView(yearSelection: "2023", camperName: Camper.previewCamperA.name)
     }
 }
 

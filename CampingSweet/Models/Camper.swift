@@ -43,7 +43,7 @@ class Camper {
     }
     
     public static func selectedCamperFromID(with modelContext: ModelContext, selectedCamperID: Camper.ID?) -> Camper? {
-        if let result = try! modelContext.fetch(FetchDescriptor<Camper>()).first(where: { $0.id == selectedCamperID}) {
+        if let result = try! modelContext.fetch(FetchDescriptor<Camper>()).first(where: { $0.id.matches(selectedCamperID)}) {
             return result
         } else {
             return nil

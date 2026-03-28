@@ -12,9 +12,9 @@ import Defaults
 
 struct MapsView: View {
     
-//    @Default(.selectedCamperIDKey) var selectedCamperID
+    @Default(.selectedCamperIDKey) var selectedCamperID
     @Environment(\.modelContext) private var modelContext
-    @State var yearToMap: String
+    @State var yearToShow: String
     @State var years: [String] = []
     @State var camperName: String = ""
     
@@ -27,23 +27,13 @@ struct MapsView: View {
                 
                 Spacer()
                 
-                Menu {
-                    Picker("", selection: $yearToMap) {
-                        ForEach(years, id: \.self) { selection in
-                            Text(selection)
-                                .tag(selection)
-                        }
-                    }
-                } label: {
-                    Label("Show", systemImage: "slider.horizontal.3")
-                }
-                .padding(.trailing, 30)
-                .pickerStyle(.inline)
-            }
+                SelectYearButton(years: years, yearToShow: $yearToShow)
+           }
+            
             if selectedCamperID == nil {
                 ContentUnavailableView("No camper selected", systemImage: "exclamationmark.octagon", description: Text("Please select a camper from the Campers option"))
             } else {
-                LowerMapView(yearSelection: yearToMap, camperName: camperName)
+                LowerMapView(yearSelection: yearToShow, camperName: camperName)
             }
         }
         .onAppear(perform: { // Get the list of years to be listed in the picker
@@ -56,6 +46,6 @@ struct MapsView: View {
 
 #Preview {
     ModelContainerPreview(ModelContainer.sample) {
-        MapsView(yearToMap: "All years")
+        MapsView(yearToShow: "All years")
     }
 }

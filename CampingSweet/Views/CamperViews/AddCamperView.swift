@@ -11,7 +11,7 @@ import Defaults
 
 struct AddCamperView: View {
     @Environment(\.modelContext) var modelContext
-//    @Default(.selectedCamperIDKey) var selectedCamperID
+    @Default(.selectedCamperIDKey) var selectedCamperID
     @Environment(\.dismiss) var dismiss
 
     @State private var name: String = ""
@@ -43,7 +43,7 @@ struct AddCamperView: View {
     func addNewCamper() {
         let newCamper = Camper(id: UUID(), name: name, isArchived: false, registrationNumber: registration)
         modelContext.insert(newCamper)
-//        selectedCamperID = newCamper.id
+        selectedCamperID = newCamper.id
         
         dismiss()
     }

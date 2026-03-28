@@ -227,3 +227,8 @@ extension Defaults.Keys {
     //           Key              Type    UserDefaults name   Default value
 }
 
+extension UUID {
+    func matches(_ id: UUID?) -> Bool {
+        id.map(\.uuidString) == self.uuidString
+    }
+}

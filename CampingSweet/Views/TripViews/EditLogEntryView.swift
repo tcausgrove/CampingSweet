@@ -13,7 +13,7 @@ import Defaults
 struct EditLogEntryView: View {
     var previousLogEntry: LogEntry?
 
-//    @Default(.selectedCamperIDKey) var selectedCamperID
+    @Default(.selectedCamperIDKey) var selectedCamperID
     @Default(.settingsKey) var settings
 
     @State var title: String = ""
@@ -86,7 +86,7 @@ struct EditLogEntryView: View {
                                                 endDate: end,
                                                 latitude: Double(latitude) ?? nil,
                                                 longitude: Double(longitude) ?? nil,
-                                                camper: camper)
+                                                camper: camper!)
             camper!.trips.append(newLogEntry)
         }
     }

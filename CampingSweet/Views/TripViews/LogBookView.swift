@@ -16,21 +16,26 @@ struct LogBookView: View {
     @Environment(\.modelContext) private var modelContext
     @Default(.settingsKey) var settings
     @Default(.tripFilterKey) var tripFilter: FilterTrips
-    
+    @Default(.selectedCamperIDKey) var selectedCamperID
+
     @State private var editingLogEntry: Bool = false
     @State private var isExporting: Bool = false
     @State var tripToEdit: LogEntry? = nil
-    
+    @State var years: [String] = []
+    @State var yearToShow: String = "All years"
+    @State var camperName: String = ""
+
     var body: some View {
         VStack {
             HStack {
-                LogBookCSVView(camper: localCamper!)
-                    .disabled(localCamper == nil)
+                if localCamper != nil {
+                    LogBookCSVView(camper: localCamper!)
+                }
                 
                 Spacer()
                 
-                FilterButton()
-                
+                SelectYearButton(years: years, yearToShow: $yearToShow)
+ 
                 Spacer()
                 
                 Button(action: {
@@ -43,7 +48,7 @@ struct LogBookView: View {
             .padding([.bottom, .leading, .trailing], 30)
 
             if localCamper != nil {
-                LowerLogBookView(camperID: localCamper!.id, tripFilter: tripFilter)
+                LowerLogBookView(yearSelection: yearToShow)
             } else {
                 ContentUnavailableView("No camper selected",
                                        systemImage: "exclamationmark.octagon",
@@ -54,6 +59,11 @@ struct LogBookView: View {
         .navigationTitle("Log Book")
         .sheet(isPresented: $editingLogEntry, content: {
             EditLogEntryView()
+        })
+        .onAppear(perform: { // Get the list of years to be listed in the picker
+            let camper = Camper.selectedCamperFromID(with: modelContext, selectedCamperID: selectedCamperID)
+            years = camper?.yearsUsed ?? ["Not available"]
+            camperName = camper?.name ?? "Not available"
         })
     }
 }

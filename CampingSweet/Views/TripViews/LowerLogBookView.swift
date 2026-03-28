@@ -10,16 +10,17 @@ import SwiftData
 import Defaults
 
 struct LowerLogBookView: View {
-    var camperID: UUID
-    var tripFilter: FilterTrips
     
     @State private var searchText: String = ""
     @State private var refreshView: Bool = false
     @Default(.settingsKey) var settings
     
+    @Default(.selectedCamperIDKey) var selectedCamperID
+    
     @Query(sort: \LogEntry.startDate,
            order: .reverse) private var trips: [LogEntry]
     
+
 //    init(camperID: UUID, tripFilter: FilterTrips) {
 //        self.camperID = camperID
 //        self.tripFilter = tripFilter
@@ -29,7 +30,12 @@ struct LowerLogBookView: View {
 //                                                  camperID: camperID)
 //        _trips = Query(filter: predicate, sort: \LogEntry.startDate, order: .reverse)
 //    }
+    init(yearSelection: String) {
+        let mapsPredicate = LogEntry.mapsPredicate(yearSelection: yearSelection, camperID: selectedCamperID)
+        _trips = Query(filter: mapsPredicate, sort: \LogEntry.startDate)
+    }
     
+
     var body: some View {
         ScrollView {
             ForEach(trips, id: \.self) { trip in
@@ -52,6 +58,6 @@ struct LowerLogBookView: View {
 
 #Preview {
     ModelContainerPreview(ModelContainer.sample) {
-        LowerLogBookView(camperID: Camper.previewCamperA.id, tripFilter: .allTrips)
+        LowerLogBookView(yearSelection: "All years")
     }
 }

@@ -63,9 +63,10 @@ struct LogBookCSVView: View {
             
             document.message = message
             let newTripData: [LogEntry] = getCSV(inputString: document.message,
-                                                          dateFormat: settings.chosenDateFormat,
-                                                          locationType: settings.locationImportFormat,
-                                                          dateImportFormat: settings.dateImportFormat)
+                                                 dateFormat: settings.chosenDateFormat,
+                                                 locationType: settings.locationImportFormat,
+                                                 dateImportFormat: settings.dateImportFormat,
+                                                 camper: camper)
             for newLogEntry in newTripData {
                 camper.trips.append(newLogEntry)
                 actionResult = .importCSVSucceeded

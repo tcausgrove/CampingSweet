@@ -13,7 +13,7 @@ struct CampersView: View {
     @Query(sort: \Camper.name) var campers: [Camper]
     
     @Environment(\.modelContext) var modelContext
-//    @Default(.selectedCamperIDKey) var selectedCamperID
+    @Default(.selectedCamperIDKey) var selectedCamperID
     @Default(.settingsKey) var settings
 
     @State private var addingCamper: Bool = false
@@ -53,13 +53,6 @@ struct CampersView: View {
                         }
                     }
                     .padding([.top, .bottom])
-//                    .toolbar() {
-//                        ToolbarItem {
-//                            Button(action: { addingCamper.toggle() }) {
-//                                Image(systemName: "plus")
-//                            }
-//                        }
-//                    }
                     .sheet(isPresented: $addingCamper) {
                         AddCamperView()
                     }
