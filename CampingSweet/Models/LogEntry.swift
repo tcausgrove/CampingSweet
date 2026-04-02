@@ -8,6 +8,7 @@
 import SwiftUI
 import SwiftData
 import CoreLocation
+import Defaults
 
 @Model
 class LogEntry {
@@ -68,52 +69,18 @@ class LogEntry {
     var hasLocationData: Bool {
         return (latitude != nil && longitude != nil)
     }
-    
 }
 
 //  See https://developer.apple.com/documentation/swiftdata/filtering-and-sorting-persistent-data
 extension LogEntry {
-    static func logBookPredicate(searchText: String, datesToShow: FilterTrips, camperID: UUID) -> Predicate<LogEntry> {
-        let nowDate = Date.now
-        let calendar = Calendar(identifier: .gregorian)
-        
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy"
-        let yearString = dateFormatter.string(from: nowDate)
-        
-        let startOfYearComponents = DateComponents(
-            calendar: calendar,
-            year: Int(yearString),
-            month: 1,
-            day: 1,
-            hour: 0,
-            minute: 00
-        )
-        let startOfYear = calendar.date(from: startOfYearComponents)!
-        
-        if datesToShow == .currentYear {
-            return #Predicate<LogEntry> { trip in
-                // Need to used a closed range of dates
-                return (trip.camper.id == camperID) && (trip.startDate >= startOfYear && trip.startDate <= nowDate)
-            }
-        } else {
-            return #Predicate<LogEntry> { trip in
-                trip.camper.id == camperID
-            }
-        }
-    }
-}
-
-
-extension LogEntry {
-    static func mapsPredicate(yearSelection: String, camperID: UUID?) -> Predicate<LogEntry> {
+    static func yearSelectPredicate(yearSelection: String) -> Predicate<LogEntry> {
+        let camperID = Defaults[.selectedCamperIDKey]
         let calendar = Calendar(identifier: .gregorian)
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy"
         
         if camperID == nil {
             return #Predicate<LogEntry> { _ in
-//                trip.camper.id == camperID
                 false  // don't find any trips
             }
         }

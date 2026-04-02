@@ -48,7 +48,7 @@ struct LogBookView: View {
             .padding([.bottom, .leading, .trailing], 30)
 
             if localCamper != nil {
-                LowerLogBookView(yearSelection: yearToShow)
+                LowerLogBookView(yearSelection: yearToShow, camperName: camperName)
             } else {
                 ContentUnavailableView("No camper selected",
                                        systemImage: "exclamationmark.octagon",

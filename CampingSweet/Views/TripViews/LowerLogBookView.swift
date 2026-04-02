@@ -20,9 +20,13 @@ struct LowerLogBookView: View {
     @Query(sort: \LogEntry.startDate,
            order: .reverse) private var trips: [LogEntry]
     
+    init(yearSelection: String, camperName: String) {
+        let yearPredicate = LogEntry.yearSelectPredicate(yearSelection: yearSelection)
+        _trips = Query(filter: yearPredicate, sort: \LogEntry.startDate)
+    }
+    
 
 //    init(camperID: UUID, tripFilter: FilterTrips) {
-//        self.camperID = camperID
 //        self.tripFilter = tripFilter
         
 //        let predicate = LogEntry.logBookPredicate(searchText: searchText,
@@ -30,10 +34,10 @@ struct LowerLogBookView: View {
 //                                                  camperID: camperID)
 //        _trips = Query(filter: predicate, sort: \LogEntry.startDate, order: .reverse)
 //    }
-    init(yearSelection: String) {
-        let mapsPredicate = LogEntry.mapsPredicate(yearSelection: yearSelection, camperID: selectedCamperID)
-        _trips = Query(filter: mapsPredicate, sort: \LogEntry.startDate)
-    }
+//    init(yearSelection: String) {
+//        let mapsPredicate = LogEntry.mapsPredicate(yearSelection: yearSelection, camperID: selectedCamperID)
+//        _trips = Query(filter: mapsPredicate, sort: \LogEntry.startDate)
+//    }
     
 
     var body: some View {
@@ -58,6 +62,6 @@ struct LowerLogBookView: View {
 
 #Preview {
     ModelContainerPreview(ModelContainer.sample) {
-        LowerLogBookView(yearSelection: "All years")
+        LowerLogBookView(yearSelection: "All years", camperName: Camper.previewCamperA.name)
     }
 }
