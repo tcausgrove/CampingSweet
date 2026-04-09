@@ -21,13 +21,13 @@ struct CampersView: View {
     var body: some View {
                     VStack {
                         HStack {
-                            Spacer()
                             Button(action: { addingCamper.toggle() }) {
                                 Image(systemName: "plus")
                             }
-                            .padding([.bottom, .trailing], 20)
+                            .frame(maxWidth: .infinity, alignment: .trailing)
                         }
-                        
+                        .padding([.bottom, .leading, .trailing], 20)
+
                         if campers.isEmpty {
                             Text("Use the plus button above to add your first camper")
                                 .padding(40)

@@ -22,7 +22,7 @@ struct LowerLogBookView: View {
     
     init(yearSelection: String, camperName: String) {
         let yearPredicate = LogEntry.yearSelectPredicate(yearSelection: yearSelection)
-        _trips = Query(filter: yearPredicate, sort: \LogEntry.startDate)
+        _trips = Query(filter: yearPredicate, sort: \LogEntry.startDate, order: .reverse)
     }
     
 

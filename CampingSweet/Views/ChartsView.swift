@@ -17,8 +17,6 @@ struct ChartsView: View {
     var body: some View {
         VStack {
             HStack {
-                Spacer()
-                
                 Menu {
                     Picker("", selection: $quantityToPlot) {
                         ForEach(ChartYAxis.allCases, id: \.self) { selection in
@@ -29,9 +27,10 @@ struct ChartsView: View {
                 } label: {
                     Label("\(quantityToPlot.rawValue)", systemImage: "slider.horizontal.3")
                 }
-                .padding(.trailing, 30)
+                .frame(maxWidth: .infinity, alignment: .trailing)
                 .pickerStyle(.inline)
             }
+            .padding([.bottom, .leading, .trailing], 20)
             
             LowerChartView(quantityToPlot: quantityToPlot)
                 .background()

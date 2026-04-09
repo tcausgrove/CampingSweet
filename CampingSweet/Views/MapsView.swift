@@ -21,15 +21,17 @@ struct MapsView: View {
     var body: some View {
         VStack {
             HStack {
-                Spacer()
+                Text("")
+                    .frame(maxWidth: .infinity, alignment: .leading)
                 
                 Text(camperName)
-                
-                Spacer()
+                    .frame(maxWidth: .infinity, alignment: .center)
                 
                 SelectYearButton(years: years, yearToShow: $yearToShow)
-           }
-            
+                    .frame(maxWidth: .infinity, alignment: .trailing)
+            }
+            .padding([.bottom, .leading, .trailing], 20)
+
             if selectedCamperID == nil {
                 ContentUnavailableView("No camper selected", systemImage: "exclamationmark.octagon", description: Text("Please select a camper from the Campers option"))
             } else {
