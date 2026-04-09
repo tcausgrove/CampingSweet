@@ -22,7 +22,6 @@ struct SelectYearButton: View {
         } label: {
             Label("Show", systemImage: "slider.horizontal.3")
         }
-        .padding(.trailing, 30)
         .pickerStyle(.inline)
     }
 }

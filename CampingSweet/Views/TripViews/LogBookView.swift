@@ -30,22 +30,21 @@ struct LogBookView: View {
             HStack {
                 if localCamper != nil {
                     LogBookCSVView(camper: localCamper!)
+                        .frame(maxWidth: .infinity, alignment: .leading)
                 }
                 
-                Spacer()
-                
                 SelectYearButton(years: years, yearToShow: $yearToShow)
+                    .frame(maxWidth: .infinity, alignment: .center)
  
-                Spacer()
-                
                 Button(action: {
                     tripToEdit = nil
                     editingLogEntry.toggle()
                 }) {
                     Image(systemName: "plus")
                 }
+                .frame(maxWidth: .infinity, alignment: .trailing)
             }
-            .padding([.bottom, .leading, .trailing], 30)
+            .padding([.bottom, .leading, .trailing], 20)
 
             if localCamper != nil {
                 LowerLogBookView(yearSelection: yearToShow, camperName: camperName)
