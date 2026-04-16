@@ -45,7 +45,6 @@ struct LogBookCSVView: View {
             allowedContentTypes: [.plainText],
             allowsMultipleSelection: false
         ) { result in
-            print("Going to handleCSVFileImport")
             handleCSVFileImport(result: result)
         }
         .fileExporter(isPresented: $isExporting,

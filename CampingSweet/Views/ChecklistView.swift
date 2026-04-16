@@ -23,7 +23,6 @@ struct ChecklistView: View {
             VStack {
                 Text("Departure checklist")
                     .font(.title)
-//                    .padding(12)
                 
                 List {
                     ForEach(checklist) { item in
@@ -50,7 +49,6 @@ struct ChecklistView: View {
                     }
                 }
             }
-//            .listStyle(PlainListStyle())
             .padding()
             .toolbar() {
                 ToolbarItem {

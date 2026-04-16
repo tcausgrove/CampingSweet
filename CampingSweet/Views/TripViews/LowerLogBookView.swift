@@ -24,25 +24,10 @@ struct LowerLogBookView: View {
         let yearPredicate = LogEntry.yearSelectPredicate(yearSelection: yearSelection)
         _trips = Query(filter: yearPredicate, sort: \LogEntry.startDate, order: .reverse)
     }
-    
-
-//    init(camperID: UUID, tripFilter: FilterTrips) {
-//        self.tripFilter = tripFilter
-        
-//        let predicate = LogEntry.logBookPredicate(searchText: searchText,
-//                                                  datesToShow: tripFilter,
-//                                                  camperID: camperID)
-//        _trips = Query(filter: predicate, sort: \LogEntry.startDate, order: .reverse)
-//    }
-//    init(yearSelection: String) {
-//        let mapsPredicate = LogEntry.mapsPredicate(yearSelection: yearSelection, camperID: selectedCamperID)
-//        _trips = Query(filter: mapsPredicate, sort: \LogEntry.startDate)
-//    }
-    
 
     var body: some View {
         ScrollView {
-            ForEach(trips, id: \.self) { trip in
+            ForEach(trips, id: \.id) { trip in
                 switch settings.chosentripFormat {
                 case .card:
                     TripCardView(logEntry: trip)

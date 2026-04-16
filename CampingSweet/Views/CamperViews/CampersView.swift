@@ -33,7 +33,7 @@ struct CampersView: View {
                                 .padding(40)
                         } else {
                             ScrollView {
-                                ForEach(campers, id: \.self) { camper in
+                                ForEach(campers, id: \.id) { camper in
                                     if !camper.isArchived {
                                         CamperCardView(camper: camper)
                                             .padding(.bottom, 8)

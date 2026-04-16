@@ -16,7 +16,6 @@ struct LowerChartView: View {
     
     @Environment(\.modelContext) private var modelContext
 
-//    @Query(sort: [SortDescriptor(\LogEntry.camper?.id, order: .forward)]) private var trips: [LogEntry]
     @Default(.settingsKey) var settings: Settings
     
     @Query private var trips: [LogEntry]

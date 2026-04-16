@@ -12,7 +12,6 @@ struct DrivingDistanceView: View {
 
     @Binding var distanceString: String
     @Default(.settingsKey) var settings
-//    @FocusState private var focused: Bool
     
     let formatter: NumberFormatter = {
         let formatter = NumberFormatter()
@@ -25,8 +24,6 @@ struct DrivingDistanceView: View {
         HStack {
             Text("Distance (\( getDistanceUnitFromSetting() )): ")
             TextField("Enter value", text: $distanceString)
-//                .onAppear(perform: { focused = true })
-//                .focused($focused)
                 .keyboardType(.decimalPad)
                .numbersOnly($distanceString, includeDecimal: true, includeNegative: false, digitAllowedAfterDecimal: 1)
         }

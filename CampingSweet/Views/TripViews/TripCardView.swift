@@ -13,7 +13,6 @@ import Defaults
 struct TripCardView: View {
     var logEntry: LogEntry
     
-//    @Default(.selectedCamperIDKey) var selectedCamperID
     @Default(.settingsKey) var settings
     @Environment(\.modelContext) var modelContext
     @State private var editingLogEntry: Bool = false
