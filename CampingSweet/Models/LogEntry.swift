@@ -25,7 +25,6 @@ class LogEntry {
          distance: Double?,
          startDate: Date,
          endDate: Date,
-//         location: CLLocationCoordinate2D?,
          latitude: Double?,
          longitude: Double?,
          camper: Camper)

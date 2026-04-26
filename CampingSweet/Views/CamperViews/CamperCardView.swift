@@ -63,7 +63,7 @@ struct CamperCardView: View {
             .sheetButtonStyle()
 
             /// I took this out because there isn't much advantage to archiving, and it makes the logic of deleting a camper
-            /// more convoluted.  If the last unarchived camper is deleted, should an unarchived camper be the selected camper?
+            /// more convoluted.  If the last unarchived camper is deleted, should an archived camper be the selected camper?
             ///  Also, should unarchived be included in charts and maps?  Archiving just overall adds too much complication.
 //            Button(action: {
 //                camper.isArchived = true

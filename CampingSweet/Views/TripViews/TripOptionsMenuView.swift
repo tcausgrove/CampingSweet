@@ -17,7 +17,7 @@ struct TripOptionsMenuView: View {
     
     var body: some View {
         Menu {
-            Button(role: .destructive, action: { deleteTrip(trip: logEntry) }) {
+            Button(role: .destructive, action: { modelContext.delete(logEntry) }) {
                 Text("Delete trip")
             }
             
@@ -36,16 +36,15 @@ struct TripOptionsMenuView: View {
         }
     }
     
-    func deleteTrip(trip: LogEntry) {
-        let camper = Camper.selectedCamperFromID(with: modelContext, selectedCamperID: selectedCamperID)
-        if camper != nil {
-            guard let index = camper!.trips.firstIndex(of: trip) else {
-            return
-        }
-            camper!.trips.remove(at: index)
-            try? modelContext.save()
-        }
-    }
+//    func deleteTrip(trip: LogEntry) {
+//        let camper = Camper.selectedCamperFromID(with: modelContext, selectedCamperID: selectedCamperID)
+//        if camper != nil {
+//            if let index = camper!.trips.firstIndex(of: trip) {
+//                camper!.trips.remove(at: index)
+//                try? modelContext.save()
+//            }
+//        }
+//    }
 }
 
 #Preview {

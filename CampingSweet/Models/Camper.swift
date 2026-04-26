@@ -14,8 +14,7 @@ class Camper {
     @Attribute(.unique) var name: String
     var isArchived: Bool
     var registrationNumber: String
-    @Relationship(deleteRule: .cascade, inverse: \LogEntry.camper)
-    var trips: [LogEntry]
+    @Relationship(deleteRule: .cascade) var trips: [LogEntry]
         
     init(id: UUID, name: String = "Initial camper", isArchived: Bool = false, registrationNumber: String = "", trips: [LogEntry] = []) {
         self.id = id
