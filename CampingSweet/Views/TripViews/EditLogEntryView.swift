@@ -42,7 +42,7 @@ struct EditLogEntryView: View {
                                   latitude: $latitude,
                                   longitude: $longitude)
             }
-            .padding()
+            .presentationSizing(.page)
             .toolbar() {
                 ToolbarItem(placement: .cancellationAction) {
                     Button("Cancel", role: .cancel, action: { dismiss() })
@@ -61,7 +61,6 @@ struct EditLogEntryView: View {
         .onAppear(){
             populateVariables()
         }
-
     }
     
     func saveLogBookEntry() {

@@ -15,6 +15,7 @@ struct LowerChartView: View {
     var quantityToPlot: ChartYAxis
     
     @Environment(\.modelContext) private var modelContext
+    @Environment(\.horizontalSizeClass) var sizeClass
 
     @Default(.settingsKey) var settings: Settings
     
@@ -47,8 +48,9 @@ struct LowerChartView: View {
                 .foregroundStyle(by: .value("Camper", $0.camper.name))
             }
         }
-        .chartYAxisLabel(position: .trailing) {
+        .chartYAxisLabel(position: .leading) {
             Text(getYAxisLabel(quantityToPlot)) // Units added here!
+                .font(sizeClass == .compact ? .caption : .headline)
         }
         .aspectRatio(contentMode: .fit)
         .padding(12)

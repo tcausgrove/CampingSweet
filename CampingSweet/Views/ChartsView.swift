@@ -12,6 +12,7 @@ import Defaults
 struct ChartsView: View {
     
     @Environment(\.modelContext) private var modelContext
+    @Environment(\.horizontalSizeClass) var sizeClass
     @Default(.quantityToPlotKey) var quantityToPlot
 
     var body: some View {
@@ -34,14 +35,9 @@ struct ChartsView: View {
             
             LowerChartView(quantityToPlot: quantityToPlot)
                 .background()
-                .padding(.top, 20)
-            
-            Spacer()
         }
-        .toolbar {
-         }
+        .padding(sizeClass == .compact ? 20 : 60)
         .background(BackgroundView()).scrollContentBackground(.hidden)
-        .navigationTitle("Charts")
     }
 }
 

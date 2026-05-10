@@ -38,6 +38,7 @@ struct AddCamperView: View {
             .padding()
             .navigationTitle("Add a camper")
         }
+        .presentationSizing(.form)
     }
     
     func addNewCamper() {
