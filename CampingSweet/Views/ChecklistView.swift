@@ -21,8 +21,22 @@ struct ChecklistView: View {
     
     var body: some View {
             VStack {
-                Text("Departure checklist")
-                    .font(.title)
+                HStack {
+                    Text("")
+                        .frame(maxWidth: .infinity, alignment: .leading)
+
+                    Text("Departure checklist")
+                        .font(.title2)
+                        .frame(maxWidth: .infinity, alignment: .center)
+                    
+                    Button(action: {
+                        for anItem in checklist {
+                            anItem.hasCheck = false
+                        }
+                    } ) { Text("Clear ✓")
+                    }
+                    .frame(maxWidth: .infinity, alignment: .trailing)
+                }
                 
                 List {
                     ForEach(checklist) { item in
@@ -50,16 +64,6 @@ struct ChecklistView: View {
                 }
             }
             .padding()
-            .toolbar() {
-                ToolbarItem {
-                    Button(action: {
-                        for anItem in checklist {
-                            anItem.hasCheck = false
-                        }
-                    } ) { Text("Clear ✓")
-                    }
-                }
-            }
             .background(BackgroundView()).scrollContentBackground(.hidden)
             .navigationTitle("Departure checklist")
     }
